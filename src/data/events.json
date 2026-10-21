@@ -1,0 +1,47 @@
+[
+  {
+    "id": "ev-1",
+    "title": "Live Rip Showcase: Prismatic Evolutions",
+    "type": "Live Showcase",
+    "date": "2026-10-30T19:00:00-07:00",
+    "location": "Livestream · Gempack TV",
+    "game": "Pokémon",
+    "blurb": "We open 36 packs on stream. Every pull is listed in the shop within the hour."
+  },
+  {
+    "id": "ev-2",
+    "title": "One Piece OP-13 Release Night",
+    "type": "Set Release",
+    "date": "2026-11-07T17:00:00-07:00",
+    "location": "Partner store: Grand Line Collectibles",
+    "game": "One Piece",
+    "blurb": "Midnight-style release with sealed pre-orders, a Leader draft and prizes."
+  },
+  {
+    "id": "ev-3",
+    "title": "Magic Prerelease Weekend",
+    "type": "Set Release",
+    "date": "2026-11-14T10:00:00-07:00",
+    "location": "Partner store: Blue Mana Games",
+    "game": "Magic: The Gathering",
+    "blurb": "Sealed prerelease events all weekend. Prerelease Packs ship with a price floor."
+  },
+  {
+    "id": "ev-4",
+    "title": "Collector Consignment Day",
+    "type": "Community",
+    "date": "2026-11-21T12:00:00-08:00",
+    "location": "Gempack HQ + online",
+    "game": "All games",
+    "blurb": "Bring your binder. Get it graded, priced and listed by our team on the spot."
+  },
+  {
+    "id": "ev-5",
+    "title": "Holiday Gold Pack Drop",
+    "type": "Live Showcase",
+    "date": "2026-12-12T18:00:00-08:00",
+    "location": "Livestream · Gempack TV",
+    "game": "All games",
+    "blurb": "A limited run of 250 Gold Mystery Packs, each with two Secret Rare hit slots."
+  }
+]
