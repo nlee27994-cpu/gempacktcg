@@ -1,0 +1,86 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-navy-950 font-sans text-slate-100;
+    background-image:
+      radial-gradient(ellipse 80% 50% at 10% -10%, rgba(155, 92, 246, 0.16), transparent),
+      radial-gradient(ellipse 60% 40% at 100% 0%, rgba(16, 217, 160, 0.10), transparent);
+    background-attachment: fixed;
+  }
+  h1, h2, h3 {
+    @apply font-display tracking-tight;
+  }
+  :focus-visible {
+    @apply outline-none ring-2 ring-emerald-gem ring-offset-2 ring-offset-navy-950;
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-5 py-2.5 text-sm font-semibold transition
+      disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-primary {
+    @apply btn bg-gradient-to-r from-emerald-gem to-emerald-400 text-navy-950 hover:brightness-110;
+  }
+  .btn-gold {
+    @apply btn bg-gradient-to-r from-gold-400 to-gold-500 text-navy-950 hover:brightness-110;
+  }
+  .btn-ghost {
+    @apply btn border border-navy-500 bg-navy-800/60 text-slate-100 hover:border-slate-300/60 hover:bg-navy-700;
+  }
+  .panel {
+    @apply rounded-2xl border border-navy-600/70 bg-navy-900/70 backdrop-blur;
+  }
+  .input {
+    @apply w-full rounded-lg border border-navy-500 bg-navy-950/70 px-3 py-2 text-sm text-slate-100
+      placeholder:text-slate-500 focus:border-emerald-gem focus:outline-none focus:ring-1 focus:ring-emerald-gem;
+  }
+  .label {
+    @apply mb-1 block text-xs font-semibold uppercase tracking-wider text-slate-400;
+  }
+  .gem-text {
+    @apply bg-gradient-to-r from-emerald-gem via-amethyst-400 to-gold-400 bg-clip-text text-transparent;
+  }
+}
+
+/* Holographic sheen for Ultra / Secret rares */
+.holo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    115deg,
+    transparent 20%,
+    rgba(255, 255, 255, 0.35) 38%,
+    rgba(214, 180, 255, 0.25) 45%,
+    rgba(16, 217, 160, 0.2) 52%,
+    transparent 70%
+  );
+  background-size: 250% 100%;
+  mix-blend-mode: overlay;
+  animation: shimmer 3.5s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.perspective { perspective: 1000px; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
