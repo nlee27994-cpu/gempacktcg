@@ -1,8 +1,9 @@
 import { createContext, useContext, useEffect, useMemo, useState } from 'react'
-import { getProduct } from '../lib/catalog'
+import { getProduct, DATA_VERSION } from '../lib/catalog'
 
 const CartContext = createContext(null)
-const STORAGE_KEY = 'gempack-cart'
+// Keyed to the catalog version so saved ids never point at the wrong products
+const STORAGE_KEY = `gempack-cart-${DATA_VERSION}`
 
 function loadCart() {
   try {

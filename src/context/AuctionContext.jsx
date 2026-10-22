@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useMemo, useRef, useState } from 'react'
-import { auctions as listings, getProduct } from '../lib/catalog'
+import { auctions as listings, getProduct, DATA_VERSION } from '../lib/catalog'
 import { CONDITION_VALUE, SELLER_FEE, minNextBid } from '../lib/auction'
 import { formatPrice } from '../lib/format'
 import { useCart } from './CartContext'
@@ -7,7 +7,8 @@ import { useCart } from './CartContext'
 // The Auction House runs entirely in the browser: listings come from src/data/auctions.json,
 // rival bidders are simulated, and state is saved to localStorage so countdowns survive a refresh.
 const AuctionContext = createContext(null)
-const STORAGE_KEY = 'gempack-auctions-v1'
+// Keyed to the catalog version so saved ids never point at the wrong products
+const STORAGE_KEY = `gempack-auctions-${DATA_VERSION}`
 const MINUTE = 60 * 1000
 export const YOU = '@you'
 const RIVALS = ['@pullrate_pete', '@holo_hunter', '@sleevedup', '@binderbrooke', '@topdeck_tay', '@gradedgabe', '@cardboardcrack', '@nm_or_bust']

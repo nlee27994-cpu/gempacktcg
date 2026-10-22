@@ -15,7 +15,7 @@ This is a demo. All products are mock data, nothing is stored on a server, and c
 | Page | What it does |
 | --- | --- |
 | **Home** (`/`) | Hero, featured rare-card drops with live countdowns, upcoming events banner, Gempack Series drops |
-| **Shop** (`/shop`) | 109 packs + 117 singles. Search, filter by type / game / rarity / source / price, sort. Filters live in the URL, so filtered views can be shared |
+| **Shop** (`/shop`) | 102 packs + 120 singles (more once card data is synced). Search, filter by type / game / rarity / source / price, sort. Filters live in the URL, so filtered views can be shared |
 | **Product** (`/product/:id`) | Card or pack details. Packs show the price floor, hit slots and pull odds. Series packs show the drop's full checklist and how many of each card are still sealed |
 | **Rip a pack** (`/open/:id`) | Pack-tearing animation, tap-to-flip card reveal weighted by rarity, then pulled value vs. pack price and floor |
 | **Auction House** (`/auctions`) | Live auctions for single cards from Gempack (Official) and verified collectors. Bid, Buy Now, track your bids and wins, or get verified and list your own card |
@@ -39,6 +39,7 @@ npm run build          # production build into dist/
 npm run preview        # serve the production build locally
 npm run generate-data  # regenerate the mock catalog in src/data/
 npm run sync:pokemon   # pull real Pokémon cards and prices, then regenerate (see below)
+npm run sync:mtg       # pull real Magic cards and prices from Scryfall, then regenerate
 ```
 
 ## Project structure
@@ -46,7 +47,12 @@ npm run sync:pokemon   # pull real Pokémon cards and prices, then regenerate (s
 ```
 ├─ index.html
 ├─ public/favicon.svg            # gem-shaped booster pack logo
-├─ scripts/generate-data.mjs     # builds the mock catalog (seeded, so it's reproducible)
+├─ scripts/
+│  ├─ generate-data.mjs          # builds the catalog (seeded, so it's reproducible)
+│  ├─ market-prices.mjs          # researched sealed + One Piece prices, with sources
+│  ├─ sync-pokemon.mjs           # real Pokémon cards + prices (Pokémon TCG API)
+│  ├─ sync-mtg.mjs               # real Magic cards + prices (Scryfall)
+│  └─ sync-utils.mjs             # shared download helpers
 └─ src/
    ├─ App.jsx                    # routes
    ├─ main.jsx                   # entry: router + cart, auction and series providers
@@ -90,14 +96,42 @@ Then it rebuilds the catalog, so packs, drops, floors and auctions all use the r
 - Card images are © The Pokémon Company and are loaded from the API's image server. That's fine for a class demo,
   but a real store would need permission. If an image can't load, the card falls back to the drawn art.
 
-Magic and One Piece still use the built-in list. Scryfall (scryfall.com) could do the same for Magic.
+## Real Magic card data
+
+`npm run sync:mtg` does the same for Magic, using [Scryfall](https://scryfall.com/docs/api) (free, no key needed).
+It saves `src/data/mtg-api.json` for the 7 Magic sets the shop uses. Scryfall's USD prices are TCGplayer market
+prices, updated daily. Special printings (borderless, showcase, extended art, serialized, fancy foils) count as the
+Secret Rare tier, mythics as Ultra Rare.
+
+## Where prices come from
+
+Every product page says where its price comes from:
+
+- **Market price, live:** Pokémon and Magic singles, once synced. These are TCGplayer market prices from the Pokémon
+  TCG API and Scryfall.
+- **Market price, researched:** sealed packs and One Piece chase cards (manga rares and so on). They were looked up
+  from public price trackers on 2026-10-22, and `scripts/market-prices.mjs` lists each one with its source link and
+  date. Sealed prices move fast, so re-check them before relying on them. Some are low-confidence and say so.
+- **Gempack product:** Series drops and Gempack Hit Packs are priced from the market value of the cards inside them.
+- **Estimate:** anything without a source, labelled on the page. This covers One Piece commons and uncommons, plus the
+  built-in Pokémon and Magic cards until you run the syncs. Pack types with no market price of their own also follow
+  a stated rule: a 3-pack blister is 3 boosters + $2, and a prerelease pack is 6 play boosters + $5.
+
+Other rules:
+
+- Singles are listed at market value for their condition. Lightly Played is 85% of Near Mint and Moderately Played
+  is 65%. There are no random markups.
+- The catalog only lists raw (ungraded) cards, because graded prices vary too much from card to card to estimate.
+  Sellers can still list PSA cards in the Auction House, where the value shown is marked as a rough estimate.
+- Every pack type is a real product, except the clearly labelled Gempack ones.
+
 
 ## Data model
 
 Every product has `name`, `game`, `set`, `rarity`, `condition`, `price` and `source`
 (`Direct`, `Vendor` or `Collector`), plus a `seller`. `Collector` listings are fixed-price cards from verified collectors.
 
-- **Singles** add `marketPrice` (near-mint raw value) and a card `number`. Graded copies (PSA 9/10) sell above market.
+- **Singles** add `marketPrice` (near-mint raw value), a card `number` and a `priceSource`.
 - **Packs** add `priceFloor`, `cardsPerPack` and `hitSlots`. For packs, `rarity` is the *guaranteed hit*,
   for example "Rare or better".
 
@@ -107,13 +141,16 @@ To change the catalog, edit `scripts/generate-data.mjs` and run `npm run generat
 
 The pack engine (`src/lib/packEngine.js`) is shared by the app and the data generator:
 
-1. **Odds.** Filler slots are Common or Uncommon. Hit slots are calibrated for each pack so the average pull is about
-   86% of the pack price. Within a rarity tier, expensive chase cards are rarer, and cards from the pack's own set come
-   up more often.
+1. **Odds.** Filler slots are Common or Uncommon. Hit slots are calibrated so the average pull matches what real packs
+   return: about **30% of the price** for store packs. Price trackers put real packs at 17–27%. For example,
+   PackMagik (mid-2026) has Destined Rivals at $3.09 of card value on an $11.50 pack. Gempack's own Hit Packs return
+   86%. Within a rarity tier, expensive chase cards are rarer, and cards from the pack's own set come up more often.
 2. **Floors.** The generator simulates 1,500 openings for each pack and picks the highest floor whose expected
    store-credit payout stays under 6% of the price.
-3. **Result.** Pulls plus floor credit return roughly 84–111% of the price, about 92% on average. The store keeps a
-   margin and buyers never lose more than the floor allows.
+3. **Result.** Store packs pay back about 35–45% of their price once floor credit is counted. That's realistic, and
+   it's the point of the pitch: Gempack's own Series drops (90%) and Hit Packs (86%) are the fair way to rip.
+   Packs whose card values are still estimates (Magic and One Piece before syncing) can come out higher, because
+   cheap boosters with lots of bulk cards really do return more.
 
 ## Gempack Series drops
 

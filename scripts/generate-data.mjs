@@ -1,11 +1,13 @@
 // Generates the mock catalog in src/data/*.json.
 // Deterministic (seeded PRNG), so re-running produces the same files.
 // Usage: npm run generate-data
+import { createHash } from 'node:crypto'
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { createPackEngine, solveFloor } from '../src/lib/packEngine.js'
 import { bidIncrement, CONDITION_VALUE } from '../src/lib/auction.js'
+import { ONE_PIECE_CHASE, PACK_PRICES } from './market-prices.mjs'
 
 const OUT = join(dirname(fileURLToPath(import.meta.url)), '..', 'src', 'data')
 
@@ -120,12 +122,7 @@ const CARDS = {
     ['Fell', C], ['Lilypad Village', C], ['Bandit\'s Talent', C],
   ],
   'One Piece': [
-    ['Monkey.D.Luffy (Manga Rare)', SR, 349, 'Wings of the Captain (OP-06)'],
-    ['Roronoa Zoro (Alt Art)', SR, 129, 'Romance Dawn (OP-01)'],
-    ['Shanks (Manga Rare)', SR, 219, 'Two Legends (OP-08)'],
-    ['Boa Hancock (Alt Art)', SR, 84, '500 Years in the Future (OP-07)'],
-    ['Portgas.D.Ace (SP)', SR, 109, 'Memorial Collection (EB-01)'],
-    ['Marshall.D.Teach (Alt Art)', SR, 66, 'Emperors in the New World (OP-09)'],
+    // Secret Rare / Ultra Rare chase cards come from ONE_PIECE_CHASE (researched prices)
     ['Trafalgar Law (SEC)', UR, 38],
     ['Nami (SR)', UR, 21],
     ['Yamato (SR)', UR, 26, 'Awakening of the New Era (OP-05)'],
@@ -141,13 +138,31 @@ const CARDS = {
   ],
 }
 
-// Real Pokémon cards, if scripts/sync-pokemon.mjs has been run (npm run sync:pokemon)
-const POKEMON_API_FILE = join(OUT, 'pokemon-api.json')
-if (existsSync(POKEMON_API_FILE)) {
-  const snapshot = JSON.parse(readFileSync(POKEMON_API_FILE, 'utf8'))
-  CARDS.Pokémon = snapshot.cards.map(({ name, rarity, marketPrice, set, ...api }) => [name, rarity, marketPrice, set, api])
-  console.log(`Using ${snapshot.cards.length} real Pokémon cards from the Pokémon TCG API (synced ${snapshot.syncedAt})`)
+const estimate = (label) => ({ label, estimate: true })
+
+// Real cards with live market prices, if the sync scripts have been run
+// (npm run sync:pokemon / npm run sync:mtg). Otherwise the built-in lists below are used.
+const SNAPSHOTS = [
+  ['Pokémon', 'pokemon-api.json', 'TCGplayer market price via the Pokémon TCG API'],
+  ['Magic: The Gathering', 'mtg-api.json', 'TCGplayer market price via Scryfall'],
+]
+for (const [game, file, label] of SNAPSHOTS) {
+  const path = join(OUT, file)
+  if (!existsSync(path)) continue
+  const snapshot = JSON.parse(readFileSync(path, 'utf8'))
+  CARDS[game] = snapshot.cards.map(({ name, rarity, marketPrice, set, ...api }) => [
+    name,
+    rarity,
+    marketPrice,
+    set,
+    { ...api, priceSource: { label, url: api.tcgplayerUrl, asOf: api.priceUpdatedAt } },
+  ])
+  console.log(`Using ${snapshot.cards.length} real ${game} cards from ${file} (synced ${snapshot.syncedAt})`)
 }
+// One Piece has no free price API, so its chase cards use researched prices
+CARDS['One Piece'].unshift(
+  ...ONE_PIECE_CHASE.map((c) => [c.name, c.ultra ? UR : SR, c.marketPrice, c.set, { number: c.number, priceSource: c.source }]),
+)
 
 const NM_RANGE = { [C]: [0.05, 0.35], [U]: [0.1, 0.9], [R]: [0.5, 4], [UR]: [8, 40], [SR]: [40, 200] }
 const CONDITION_MULT = CONDITION_VALUE
@@ -159,14 +174,11 @@ for (const [game, cards] of Object.entries(CARDS)) {
   for (const [name, rarity, fixedPrice, fixedSet, api] of cards) {
     const set = fixedSet ?? pick(SETS[game])
     const marketPrice = money(fixedPrice ?? between(...NM_RANGE[rarity]))
-    const gradeable = rarity === UR || rarity === SR
-    const condition = weighted(
-      gradeable
-        ? [['Near Mint', 55], ['Lightly Played', 10], ['PSA 9', 20], ['PSA 10', 15]]
-        : [['Near Mint', 70], ['Lightly Played', 20], ['Moderately Played', 10]],
-    )
+    // Raw copies only: graded (PSA) prices vary too much per card to estimate honestly
+    const condition = weighted([['Near Mint', 72], ['Lightly Played', 20], ['Moderately Played', 8]])
     const source = weighted([['Direct', 30], ['Vendor', 35], ['Collector', 35]])
-    const price = shelf(marketPrice * CONDITION_MULT[condition] * between(0.95, 1.08))
+    // Listed at market value for the condition: no invented markups
+    const price = money(marketPrice * CONDITION_MULT[condition])
     singles.push({
       id: `sg-${String(sIdx++).padStart(3, '0')}`,
       type: 'single',
@@ -182,8 +194,9 @@ for (const [game, cards] of Object.entries(CARDS)) {
       seller: sellerFor(game, source),
       stock: source === 'Collector' ? 1 : Math.ceil(between(1, rarity === SR ? 2 : 12)),
       featured: rarity === SR && marketPrice >= 120,
-      // Real-card details from the Pokémon TCG API (image, official rarity, TCGplayer link)
-      ...(api && {
+      priceSource: api?.priceSource ?? estimate('Estimate: no live price source for this card yet'),
+      // Real-card details from a card API (image, official rarity, TCGplayer link)
+      ...(api?.apiId && {
         apiId: api.apiId,
         officialRarity: api.officialRarity,
         image: api.image,
@@ -196,33 +209,35 @@ for (const [game, cards] of Object.entries(CARDS)) {
 }
 
 // ---------- packs ----------
-// rarity on a pack = the guaranteed minimum "hit" rarity
+// rarity on a pack = the guaranteed minimum "hit" rarity.
+// Prices come from PACK_PRICES (researched market prices, with sources). Products without
+// their own market price follow a stated rule and are labelled as estimates.
+const engine = createPackEngine(singles)
+const GEMPACK_HIT_RETURN = 0.86 // our own Hit Packs pay back 86% of their price in card value
 const PACK_TYPES = {
   Pokémon: [
-    { kind: 'Booster Pack', base: 5.49, cards: 10, hit: R, hitSlots: 1 },
-    { kind: 'Sleeved Booster', base: 5.99, cards: 10, hit: R, hitSlots: 1 },
-    { kind: '3-Pack Blister', base: 15.99, cards: 30, hit: R, hitSlots: 3 },
-    { kind: 'Premium Graded-Hit Pack', base: 34.99, cards: 10, hit: UR, hitSlots: 1 },
+    { kind: 'Booster Pack', cards: 10, hit: R, hitSlots: 1, price: (m) => [m.price, m.source] },
+    {
+      kind: 'Sleeved Booster',
+      cards: 10,
+      hit: R,
+      hitSlots: 1,
+      price: (m) => (m.sleeved ? [m.sleeved, m.source] : [m.price, estimate('Estimate: same cards as a booster pack, priced like one')]),
+    },
+    { kind: '3-Pack Blister', cards: 30, hit: R, hitSlots: 3, price: (m) => [m.price * 3 + 2, estimate('Estimate: 3 × the booster pack price + $2 for the promo card')] },
+    { kind: 'Gempack Hit Pack', cards: 10, hit: UR, hitSlots: 1, gempack: true },
   ],
   'Magic: The Gathering': [
-    { kind: 'Play Booster', base: 5.99, cards: 14, hit: R, hitSlots: 1 },
-    { kind: 'Collector Booster', base: 27.99, cards: 15, hit: UR, hitSlots: 1 },
-    { kind: 'Sleeved Play Booster', base: 6.49, cards: 14, hit: R, hitSlots: 1 },
-    { kind: 'Prerelease Pack', base: 29.99, cards: 36, hit: R, hitSlots: 6 },
+    { kind: 'Play Booster', cards: 14, hit: R, hitSlots: 1, price: (m) => [m.price, m.source] },
+    { kind: 'Collector Booster', cards: 15, hit: UR, hitSlots: 1, price: (m) => [m.collector, m.collectorSource] },
+    { kind: 'Sleeved Play Booster', cards: 14, hit: R, hitSlots: 1, price: (m) => [m.price, estimate('Estimate: same cards as a play booster, priced like one')] },
+    { kind: 'Prerelease Pack', cards: 36, hit: R, hitSlots: 6, price: (m) => [m.price * 6 + 5, estimate('Estimate: 6 × the play booster price + $5 for the promo and extras')] },
   ],
   'One Piece': [
-    { kind: 'Booster Pack', base: 4.99, cards: 12, hit: R, hitSlots: 1 },
-    { kind: 'Booster Pack (Japanese)', base: 6.99, cards: 6, hit: R, hitSlots: 1 },
-    { kind: 'Tournament Pack', base: 12.99, cards: 12, hit: R, hitSlots: 2 },
-    { kind: 'Premium Booster', base: 24.99, cards: 6, hit: UR, hitSlots: 1 },
+    { kind: 'Booster Pack', cards: 12, hit: R, hitSlots: 1, price: (m) => [m.price, m.source] },
+    { kind: 'Booster Pack (Japanese)', cards: 6, hit: R, hitSlots: 1, price: (m) => [m.japanese, m.japaneseSource] },
+    { kind: 'Gempack Hit Pack', cards: 12, hit: UR, hitSlots: 1, gempack: true },
   ],
-}
-
-// Chase sets command a premium on the shelf
-const SET_HEAT = {
-  'Prismatic Evolutions': 2.1, 'Scarlet & Violet 151': 1.6, 'Surging Sparks': 1.25,
-  'Destined Rivals': 1.4, 'Final Fantasy': 1.7, 'Wings of the Captain (OP-06)': 1.5,
-  'Romance Dawn (OP-01)': 1.8, 'Memorial Collection (EB-01)': 1.4,
 }
 
 const packs = []
@@ -232,23 +247,31 @@ const pushPack = (p) => packs.push({ id: `pk-${String(pIdx++).padStart(3, '0')}`
 for (const [game, sets] of Object.entries(SETS)) {
   for (const set of sets) {
     for (const t of PACK_TYPES[game]) {
-      const heat = SET_HEAT[set] ?? between(0.9, 1.15)
-      const price = shelf(t.base * heat * between(0.97, 1.06))
-      const source = weighted([['Direct', 45], ['Vendor', 40], ['Collector', 15]])
-      pushPack({
+      const source = t.gempack ? 'Direct' : weighted([['Direct', 45], ['Vendor', 40], ['Collector', 15]])
+      const pack = {
         name: `${set} ${t.kind}`,
         game,
         set,
         kind: t.kind,
         rarity: t.hit,
-        price,
         cardsPerPack: t.cards,
         hitSlots: t.hitSlots,
         source,
         seller: sellerFor(game, source),
         stock: Math.ceil(between(source === 'Collector' ? 1 : 6, source === 'Collector' ? 4 : 60)),
         featured: false,
-      })
+      }
+      if (t.gempack) {
+        // Our own product: 1 guaranteed Ultra Rare or better, priced from what its cards are worth
+        pack.targetReturn = GEMPACK_HIT_RETURN
+        pack.price = engine.fairPrice({ ...pack, id: `fair-${pIdx}` })
+        pack.priceSource = { label: 'Gempack product: priced from the market value of its cards', gempack: true }
+      } else {
+        const [price, priceSource] = t.price(PACK_PRICES[set])
+        pack.price = money(price)
+        pack.priceSource = priceSource
+      }
+      pushPack(pack)
     }
   }
 }
@@ -382,6 +405,7 @@ for (const game of Object.keys(SETS)) {
       featured: true,
       gemTier: t.tier,
       seriesId: id,
+      priceSource: { label: `Gempack product: the drop's cards add up to ${SERIES_PAYOUT * 100}% of what the drop sells for`, gempack: true },
     })
     series.push({ id, packId: packs.at(-1).id, name: `${SERIES_NAME}: ${t.tier} — ${game}`, game, tier: t.tier, ...built })
   }
@@ -390,7 +414,6 @@ for (const game of Object.keys(SETS)) {
 // ---------- price floors ----------
 // Store packs: floors come from simulated pulls, set as the highest floor whose expected
 // store-credit payout stays under 6% of the price. Series packs already have exact floors.
-const engine = createPackEngine(singles)
 packs.forEach((p, i) => {
   if (!p.seriesId) p.priceFloor = solveFloor(engine, p, 0.06, 1500, 1000 + i)
 })
@@ -403,8 +426,7 @@ const auctionCards = shuffle(singles.filter((c) => c.rarity !== C && c.marketPri
 const auctions = auctionCards.map((card, i) => {
   const official = rand() < 0.3
   const seller = official ? 'Gempack TCG' : pick(COLLECTORS)
-  const gradeable = card.rarity === UR || card.rarity === SR
-  const condition = weighted(gradeable ? [['Near Mint', 55], ['PSA 9', 25], ['PSA 10', 20]] : [['Near Mint', 75], ['Lightly Played', 25]])
+  const condition = weighted([['Near Mint', 75], ['Lightly Played', 25]])
   const value = card.marketPrice * CONDITION_MULT[condition]
   const startPrice = Math.max(0.99, shelf(value * between(0.35, 0.7)))
   const buyNow = rand() < 0.8 ? shelf(value * between(1.05, 1.3)) : null
@@ -457,4 +479,9 @@ write('packs.json', packs)
 write('events.json', events)
 write('series.json', series)
 write('auctions.json', auctions)
+// Saved browser state (cart, opened drops, auctions) points at these ids, so the app
+// clears it whenever the catalog changes. The version is a hash of the generated data.
+write('meta.json', {
+  version: createHash('sha1').update(JSON.stringify([singles, packs, series, auctions])).digest('hex').slice(0, 10),
+})
 console.log(`Wrote ${singles.length} singles, ${packs.length} packs, ${series.length} series, ${auctions.length} auctions, ${events.length} events to src/data`)

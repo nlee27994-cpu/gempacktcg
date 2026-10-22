@@ -275,6 +275,11 @@ function ListingForm() {
             <div className="rounded-xl bg-navy-950/60 p-4 text-sm ring-1 ring-navy-700">
               <p className="text-slate-400">
                 Market value in this condition: <span className="font-semibold text-slate-100">{formatPrice(worth)}</span>
+                {condition.startsWith('PSA') && (
+                  <span className="block text-xs text-amber-200">
+                    Rough estimate: graded prices vary a lot from card to card, so check recent sales before pricing it.
+                  </span>
+                )}
               </p>
               {start >= 0.99 && (
                 <p className="mt-1 text-slate-400">

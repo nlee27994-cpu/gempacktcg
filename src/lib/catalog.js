@@ -2,8 +2,12 @@ import packs from '../data/packs.json'
 import singles from '../data/singles.json'
 import events from '../data/events.json'
 import auctions from '../data/auctions.json'
+import meta from '../data/meta.json'
 
 export { packs, singles, events, auctions }
+
+// Changes whenever the catalog is regenerated; used to key saved browser state
+export const DATA_VERSION = meta.version
 
 export const GAMES = ['Pokémon', 'Magic: The Gathering', 'One Piece']
 export const SOURCES = ['Direct', 'Vendor', 'Collector']

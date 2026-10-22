@@ -8,14 +8,19 @@
     "set": "Prismatic Evolutions",
     "kind": "Booster Pack",
     "rarity": "Rare",
-    "price": 11.99,
     "cardsPerPack": 10,
     "hitSlots": 1,
-    "source": "Direct",
-    "seller": "Gempack TCG",
-    "stock": 49,
+    "source": "Vendor",
+    "seller": "Kanto Card Co.",
+    "stock": 59,
     "featured": false,
-    "priceFloor": 3.79
+    "price": 13.85,
+    "priceSource": {
+      "label": "PokemonWizard (TCGplayer market)",
+      "url": "https://www.pokemonwizard.com/products/593294/prismatic-evolutions-booster-pack",
+      "asOf": "2026-07-10"
+    },
+    "priceFloor": 4.3
   },
   {
     "id": "pk-002",
@@ -26,14 +31,18 @@
     "set": "Prismatic Evolutions",
     "kind": "Sleeved Booster",
     "rarity": "Rare",
-    "price": 12.99,
     "cardsPerPack": 10,
     "hitSlots": 1,
     "source": "Collector",
-    "seller": "@binderbrooke",
+    "seller": "@topdeck_tay",
     "stock": 3,
     "featured": false,
-    "priceFloor": 3.9
+    "price": 13.85,
+    "priceSource": {
+      "label": "Estimate: same cards as a booster pack, priced like one",
+      "estimate": true
+    },
+    "priceFloor": 4.38
   },
   {
     "id": "pk-003",
@@ -44,32 +53,41 @@
     "set": "Prismatic Evolutions",
     "kind": "3-Pack Blister",
     "rarity": "Rare",
-    "price": 34.99,
     "cardsPerPack": 30,
     "hitSlots": 3,
     "source": "Vendor",
-    "seller": "Stadium Cards",
-    "stock": 33,
+    "seller": "Kanto Card Co.",
+    "stock": 48,
     "featured": false,
-    "priceFloor": 10.89
+    "price": 43.55,
+    "priceSource": {
+      "label": "Estimate: 3 × the booster pack price + $2 for the promo card",
+      "estimate": true
+    },
+    "priceFloor": 13.07
   },
   {
     "id": "pk-004",
     "type": "pack",
     "condition": "Sealed",
-    "name": "Prismatic Evolutions Premium Graded-Hit Pack",
+    "name": "Prismatic Evolutions Gempack Hit Pack",
     "game": "Pokémon",
     "set": "Prismatic Evolutions",
-    "kind": "Premium Graded-Hit Pack",
+    "kind": "Gempack Hit Pack",
     "rarity": "Ultra Rare",
-    "price": 77.99,
     "cardsPerPack": 10,
     "hitSlots": 1,
-    "source": "Vendor",
-    "seller": "Kanto Card Co.",
-    "stock": 18,
+    "source": "Direct",
+    "seller": "Gempack TCG",
+    "stock": 17,
     "featured": false,
-    "priceFloor": 25.86
+    "targetReturn": 0.86,
+    "price": 35.14,
+    "priceSource": {
+      "label": "Gempack product: priced from the market value of its cards",
+      "gempack": true
+    },
+    "priceFloor": 20.84
   },
   {
     "id": "pk-005",
@@ -80,14 +98,19 @@
     "set": "Surging Sparks",
     "kind": "Booster Pack",
     "rarity": "Rare",
-    "price": 6.99,
     "cardsPerPack": 10,
     "hitSlots": 1,
-    "source": "Vendor",
-    "seller": "Stadium Cards",
-    "stock": 59,
+    "source": "Direct",
+    "seller": "Gempack TCG",
+    "stock": 40,
     "featured": false,
-    "priceFloor": 3.27
+    "price": 8.68,
+    "priceSource": {
+      "label": "The Hobby Bin",
+      "url": "https://thehobbybin.com/products/surging-sparks-booster-pack",
+      "asOf": "2026-10-15"
+    },
+    "priceFloor": 3.93
   },
   {
     "id": "pk-006",
@@ -98,14 +121,18 @@
     "set": "Surging Sparks",
     "kind": "Sleeved Booster",
     "rarity": "Rare",
-    "price": 6.99,
     "cardsPerPack": 10,
     "hitSlots": 1,
-    "source": "Collector",
-    "seller": "@ripking22",
-    "stock": 3,
+    "source": "Direct",
+    "seller": "Gempack TCG",
+    "stock": 29,
     "featured": false,
-    "priceFloor": 3.29
+    "price": 8.68,
+    "priceSource": {
+      "label": "Estimate: same cards as a booster pack, priced like one",
+      "estimate": true
+    },
+    "priceFloor": 3.96
   },
   {
     "id": "pk-007",
@@ -116,32 +143,41 @@
     "set": "Surging Sparks",
     "kind": "3-Pack Blister",
     "rarity": "Rare",
-    "price": 20.99,
     "cardsPerPack": 30,
     "hitSlots": 3,
     "source": "Collector",
-    "seller": "@gradedgabe",
-    "stock": 3,
+    "seller": "@mintcondition_mia",
+    "stock": 4,
     "featured": false,
-    "priceFloor": 9.29
+    "price": 28.04,
+    "priceSource": {
+      "label": "Estimate: 3 × the booster pack price + $2 for the promo card",
+      "estimate": true
+    },
+    "priceFloor": 11.28
   },
   {
     "id": "pk-008",
     "type": "pack",
     "condition": "Sealed",
-    "name": "Surging Sparks Premium Graded-Hit Pack",
+    "name": "Surging Sparks Gempack Hit Pack",
     "game": "Pokémon",
     "set": "Surging Sparks",
-    "kind": "Premium Graded-Hit Pack",
+    "kind": "Gempack Hit Pack",
     "rarity": "Ultra Rare",
-    "price": 42.99,
     "cardsPerPack": 10,
     "hitSlots": 1,
-    "source": "Vendor",
-    "seller": "Stadium Cards",
-    "stock": 52,
+    "source": "Direct",
+    "seller": "Gempack TCG",
+    "stock": 41,
     "featured": false,
-    "priceFloor": 20.28
+    "targetReturn": 0.86,
+    "price": 33.76,
+    "priceSource": {
+      "label": "Gempack product: priced from the market value of its cards",
+      "gempack": true
+    },
+    "priceFloor": 20.33
   },
   {
     "id": "pk-009",
@@ -152,14 +188,19 @@
     "set": "Stellar Crown",
     "kind": "Booster Pack",
     "rarity": "Rare",
-    "price": 5.99,
     "cardsPerPack": 10,
     "hitSlots": 1,
-    "source": "Direct",
-    "seller": "Gempack TCG",
-    "stock": 28,
+    "source": "Vendor",
+    "seller": "PalletTown Collectibles",
+    "stock": 55,
     "featured": false,
-    "priceFloor": 3.35
+    "price": 10.85,
+    "priceSource": {
+      "label": "The Hobby Bin (sleeved pack)",
+      "url": "https://thehobbybin.com/products/stellar-crown-sleeved-booster-pack",
+      "asOf": "2026-10-16"
+    },
+    "priceFloor": 3.98
   },
   {
     "id": "pk-010",
@@ -170,14 +211,18 @@
     "set": "Stellar Crown",
     "kind": "Sleeved Booster",
     "rarity": "Rare",
-    "price": 5.99,
     "cardsPerPack": 10,
     "hitSlots": 1,
     "source": "Vendor",
-    "seller": "PalletTown Collectibles",
-    "stock": 60,
+    "seller": "Stadium Cards",
+    "stock": 54,
     "featured": false,
-    "priceFloor": 3.39
+    "price": 10.85,
+    "priceSource": {
+      "label": "Estimate: same cards as a booster pack, priced like one",
+      "estimate": true
+    },
+    "priceFloor": 3.98
   },
   {
     "id": "pk-011",
@@ -188,32 +233,41 @@
     "set": "Stellar Crown",
     "kind": "3-Pack Blister",
     "rarity": "Rare",
-    "price": 16.99,
     "cardsPerPack": 30,
     "hitSlots": 3,
     "source": "Vendor",
-    "seller": "Stadium Cards",
-    "stock": 52,
+    "seller": "Kanto Card Co.",
+    "stock": 37,
     "featured": false,
-    "priceFloor": 9.26
+    "price": 34.55,
+    "priceSource": {
+      "label": "Estimate: 3 × the booster pack price + $2 for the promo card",
+      "estimate": true
+    },
+    "priceFloor": 11.16
   },
   {
     "id": "pk-012",
     "type": "pack",
     "condition": "Sealed",
-    "name": "Stellar Crown Premium Graded-Hit Pack",
+    "name": "Stellar Crown Gempack Hit Pack",
     "game": "Pokémon",
     "set": "Stellar Crown",
-    "kind": "Premium Graded-Hit Pack",
+    "kind": "Gempack Hit Pack",
     "rarity": "Ultra Rare",
-    "price": 38.99,
     "cardsPerPack": 10,
     "hitSlots": 1,
     "source": "Direct",
     "seller": "Gempack TCG",
-    "stock": 59,
+    "stock": 54,
     "featured": false,
-    "priceFloor": 21.07
+    "targetReturn": 0.86,
+    "price": 32.91,
+    "priceSource": {
+      "label": "Gempack product: priced from the market value of its cards",
+      "gempack": true
+    },
+    "priceFloor": 20.34
   },
   {
     "id": "pk-013",
@@ -224,14 +278,19 @@
     "set": "Twilight Masquerade",
     "kind": "Booster Pack",
     "rarity": "Rare",
-    "price": 4.99,
     "cardsPerPack": 10,
     "hitSlots": 1,
-    "source": "Direct",
-    "seller": "Gempack TCG",
-    "stock": 37,
+    "source": "Vendor",
+    "seller": "Stadium Cards",
+    "stock": 48,
     "featured": false,
-    "priceFloor": 3.21
+    "price": 8.42,
+    "priceSource": {
+      "label": "PokeInvesting (updated daily)",
+      "url": "https://pokeinvesting.com/sealed/twilight-masquerade-booster-pack",
+      "asOf": "2026-10"
+    },
+    "priceFloor": 3.81
   },
   {
     "id": "pk-014",
@@ -242,14 +301,18 @@
     "set": "Twilight Masquerade",
     "kind": "Sleeved Booster",
     "rarity": "Rare",
-    "price": 6.99,
     "cardsPerPack": 10,
     "hitSlots": 1,
-    "source": "Direct",
-    "seller": "Gempack TCG",
-    "stock": 24,
+    "source": "Vendor",
+    "seller": "Stadium Cards",
+    "stock": 59,
     "featured": false,
-    "priceFloor": 3.57
+    "price": 8.42,
+    "priceSource": {
+      "label": "Estimate: same cards as a booster pack, priced like one",
+      "estimate": true
+    },
+    "priceFloor": 3.79
   },
   {
     "id": "pk-015",
@@ -260,32 +323,41 @@
     "set": "Twilight Masquerade",
     "kind": "3-Pack Blister",
     "rarity": "Rare",
-    "price": 15.99,
     "cardsPerPack": 30,
     "hitSlots": 3,
-    "source": "Direct",
-    "seller": "Gempack TCG",
-    "stock": 56,
+    "source": "Collector",
+    "seller": "@mintcondition_mia",
+    "stock": 3,
     "featured": false,
-    "priceFloor": 9.42
+    "price": 27.26,
+    "priceSource": {
+      "label": "Estimate: 3 × the booster pack price + $2 for the promo card",
+      "estimate": true
+    },
+    "priceFloor": 10.86
   },
   {
     "id": "pk-016",
     "type": "pack",
     "condition": "Sealed",
-    "name": "Twilight Masquerade Premium Graded-Hit Pack",
+    "name": "Twilight Masquerade Gempack Hit Pack",
     "game": "Pokémon",
     "set": "Twilight Masquerade",
-    "kind": "Premium Graded-Hit Pack",
+    "kind": "Gempack Hit Pack",
     "rarity": "Ultra Rare",
-    "price": 33.99,
     "cardsPerPack": 10,
     "hitSlots": 1,
-    "source": "Collector",
-    "seller": "@topdeck_tay",
-    "stock": 3,
+    "source": "Direct",
+    "seller": "Gempack TCG",
+    "stock": 43,
     "featured": false,
-    "priceFloor": 22.17
+    "targetReturn": 0.86,
+    "price": 40.24,
+    "priceSource": {
+      "label": "Gempack product: priced from the market value of its cards",
+      "gempack": true
+    },
+    "priceFloor": 23.35
   },
   {
     "id": "pk-017",
@@ -296,14 +368,20 @@
     "set": "Scarlet & Violet 151",
     "kind": "Booster Pack",
     "rarity": "Rare",
-    "price": 8.99,
     "cardsPerPack": 10,
     "hitSlots": 1,
-    "source": "Vendor",
-    "seller": "Stadium Cards",
-    "stock": 41,
+    "source": "Direct",
+    "seller": "Gempack TCG",
+    "stock": 28,
     "featured": false,
-    "priceFloor": 3.61
+    "price": 31.79,
+    "priceSource": {
+      "label": "PokeInvesting (updated daily)",
+      "url": "https://pokeinvesting.com/sealed/151-booster-pack",
+      "asOf": "2026-10",
+      "note": "Other listings were as low as $12–13, so this one is uncertain"
+    },
+    "priceFloor": 9.54
   },
   {
     "id": "pk-018",
@@ -314,14 +392,18 @@
     "set": "Scarlet & Violet 151",
     "kind": "Sleeved Booster",
     "rarity": "Rare",
-    "price": 9.99,
     "cardsPerPack": 10,
     "hitSlots": 1,
-    "source": "Direct",
-    "seller": "Gempack TCG",
-    "stock": 51,
+    "source": "Collector",
+    "seller": "@ripking22",
+    "stock": 2,
     "featured": false,
-    "priceFloor": 3.7
+    "price": 31.79,
+    "priceSource": {
+      "label": "Estimate: same cards as a booster pack, priced like one",
+      "estimate": true
+    },
+    "priceFloor": 9.54
   },
   {
     "id": "pk-019",
@@ -332,32 +414,41 @@
     "set": "Scarlet & Violet 151",
     "kind": "3-Pack Blister",
     "rarity": "Rare",
-    "price": 25.99,
     "cardsPerPack": 30,
     "hitSlots": 3,
-    "source": "Collector",
-    "seller": "@pullrate_pete",
-    "stock": 4,
+    "source": "Direct",
+    "seller": "Gempack TCG",
+    "stock": 46,
     "featured": false,
-    "priceFloor": 10.09
+    "price": 97.37,
+    "priceSource": {
+      "label": "Estimate: 3 × the booster pack price + $2 for the promo card",
+      "estimate": true
+    },
+    "priceFloor": 29.21
   },
   {
     "id": "pk-020",
     "type": "pack",
     "condition": "Sealed",
-    "name": "Scarlet & Violet 151 Premium Graded-Hit Pack",
+    "name": "Scarlet & Violet 151 Gempack Hit Pack",
     "game": "Pokémon",
     "set": "Scarlet & Violet 151",
-    "kind": "Premium Graded-Hit Pack",
+    "kind": "Gempack Hit Pack",
     "rarity": "Ultra Rare",
-    "price": 58.99,
     "cardsPerPack": 10,
     "hitSlots": 1,
-    "source": "Vendor",
-    "seller": "Kanto Card Co.",
-    "stock": 20,
+    "source": "Direct",
+    "seller": "Gempack TCG",
+    "stock": 30,
     "featured": false,
-    "priceFloor": 24.28
+    "targetReturn": 0.86,
+    "price": 31.47,
+    "priceSource": {
+      "label": "Gempack product: priced from the market value of its cards",
+      "gempack": true
+    },
+    "priceFloor": 20.97
   },
   {
     "id": "pk-021",
@@ -368,14 +459,19 @@
     "set": "Obsidian Flames",
     "kind": "Booster Pack",
     "rarity": "Rare",
-    "price": 4.99,
     "cardsPerPack": 10,
     "hitSlots": 1,
-    "source": "Collector",
-    "seller": "@pullrate_pete",
-    "stock": 2,
+    "source": "Direct",
+    "seller": "Gempack TCG",
+    "stock": 11,
     "featured": false,
-    "priceFloor": 3.48
+    "price": 12.36,
+    "priceSource": {
+      "label": "The Hobby Bin",
+      "url": "https://thehobbybin.com/products/obsidian-flames-booster-packs",
+      "asOf": "2026-10-17"
+    },
+    "priceFloor": 4.38
   },
   {
     "id": "pk-022",
@@ -386,14 +482,18 @@
     "set": "Obsidian Flames",
     "kind": "Sleeved Booster",
     "rarity": "Rare",
-    "price": 4.99,
     "cardsPerPack": 10,
     "hitSlots": 1,
-    "source": "Vendor",
-    "seller": "PalletTown Collectibles",
-    "stock": 26,
+    "source": "Direct",
+    "seller": "Gempack TCG",
+    "stock": 50,
     "featured": false,
-    "priceFloor": 3.6
+    "price": 12.36,
+    "priceSource": {
+      "label": "Estimate: same cards as a booster pack, priced like one",
+      "estimate": true
+    },
+    "priceFloor": 4.45
   },
   {
     "id": "pk-023",
@@ -404,32 +504,41 @@
     "set": "Obsidian Flames",
     "kind": "3-Pack Blister",
     "rarity": "Rare",
-    "price": 18.99,
     "cardsPerPack": 30,
     "hitSlots": 3,
-    "source": "Direct",
-    "seller": "Gempack TCG",
-    "stock": 35,
+    "source": "Vendor",
+    "seller": "Stadium Cards",
+    "stock": 59,
     "featured": false,
-    "priceFloor": 10.64
+    "price": 39.08,
+    "priceSource": {
+      "label": "Estimate: 3 × the booster pack price + $2 for the promo card",
+      "estimate": true
+    },
+    "priceFloor": 12.46
   },
   {
     "id": "pk-024",
     "type": "pack",
     "condition": "Sealed",
-    "name": "Obsidian Flames Premium Graded-Hit Pack",
+    "name": "Obsidian Flames Gempack Hit Pack",
     "game": "Pokémon",
     "set": "Obsidian Flames",
-    "kind": "Premium Graded-Hit Pack",
+    "kind": "Gempack Hit Pack",
     "rarity": "Ultra Rare",
-    "price": 35.99,
     "cardsPerPack": 10,
     "hitSlots": 1,
-    "source": "Vendor",
-    "seller": "PalletTown Collectibles",
-    "stock": 22,
+    "source": "Direct",
+    "seller": "Gempack TCG",
+    "stock": 29,
     "featured": false,
-    "priceFloor": 20.96
+    "targetReturn": 0.86,
+    "price": 35.4,
+    "priceSource": {
+      "label": "Gempack product: priced from the market value of its cards",
+      "gempack": true
+    },
+    "priceFloor": 21.65
   },
   {
     "id": "pk-025",
@@ -440,14 +549,19 @@
     "set": "Paldean Fates",
     "kind": "Booster Pack",
     "rarity": "Rare",
-    "price": 5.99,
     "cardsPerPack": 10,
     "hitSlots": 1,
-    "source": "Direct",
-    "seller": "Gempack TCG",
-    "stock": 15,
+    "source": "Collector",
+    "seller": "@gradedgabe",
+    "stock": 4,
     "featured": false,
-    "priceFloor": 3.4
+    "price": 23.99,
+    "priceSource": {
+      "label": "PackMagik",
+      "url": "https://www.packmagik.com/products/pkmn-prod-6276913",
+      "asOf": "2026-07"
+    },
+    "priceFloor": 7.2
   },
   {
     "id": "pk-026",
@@ -458,14 +572,18 @@
     "set": "Paldean Fates",
     "kind": "Sleeved Booster",
     "rarity": "Rare",
-    "price": 6.99,
     "cardsPerPack": 10,
     "hitSlots": 1,
-    "source": "Collector",
-    "seller": "@mintcondition_mia",
-    "stock": 2,
+    "source": "Direct",
+    "seller": "Gempack TCG",
+    "stock": 35,
     "featured": false,
-    "priceFloor": 3.52
+    "price": 23.99,
+    "priceSource": {
+      "label": "Estimate: same cards as a booster pack, priced like one",
+      "estimate": true
+    },
+    "priceFloor": 7.2
   },
   {
     "id": "pk-027",
@@ -476,32 +594,41 @@
     "set": "Paldean Fates",
     "kind": "3-Pack Blister",
     "rarity": "Rare",
-    "price": 16.99,
     "cardsPerPack": 30,
     "hitSlots": 3,
-    "source": "Direct",
-    "seller": "Gempack TCG",
-    "stock": 30,
+    "source": "Vendor",
+    "seller": "PalletTown Collectibles",
+    "stock": 16,
     "featured": false,
-    "priceFloor": 8.85
+    "price": 73.97,
+    "priceSource": {
+      "label": "Estimate: 3 × the booster pack price + $2 for the promo card",
+      "estimate": true
+    },
+    "priceFloor": 22.19
   },
   {
     "id": "pk-028",
     "type": "pack",
     "condition": "Sealed",
-    "name": "Paldean Fates Premium Graded-Hit Pack",
+    "name": "Paldean Fates Gempack Hit Pack",
     "game": "Pokémon",
     "set": "Paldean Fates",
-    "kind": "Premium Graded-Hit Pack",
+    "kind": "Gempack Hit Pack",
     "rarity": "Ultra Rare",
-    "price": 37.99,
     "cardsPerPack": 10,
     "hitSlots": 1,
     "source": "Direct",
     "seller": "Gempack TCG",
-    "stock": 57,
+    "stock": 58,
     "featured": false,
-    "priceFloor": 21.19
+    "targetReturn": 0.86,
+    "price": 30.28,
+    "priceSource": {
+      "label": "Gempack product: priced from the market value of its cards",
+      "gempack": true
+    },
+    "priceFloor": 19.41
   },
   {
     "id": "pk-029",
@@ -512,14 +639,19 @@
     "set": "Temporal Forces",
     "kind": "Booster Pack",
     "rarity": "Rare",
-    "price": 4.99,
     "cardsPerPack": 10,
     "hitSlots": 1,
-    "source": "Direct",
-    "seller": "Gempack TCG",
-    "stock": 42,
+    "source": "Vendor",
+    "seller": "Stadium Cards",
+    "stock": 49,
     "featured": false,
-    "priceFloor": 3.03
+    "price": 11.65,
+    "priceSource": {
+      "label": "The Hobby Bin (sleeved pack)",
+      "url": "https://thehobbybin.com/products/temporal-forces-sleeved-booster-pack",
+      "asOf": "2026-10-17"
+    },
+    "priceFloor": 3.98
   },
   {
     "id": "pk-030",
@@ -530,14 +662,18 @@
     "set": "Temporal Forces",
     "kind": "Sleeved Booster",
     "rarity": "Rare",
-    "price": 5.99,
     "cardsPerPack": 10,
     "hitSlots": 1,
     "source": "Direct",
     "seller": "Gempack TCG",
-    "stock": 35,
+    "stock": 58,
     "featured": false,
-    "priceFloor": 3.19
+    "price": 11.65,
+    "priceSource": {
+      "label": "Estimate: same cards as a booster pack, priced like one",
+      "estimate": true
+    },
+    "priceFloor": 4.04
   },
   {
     "id": "pk-031",
@@ -548,32 +684,41 @@
     "set": "Temporal Forces",
     "kind": "3-Pack Blister",
     "rarity": "Rare",
-    "price": 18.99,
     "cardsPerPack": 30,
     "hitSlots": 3,
     "source": "Direct",
     "seller": "Gempack TCG",
-    "stock": 18,
+    "stock": 43,
     "featured": false,
-    "priceFloor": 9.11
+    "price": 36.95,
+    "priceSource": {
+      "label": "Estimate: 3 × the booster pack price + $2 for the promo card",
+      "estimate": true
+    },
+    "priceFloor": 11.34
   },
   {
     "id": "pk-032",
     "type": "pack",
     "condition": "Sealed",
-    "name": "Temporal Forces Premium Graded-Hit Pack",
+    "name": "Temporal Forces Gempack Hit Pack",
     "game": "Pokémon",
     "set": "Temporal Forces",
-    "kind": "Premium Graded-Hit Pack",
+    "kind": "Gempack Hit Pack",
     "rarity": "Ultra Rare",
-    "price": 39.99,
     "cardsPerPack": 10,
     "hitSlots": 1,
-    "source": "Vendor",
-    "seller": "Kanto Card Co.",
-    "stock": 38,
+    "source": "Direct",
+    "seller": "Gempack TCG",
+    "stock": 56,
     "featured": false,
-    "priceFloor": 21.5
+    "targetReturn": 0.86,
+    "price": 30.71,
+    "priceSource": {
+      "label": "Gempack product: priced from the market value of its cards",
+      "gempack": true
+    },
+    "priceFloor": 20.2
   },
   {
     "id": "pk-033",
@@ -584,14 +729,19 @@
     "set": "Journey Together",
     "kind": "Booster Pack",
     "rarity": "Rare",
-    "price": 4.99,
     "cardsPerPack": 10,
     "hitSlots": 1,
-    "source": "Direct",
-    "seller": "Gempack TCG",
-    "stock": 58,
+    "source": "Vendor",
+    "seller": "Kanto Card Co.",
+    "stock": 8,
     "featured": false,
-    "priceFloor": 3.12
+    "price": 6.77,
+    "priceSource": {
+      "label": "PokemonWizard (TCGplayer market)",
+      "url": "https://www.pokemonwizard.com/products/610935/journey-together-booster-pack",
+      "asOf": "2026"
+    },
+    "priceFloor": 3.85
   },
   {
     "id": "pk-034",
@@ -602,14 +752,18 @@
     "set": "Journey Together",
     "kind": "Sleeved Booster",
     "rarity": "Rare",
-    "price": 6.99,
     "cardsPerPack": 10,
     "hitSlots": 1,
     "source": "Direct",
     "seller": "Gempack TCG",
-    "stock": 34,
+    "stock": 14,
     "featured": false,
-    "priceFloor": 3.37
+    "price": 6.77,
+    "priceSource": {
+      "label": "Estimate: same cards as a booster pack, priced like one",
+      "estimate": true
+    },
+    "priceFloor": 3.8
   },
   {
     "id": "pk-035",
@@ -620,32 +774,41 @@
     "set": "Journey Together",
     "kind": "3-Pack Blister",
     "rarity": "Rare",
-    "price": 18.99,
     "cardsPerPack": 30,
     "hitSlots": 3,
-    "source": "Vendor",
-    "seller": "PalletTown Collectibles",
-    "stock": 10,
+    "source": "Direct",
+    "seller": "Gempack TCG",
+    "stock": 45,
     "featured": false,
-    "priceFloor": 9.15
+    "price": 22.31,
+    "priceSource": {
+      "label": "Estimate: 3 × the booster pack price + $2 for the promo card",
+      "estimate": true
+    },
+    "priceFloor": 10.98
   },
   {
     "id": "pk-036",
     "type": "pack",
     "condition": "Sealed",
-    "name": "Journey Together Premium Graded-Hit Pack",
+    "name": "Journey Together Gempack Hit Pack",
     "game": "Pokémon",
     "set": "Journey Together",
-    "kind": "Premium Graded-Hit Pack",
+    "kind": "Gempack Hit Pack",
     "rarity": "Ultra Rare",
-    "price": 39.99,
     "cardsPerPack": 10,
     "hitSlots": 1,
-    "source": "Vendor",
-    "seller": "PalletTown Collectibles",
-    "stock": 23,
+    "source": "Direct",
+    "seller": "Gempack TCG",
+    "stock": 39,
     "featured": false,
-    "priceFloor": 22.96
+    "targetReturn": 0.86,
+    "price": 37.43,
+    "priceSource": {
+      "label": "Gempack product: priced from the market value of its cards",
+      "gempack": true
+    },
+    "priceFloor": 21.81
   },
   {
     "id": "pk-037",
@@ -656,14 +819,19 @@
     "set": "Destined Rivals",
     "kind": "Booster Pack",
     "rarity": "Rare",
-    "price": 6.99,
     "cardsPerPack": 10,
     "hitSlots": 1,
-    "source": "Vendor",
-    "seller": "Kanto Card Co.",
-    "stock": 45,
+    "source": "Direct",
+    "seller": "Gempack TCG",
+    "stock": 35,
     "featured": false,
-    "priceFloor": 3.3
+    "price": 9.46,
+    "priceSource": {
+      "label": "PokemonWizard (TCGplayer market)",
+      "url": "https://www.pokemonwizard.com/products/624683/destined-rivals-booster-pack",
+      "asOf": "2026"
+    },
+    "priceFloor": 3.93
   },
   {
     "id": "pk-038",
@@ -674,14 +842,19 @@
     "set": "Destined Rivals",
     "kind": "Sleeved Booster",
     "rarity": "Rare",
-    "price": 8.99,
     "cardsPerPack": 10,
     "hitSlots": 1,
-    "source": "Collector",
-    "seller": "@binderbrooke",
-    "stock": 4,
+    "source": "Vendor",
+    "seller": "Kanto Card Co.",
+    "stock": 16,
     "featured": false,
-    "priceFloor": 3.56
+    "price": 12.74,
+    "priceSource": {
+      "label": "PokemonWizard (TCGplayer market)",
+      "url": "https://www.pokemonwizard.com/products/624683/destined-rivals-booster-pack",
+      "asOf": "2026"
+    },
+    "priceFloor": 4.17
   },
   {
     "id": "pk-039",
@@ -692,32 +865,41 @@
     "set": "Destined Rivals",
     "kind": "3-Pack Blister",
     "rarity": "Rare",
-    "price": 22.99,
     "cardsPerPack": 30,
     "hitSlots": 3,
-    "source": "Direct",
-    "seller": "Gempack TCG",
-    "stock": 41,
+    "source": "Collector",
+    "seller": "@pullrate_pete",
+    "stock": 4,
     "featured": false,
-    "priceFloor": 9.71
+    "price": 30.38,
+    "priceSource": {
+      "label": "Estimate: 3 × the booster pack price + $2 for the promo card",
+      "estimate": true
+    },
+    "priceFloor": 10.84
   },
   {
     "id": "pk-040",
     "type": "pack",
     "condition": "Sealed",
-    "name": "Destined Rivals Premium Graded-Hit Pack",
+    "name": "Destined Rivals Gempack Hit Pack",
     "game": "Pokémon",
     "set": "Destined Rivals",
-    "kind": "Premium Graded-Hit Pack",
+    "kind": "Gempack Hit Pack",
     "rarity": "Ultra Rare",
-    "price": 49.99,
     "cardsPerPack": 10,
     "hitSlots": 1,
     "source": "Direct",
     "seller": "Gempack TCG",
-    "stock": 26,
+    "stock": 55,
     "featured": false,
-    "priceFloor": 22.42
+    "targetReturn": 0.86,
+    "price": 34.07,
+    "priceSource": {
+      "label": "Gempack product: priced from the market value of its cards",
+      "gempack": true
+    },
+    "priceFloor": 20.52
   },
   {
     "id": "pk-041",
@@ -728,14 +910,19 @@
     "set": "Shrouded Fable",
     "kind": "Booster Pack",
     "rarity": "Rare",
-    "price": 4.99,
     "cardsPerPack": 10,
     "hitSlots": 1,
-    "source": "Vendor",
-    "seller": "PalletTown Collectibles",
-    "stock": 36,
+    "source": "Collector",
+    "seller": "@ripking22",
+    "stock": 3,
     "featured": false,
-    "priceFloor": 2.59
+    "price": 13.95,
+    "priceSource": {
+      "label": "PackMagik",
+      "url": "https://www.packmagik.com/products/pkmn-prod-7108652",
+      "asOf": "2026-07-14"
+    },
+    "priceFloor": 4.18
   },
   {
     "id": "pk-042",
@@ -746,14 +933,18 @@
     "set": "Shrouded Fable",
     "kind": "Sleeved Booster",
     "rarity": "Rare",
-    "price": 6.99,
     "cardsPerPack": 10,
     "hitSlots": 1,
-    "source": "Direct",
-    "seller": "Gempack TCG",
-    "stock": 26,
+    "source": "Vendor",
+    "seller": "PalletTown Collectibles",
+    "stock": 36,
     "featured": false,
-    "priceFloor": 2.83
+    "price": 13.95,
+    "priceSource": {
+      "label": "Estimate: same cards as a booster pack, priced like one",
+      "estimate": true
+    },
+    "priceFloor": 4.18
   },
   {
     "id": "pk-043",
@@ -764,32 +955,41 @@
     "set": "Shrouded Fable",
     "kind": "3-Pack Blister",
     "rarity": "Rare",
-    "price": 15.99,
     "cardsPerPack": 30,
     "hitSlots": 3,
-    "source": "Collector",
-    "seller": "@sleevedup",
-    "stock": 2,
+    "source": "Direct",
+    "seller": "Gempack TCG",
+    "stock": 26,
     "featured": false,
-    "priceFloor": 7.37
+    "price": 43.85,
+    "priceSource": {
+      "label": "Estimate: 3 × the booster pack price + $2 for the promo card",
+      "estimate": true
+    },
+    "priceFloor": 13.16
   },
   {
     "id": "pk-044",
     "type": "pack",
     "condition": "Sealed",
-    "name": "Shrouded Fable Premium Graded-Hit Pack",
+    "name": "Shrouded Fable Gempack Hit Pack",
     "game": "Pokémon",
     "set": "Shrouded Fable",
-    "kind": "Premium Graded-Hit Pack",
+    "kind": "Gempack Hit Pack",
     "rarity": "Ultra Rare",
-    "price": 32.99,
     "cardsPerPack": 10,
     "hitSlots": 1,
-    "source": "Vendor",
-    "seller": "PalletTown Collectibles",
-    "stock": 18,
+    "source": "Direct",
+    "seller": "Gempack TCG",
+    "stock": 30,
     "featured": false,
-    "priceFloor": 18.01
+    "targetReturn": 0.86,
+    "price": 30.05,
+    "priceSource": {
+      "label": "Gempack product: priced from the market value of its cards",
+      "gempack": true
+    },
+    "priceFloor": 17.97
   },
   {
     "id": "pk-045",
@@ -800,14 +1000,19 @@
     "set": "Bloomburrow",
     "kind": "Play Booster",
     "rarity": "Rare",
-    "price": 5.99,
     "cardsPerPack": 14,
     "hitSlots": 1,
     "source": "Direct",
     "seller": "Gempack TCG",
-    "stock": 15,
+    "stock": 10,
     "featured": false,
-    "priceFloor": 4.76
+    "price": 5.49,
+    "priceSource": {
+      "label": "The Card Shop Finder (play box $190–205 ÷ 36)",
+      "url": "https://thecardshopfinder.com/shop/mtg/sealed/bloomburrow/",
+      "asOf": "2026-09"
+    },
+    "priceFloor": 4.06
   },
   {
     "id": "pk-046",
@@ -818,14 +1023,19 @@
     "set": "Bloomburrow",
     "kind": "Collector Booster",
     "rarity": "Ultra Rare",
-    "price": 31.99,
     "cardsPerPack": 15,
     "hitSlots": 1,
     "source": "Vendor",
     "seller": "Stadium Cards",
-    "stock": 46,
+    "stock": 19,
     "featured": false,
-    "priceFloor": 18.37
+    "price": 20.83,
+    "priceSource": {
+      "label": "Knight and Day Games (collector box $249.99 ÷ 12)",
+      "url": "https://knightanddaygames.com/products/magic-the-gathering-bloomburrow-collector-booster-box",
+      "asOf": "undated"
+    },
+    "priceFloor": 15.65
   },
   {
     "id": "pk-047",
@@ -836,14 +1046,18 @@
     "set": "Bloomburrow",
     "kind": "Sleeved Play Booster",
     "rarity": "Rare",
-    "price": 6.99,
     "cardsPerPack": 14,
     "hitSlots": 1,
-    "source": "Collector",
-    "seller": "@mintcondition_mia",
-    "stock": 4,
+    "source": "Direct",
+    "seller": "Gempack TCG",
+    "stock": 36,
     "featured": false,
-    "priceFloor": 4.9
+    "price": 5.49,
+    "priceSource": {
+      "label": "Estimate: same cards as a play booster, priced like one",
+      "estimate": true
+    },
+    "priceFloor": 4.09
   },
   {
     "id": "pk-048",
@@ -854,14 +1068,18 @@
     "set": "Bloomburrow",
     "kind": "Prerelease Pack",
     "rarity": "Rare",
-    "price": 30.99,
     "cardsPerPack": 36,
     "hitSlots": 6,
-    "source": "Collector",
-    "seller": "@mintcondition_mia",
-    "stock": 4,
+    "source": "Direct",
+    "seller": "Gempack TCG",
+    "stock": 35,
     "featured": false,
-    "priceFloor": 22.46
+    "price": 37.94,
+    "priceSource": {
+      "label": "Estimate: 6 × the play booster price + $5 for the promo and extras",
+      "estimate": true
+    },
+    "priceFloor": 20.5
   },
   {
     "id": "pk-049",
@@ -872,14 +1090,19 @@
     "set": "Duskmourn",
     "kind": "Play Booster",
     "rarity": "Rare",
-    "price": 5.99,
     "cardsPerPack": 14,
     "hitSlots": 1,
     "source": "Direct",
     "seller": "Gempack TCG",
-    "stock": 43,
+    "stock": 49,
     "featured": false,
-    "priceFloor": 4.86
+    "price": 4.51,
+    "priceSource": {
+      "label": "The Card Shop Finder (play box ~$162 ÷ 36)",
+      "url": "https://thecardshopfinder.com/shop/mtg/sealed/duskmourn-house-of-horror/",
+      "asOf": "2026-09"
+    },
+    "priceFloor": 4.06
   },
   {
     "id": "pk-050",
@@ -890,14 +1113,19 @@
     "set": "Duskmourn",
     "kind": "Collector Booster",
     "rarity": "Ultra Rare",
-    "price": 27.99,
     "cardsPerPack": 15,
     "hitSlots": 1,
     "source": "Direct",
     "seller": "Gempack TCG",
-    "stock": 46,
+    "stock": 17,
     "featured": false,
-    "priceFloor": 15.36
+    "price": 18.33,
+    "priceSource": {
+      "label": "Knight and Day Games (collector box $219.99 ÷ 12)",
+      "url": "https://knightanddaygames.com/products/magic-the-gathering-duskmourn-house-of-horror-collector-booster-box",
+      "asOf": "undated"
+    },
+    "priceFloor": 13.43
   },
   {
     "id": "pk-051",
@@ -908,14 +1136,18 @@
     "set": "Duskmourn",
     "kind": "Sleeved Play Booster",
     "rarity": "Rare",
-    "price": 6.99,
     "cardsPerPack": 14,
     "hitSlots": 1,
-    "source": "Vendor",
-    "seller": "Stadium Cards",
-    "stock": 54,
+    "source": "Direct",
+    "seller": "Gempack TCG",
+    "stock": 17,
     "featured": false,
-    "priceFloor": 5.04
+    "price": 4.51,
+    "priceSource": {
+      "label": "Estimate: same cards as a play booster, priced like one",
+      "estimate": true
+    },
+    "priceFloor": 4.06
   },
   {
     "id": "pk-052",
@@ -926,14 +1158,18 @@
     "set": "Duskmourn",
     "kind": "Prerelease Pack",
     "rarity": "Rare",
-    "price": 35.99,
     "cardsPerPack": 36,
     "hitSlots": 6,
-    "source": "Vendor",
-    "seller": "Blue Mana Games",
-    "stock": 36,
+    "source": "Direct",
+    "seller": "Gempack TCG",
+    "stock": 34,
     "featured": false,
-    "priceFloor": 23.9
+    "price": 32.06,
+    "priceSource": {
+      "label": "Estimate: 6 × the play booster price + $5 for the promo and extras",
+      "estimate": true
+    },
+    "priceFloor": 20.05
   },
   {
     "id": "pk-053",
@@ -944,14 +1180,19 @@
     "set": "Foundations",
     "kind": "Play Booster",
     "rarity": "Rare",
-    "price": 5.99,
     "cardsPerPack": 14,
     "hitSlots": 1,
-    "source": "Direct",
-    "seller": "Gempack TCG",
-    "stock": 36,
+    "source": "Vendor",
+    "seller": "Planeswalker Supply",
+    "stock": 49,
     "featured": false,
-    "priceFloor": 4.94
+    "price": 4.51,
+    "priceSource": {
+      "label": "The Card Shop Finder (play box ~$162 ÷ 36)",
+      "url": "https://thecardshopfinder.com/shop/mtg/sealed/foundations/",
+      "asOf": "2026-09"
+    },
+    "priceFloor": 3.66
   },
   {
     "id": "pk-054",
@@ -962,14 +1203,19 @@
     "set": "Foundations",
     "kind": "Collector Booster",
     "rarity": "Ultra Rare",
-    "price": 30.99,
     "cardsPerPack": 15,
     "hitSlots": 1,
     "source": "Vendor",
-    "seller": "Stadium Cards",
-    "stock": 19,
+    "seller": "Planeswalker Supply",
+    "stock": 60,
     "featured": false,
-    "priceFloor": 18.03
+    "price": 61.04,
+    "priceSource": {
+      "label": "The Card Shop Finder (collector box ~$732 ÷ 12)",
+      "url": "https://thecardshopfinder.com/shop/mtg/sealed/foundations/",
+      "asOf": "2026-09"
+    },
+    "priceFloor": 21.23
   },
   {
     "id": "pk-055",
@@ -980,14 +1226,18 @@
     "set": "Foundations",
     "kind": "Sleeved Play Booster",
     "rarity": "Rare",
-    "price": 6.99,
     "cardsPerPack": 14,
     "hitSlots": 1,
-    "source": "Direct",
-    "seller": "Gempack TCG",
-    "stock": 18,
+    "source": "Vendor",
+    "seller": "Planeswalker Supply",
+    "stock": 33,
     "featured": false,
-    "priceFloor": 5.05
+    "price": 4.51,
+    "priceSource": {
+      "label": "Estimate: same cards as a play booster, priced like one",
+      "estimate": true
+    },
+    "priceFloor": 3.63
   },
   {
     "id": "pk-056",
@@ -998,14 +1248,18 @@
     "set": "Foundations",
     "kind": "Prerelease Pack",
     "rarity": "Rare",
-    "price": 29.99,
     "cardsPerPack": 36,
     "hitSlots": 6,
     "source": "Direct",
     "seller": "Gempack TCG",
-    "stock": 22,
+    "stock": 12,
     "featured": false,
-    "priceFloor": 22.01
+    "price": 32.06,
+    "priceSource": {
+      "label": "Estimate: 6 × the play booster price + $5 for the promo and extras",
+      "estimate": true
+    },
+    "priceFloor": 18.38
   },
   {
     "id": "pk-057",
@@ -1016,14 +1270,18 @@
     "set": "Aetherdrift",
     "kind": "Play Booster",
     "rarity": "Rare",
-    "price": 5.99,
     "cardsPerPack": 14,
     "hitSlots": 1,
     "source": "Vendor",
-    "seller": "Planeswalker Supply",
-    "stock": 51,
+    "seller": "Stadium Cards",
+    "stock": 24,
     "featured": false,
-    "priceFloor": 4.81
+    "price": 4.99,
+    "priceSource": {
+      "label": "Estimate: no play booster price found, so this uses a typical play booster price",
+      "estimate": true
+    },
+    "priceFloor": 3.62
   },
   {
     "id": "pk-058",
@@ -1034,14 +1292,19 @@
     "set": "Aetherdrift",
     "kind": "Collector Booster",
     "rarity": "Ultra Rare",
-    "price": 27.99,
     "cardsPerPack": 15,
     "hitSlots": 1,
-    "source": "Direct",
-    "seller": "Gempack TCG",
-    "stock": 33,
+    "source": "Vendor",
+    "seller": "Planeswalker Supply",
+    "stock": 58,
     "featured": false,
-    "priceFloor": 16.41
+    "price": 24.5,
+    "priceSource": {
+      "label": "PriceCharting (sold packs $24–25)",
+      "url": "https://www.pricecharting.com/game/magic-aetherdrift/booster-pack-collector",
+      "asOf": "2026-07-12"
+    },
+    "priceFloor": 15.61
   },
   {
     "id": "pk-059",
@@ -1052,14 +1315,18 @@
     "set": "Aetherdrift",
     "kind": "Sleeved Play Booster",
     "rarity": "Rare",
-    "price": 5.99,
     "cardsPerPack": 14,
     "hitSlots": 1,
-    "source": "Collector",
-    "seller": "@topdeck_tay",
-    "stock": 4,
+    "source": "Vendor",
+    "seller": "Planeswalker Supply",
+    "stock": 54,
     "featured": false,
-    "priceFloor": 4.81
+    "price": 4.99,
+    "priceSource": {
+      "label": "Estimate: same cards as a play booster, priced like one",
+      "estimate": true
+    },
+    "priceFloor": 3.64
   },
   {
     "id": "pk-060",
@@ -1070,14 +1337,18 @@
     "set": "Aetherdrift",
     "kind": "Prerelease Pack",
     "rarity": "Rare",
-    "price": 29.99,
     "cardsPerPack": 36,
     "hitSlots": 6,
     "source": "Vendor",
     "seller": "Planeswalker Supply",
-    "stock": 57,
+    "stock": 33,
     "featured": false,
-    "priceFloor": 21.98
+    "price": 34.94,
+    "priceSource": {
+      "label": "Estimate: 6 × the play booster price + $5 for the promo and extras",
+      "estimate": true
+    },
+    "priceFloor": 17.17
   },
   {
     "id": "pk-061",
@@ -1088,14 +1359,19 @@
     "set": "Tarkir: Dragonstorm",
     "kind": "Play Booster",
     "rarity": "Rare",
-    "price": 5.99,
     "cardsPerPack": 14,
     "hitSlots": 1,
     "source": "Collector",
-    "seller": "@holo_hunter",
+    "seller": "@gradedgabe",
     "stock": 2,
     "featured": false,
-    "priceFloor": 4.98
+    "price": 3.61,
+    "priceSource": {
+      "label": "Poke-Collect (play box $129.95 ÷ 36)",
+      "url": "https://poke-collect.com/en-gb/products/magic-the-gathering-tarkir-dragonstorm-play-booster-box",
+      "asOf": "undated"
+    },
+    "priceFloor": 3.25
   },
   {
     "id": "pk-062",
@@ -1106,14 +1382,19 @@
     "set": "Tarkir: Dragonstorm",
     "kind": "Collector Booster",
     "rarity": "Ultra Rare",
-    "price": 28.99,
     "cardsPerPack": 15,
     "hitSlots": 1,
-    "source": "Vendor",
-    "seller": "Planeswalker Supply",
-    "stock": 15,
+    "source": "Direct",
+    "seller": "Gempack TCG",
+    "stock": 38,
     "featured": false,
-    "priceFloor": 18.2
+    "price": 28.33,
+    "priceSource": {
+      "label": "Retrofix / eBay (collector box $310–370 ÷ 12)",
+      "url": "https://www.retrofixgames.com/products/mtg-tarkir-dragonstorm-collector-booster-box",
+      "asOf": "undated"
+    },
+    "priceFloor": 17.89
   },
   {
     "id": "pk-063",
@@ -1124,14 +1405,18 @@
     "set": "Tarkir: Dragonstorm",
     "kind": "Sleeved Play Booster",
     "rarity": "Rare",
-    "price": 6.99,
     "cardsPerPack": 14,
     "hitSlots": 1,
-    "source": "Collector",
-    "seller": "@sleevedup",
-    "stock": 2,
+    "source": "Vendor",
+    "seller": "Planeswalker Supply",
+    "stock": 59,
     "featured": false,
-    "priceFloor": 5.11
+    "price": 3.61,
+    "priceSource": {
+      "label": "Estimate: same cards as a play booster, priced like one",
+      "estimate": true
+    },
+    "priceFloor": 3.25
   },
   {
     "id": "pk-064",
@@ -1142,14 +1427,18 @@
     "set": "Tarkir: Dragonstorm",
     "kind": "Prerelease Pack",
     "rarity": "Rare",
-    "price": 27.99,
     "cardsPerPack": 36,
     "hitSlots": 6,
-    "source": "Collector",
-    "seller": "@pullrate_pete",
-    "stock": 2,
+    "source": "Direct",
+    "seller": "Gempack TCG",
+    "stock": 60,
     "featured": false,
-    "priceFloor": 22.34
+    "price": 26.66,
+    "priceSource": {
+      "label": "Estimate: 6 × the play booster price + $5 for the promo and extras",
+      "estimate": true
+    },
+    "priceFloor": 18.24
   },
   {
     "id": "pk-065",
@@ -1160,14 +1449,19 @@
     "set": "Final Fantasy",
     "kind": "Play Booster",
     "rarity": "Rare",
-    "price": 9.99,
     "cardsPerPack": 14,
     "hitSlots": 1,
     "source": "Direct",
     "seller": "Gempack TCG",
-    "stock": 44,
+    "stock": 34,
     "featured": false,
-    "priceFloor": 5.06
+    "price": 16.67,
+    "priceSource": {
+      "label": "The Card Shop Finder (play box $500–700 ÷ 36)",
+      "url": "https://thecardshopfinder.com/shop/mtg/sealed/final-fantasy/",
+      "asOf": "2026-09"
+    },
+    "priceFloor": 5
   },
   {
     "id": "pk-066",
@@ -1178,14 +1472,19 @@
     "set": "Final Fantasy",
     "kind": "Collector Booster",
     "rarity": "Ultra Rare",
-    "price": 47.99,
     "cardsPerPack": 15,
     "hitSlots": 1,
     "source": "Vendor",
     "seller": "Stadium Cards",
-    "stock": 59,
+    "stock": 44,
     "featured": false,
-    "priceFloor": 21.48
+    "price": 145.83,
+    "priceSource": {
+      "label": "The Card Shop Finder (collector box $1,500–2,000 ÷ 12)",
+      "url": "https://thecardshopfinder.com/shop/mtg/sealed/final-fantasy/",
+      "asOf": "2026-09"
+    },
+    "priceFloor": 43.75
   },
   {
     "id": "pk-067",
@@ -1196,14 +1495,18 @@
     "set": "Final Fantasy",
     "kind": "Sleeved Play Booster",
     "rarity": "Rare",
-    "price": 10.99,
     "cardsPerPack": 14,
     "hitSlots": 1,
-    "source": "Direct",
-    "seller": "Gempack TCG",
-    "stock": 26,
+    "source": "Vendor",
+    "seller": "Blue Mana Games",
+    "stock": 50,
     "featured": false,
-    "priceFloor": 5.21
+    "price": 16.67,
+    "priceSource": {
+      "label": "Estimate: same cards as a play booster, priced like one",
+      "estimate": true
+    },
+    "priceFloor": 5
   },
   {
     "id": "pk-068",
@@ -1214,14 +1517,18 @@
     "set": "Final Fantasy",
     "kind": "Prerelease Pack",
     "rarity": "Rare",
-    "price": 53.99,
     "cardsPerPack": 36,
     "hitSlots": 6,
-    "source": "Collector",
-    "seller": "@topdeck_tay",
-    "stock": 4,
+    "source": "Vendor",
+    "seller": "Stadium Cards",
+    "stock": 38,
     "featured": false,
-    "priceFloor": 28.22
+    "price": 105.02,
+    "priceSource": {
+      "label": "Estimate: 6 × the play booster price + $5 for the promo and extras",
+      "estimate": true
+    },
+    "priceFloor": 31.51
   },
   {
     "id": "pk-069",
@@ -1232,14 +1539,19 @@
     "set": "Edge of Eternities",
     "kind": "Play Booster",
     "rarity": "Rare",
-    "price": 5.99,
     "cardsPerPack": 14,
     "hitSlots": 1,
-    "source": "Vendor",
-    "seller": "Stadium Cards",
-    "stock": 21,
+    "source": "Collector",
+    "seller": "@holo_hunter",
+    "stock": 3,
     "featured": false,
-    "priceFloor": 4.84
+    "price": 6.31,
+    "priceSource": {
+      "label": "Out of Games (TCGplayer market)",
+      "url": "https://outof.games/realms/mtg/products/edge-of-eternities-play-booster-pack/",
+      "asOf": "2026"
+    },
+    "priceFloor": 4.34
   },
   {
     "id": "pk-070",
@@ -1250,14 +1562,19 @@
     "set": "Edge of Eternities",
     "kind": "Collector Booster",
     "rarity": "Ultra Rare",
-    "price": 31.99,
     "cardsPerPack": 15,
     "hitSlots": 1,
     "source": "Vendor",
     "seller": "Blue Mana Games",
-    "stock": 41,
+    "stock": 38,
     "featured": false,
-    "priceFloor": 17.73
+    "price": 63.5,
+    "priceSource": {
+      "label": "Out of Games (market price)",
+      "url": "https://outof.games/realms/mtg/products/edge-of-eternities-play-booster-pack/",
+      "asOf": "2026"
+    },
+    "priceFloor": 20.34
   },
   {
     "id": "pk-071",
@@ -1268,14 +1585,18 @@
     "set": "Edge of Eternities",
     "kind": "Sleeved Play Booster",
     "rarity": "Rare",
-    "price": 6.99,
     "cardsPerPack": 14,
     "hitSlots": 1,
-    "source": "Direct",
-    "seller": "Gempack TCG",
-    "stock": 23,
+    "source": "Vendor",
+    "seller": "Stadium Cards",
+    "stock": 43,
     "featured": false,
-    "priceFloor": 4.96
+    "price": 6.31,
+    "priceSource": {
+      "label": "Estimate: same cards as a play booster, priced like one",
+      "estimate": true
+    },
+    "priceFloor": 4.37
   },
   {
     "id": "pk-072",
@@ -1286,14 +1607,18 @@
     "set": "Edge of Eternities",
     "kind": "Prerelease Pack",
     "rarity": "Rare",
-    "price": 26.99,
     "cardsPerPack": 36,
     "hitSlots": 6,
-    "source": "Direct",
-    "seller": "Gempack TCG",
-    "stock": 50,
+    "source": "Vendor",
+    "seller": "Planeswalker Supply",
+    "stock": 31,
     "featured": false,
-    "priceFloor": 21.45
+    "price": 42.86,
+    "priceSource": {
+      "label": "Estimate: 6 × the play booster price + $5 for the promo and extras",
+      "estimate": true
+    },
+    "priceFloor": 20.32
   },
   {
     "id": "pk-073",
@@ -1304,14 +1629,20 @@
     "set": "Romance Dawn (OP-01)",
     "kind": "Booster Pack",
     "rarity": "Rare",
-    "price": 8.99,
     "cardsPerPack": 12,
     "hitSlots": 1,
     "source": "Vendor",
     "seller": "Stadium Cards",
-    "stock": 12,
+    "stock": 24,
     "featured": false,
-    "priceFloor": 4.12
+    "price": 13,
+    "priceSource": {
+      "label": "Search summary of retail listings (low-to-mid teens)",
+      "url": null,
+      "asOf": "2026",
+      "note": "Low confidence: first-print English boxes trade far higher"
+    },
+    "priceFloor": 3.9
   },
   {
     "id": "pk-074",
@@ -1322,53 +1653,45 @@
     "set": "Romance Dawn (OP-01)",
     "kind": "Booster Pack (Japanese)",
     "rarity": "Rare",
-    "price": 12.99,
     "cardsPerPack": 6,
     "hitSlots": 1,
-    "source": "Vendor",
-    "seller": "Grand Line Collectibles",
-    "stock": 13,
+    "source": "Direct",
+    "seller": "Gempack TCG",
+    "stock": 59,
     "featured": false,
-    "priceFloor": 4.3
+    "price": 10.96,
+    "priceSource": {
+      "label": "Samurai Sword Tokyo (JP box median ¥40,000 ÷ 24)",
+      "url": "https://samuraiswordtokyo.com/id/tcg-index/cards/one-piece-card-game-booster-pack-romance-dawn-box-0f2f2c",
+      "asOf": "2026-07-23"
+    },
+    "priceFloor": 3.32
   },
   {
     "id": "pk-075",
     "type": "pack",
     "condition": "Sealed",
-    "name": "Romance Dawn (OP-01) Tournament Pack",
+    "name": "Romance Dawn (OP-01) Gempack Hit Pack",
     "game": "One Piece",
     "set": "Romance Dawn (OP-01)",
-    "kind": "Tournament Pack",
-    "rarity": "Rare",
-    "price": 23.99,
+    "kind": "Gempack Hit Pack",
+    "rarity": "Ultra Rare",
     "cardsPerPack": 12,
-    "hitSlots": 2,
-    "source": "Vendor",
-    "seller": "Grand Line Collectibles",
-    "stock": 7,
+    "hitSlots": 1,
+    "source": "Direct",
+    "seller": "Gempack TCG",
+    "stock": 18,
     "featured": false,
-    "priceFloor": 8.02
+    "targetReturn": 0.86,
+    "price": 57.47,
+    "priceSource": {
+      "label": "Gempack product: priced from the market value of its cards",
+      "gempack": true
+    },
+    "priceFloor": 24.81
   },
   {
     "id": "pk-076",
-    "type": "pack",
-    "condition": "Sealed",
-    "name": "Romance Dawn (OP-01) Premium Booster",
-    "game": "One Piece",
-    "set": "Romance Dawn (OP-01)",
-    "kind": "Premium Booster",
-    "rarity": "Ultra Rare",
-    "price": 43.99,
-    "cardsPerPack": 6,
-    "hitSlots": 1,
-    "source": "Collector",
-    "seller": "@pullrate_pete",
-    "stock": 2,
-    "featured": false,
-    "priceFloor": 22.08
-  },
-  {
-    "id": "pk-077",
     "type": "pack",
     "condition": "Sealed",
     "name": "Awakening of the New Era (OP-05) Booster Pack",
@@ -1376,17 +1699,22 @@
     "set": "Awakening of the New Era (OP-05)",
     "kind": "Booster Pack",
     "rarity": "Rare",
-    "price": 4.99,
     "cardsPerPack": 12,
     "hitSlots": 1,
-    "source": "Direct",
-    "seller": "Gempack TCG",
-    "stock": 28,
+    "source": "Vendor",
+    "seller": "Grand Line Collectibles",
+    "stock": 37,
     "featured": false,
-    "priceFloor": 3.87
+    "price": 7.92,
+    "priceSource": {
+      "label": "eBay UK sold box (£149.99 ÷ 24)",
+      "url": "https://www.ebay.de/itm/277125348749",
+      "asOf": "undated"
+    },
+    "priceFloor": 2.99
   },
   {
-    "id": "pk-078",
+    "id": "pk-077",
     "type": "pack",
     "condition": "Sealed",
     "name": "Awakening of the New Era (OP-05) Booster Pack (Japanese)",
@@ -1394,53 +1722,45 @@
     "set": "Awakening of the New Era (OP-05)",
     "kind": "Booster Pack (Japanese)",
     "rarity": "Rare",
-    "price": 6.99,
     "cardsPerPack": 6,
     "hitSlots": 1,
-    "source": "Vendor",
-    "seller": "Thousand Sunny Cards",
-    "stock": 36,
+    "source": "Collector",
+    "seller": "@pullrate_pete",
+    "stock": 2,
     "featured": false,
-    "priceFloor": 3.83
+    "price": 20.15,
+    "priceSource": {
+      "label": "Samurai Sword Tokyo (JP box median ¥73,500 ÷ 24)",
+      "url": "https://samuraiswordtokyo.com/products/op05box",
+      "asOf": "2026-07-21"
+    },
+    "priceFloor": 6.04
   },
   {
-    "id": "pk-079",
+    "id": "pk-078",
     "type": "pack",
     "condition": "Sealed",
-    "name": "Awakening of the New Era (OP-05) Tournament Pack",
+    "name": "Awakening of the New Era (OP-05) Gempack Hit Pack",
     "game": "One Piece",
     "set": "Awakening of the New Era (OP-05)",
-    "kind": "Tournament Pack",
-    "rarity": "Rare",
-    "price": 13.99,
-    "cardsPerPack": 12,
-    "hitSlots": 2,
-    "source": "Vendor",
-    "seller": "Grand Line Collectibles",
-    "stock": 35,
-    "featured": false,
-    "priceFloor": 6.98
-  },
-  {
-    "id": "pk-080",
-    "type": "pack",
-    "condition": "Sealed",
-    "name": "Awakening of the New Era (OP-05) Premium Booster",
-    "game": "One Piece",
-    "set": "Awakening of the New Era (OP-05)",
-    "kind": "Premium Booster",
+    "kind": "Gempack Hit Pack",
     "rarity": "Ultra Rare",
-    "price": 26.99,
-    "cardsPerPack": 6,
+    "cardsPerPack": 12,
     "hitSlots": 1,
     "source": "Direct",
     "seller": "Gempack TCG",
-    "stock": 37,
+    "stock": 24,
     "featured": false,
-    "priceFloor": 21.76
+    "targetReturn": 0.86,
+    "price": 52.34,
+    "priceSource": {
+      "label": "Gempack product: priced from the market value of its cards",
+      "gempack": true
+    },
+    "priceFloor": 24.19
   },
   {
-    "id": "pk-081",
+    "id": "pk-079",
     "type": "pack",
     "condition": "Sealed",
     "name": "Wings of the Captain (OP-06) Booster Pack",
@@ -1448,17 +1768,22 @@
     "set": "Wings of the Captain (OP-06)",
     "kind": "Booster Pack",
     "rarity": "Rare",
-    "price": 7.99,
     "cardsPerPack": 12,
     "hitSlots": 1,
-    "source": "Direct",
-    "seller": "Gempack TCG",
-    "stock": 18,
+    "source": "Vendor",
+    "seller": "Grand Line Collectibles",
+    "stock": 19,
     "featured": false,
-    "priceFloor": 4.22
+    "price": 6.46,
+    "priceSource": {
+      "label": "eBay listings (sealed box ~$155 ÷ 24)",
+      "url": "https://www.ebay.de/itm/257096336328",
+      "asOf": "undated"
+    },
+    "priceFloor": 3.33
   },
   {
-    "id": "pk-082",
+    "id": "pk-080",
     "type": "pack",
     "condition": "Sealed",
     "name": "Wings of the Captain (OP-06) Booster Pack (Japanese)",
@@ -1466,53 +1791,45 @@
     "set": "Wings of the Captain (OP-06)",
     "kind": "Booster Pack (Japanese)",
     "rarity": "Rare",
-    "price": 9.99,
     "cardsPerPack": 6,
     "hitSlots": 1,
-    "source": "Direct",
-    "seller": "Gempack TCG",
-    "stock": 47,
+    "source": "Collector",
+    "seller": "@holo_hunter",
+    "stock": 4,
     "featured": false,
-    "priceFloor": 4.11
+    "price": 6.85,
+    "priceSource": {
+      "label": "Samurai Sword Tokyo (JP box ¥25,000 ÷ 24)",
+      "url": "https://www.samuraiswordtokyo.com/products/op06box",
+      "asOf": "2026-09-09"
+    },
+    "priceFloor": 3.07
   },
   {
-    "id": "pk-083",
+    "id": "pk-081",
     "type": "pack",
     "condition": "Sealed",
-    "name": "Wings of the Captain (OP-06) Tournament Pack",
+    "name": "Wings of the Captain (OP-06) Gempack Hit Pack",
     "game": "One Piece",
     "set": "Wings of the Captain (OP-06)",
-    "kind": "Tournament Pack",
-    "rarity": "Rare",
-    "price": 18.99,
-    "cardsPerPack": 12,
-    "hitSlots": 2,
-    "source": "Direct",
-    "seller": "Gempack TCG",
-    "stock": 8,
-    "featured": false,
-    "priceFloor": 7.97
-  },
-  {
-    "id": "pk-084",
-    "type": "pack",
-    "condition": "Sealed",
-    "name": "Wings of the Captain (OP-06) Premium Booster",
-    "game": "One Piece",
-    "set": "Wings of the Captain (OP-06)",
-    "kind": "Premium Booster",
+    "kind": "Gempack Hit Pack",
     "rarity": "Ultra Rare",
-    "price": 37.99,
-    "cardsPerPack": 6,
+    "cardsPerPack": 12,
     "hitSlots": 1,
     "source": "Direct",
     "seller": "Gempack TCG",
-    "stock": 59,
+    "stock": 53,
     "featured": false,
-    "priceFloor": 22.39
+    "targetReturn": 0.86,
+    "price": 64.85,
+    "priceSource": {
+      "label": "Gempack product: priced from the market value of its cards",
+      "gempack": true
+    },
+    "priceFloor": 27.94
   },
   {
-    "id": "pk-085",
+    "id": "pk-082",
     "type": "pack",
     "condition": "Sealed",
     "name": "500 Years in the Future (OP-07) Booster Pack",
@@ -1520,17 +1837,22 @@
     "set": "500 Years in the Future (OP-07)",
     "kind": "Booster Pack",
     "rarity": "Rare",
-    "price": 4.99,
     "cardsPerPack": 12,
     "hitSlots": 1,
-    "source": "Direct",
-    "seller": "Gempack TCG",
-    "stock": 25,
+    "source": "Collector",
+    "seller": "@sleevedup",
+    "stock": 2,
     "featured": false,
-    "priceFloor": 4.07
+    "price": 6.17,
+    "priceSource": {
+      "label": "eBay sold boxes ($146–150 ÷ 24)",
+      "url": "https://www.ebay.de/itm/156765422301",
+      "asOf": "2025-09"
+    },
+    "priceFloor": 3.16
   },
   {
-    "id": "pk-086",
+    "id": "pk-083",
     "type": "pack",
     "condition": "Sealed",
     "name": "500 Years in the Future (OP-07) Booster Pack (Japanese)",
@@ -1538,53 +1860,45 @@
     "set": "500 Years in the Future (OP-07)",
     "kind": "Booster Pack (Japanese)",
     "rarity": "Rare",
-    "price": 6.99,
-    "cardsPerPack": 6,
-    "hitSlots": 1,
-    "source": "Direct",
-    "seller": "Gempack TCG",
-    "stock": 34,
-    "featured": false,
-    "priceFloor": 4.1
-  },
-  {
-    "id": "pk-087",
-    "type": "pack",
-    "condition": "Sealed",
-    "name": "500 Years in the Future (OP-07) Tournament Pack",
-    "game": "One Piece",
-    "set": "500 Years in the Future (OP-07)",
-    "kind": "Tournament Pack",
-    "rarity": "Rare",
-    "price": 12.99,
-    "cardsPerPack": 12,
-    "hitSlots": 2,
-    "source": "Direct",
-    "seller": "Gempack TCG",
-    "stock": 56,
-    "featured": false,
-    "priceFloor": 7.12
-  },
-  {
-    "id": "pk-088",
-    "type": "pack",
-    "condition": "Sealed",
-    "name": "500 Years in the Future (OP-07) Premium Booster",
-    "game": "One Piece",
-    "set": "500 Years in the Future (OP-07)",
-    "kind": "Premium Booster",
-    "rarity": "Ultra Rare",
-    "price": 26.99,
     "cardsPerPack": 6,
     "hitSlots": 1,
     "source": "Vendor",
     "seller": "Thousand Sunny Cards",
-    "stock": 38,
+    "stock": 41,
     "featured": false,
-    "priceFloor": 21.04
+    "price": 1.87,
+    "priceSource": {
+      "label": "eBay sold JP box ($44.99 ÷ 24)",
+      "url": "https://www.ebay.de/itm/116743179021",
+      "asOf": "2025-08"
+    },
+    "priceFloor": 1.68
   },
   {
-    "id": "pk-089",
+    "id": "pk-084",
+    "type": "pack",
+    "condition": "Sealed",
+    "name": "500 Years in the Future (OP-07) Gempack Hit Pack",
+    "game": "One Piece",
+    "set": "500 Years in the Future (OP-07)",
+    "kind": "Gempack Hit Pack",
+    "rarity": "Ultra Rare",
+    "cardsPerPack": 12,
+    "hitSlots": 1,
+    "source": "Direct",
+    "seller": "Gempack TCG",
+    "stock": 30,
+    "featured": false,
+    "targetReturn": 0.86,
+    "price": 49.31,
+    "priceSource": {
+      "label": "Gempack product: priced from the market value of its cards",
+      "gempack": true
+    },
+    "priceFloor": 20.98
+  },
+  {
+    "id": "pk-085",
     "type": "pack",
     "condition": "Sealed",
     "name": "Two Legends (OP-08) Booster Pack",
@@ -1592,17 +1906,22 @@
     "set": "Two Legends (OP-08)",
     "kind": "Booster Pack",
     "rarity": "Rare",
-    "price": 5.99,
     "cardsPerPack": 12,
     "hitSlots": 1,
-    "source": "Vendor",
-    "seller": "Grand Line Collectibles",
-    "stock": 28,
+    "source": "Direct",
+    "seller": "Gempack TCG",
+    "stock": 51,
     "featured": false,
-    "priceFloor": 4.18
+    "price": 9.52,
+    "priceSource": {
+      "label": "PriceCharting (sold packs)",
+      "url": "https://www.pricecharting.com/game/one-piece-two-legends/booster-pack",
+      "asOf": "2026-07"
+    },
+    "priceFloor": 3.9
   },
   {
-    "id": "pk-090",
+    "id": "pk-086",
     "type": "pack",
     "condition": "Sealed",
     "name": "Two Legends (OP-08) Booster Pack (Japanese)",
@@ -1610,53 +1929,45 @@
     "set": "Two Legends (OP-08)",
     "kind": "Booster Pack (Japanese)",
     "rarity": "Rare",
-    "price": 6.99,
     "cardsPerPack": 6,
     "hitSlots": 1,
     "source": "Vendor",
-    "seller": "Grand Line Collectibles",
-    "stock": 26,
+    "seller": "Stadium Cards",
+    "stock": 36,
     "featured": false,
-    "priceFloor": 3.98
+    "price": 3.84,
+    "priceSource": {
+      "label": "Samurai Sword Tokyo (JP box median ¥13,990 ÷ 24)",
+      "url": "https://samuraiswordtokyo.com/id/tcg-index/cards/one-piece-card-game-booster-pack-two-legends-box-063490",
+      "asOf": "2026-07-26"
+    },
+    "priceFloor": 2.87
   },
   {
-    "id": "pk-091",
+    "id": "pk-087",
     "type": "pack",
     "condition": "Sealed",
-    "name": "Two Legends (OP-08) Tournament Pack",
+    "name": "Two Legends (OP-08) Gempack Hit Pack",
     "game": "One Piece",
     "set": "Two Legends (OP-08)",
-    "kind": "Tournament Pack",
-    "rarity": "Rare",
-    "price": 12.99,
-    "cardsPerPack": 12,
-    "hitSlots": 2,
-    "source": "Direct",
-    "seller": "Gempack TCG",
-    "stock": 55,
-    "featured": false,
-    "priceFloor": 7.03
-  },
-  {
-    "id": "pk-092",
-    "type": "pack",
-    "condition": "Sealed",
-    "name": "Two Legends (OP-08) Premium Booster",
-    "game": "One Piece",
-    "set": "Two Legends (OP-08)",
-    "kind": "Premium Booster",
+    "kind": "Gempack Hit Pack",
     "rarity": "Ultra Rare",
-    "price": 26.99,
-    "cardsPerPack": 6,
+    "cardsPerPack": 12,
     "hitSlots": 1,
     "source": "Direct",
     "seller": "Gempack TCG",
-    "stock": 35,
+    "stock": 48,
     "featured": false,
-    "priceFloor": 20.81
+    "targetReturn": 0.86,
+    "price": 56.73,
+    "priceSource": {
+      "label": "Gempack product: priced from the market value of its cards",
+      "gempack": true
+    },
+    "priceFloor": 26.85
   },
   {
-    "id": "pk-093",
+    "id": "pk-088",
     "type": "pack",
     "condition": "Sealed",
     "name": "Emperors in the New World (OP-09) Booster Pack",
@@ -1664,17 +1975,22 @@
     "set": "Emperors in the New World (OP-09)",
     "kind": "Booster Pack",
     "rarity": "Rare",
-    "price": 5.99,
     "cardsPerPack": 12,
     "hitSlots": 1,
-    "source": "Direct",
-    "seller": "Gempack TCG",
-    "stock": 28,
+    "source": "Collector",
+    "seller": "@gradedgabe",
+    "stock": 2,
     "featured": false,
-    "priceFloor": 3.54
+    "price": 9,
+    "priceSource": {
+      "label": "eBay listings ($7.49–11 per pack)",
+      "url": "https://www.ebay.com/itm/335959642217",
+      "asOf": "2026"
+    },
+    "priceFloor": 3.39
   },
   {
-    "id": "pk-094",
+    "id": "pk-089",
     "type": "pack",
     "condition": "Sealed",
     "name": "Emperors in the New World (OP-09) Booster Pack (Japanese)",
@@ -1682,53 +1998,44 @@
     "set": "Emperors in the New World (OP-09)",
     "kind": "Booster Pack (Japanese)",
     "rarity": "Rare",
-    "price": 7.99,
     "cardsPerPack": 6,
     "hitSlots": 1,
-    "source": "Collector",
-    "seller": "@gradedgabe",
-    "stock": 2,
-    "featured": false,
-    "priceFloor": 3.53
-  },
-  {
-    "id": "pk-095",
-    "type": "pack",
-    "condition": "Sealed",
-    "name": "Emperors in the New World (OP-09) Tournament Pack",
-    "game": "One Piece",
-    "set": "Emperors in the New World (OP-09)",
-    "kind": "Tournament Pack",
-    "rarity": "Rare",
-    "price": 13.99,
-    "cardsPerPack": 12,
-    "hitSlots": 2,
     "source": "Direct",
     "seller": "Gempack TCG",
-    "stock": 58,
+    "stock": 9,
     "featured": false,
-    "priceFloor": 6.13
+    "price": 1.45,
+    "priceSource": {
+      "label": "Estimate: no market price found, so this uses the Japanese retail price of ¥220",
+      "estimate": true
+    },
+    "priceFloor": 1.31
   },
   {
-    "id": "pk-096",
+    "id": "pk-090",
     "type": "pack",
     "condition": "Sealed",
-    "name": "Emperors in the New World (OP-09) Premium Booster",
+    "name": "Emperors in the New World (OP-09) Gempack Hit Pack",
     "game": "One Piece",
     "set": "Emperors in the New World (OP-09)",
-    "kind": "Premium Booster",
+    "kind": "Gempack Hit Pack",
     "rarity": "Ultra Rare",
-    "price": 28.99,
-    "cardsPerPack": 6,
+    "cardsPerPack": 12,
     "hitSlots": 1,
     "source": "Direct",
     "seller": "Gempack TCG",
-    "stock": 32,
+    "stock": 19,
     "featured": false,
-    "priceFloor": 22.82
+    "targetReturn": 0.86,
+    "price": 54.5,
+    "priceSource": {
+      "label": "Gempack product: priced from the market value of its cards",
+      "gempack": true
+    },
+    "priceFloor": 24.41
   },
   {
-    "id": "pk-097",
+    "id": "pk-091",
     "type": "pack",
     "condition": "Sealed",
     "name": "Memorial Collection (EB-01) Booster Pack",
@@ -1736,17 +2043,22 @@
     "set": "Memorial Collection (EB-01)",
     "kind": "Booster Pack",
     "rarity": "Rare",
-    "price": 6.99,
     "cardsPerPack": 12,
     "hitSlots": 1,
-    "source": "Vendor",
-    "seller": "Thousand Sunny Cards",
-    "stock": 13,
+    "source": "Collector",
+    "seller": "@pullrate_pete",
+    "stock": 2,
     "featured": false,
-    "priceFloor": 4.48
+    "price": 32.99,
+    "priceSource": {
+      "label": "eBay sold 4-pack lot ($131.94 ÷ 4)",
+      "url": "https://www.ebay.de/itm/306187441647",
+      "asOf": "undated"
+    },
+    "priceFloor": 9.9
   },
   {
-    "id": "pk-098",
+    "id": "pk-092",
     "type": "pack",
     "condition": "Sealed",
     "name": "Memorial Collection (EB-01) Booster Pack (Japanese)",
@@ -1754,53 +2066,45 @@
     "set": "Memorial Collection (EB-01)",
     "kind": "Booster Pack (Japanese)",
     "rarity": "Rare",
-    "price": 9.99,
     "cardsPerPack": 6,
     "hitSlots": 1,
     "source": "Direct",
     "seller": "Gempack TCG",
-    "stock": 29,
+    "stock": 19,
     "featured": false,
-    "priceFloor": 4.53
+    "price": 5.33,
+    "priceSource": {
+      "label": "Samurai Sword Tokyo (JP box ¥19,732 ÷ 24)",
+      "url": "https://samuraiswordtokyo.com/de/blogs/news/eb-01-memorial-collection-booster-box-buying-guide",
+      "asOf": "2026-10-02"
+    },
+    "priceFloor": 2.78
   },
   {
-    "id": "pk-099",
+    "id": "pk-093",
     "type": "pack",
     "condition": "Sealed",
-    "name": "Memorial Collection (EB-01) Tournament Pack",
+    "name": "Memorial Collection (EB-01) Gempack Hit Pack",
     "game": "One Piece",
     "set": "Memorial Collection (EB-01)",
-    "kind": "Tournament Pack",
-    "rarity": "Rare",
-    "price": 18.99,
-    "cardsPerPack": 12,
-    "hitSlots": 2,
-    "source": "Collector",
-    "seller": "@ripking22",
-    "stock": 4,
-    "featured": false,
-    "priceFloor": 8.09
-  },
-  {
-    "id": "pk-100",
-    "type": "pack",
-    "condition": "Sealed",
-    "name": "Memorial Collection (EB-01) Premium Booster",
-    "game": "One Piece",
-    "set": "Memorial Collection (EB-01)",
-    "kind": "Premium Booster",
+    "kind": "Gempack Hit Pack",
     "rarity": "Ultra Rare",
-    "price": 35.99,
-    "cardsPerPack": 6,
+    "cardsPerPack": 12,
     "hitSlots": 1,
     "source": "Direct",
     "seller": "Gempack TCG",
-    "stock": 41,
+    "stock": 51,
     "featured": false,
-    "priceFloor": 22.63
+    "targetReturn": 0.86,
+    "price": 50.42,
+    "priceSource": {
+      "label": "Gempack product: priced from the market value of its cards",
+      "gempack": true
+    },
+    "priceFloor": 26.2
   },
   {
-    "id": "pk-101",
+    "id": "pk-094",
     "type": "pack",
     "condition": "Sealed",
     "name": "Gempack Emerald Pack — Pokémon",
@@ -1809,7 +2113,7 @@
     "kind": "Emerald Series Pack",
     "rarity": "Ultra Rare",
     "price": 29.99,
-    "priceFloor": 17.75,
+    "priceFloor": 18.16,
     "cardsPerPack": 5,
     "hitSlots": 1,
     "source": "Direct",
@@ -1817,10 +2121,14 @@
     "stock": 60,
     "featured": true,
     "gemTier": "Emerald",
-    "seriesId": "sr-emerald-pokemon"
+    "seriesId": "sr-emerald-pokemon",
+    "priceSource": {
+      "label": "Gempack product: the drop's cards add up to 90% of what the drop sells for",
+      "gempack": true
+    }
   },
   {
-    "id": "pk-102",
+    "id": "pk-095",
     "type": "pack",
     "condition": "Sealed",
     "name": "Gempack Amethyst Pack — Pokémon",
@@ -1829,7 +2137,7 @@
     "kind": "Amethyst Series Pack",
     "rarity": "Ultra Rare",
     "price": 59.99,
-    "priceFloor": 33.64,
+    "priceFloor": 33.6,
     "cardsPerPack": 5,
     "hitSlots": 2,
     "source": "Direct",
@@ -1837,10 +2145,14 @@
     "stock": 30,
     "featured": true,
     "gemTier": "Amethyst",
-    "seriesId": "sr-amethyst-pokemon"
+    "seriesId": "sr-amethyst-pokemon",
+    "priceSource": {
+      "label": "Gempack product: the drop's cards add up to 90% of what the drop sells for",
+      "gempack": true
+    }
   },
   {
-    "id": "pk-103",
+    "id": "pk-096",
     "type": "pack",
     "condition": "Sealed",
     "name": "Gempack Gold Pack — Pokémon",
@@ -1849,7 +2161,7 @@
     "kind": "Gold Series Pack",
     "rarity": "Ultra Rare",
     "price": 149.99,
-    "priceFloor": 51.32,
+    "priceFloor": 51.57,
     "cardsPerPack": 5,
     "hitSlots": 3,
     "source": "Direct",
@@ -1857,10 +2169,14 @@
     "stock": 20,
     "featured": true,
     "gemTier": "Gold",
-    "seriesId": "sr-gold-pokemon"
+    "seriesId": "sr-gold-pokemon",
+    "priceSource": {
+      "label": "Gempack product: the drop's cards add up to 90% of what the drop sells for",
+      "gempack": true
+    }
   },
   {
-    "id": "pk-104",
+    "id": "pk-097",
     "type": "pack",
     "condition": "Sealed",
     "name": "Gempack Emerald Pack — Magic: The Gathering",
@@ -1869,7 +2185,7 @@
     "kind": "Emerald Series Pack",
     "rarity": "Ultra Rare",
     "price": 29.99,
-    "priceFloor": 16.02,
+    "priceFloor": 15.6,
     "cardsPerPack": 5,
     "hitSlots": 1,
     "source": "Direct",
@@ -1877,10 +2193,14 @@
     "stock": 60,
     "featured": true,
     "gemTier": "Emerald",
-    "seriesId": "sr-emerald-mtg"
+    "seriesId": "sr-emerald-mtg",
+    "priceSource": {
+      "label": "Gempack product: the drop's cards add up to 90% of what the drop sells for",
+      "gempack": true
+    }
   },
   {
-    "id": "pk-105",
+    "id": "pk-098",
     "type": "pack",
     "condition": "Sealed",
     "name": "Gempack Amethyst Pack — Magic: The Gathering",
@@ -1889,7 +2209,7 @@
     "kind": "Amethyst Series Pack",
     "rarity": "Ultra Rare",
     "price": 59.99,
-    "priceFloor": 30.55,
+    "priceFloor": 31.17,
     "cardsPerPack": 5,
     "hitSlots": 2,
     "source": "Direct",
@@ -1897,10 +2217,14 @@
     "stock": 30,
     "featured": true,
     "gemTier": "Amethyst",
-    "seriesId": "sr-amethyst-mtg"
+    "seriesId": "sr-amethyst-mtg",
+    "priceSource": {
+      "label": "Gempack product: the drop's cards add up to 90% of what the drop sells for",
+      "gempack": true
+    }
   },
   {
-    "id": "pk-106",
+    "id": "pk-099",
     "type": "pack",
     "condition": "Sealed",
     "name": "Gempack Gold Pack — Magic: The Gathering",
@@ -1909,7 +2233,7 @@
     "kind": "Gold Series Pack",
     "rarity": "Ultra Rare",
     "price": 149.99,
-    "priceFloor": 120.43,
+    "priceFloor": 119.89,
     "cardsPerPack": 5,
     "hitSlots": 3,
     "source": "Direct",
@@ -1917,10 +2241,14 @@
     "stock": 20,
     "featured": true,
     "gemTier": "Gold",
-    "seriesId": "sr-gold-mtg"
+    "seriesId": "sr-gold-mtg",
+    "priceSource": {
+      "label": "Gempack product: the drop's cards add up to 90% of what the drop sells for",
+      "gempack": true
+    }
   },
   {
-    "id": "pk-107",
+    "id": "pk-100",
     "type": "pack",
     "condition": "Sealed",
     "name": "Gempack Emerald Pack — One Piece",
@@ -1929,7 +2257,7 @@
     "kind": "Emerald Series Pack",
     "rarity": "Ultra Rare",
     "price": 29.99,
-    "priceFloor": 19.12,
+    "priceFloor": 21.47,
     "cardsPerPack": 5,
     "hitSlots": 1,
     "source": "Direct",
@@ -1937,10 +2265,14 @@
     "stock": 60,
     "featured": true,
     "gemTier": "Emerald",
-    "seriesId": "sr-emerald-onepiece"
+    "seriesId": "sr-emerald-onepiece",
+    "priceSource": {
+      "label": "Gempack product: the drop's cards add up to 90% of what the drop sells for",
+      "gempack": true
+    }
   },
   {
-    "id": "pk-108",
+    "id": "pk-101",
     "type": "pack",
     "condition": "Sealed",
     "name": "Gempack Amethyst Pack — One Piece",
@@ -1949,7 +2281,7 @@
     "kind": "Amethyst Series Pack",
     "rarity": "Ultra Rare",
     "price": 59.99,
-    "priceFloor": 36.55,
+    "priceFloor": 39.1,
     "cardsPerPack": 5,
     "hitSlots": 2,
     "source": "Direct",
@@ -1957,10 +2289,14 @@
     "stock": 30,
     "featured": true,
     "gemTier": "Amethyst",
-    "seriesId": "sr-amethyst-onepiece"
+    "seriesId": "sr-amethyst-onepiece",
+    "priceSource": {
+      "label": "Gempack product: the drop's cards add up to 90% of what the drop sells for",
+      "gempack": true
+    }
   },
   {
-    "id": "pk-109",
+    "id": "pk-102",
     "type": "pack",
     "condition": "Sealed",
     "name": "Gempack Gold Pack — One Piece",
@@ -1969,7 +2305,7 @@
     "kind": "Gold Series Pack",
     "rarity": "Ultra Rare",
     "price": 149.99,
-    "priceFloor": 60.71,
+    "priceFloor": 59.78,
     "cardsPerPack": 5,
     "hitSlots": 3,
     "source": "Direct",
@@ -1977,6 +2313,10 @@
     "stock": 20,
     "featured": true,
     "gemTier": "Gold",
-    "seriesId": "sr-gold-onepiece"
+    "seriesId": "sr-gold-onepiece",
+    "priceSource": {
+      "label": "Gempack product: the drop's cards add up to 90% of what the drop sells for",
+      "gempack": true
+    }
   }
 ]

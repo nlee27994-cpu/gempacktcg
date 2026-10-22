@@ -10,8 +10,11 @@ const FILLER_ODDS = [
 // the rest count as bulk at a flat value.
 const MAX_SHOWN_FILLER = 5
 const BULK_VALUE = 0.05
-// Average return we price store packs to: share of the pack price paid back in card value
-const TARGET_RETURN = 0.86
+// Share of a pack's price that an average pack pays back in card value. Real sealed packs
+// return well under half: PackMagik (mid-2026) puts Destined Rivals at $3.09 on $11.50 (27%),
+// Shrouded Fable at $3.57 on $13.95 (26%) and Paldean Fates at $4.11 on $23.99 (17%).
+// Packs Gempack builds itself set their own, fairer `targetReturn`.
+export const STORE_PACK_RETURN = 0.3
 const SET_BONUS = 4
 
 const round2 = (n) => Math.round(n * 100) / 100
@@ -59,15 +62,29 @@ export function createPackEngine(singles) {
   }
 
   /**
-   * Hit-slot odds are solved per pack so the average pull lands near TARGET_RETURN × price.
+   * Hit-slot odds are solved per pack so the average pull lands near targetReturn × price.
    * Shape: each tier above the guaranteed one gets probability a, a/5, ... and `a` is solved
    * from the expected value of each tier. Clamped so every pack keeps a real shot at a chase card.
    */
   function calibrate(pack) {
+    const { shownFiller, bulkCount, hitSlots } = layout(pack)
+    const fillerEV = FILLER_ODDS.reduce((s, [r, p]) => s + p * tierValue(pack, r), 0)
+    const target = pack.price * (pack.targetReturn ?? STORE_PACK_RETURN)
+    return solveHitOdds(pack, (target - shownFiller * fillerEV - bulkCount * BULK_VALUE) / hitSlots)
+  }
+
+  /**
+   * Price for a pack Gempack builds itself: what its contents are worth at the lowest
+   * chase-card odds, divided by the share of value it promises to pay back.
+   */
+  function fairPrice(pack) {
+    return round2(solveHitOdds(pack, -Infinity).expectedValue / pack.targetReturn)
+  }
+
+  // Hit-slot odds whose average value per hit slot comes as close to `perSlot` as the clamps allow
+  function solveHitOdds(pack, perSlot) {
     const { hitSlots, shownFiller, bulkCount } = layout(pack)
     const fillerEV = FILLER_ODDS.reduce((s, [r, p]) => s + p * tierValue(pack, r), 0)
-    const target = pack.price * TARGET_RETURN
-    const perSlot = (target - shownFiller * fillerEV - bulkCount * BULK_VALUE) / hitSlots
 
     const tiers = RARITIES.slice(rarityRank(pack.rarity))
     const ev = tiers.map((t) => tierValue(pack, t))
@@ -137,7 +154,7 @@ export function createPackEngine(singles) {
     }
   }
 
-  return { oddsFor, openPack }
+  return { oddsFor, openPack, fairPrice }
 }
 
 // Seeded PRNG so floor-setting simulations are reproducible

@@ -4,11 +4,8 @@
 //
 // Usage:   npm run sync:pokemon        (syncs, then rebuilds the catalog)
 // Optional: POKEMONTCG_API_KEY=...     raises the API rate limit (free key at pokemontcg.io)
-import { writeFileSync } from 'node:fs'
-import { dirname, join } from 'node:path'
-import { fileURLToPath } from 'node:url'
+import { getJson, pickPerSet, writeSnapshot } from './sync-utils.mjs'
 
-const OUT = join(dirname(fileURLToPath(import.meta.url)), '..', 'src', 'data', 'pokemon-api.json')
 const API = process.env.POKEMONTCG_API_URL ?? 'https://api.pokemontcg.io/v2'
 const API_KEY = process.env.POKEMONTCG_API_KEY
 
@@ -43,29 +40,8 @@ const TIER = {
   'Hyper Rare': 'Secret Rare',
 }
 
-// How many cards of each tier to keep per set; picked across the price range for variety
-const PER_SET = { 'Secret Rare': 2, 'Ultra Rare': 2, Rare: 2, Uncommon: 1, Common: 1 }
-
 // TCGplayer lists prices per printing; use the first printing that has a market price
 const PRINTINGS = ['holofoil', 'normal', 'reverseHolofoil', '1stEditionHolofoil', 'unlimitedHolofoil']
-
-const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
-
-async function getJson(url, attempt = 1) {
-  const res = await fetch(url, {
-    headers: API_KEY ? { 'X-Api-Key': API_KEY } : {},
-    signal: AbortSignal.timeout(60_000),
-  }).catch((err) => ({ ok: false, status: 0, statusText: err.message }))
-  if (res.ok) return res.json()
-  // Rate limits and server hiccups are common on the free tier: back off and retry
-  if ((res.status === 0 || res.status === 429 || res.status >= 500) && attempt < 5) {
-    const wait = 2000 * 2 ** (attempt - 1)
-    console.warn(`  ${res.status || 'network error'} (${res.statusText}); retrying in ${wait / 1000}s`)
-    await sleep(wait)
-    return getJson(url, attempt + 1)
-  }
-  throw new Error(`${url} -> ${res.status} ${res.statusText}`)
-}
 
 async function fetchSet(setId) {
   const cards = []
@@ -76,7 +52,7 @@ async function fetchSet(setId) {
       pageSize: '250',
       select: 'id,name,number,rarity,images,tcgplayer',
     })
-    const body = await getJson(`${API}/cards?${q}`)
+    const body = await getJson(`${API}/cards?${q}`, API_KEY ? { 'X-Api-Key': API_KEY } : {})
     cards.push(...body.data)
     if (cards.length >= body.totalCount || body.data.length === 0) return cards
   }
@@ -89,12 +65,6 @@ function marketPrice(card) {
     if (market > 0) return market
   }
   return null
-}
-
-// Evenly spaced picks from a price-sorted list: the chase card plus cheaper ones
-function spread(list, n) {
-  if (list.length <= n) return list
-  return Array.from({ length: n }, (_, i) => list[Math.round((i * (list.length - 1)) / Math.max(1, n - 1))])
 }
 
 const kept = []
@@ -110,9 +80,7 @@ for (const [setName, setId] of Object.entries(SETS)) {
   const priced = raw
     .map((c) => ({ c, tier: TIER[c.rarity], price: marketPrice(c) }))
     .filter((x) => x.tier && x.price)
-  const picks = Object.entries(PER_SET).flatMap(([tier, n]) =>
-    spread(priced.filter((x) => x.tier === tier).sort((a, b) => b.price - a.price), n),
-  )
+  const picks = pickPerSet(priced)
   for (const { c, tier, price } of picks) {
     kept.push({
       apiId: c.id,
@@ -131,21 +99,4 @@ for (const [setName, setId] of Object.entries(SETS)) {
   console.log(`${raw.length} cards, ${priced.length} priced, kept ${picks.length}`)
 }
 
-if (kept.length < 20) {
-  console.error(`Only ${kept.length} cards came back, so the existing data was left alone. Check your connection and try again.`)
-  process.exit(1)
-}
-
-writeFileSync(
-  OUT,
-  JSON.stringify(
-    {
-      syncedAt: new Date().toISOString(),
-      source: 'Pokémon TCG API (pokemontcg.io); prices are TCGplayer market prices',
-      cards: kept,
-    },
-    null,
-    2,
-  ) + '\n',
-)
-console.log(`Saved ${kept.length} Pokémon cards to src/data/pokemon-api.json`)
+writeSnapshot('pokemon-api.json', 'Pokémon TCG API (pokemontcg.io); prices are TCGplayer market prices', kept)

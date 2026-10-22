@@ -1,9 +1,11 @@
+import { DATA_VERSION } from '../lib/catalog'
 import { createContext, useContext, useEffect, useMemo, useState } from 'react'
 
 // Tracks which packs of each Gempack Series drop have been opened in this browser,
 // so a drop sells down as you rip it. Real launches would track this on a server.
 const SeriesContext = createContext(null)
-const STORAGE_KEY = 'gempack-series-opened'
+// Keyed to the catalog version so saved ids never point at the wrong products
+const STORAGE_KEY = `gempack-series-opened-${DATA_VERSION}`
 
 function load() {
   try {

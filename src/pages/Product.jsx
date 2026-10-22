@@ -4,6 +4,7 @@ import CardArt from '../components/CardArt'
 import PriceFloorMeter from '../components/PriceFloorMeter'
 import ProductCard from '../components/ProductCard'
 import RarityBadge from '../components/RarityBadge'
+import PriceSource from '../components/PriceSource'
 import SeriesChecklist from '../components/SeriesChecklist'
 import SourceBadge from '../components/SourceBadge'
 import { useCart } from '../context/CartContext'
@@ -141,19 +142,7 @@ function ProductDetail({ id }) {
             )}
           </div>
 
-          {product.priceUpdatedAt && (
-            <p className="mt-2 text-xs text-slate-500">
-              Real card data from the Pokémon TCG API. Market price from TCGplayer, updated {product.priceUpdatedAt}.
-              {product.tcgplayerUrl && (
-                <>
-                  {' '}
-                  <a href={product.tcgplayerUrl} target="_blank" rel="noreferrer" className="text-emerald-300 hover:underline">
-                    View on TCGplayer ↗
-                  </a>
-                </>
-              )}
-            </p>
-          )}
+          <PriceSource source={product.priceSource} />
 
           {isPack && (
             <div className="mt-6">
