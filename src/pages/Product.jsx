@@ -141,6 +141,20 @@ function ProductDetail({ id }) {
             )}
           </div>
 
+          {product.priceUpdatedAt && (
+            <p className="mt-2 text-xs text-slate-500">
+              Real card data from the Pokémon TCG API. Market price from TCGplayer, updated {product.priceUpdatedAt}.
+              {product.tcgplayerUrl && (
+                <>
+                  {' '}
+                  <a href={product.tcgplayerUrl} target="_blank" rel="noreferrer" className="text-emerald-300 hover:underline">
+                    View on TCGplayer ↗
+                  </a>
+                </>
+              )}
+            </p>
+          )}
+
           {isPack && (
             <div className="mt-6">
               <PriceFloorMeter price={product.price} floor={product.priceFloor} exact={Boolean(series)} />
@@ -180,6 +194,7 @@ function ProductDetail({ id }) {
                 : [
                     ['Condition', product.condition],
                     ['Card number', `#${product.number}`],
+                    ...(product.officialRarity ? [['Official rarity', product.officialRarity]] : []),
                   ]),
             ].map(([k, v]) => (
               <div key={k} className="grid grid-cols-[120px_1fr] gap-3 px-4 py-3">

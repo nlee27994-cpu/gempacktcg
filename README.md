@@ -38,6 +38,7 @@ Other commands:
 npm run build          # production build into dist/
 npm run preview        # serve the production build locally
 npm run generate-data  # regenerate the mock catalog in src/data/
+npm run sync:pokemon   # pull real Pokémon cards and prices, then regenerate (see below)
 ```
 
 ## Project structure
@@ -63,6 +64,33 @@ npm run generate-data  # regenerate the mock catalog in src/data/
    ├─ components/                # Navbar, Footer, Logo, CardArt, ProductCard, badges, filters…
    └─ pages/                     # Home, Shop, Product, OpenPack, AuctionHouse, AuctionDetail, Cart, …
 ```
+
+## Real Pokémon card data
+
+The Pokémon side of the catalog can use real cards from the free [Pokémon TCG API](https://pokemontcg.io):
+real names, card numbers, official rarities, card images and TCGplayer market prices.
+
+```bash
+npm run sync:pokemon
+```
+
+This downloads the 11 Scarlet & Violet sets the shop uses. It keeps 8 cards per set (2 Secret Rare tier, 2 Ultra
+Rare, 2 Rare, 1 Uncommon, 1 Common), picked across the price range, and saves them to `src/data/pokemon-api.json`.
+Then it rebuilds the catalog, so packs, drops, floors and auctions all use the real cards and prices. Commit
+`pokemon-api.json` so teammates get the same cards without syncing.
+
+- **Official rarities map to the site's gem tiers.** Special Illustration Rare and Hyper Rare become Secret Rare.
+  Illustration Rare and Ultra Rare become Ultra Rare. Double Rare and ACE SPEC become Rare.
+- **Prices** use each card's TCGplayer market price. Product pages show the official rarity, when the price was
+  updated, and a link to TCGplayer.
+- **Rate limits:** the API works without a key. For higher limits, get a free key at pokemontcg.io and run
+  `POKEMONTCG_API_KEY=your-key npm run sync:pokemon`. The script retries when the API is busy.
+- Run it again any time to refresh prices. If too few cards come back (no internet, say), the existing data is left
+  alone. Delete `src/data/pokemon-api.json` and run `npm run generate-data` to go back to the built-in card list.
+- Card images are © The Pokémon Company and are loaded from the API's image server. That's fine for a class demo,
+  but a real store would need permission. If an image can't load, the card falls back to the drawn art.
+
+Magic and One Piece still use the built-in list. Scryfall (scryfall.com) could do the same for Magic.
 
 ## Data model
 

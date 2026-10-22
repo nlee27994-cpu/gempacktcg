@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { RARITY_STYLES, isHolo } from '../lib/rarity'
 import { GAME_SHORT } from '../lib/catalog'
 
@@ -76,6 +77,43 @@ export default function CardArt({ product, size = 'md', className = '' }) {
     )
   }
 
+  if (product.image) return <RealCardArt product={product} size={size} className={className} />
+
+  return <DrawnCardArt product={product} big={big} holo={holo} className={className} />
+}
+
+// Real card scan from the Pokémon TCG API; falls back to drawn art if the image can't load
+function RealCardArt({ product, size, className }) {
+  const [failed, setFailed] = useState(false)
+  const r = RARITY_STYLES[product.rarity]
+  const big = size === 'lg'
+  if (failed) return <DrawnCardArt product={product} big={big} holo={isHolo(product.rarity)} className={className} />
+  return (
+    <div className={`relative aspect-[5/7] w-full ${className}`}>
+      <div className={`${isHolo(product.rarity) ? 'holo' : ''} relative h-full w-full overflow-hidden rounded-xl border-2 bg-navy-800 ${r.border} ${r.glow}`}>
+        <img
+          src={big && product.imageLarge ? product.imageLarge : product.image}
+          alt={`${product.name}, ${product.set} #${product.number}`}
+          loading="lazy"
+          onError={() => setFailed(true)}
+          className="h-full w-full object-cover"
+        />
+        <PsaLabel condition={product.condition} />
+      </div>
+    </div>
+  )
+}
+
+function PsaLabel({ condition }) {
+  if (!condition?.startsWith('PSA')) return null
+  return (
+    <span className="absolute right-2 top-2 rounded bg-white px-1.5 py-0.5 text-[9px] font-bold text-red-600 shadow">{condition}</span>
+  )
+}
+
+function DrawnCardArt({ product, big, holo, className }) {
+  const r = RARITY_STYLES[product.rarity]
+  const theme = GAME_THEME[product.game]
   return (
     <div className={`relative aspect-[5/7] w-full ${className}`}>
       <div className={`${holo ? 'holo' : ''} relative flex h-full w-full flex-col overflow-hidden rounded-xl border-2 bg-navy-800 p-[6%] ${r.border} ${r.glow}`}>
@@ -89,11 +127,7 @@ export default function CardArt({ product, size = 'md', className = '' }) {
             {product.set} · #{product.number}
           </p>
         </div>
-        {product.condition?.startsWith('PSA') && (
-          <span className="absolute right-2 top-2 rounded bg-white px-1.5 py-0.5 text-[9px] font-bold text-red-600 shadow">
-            {product.condition}
-          </span>
-        )}
+        <PsaLabel condition={product.condition} />
       </div>
     </div>
   )

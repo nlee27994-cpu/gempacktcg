@@ -1,7 +1,7 @@
 // Generates the mock catalog in src/data/*.json.
 // Deterministic (seeded PRNG), so re-running produces the same files.
 // Usage: npm run generate-data
-import { writeFileSync, mkdirSync } from 'node:fs'
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { createPackEngine, solveFloor } from '../src/lib/packEngine.js'
@@ -141,6 +141,14 @@ const CARDS = {
   ],
 }
 
+// Real Pokémon cards, if scripts/sync-pokemon.mjs has been run (npm run sync:pokemon)
+const POKEMON_API_FILE = join(OUT, 'pokemon-api.json')
+if (existsSync(POKEMON_API_FILE)) {
+  const snapshot = JSON.parse(readFileSync(POKEMON_API_FILE, 'utf8'))
+  CARDS.Pokémon = snapshot.cards.map(({ name, rarity, marketPrice, set, ...api }) => [name, rarity, marketPrice, set, api])
+  console.log(`Using ${snapshot.cards.length} real Pokémon cards from the Pokémon TCG API (synced ${snapshot.syncedAt})`)
+}
+
 const NM_RANGE = { [C]: [0.05, 0.35], [U]: [0.1, 0.9], [R]: [0.5, 4], [UR]: [8, 40], [SR]: [40, 200] }
 const CONDITION_MULT = CONDITION_VALUE
 
@@ -148,7 +156,7 @@ const CONDITION_MULT = CONDITION_VALUE
 const singles = []
 let sIdx = 1
 for (const [game, cards] of Object.entries(CARDS)) {
-  for (const [name, rarity, fixedPrice, fixedSet] of cards) {
+  for (const [name, rarity, fixedPrice, fixedSet, api] of cards) {
     const set = fixedSet ?? pick(SETS[game])
     const marketPrice = money(fixedPrice ?? between(...NM_RANGE[rarity]))
     const gradeable = rarity === UR || rarity === SR
@@ -165,7 +173,7 @@ for (const [game, cards] of Object.entries(CARDS)) {
       name,
       game,
       set,
-      number: `${String(Math.floor(between(1, 240))).padStart(3, '0')}`,
+      number: api?.number ?? `${String(Math.floor(between(1, 240))).padStart(3, '0')}`,
       rarity,
       condition,
       price,
@@ -174,6 +182,15 @@ for (const [game, cards] of Object.entries(CARDS)) {
       seller: sellerFor(game, source),
       stock: source === 'Collector' ? 1 : Math.ceil(between(1, rarity === SR ? 2 : 12)),
       featured: rarity === SR && marketPrice >= 120,
+      // Real-card details from the Pokémon TCG API (image, official rarity, TCGplayer link)
+      ...(api && {
+        apiId: api.apiId,
+        officialRarity: api.officialRarity,
+        image: api.image,
+        imageLarge: api.imageLarge,
+        tcgplayerUrl: api.tcgplayerUrl,
+        priceUpdatedAt: api.priceUpdatedAt,
+      }),
     })
   }
 }
