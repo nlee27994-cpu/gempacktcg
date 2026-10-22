@@ -18,7 +18,8 @@ This is a demo. All products are mock data, nothing is stored on a server, and c
 | **Shop** (`/shop`) | 109 packs + 117 singles. Search, filter by type / game / rarity / source / price, sort. Filters live in the URL, so filtered views can be shared |
 | **Product** (`/product/:id`) | Card or pack details. Packs show the price floor, hit slots and pull odds. Series packs show the drop's full checklist and how many of each card are still sealed |
 | **Rip a pack** (`/open/:id`) | Pack-tearing animation, tap-to-flip card reveal weighted by rarity, then pulled value vs. pack price and floor |
-| **Consign** (`/consign`) | Form for collectors to submit a card, with a payout estimate. Submissions live in React state only |
+| **Auction House** (`/auctions`) | Live auctions for single cards from Gempack (Official) and verified collectors. Bid, Buy Now, track your bids and wins, or get verified and list your own card |
+| **Auction** (`/auctions/:id`) | Countdown, minimum raise, quick bids, Buy Now, bid history, and pay-to-claim when you win |
 | **Cart / Checkout** | Cart (saved in the browser), fake checkout form, order confirmation |
 | **About** (`/about`) | Mission, team, strategy, and how the price floor works |
 
@@ -47,24 +48,26 @@ npm run generate-data  # regenerate the mock catalog in src/data/
 ├─ scripts/generate-data.mjs     # builds the mock catalog (seeded, so it's reproducible)
 └─ src/
    ├─ App.jsx                    # routes
-   ├─ main.jsx                   # entry: router + cart/consign providers
+   ├─ main.jsx                   # entry: router + cart, auction and series providers
    ├─ index.css                  # Tailwind + button/panel styles + holo shimmer
-   ├─ data/                      # packs.json, singles.json, events.json (generated)
+   ├─ data/                      # packs, singles, series, auctions, events (generated)
    ├─ lib/
    │  ├─ catalog.js              # loads the JSON, lookups, featured drops
    │  ├─ packEngine.js           # pull odds, pack opening, price-floor solver (pure JS)
    │  ├─ packOpening.js          # the engine bound to the app's catalog
+   │  ├─ auction.js              # auction rules: bid increments, fees, durations
+   │  ├─ series.js               # Gempack Series drop status
    │  ├─ rarity.js               # rarity tiers ↔ gem colors
    │  └─ format.js, useNow.js
-   ├─ context/                   # CartContext, ConsignContext
+   ├─ context/                   # CartContext, AuctionContext, SeriesContext
    ├─ components/                # Navbar, Footer, Logo, CardArt, ProductCard, badges, filters…
-   └─ pages/                     # Home, Shop, Product, OpenPack, Consign, Cart, Checkout, …
+   └─ pages/                     # Home, Shop, Product, OpenPack, AuctionHouse, AuctionDetail, Cart, …
 ```
 
 ## Data model
 
 Every product has `name`, `game`, `set`, `rarity`, `condition`, `price` and `source`
-(`Direct`, `Vendor` or `Consignment`), plus a `seller`.
+(`Direct`, `Vendor` or `Collector`), plus a `seller`. `Collector` listings are fixed-price cards from verified collectors.
 
 - **Singles** add `marketPrice` (near-mint raw value) and a card `number`. Graded copies (PSA 9/10) sell above market.
 - **Packs** add `priceFloor`, `cardsPerPack` and `hitSlots`. For packs, `rarity` is the *guaranteed hit*,
@@ -98,6 +101,25 @@ the data in `src/data/series.json`:
 - Ripping a series pack opens a random sealed pack from that drop. The product page shows what's still sealed
   ("2 of 3 left") and the live chance that the next pack has a Secret Rare. Progress is saved in your browser, and
   each drop has a "Reset this drop" button for demos.
+
+## Auction House
+
+Modelled on the auction houses in sports games like EA Sports FC and Madden:
+
+- **Sellers:** only Gempack staff (**Official** badge) and **verified** collectors can list. Visitors get verified on the
+  Sell tab, with a simulated ID check and an agreement to ship sold cards to Gempack for authentication.
+- **Listings** have a starting price, an optional **Buy Now** price and a duration, from 5 minutes (for demos) to 3 days.
+  Sellers pay a **5% fee** on the sale, and the form shows the payout before you list.
+- **Bidding:** each bid must beat the current one by a minimum raise that grows with the price ($0.50 under $10, up
+  to $25 over $1,000). You can't bid on your own listing or outbid yourself, and a bid at or above Buy Now buys the
+  card outright.
+- **Rival bidders are simulated.** They often answer your bid within a few seconds, bid in the background (mostly on
+  auctions ending soon and on your listings), and stop around what a card is worth. You get a notice when you're
+  outbid, win, or sell.
+- **Winning:** a won card goes to the cart at the winning price and is marked paid after checkout.
+- The rules are in `src/lib/auction.js`, the live state is in `src/context/AuctionContext.jsx`, and the 36 starting
+  listings are generated into `src/data/auctions.json`. State is saved in your browser, and the Auction House starts
+  fresh once every listing has ended. My activity has a reset button for demos.
 
 ## Branding
 

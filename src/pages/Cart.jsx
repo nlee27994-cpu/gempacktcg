@@ -29,13 +29,13 @@ export default function Cart() {
         <ul className="space-y-3">
           {items.map((item) => (
             <li key={item.id} className="panel flex gap-4 p-4">
-              <Link to={`/product/${item.id}`} className="w-16 shrink-0 sm:w-20">
+              <Link to={item.href ?? `/product/${item.id}`} className="w-16 shrink-0 sm:w-20">
                 <CardArt product={item} />
               </Link>
               <div className="flex min-w-0 flex-1 flex-col">
                 <div className="flex items-start justify-between gap-3">
                   <div className="min-w-0">
-                    <Link to={`/product/${item.id}`} className="line-clamp-2 font-semibold hover:underline">{item.name}</Link>
+                    <Link to={item.href ?? `/product/${item.id}`} className="line-clamp-2 font-semibold hover:underline">{item.name}</Link>
                     <p className="text-xs text-slate-400">
                       {item.type === 'pack' ? `Sealed · floor ${formatPrice(item.priceFloor)}` : item.condition} · {item.seller}
                     </p>

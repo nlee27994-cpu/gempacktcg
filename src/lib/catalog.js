@@ -1,11 +1,12 @@
 import packs from '../data/packs.json'
 import singles from '../data/singles.json'
 import events from '../data/events.json'
+import auctions from '../data/auctions.json'
 
-export { packs, singles, events }
+export { packs, singles, events, auctions }
 
 export const GAMES = ['Pokémon', 'Magic: The Gathering', 'One Piece']
-export const SOURCES = ['Direct', 'Vendor', 'Consignment']
+export const SOURCES = ['Direct', 'Vendor', 'Collector']
 export const CONDITIONS = ['Near Mint', 'Lightly Played', 'Moderately Played', 'PSA 9', 'PSA 10']
 
 export const GAME_SHORT = {

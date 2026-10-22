@@ -5,6 +5,7 @@ import { writeFileSync, mkdirSync } from 'node:fs'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { createPackEngine, solveFloor } from '../src/lib/packEngine.js'
+import { bidIncrement, CONDITION_VALUE } from '../src/lib/auction.js'
 
 const OUT = join(dirname(fileURLToPath(import.meta.url)), '..', 'src', 'data')
 
@@ -141,13 +142,7 @@ const CARDS = {
 }
 
 const NM_RANGE = { [C]: [0.05, 0.35], [U]: [0.1, 0.9], [R]: [0.5, 4], [UR]: [8, 40], [SR]: [40, 200] }
-const CONDITION_MULT = {
-  'Near Mint': 1,
-  'Lightly Played': 0.85,
-  'Moderately Played': 0.65,
-  'PSA 9': 1.7,
-  'PSA 10': 3.2,
-}
+const CONDITION_MULT = CONDITION_VALUE
 
 // ---------- singles ----------
 const singles = []
@@ -162,7 +157,7 @@ for (const [game, cards] of Object.entries(CARDS)) {
         ? [['Near Mint', 55], ['Lightly Played', 10], ['PSA 9', 20], ['PSA 10', 15]]
         : [['Near Mint', 70], ['Lightly Played', 20], ['Moderately Played', 10]],
     )
-    const source = weighted([['Direct', 30], ['Vendor', 35], ['Consignment', 35]])
+    const source = weighted([['Direct', 30], ['Vendor', 35], ['Collector', 35]])
     const price = shelf(marketPrice * CONDITION_MULT[condition] * between(0.95, 1.08))
     singles.push({
       id: `sg-${String(sIdx++).padStart(3, '0')}`,
@@ -177,7 +172,7 @@ for (const [game, cards] of Object.entries(CARDS)) {
       marketPrice,
       source,
       seller: sellerFor(game, source),
-      stock: source === 'Consignment' ? 1 : Math.ceil(between(1, rarity === SR ? 2 : 12)),
+      stock: source === 'Collector' ? 1 : Math.ceil(between(1, rarity === SR ? 2 : 12)),
       featured: rarity === SR && marketPrice >= 120,
     })
   }
@@ -222,7 +217,7 @@ for (const [game, sets] of Object.entries(SETS)) {
     for (const t of PACK_TYPES[game]) {
       const heat = SET_HEAT[set] ?? between(0.9, 1.15)
       const price = shelf(t.base * heat * between(0.97, 1.06))
-      const source = weighted([['Direct', 45], ['Vendor', 40], ['Consignment', 15]])
+      const source = weighted([['Direct', 45], ['Vendor', 40], ['Collector', 15]])
       pushPack({
         name: `${set} ${t.kind}`,
         game,
@@ -234,7 +229,7 @@ for (const [game, sets] of Object.entries(SETS)) {
         hitSlots: t.hitSlots,
         source,
         seller: sellerFor(game, source),
-        stock: Math.ceil(between(source === 'Consignment' ? 1 : 6, source === 'Consignment' ? 4 : 60)),
+        stock: Math.ceil(between(source === 'Collector' ? 1 : 6, source === 'Collector' ? 4 : 60)),
         featured: false,
       })
     }
@@ -383,12 +378,58 @@ packs.forEach((p, i) => {
   if (!p.seriesId) p.priceFloor = solveFloor(engine, p, 0.06, 1500, 1000 + i)
 })
 
+// ---------- auction house ----------
+// Live listings from Gempack (official) and verified collectors. End times are stored as
+// minutes from when the visitor first opens the site, so countdowns are always live.
+const BIDDERS = ['@pullrate_pete', '@holo_hunter', '@sleevedup', '@binderbrooke', '@topdeck_tay', '@gradedgabe', '@ripking22', '@mintcondition_mia', '@cardboardcrack', '@nm_or_bust']
+const auctionCards = shuffle(singles.filter((c) => c.rarity !== C && c.marketPrice >= 2)).slice(0, 36)
+const auctions = auctionCards.map((card, i) => {
+  const official = rand() < 0.3
+  const seller = official ? 'Gempack TCG' : pick(COLLECTORS)
+  const gradeable = card.rarity === UR || card.rarity === SR
+  const condition = weighted(gradeable ? [['Near Mint', 55], ['PSA 9', 25], ['PSA 10', 20]] : [['Near Mint', 75], ['Lightly Played', 25]])
+  const value = card.marketPrice * CONDITION_MULT[condition]
+  const startPrice = Math.max(0.99, shelf(value * between(0.35, 0.7)))
+  const buyNow = rand() < 0.8 ? shelf(value * between(1.05, 1.3)) : null
+  // Bid history climbs from the start price by at least one increment per bid
+  const target = value * between(0.55, 0.95)
+  const history = []
+  let bid = startPrice
+  const wanted = Math.floor(between(0, 14))
+  for (let k = 0; k < wanted && bid < target && (!buyNow || bid + bidIncrement(bid) < buyNow); k++) {
+    if (k > 0) bid = money(bid + bidIncrement(bid) * Math.ceil(between(1, 3)))
+    if (buyNow && bid >= buyNow) break
+    history.push({ bidder: pick(BIDDERS.filter((b) => b !== seller && b !== history.at(-1)?.bidder)), amount: bid })
+  }
+  // Mix of auctions about to end, ending today, and ending in a few days
+  const endsInMinutes = Math.round(
+    weighted([['soon', 25], ['today', 35], ['later', 40]]) === 'soon' ? between(2, 15) : rand() < 0.45 ? between(15, 360) : between(360, 4320),
+  )
+  const span = endsInMinutes + between(30, 600)
+  return {
+    id: `au-${String(i + 1).padStart(3, '0')}`,
+    cardId: card.id,
+    condition,
+    seller,
+    sellerType: official ? 'Official' : 'Verified',
+    startPrice,
+    buyNow,
+    currentBid: history.at(-1)?.amount ?? 0,
+    bidCount: history.length,
+    endsInMinutes,
+    // Simulated rival bidders stop around what the card is worth
+    botCeiling: money(value * between(0.9, 1.15)),
+    // minutesAgo counts down toward now, so the newest bid is the most recent
+    history: history.map((h, k) => ({ ...h, minutesAgo: Math.round(span * (1 - (k + 1) / (history.length + 1))) })).reverse(),
+  }
+})
+
 // ---------- events ----------
 const events = [
   { id: 'ev-1', title: 'Live Rip Showcase: Prismatic Evolutions', type: 'Live Showcase', date: '2026-10-30T19:00:00-07:00', location: 'Livestream · Gempack TV', game: 'Pokémon', blurb: 'We open 36 packs on stream. Every pull is listed in the shop within the hour.' },
   { id: 'ev-2', title: 'One Piece OP-13 Release Night', type: 'Set Release', date: '2026-11-07T17:00:00-07:00', location: 'Partner store: Grand Line Collectibles', game: 'One Piece', blurb: 'Midnight-style release with sealed pre-orders, a Leader draft and prizes.' },
   { id: 'ev-3', title: 'Magic Prerelease Weekend', type: 'Set Release', date: '2026-11-14T10:00:00-07:00', location: 'Partner store: Blue Mana Games', game: 'Magic: The Gathering', blurb: 'Sealed prerelease events all weekend. Prerelease Packs ship with a price floor.' },
-  { id: 'ev-4', title: 'Collector Consignment Day', type: 'Community', date: '2026-11-21T12:00:00-08:00', location: 'Gempack HQ + online', game: 'All games', blurb: 'Bring your binder. Get it graded, priced and listed by our team on the spot.' },
+  { id: 'ev-4', title: 'Collector Auction Day', type: 'Community', date: '2026-11-21T12:00:00-08:00', location: 'Gempack HQ + online', game: 'All games', blurb: 'Bring your binder. Get verified on the spot and list your best cards in the Auction House.' },
   { id: 'ev-5', title: 'Holiday Gold Pack Drop', type: 'Live Showcase', date: '2026-12-12T18:00:00-08:00', location: 'Livestream · Gempack TV', game: 'All games', blurb: 'Series 2 opens: new Emerald, Amethyst and Gold drops with a fresh checklist of chase cards.' },
 ]
 
@@ -398,4 +439,5 @@ write('singles.json', singles)
 write('packs.json', packs)
 write('events.json', events)
 write('series.json', series)
-console.log(`Wrote ${singles.length} singles, ${packs.length} packs, ${series.length} series, ${events.length} events to src/data`)
+write('auctions.json', auctions)
+console.log(`Wrote ${singles.length} singles, ${packs.length} packs, ${series.length} series, ${auctions.length} auctions, ${events.length} events to src/data`)

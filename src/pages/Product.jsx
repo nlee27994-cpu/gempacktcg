@@ -8,6 +8,7 @@ import SeriesChecklist from '../components/SeriesChecklist'
 import SourceBadge from '../components/SourceBadge'
 import { useCart } from '../context/CartContext'
 import { useSeries } from '../context/SeriesContext'
+import { isEnded, useAuctions } from '../context/AuctionContext'
 import { getProduct, relatedProducts } from '../lib/catalog'
 import { formatPrice } from '../lib/format'
 import { oddsFor } from '../lib/packOpening'
@@ -18,7 +19,7 @@ import NotFound from './NotFound'
 const SOURCE_COPY = {
   Direct: 'Sold and shipped by Gempack TCG. Stored sleeved, shipped in a top-loader.',
   Vendor: 'Listed by a verified partner store and checked by Gempack before it ships.',
-  Consignment: 'Consigned by a collector. Gempack verified the card in hand and ships it.',
+  Collector: 'Listed at a fixed price by a verified collector. The card ships to Gempack for authentication first.',
 }
 
 const formatOdds = (p) => {
@@ -58,6 +59,22 @@ function OddsTable({ pack }) {
   )
 }
 
+function LiveAuctions({ cardId, auctions }) {
+  const now = Date.now()
+  const live = auctions.filter((a) => a.cardId === cardId && !isEnded(a, now))
+  if (!live.length) return null
+  const lowest = Math.min(...live.map((a) => (a.bidCount ? a.currentBid : a.startPrice)))
+  return (
+    <Link to={`/auctions/${live[0].id}`} className="mt-6 flex items-center justify-between rounded-xl border border-gold-400/40 bg-gold-400/5 p-4 text-sm hover:bg-gold-400/10">
+      <span>
+        ⚖ <span className="font-semibold">{live.length === 1 ? '1 live auction' : `${live.length} live auctions`}</span> for this card, bids from{' '}
+        {formatPrice(lowest)}
+      </span>
+      <span className="font-semibold text-gold-300">Bid →</span>
+    </Link>
+  )
+}
+
 // Keyed on id so quantity / "added" state resets when moving between products
 export default function Product() {
   const { id } = useParams()
@@ -68,6 +85,7 @@ function ProductDetail({ id }) {
   const product = getProduct(id)
   const { add, items } = useCart()
   const { openedFor } = useSeries()
+  const { auctions } = useAuctions()
   const [qty, setQty] = useState(1)
   const [added, setAdded] = useState(false)
 
@@ -170,6 +188,8 @@ function ProductDetail({ id }) {
               </div>
             ))}
           </dl>
+
+          {!isPack && <LiveAuctions cardId={product.id} auctions={auctions} />}
 
           {isPack && !series && (
             <div className="mt-6">

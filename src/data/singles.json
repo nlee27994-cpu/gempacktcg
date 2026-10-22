@@ -58,7 +58,7 @@
     "condition": "Near Mint",
     "price": 189.99,
     "marketPrice": 189,
-    "source": "Consignment",
+    "source": "Collector",
     "seller": "@gradedgabe",
     "stock": 1,
     "featured": true
@@ -74,7 +74,7 @@
     "condition": "PSA 9",
     "price": 389.99,
     "marketPrice": 229,
-    "source": "Consignment",
+    "source": "Collector",
     "seller": "@binderbrooke",
     "stock": 1,
     "featured": true
@@ -106,7 +106,7 @@
     "condition": "PSA 10",
     "price": 273.99,
     "marketPrice": 89,
-    "source": "Consignment",
+    "source": "Collector",
     "seller": "@mintcondition_mia",
     "stock": 1,
     "featured": false
@@ -122,7 +122,7 @@
     "condition": "PSA 9",
     "price": 248.99,
     "marketPrice": 139,
-    "source": "Consignment",
+    "source": "Collector",
     "seller": "@pullrate_pete",
     "stock": 1,
     "featured": true
@@ -170,7 +170,7 @@
     "condition": "Lightly Played",
     "price": 53.99,
     "marketPrice": 64,
-    "source": "Consignment",
+    "source": "Collector",
     "seller": "@mintcondition_mia",
     "stock": 1,
     "featured": false
@@ -282,7 +282,7 @@
     "condition": "PSA 9",
     "price": 76.99,
     "marketPrice": 42,
-    "source": "Consignment",
+    "source": "Collector",
     "seller": "@topdeck_tay",
     "stock": 1,
     "featured": false
@@ -298,7 +298,7 @@
     "condition": "PSA 9",
     "price": 47.99,
     "marketPrice": 27,
-    "source": "Consignment",
+    "source": "Collector",
     "seller": "@topdeck_tay",
     "stock": 1,
     "featured": false
@@ -346,7 +346,7 @@
     "condition": "Near Mint",
     "price": 0.71,
     "marketPrice": 0.72,
-    "source": "Consignment",
+    "source": "Collector",
     "seller": "@sleevedup",
     "stock": 1,
     "featured": false
@@ -394,7 +394,7 @@
     "condition": "Lightly Played",
     "price": 1.99,
     "marketPrice": 1.85,
-    "source": "Consignment",
+    "source": "Collector",
     "seller": "@pullrate_pete",
     "stock": 1,
     "featured": false
@@ -490,7 +490,7 @@
     "condition": "Near Mint",
     "price": 0.79,
     "marketPrice": 0.78,
-    "source": "Consignment",
+    "source": "Collector",
     "seller": "@gradedgabe",
     "stock": 1,
     "featured": false
@@ -506,7 +506,7 @@
     "condition": "Near Mint",
     "price": 0.68,
     "marketPrice": 0.63,
-    "source": "Consignment",
+    "source": "Collector",
     "seller": "@ripking22",
     "stock": 1,
     "featured": false
@@ -586,7 +586,7 @@
     "condition": "Near Mint",
     "price": 0.25,
     "marketPrice": 0.26,
-    "source": "Consignment",
+    "source": "Collector",
     "seller": "@holo_hunter",
     "stock": 1,
     "featured": false
@@ -666,7 +666,7 @@
     "condition": "Near Mint",
     "price": 0.33,
     "marketPrice": 0.33,
-    "source": "Consignment",
+    "source": "Collector",
     "seller": "@gradedgabe",
     "stock": 1,
     "featured": false
@@ -730,7 +730,7 @@
     "condition": "Near Mint",
     "price": 0.06,
     "marketPrice": 0.06,
-    "source": "Consignment",
+    "source": "Collector",
     "seller": "@holo_hunter",
     "stock": 1,
     "featured": false
@@ -858,7 +858,7 @@
     "condition": "Near Mint",
     "price": 27.99,
     "marketPrice": 28,
-    "source": "Consignment",
+    "source": "Collector",
     "seller": "@holo_hunter",
     "stock": 1,
     "featured": false
@@ -874,7 +874,7 @@
     "condition": "Near Mint",
     "price": 18.99,
     "marketPrice": 18,
-    "source": "Consignment",
+    "source": "Collector",
     "seller": "@ripking22",
     "stock": 1,
     "featured": false
@@ -890,7 +890,7 @@
     "condition": "PSA 9",
     "price": 19.99,
     "marketPrice": 12,
-    "source": "Consignment",
+    "source": "Collector",
     "seller": "@binderbrooke",
     "stock": 1,
     "featured": false
@@ -922,7 +922,7 @@
     "condition": "Near Mint",
     "price": 16.99,
     "marketPrice": 16,
-    "source": "Consignment",
+    "source": "Collector",
     "seller": "@holo_hunter",
     "stock": 1,
     "featured": false
@@ -1002,7 +1002,7 @@
     "condition": "Near Mint",
     "price": 3.99,
     "marketPrice": 3.29,
-    "source": "Consignment",
+    "source": "Collector",
     "seller": "@ripking22",
     "stock": 1,
     "featured": false
@@ -1130,7 +1130,7 @@
     "condition": "Lightly Played",
     "price": 0.44,
     "marketPrice": 0.51,
-    "source": "Consignment",
+    "source": "Collector",
     "seller": "@topdeck_tay",
     "stock": 1,
     "featured": false
@@ -1162,7 +1162,7 @@
     "condition": "Near Mint",
     "price": 0.32,
     "marketPrice": 0.32,
-    "source": "Consignment",
+    "source": "Collector",
     "seller": "@sleevedup",
     "stock": 1,
     "featured": false
@@ -1178,7 +1178,7 @@
     "condition": "Near Mint",
     "price": 0.36,
     "marketPrice": 0.33,
-    "source": "Consignment",
+    "source": "Collector",
     "seller": "@sleevedup",
     "stock": 1,
     "featured": false
@@ -1274,7 +1274,7 @@
     "condition": "Near Mint",
     "price": 0.16,
     "marketPrice": 0.15,
-    "source": "Consignment",
+    "source": "Collector",
     "seller": "@topdeck_tay",
     "stock": 1,
     "featured": false
@@ -1322,7 +1322,7 @@
     "condition": "Near Mint",
     "price": 0.32,
     "marketPrice": 0.3,
-    "source": "Consignment",
+    "source": "Collector",
     "seller": "@mintcondition_mia",
     "stock": 1,
     "featured": false
@@ -1434,7 +1434,7 @@
     "condition": "PSA 9",
     "price": 64.99,
     "marketPrice": 38,
-    "source": "Consignment",
+    "source": "Collector",
     "seller": "@pullrate_pete",
     "stock": 1,
     "featured": false
@@ -1450,7 +1450,7 @@
     "condition": "Lightly Played",
     "price": 17.99,
     "marketPrice": 21,
-    "source": "Consignment",
+    "source": "Collector",
     "seller": "@sleevedup",
     "stock": 1,
     "featured": false
@@ -1466,7 +1466,7 @@
     "condition": "PSA 9",
     "price": 42.99,
     "marketPrice": 26,
-    "source": "Consignment",
+    "source": "Collector",
     "seller": "@topdeck_tay",
     "stock": 1,
     "featured": false
@@ -1514,7 +1514,7 @@
     "condition": "Near Mint",
     "price": 13.99,
     "marketPrice": 14,
-    "source": "Consignment",
+    "source": "Collector",
     "seller": "@sleevedup",
     "stock": 1,
     "featured": false
@@ -1530,7 +1530,7 @@
     "condition": "Near Mint",
     "price": 2.99,
     "marketPrice": 2.48,
-    "source": "Consignment",
+    "source": "Collector",
     "seller": "@topdeck_tay",
     "stock": 1,
     "featured": false
@@ -1562,7 +1562,7 @@
     "condition": "Near Mint",
     "price": 1.99,
     "marketPrice": 1.68,
-    "source": "Consignment",
+    "source": "Collector",
     "seller": "@gradedgabe",
     "stock": 1,
     "featured": false
@@ -1578,7 +1578,7 @@
     "condition": "Lightly Played",
     "price": 1.99,
     "marketPrice": 2.85,
-    "source": "Consignment",
+    "source": "Collector",
     "seller": "@binderbrooke",
     "stock": 1,
     "featured": false
@@ -1610,7 +1610,7 @@
     "condition": "Lightly Played",
     "price": 2.99,
     "marketPrice": 3.9,
-    "source": "Consignment",
+    "source": "Collector",
     "seller": "@ripking22",
     "stock": 1,
     "featured": false
@@ -1642,7 +1642,7 @@
     "condition": "Lightly Played",
     "price": 1.99,
     "marketPrice": 2.73,
-    "source": "Consignment",
+    "source": "Collector",
     "seller": "@mintcondition_mia",
     "stock": 1,
     "featured": false
@@ -1674,7 +1674,7 @@
     "condition": "Moderately Played",
     "price": 0.28,
     "marketPrice": 0.44,
-    "source": "Consignment",
+    "source": "Collector",
     "seller": "@gradedgabe",
     "stock": 1,
     "featured": false
@@ -1722,7 +1722,7 @@
     "condition": "Moderately Played",
     "price": 0.3,
     "marketPrice": 0.43,
-    "source": "Consignment",
+    "source": "Collector",
     "seller": "@pullrate_pete",
     "stock": 1,
     "featured": false
@@ -1738,7 +1738,7 @@
     "condition": "Near Mint",
     "price": 0.87,
     "marketPrice": 0.85,
-    "source": "Consignment",
+    "source": "Collector",
     "seller": "@binderbrooke",
     "stock": 1,
     "featured": false
@@ -1754,7 +1754,7 @@
     "condition": "Near Mint",
     "price": 0.92,
     "marketPrice": 0.86,
-    "source": "Consignment",
+    "source": "Collector",
     "seller": "@ripking22",
     "stock": 1,
     "featured": false

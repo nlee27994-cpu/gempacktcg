@@ -1,9 +1,10 @@
 const STYLES = {
   Direct: 'bg-emerald-gem/10 text-emerald-300 ring-emerald-gem/30',
   Vendor: 'bg-sky-400/10 text-sky-300 ring-sky-400/30',
-  Consignment: 'bg-amethyst-500/10 text-amethyst-300 ring-amethyst-400/30',
+  Collector: 'bg-amethyst-500/10 text-amethyst-300 ring-amethyst-400/30',
+  Auction: 'bg-gold-400/10 text-gold-300 ring-gold-400/30',
 }
-const ICONS = { Direct: '◆', Vendor: '⇄', Consignment: '✋' }
+const ICONS = { Direct: '◆', Vendor: '⇄', Collector: '✓', Auction: '⚖' }
 
 export default function SourceBadge({ source }) {
   return (

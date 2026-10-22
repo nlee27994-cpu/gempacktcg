@@ -19,14 +19,14 @@ const STRATEGY = [
     body: 'Every pack lists a price floor: the minimum card value you are guaranteed. If your pulls land below it, we credit the difference. You get the excitement without the feeling of getting ripped off.',
   },
   {
-    title: 'Three sources, one cart',
+    title: 'Many sources, one cart',
     color: 'text-sky-300',
-    body: 'We sell our own stock directly, list inventory from partner vendors, and take consignments from collectors. More supply means better prices and more singles to choose from.',
+    body: 'We sell our own stock directly, list inventory from partner vendors, and run an Auction House where Gempack and verified collectors sell single cards. More supply means better prices and more singles to choose from.',
   },
   {
     title: 'How we make money',
     color: 'text-gold-300',
-    body: 'Retail margin on direct sales, a commission on vendor listings, and a 12% fee on consigned cards. Gempack Series drops, packs we build ourselves with a public checklist, are our signature product.',
+    body: 'Retail margin on direct sales, a commission on vendor listings, and a 5% seller fee on every Auction House sale. Gempack Series drops, packs we build ourselves with a public checklist, are our signature product.',
   },
   {
     title: 'How we grow',

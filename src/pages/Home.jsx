@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 import CardArt from '../components/CardArt'
 import RarityBadge from '../components/RarityBadge'
 import ProductCard from '../components/ProductCard'
+import AuctionCard from '../components/AuctionCard'
+import { isEnded, useAuctions } from '../context/AuctionContext'
 import { events, featuredDrops, seriesPacks, packs, singles } from '../lib/catalog'
 import { formatDate, formatPrice, formatTime } from '../lib/format'
 import useNow from '../lib/useNow'
@@ -33,7 +35,7 @@ function Hero() {
           <span className="gem-text">Every pack has a floor.</span>
         </h1>
         <p className="mt-5 max-w-xl text-lg text-slate-300">
-          Sealed packs and singles from our own store, partner vendors and collectors who consign through us. Every pack
+          Sealed packs and singles from our own store, partner vendors and verified collectors, plus a live Auction House. Every pack
           lists a guaranteed minimum value, so you always know what's at stake before you rip.
         </p>
         <div className="mt-8 flex flex-wrap gap-3">
@@ -163,11 +165,11 @@ function ThreeSources() {
   const items = [
     ['◆', 'Direct', 'Packs and singles from the Gempack storefront, pulled and graded in-house.', 'text-emerald-gem'],
     ['⇄', 'Partner vendors', "Trusted local game stores list their inventory with us, so there's more stock and fair prices.", 'text-sky-300'],
-    ['✋', 'Consignment', 'Collectors send us their cards. We verify and list them, and they get paid when a card sells.', 'text-amethyst-300'],
+    ['⚖', 'Auction House', 'Gempack and verified collectors auction single cards. Bid or Buy Now, and we authenticate every card before it ships.', 'text-gold-300'],
   ]
   return (
     <section className="container-page py-12">
-      <h2 className="text-center text-3xl font-bold">One cart, three sources</h2>
+      <h2 className="text-center text-3xl font-bold">One cart, many ways to buy</h2>
       <div className="mt-8 grid gap-4 sm:grid-cols-3">
         {items.map(([icon, title, body, color]) => (
           <div key={title} className="panel p-6">
@@ -181,11 +183,35 @@ function ThreeSources() {
   )
 }
 
+function EndingSoon() {
+  const { auctions } = useAuctions()
+  const now = useNow()
+  const soon = auctions.filter((a) => !isEnded(a, now)).sort((a, b) => a.endsAt - b.endsAt).slice(0, 5)
+  if (!soon.length) return null
+  return (
+    <section className="container-page py-12">
+      <div className="mb-6 flex items-end justify-between gap-4">
+        <div>
+          <p className="label text-gold-400">Auction House</p>
+          <h2 className="text-3xl font-bold">Ending soon</h2>
+        </div>
+        <Link to="/auctions" className="text-sm font-semibold text-emerald-300 hover:underline">All auctions →</Link>
+      </div>
+      <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
+        {soon.map((a) => (
+          <AuctionCard key={a.id} auction={a} now={now} />
+        ))}
+      </div>
+    </section>
+  )
+}
+
 export default function Home() {
   return (
     <>
       <Hero />
       <Drops />
+      <EndingSoon />
       <EventsBanner />
       <section className="container-page py-12">
         <div className="mb-6 flex items-end justify-between">

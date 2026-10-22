@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
 import App from './App'
 import { CartProvider } from './context/CartContext'
-import { ConsignProvider } from './context/ConsignContext'
+import { AuctionProvider } from './context/AuctionContext'
 import { SeriesProvider } from './context/SeriesContext'
 import './index.css'
 
@@ -11,11 +11,11 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>
       <CartProvider>
-        <ConsignProvider>
+        <AuctionProvider>
           <SeriesProvider>
             <App />
           </SeriesProvider>
-        </ConsignProvider>
+        </AuctionProvider>
       </CartProvider>
     </BrowserRouter>
   </React.StrictMode>,

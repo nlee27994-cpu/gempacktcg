@@ -7,7 +7,7 @@ const LINKS = [
   { to: '/shop', label: 'Shop' },
   { to: '/shop?type=pack', label: 'Packs' },
   { to: '/shop?type=single', label: 'Singles' },
-  { to: '/consign', label: 'Consign' },
+  { to: '/auctions', label: 'Auctions' },
   { to: '/about', label: 'About' },
 ]
 

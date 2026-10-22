@@ -7,11 +7,15 @@ const STORAGE_KEY = 'gempack-cart'
 function loadCart() {
   try {
     const saved = JSON.parse(localStorage.getItem(STORAGE_KEY))
-    return Array.isArray(saved) ? saved.filter((line) => getProduct(line.id)) : []
+    return Array.isArray(saved) ? saved.filter((line) => line.item || getProduct(line.id)) : []
   } catch {
     return []
   }
 }
+
+// Lines are { id, qty } for catalog products, or { id, qty, item } for one-off items
+// such as auction wins, which carry their own name and price.
+const productFor = (line) => line.item ?? getProduct(line.id)
 
 export function CartProvider({ children }) {
   const [lines, setLines] = useState(loadCart)
@@ -26,26 +30,26 @@ export function CartProvider({ children }) {
   }, [lines])
 
   const value = useMemo(() => {
-    const items = lines.map((l) => ({ ...getProduct(l.id), qty: l.qty }))
+    const items = lines.map((l) => ({ ...productFor(l), qty: l.qty }))
     const subtotal = items.reduce((s, i) => s + i.price * i.qty, 0)
     const count = items.reduce((s, i) => s + i.qty, 0)
     const shipping = subtotal === 0 || subtotal >= 50 ? 0 : 4.99
     const tax = Math.round(subtotal * 0.0875 * 100) / 100
 
-    const add = (id, qty = 1) =>
+    const add = (id, qty = 1, item) =>
       setLines((prev) => {
-        const stock = getProduct(id).stock
+        const stock = (item ?? getProduct(id)).stock
         const existing = prev.find((l) => l.id === id)
         if (existing) {
           return prev.map((l) => (l.id === id ? { ...l, qty: Math.min(stock, l.qty + qty) } : l))
         }
-        return [...prev, { id, qty: Math.min(stock, qty) }]
+        return [...prev, { id, qty: Math.min(stock, qty), ...(item && { item }) }]
       })
     const setQty = (id, qty) =>
       setLines((prev) =>
         qty <= 0
           ? prev.filter((l) => l.id !== id)
-          : prev.map((l) => (l.id === id ? { ...l, qty: Math.min(getProduct(id).stock, qty) } : l)),
+          : prev.map((l) => (l.id === id ? { ...l, qty: Math.min(productFor(l).stock, qty) } : l)),
       )
     const remove = (id) => setLines((prev) => prev.filter((l) => l.id !== id))
 
