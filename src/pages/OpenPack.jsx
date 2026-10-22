@@ -55,7 +55,7 @@ function Summary({ pack, result, onAgain, packsLeft }) {
 
   return (
     <div className="panel mx-auto mt-10 max-w-3xl animate-pop-in p-6 sm:p-8">
-      <div className="grid gap-6 sm:grid-cols-3">
+      <div className="grid gap-6 sm:grid-cols-2">
         <div>
           <p className="label">Pack price</p>
           <p className="font-display text-3xl font-bold">{formatPrice(pack.price)}</p>
@@ -70,13 +70,6 @@ function Summary({ pack, result, onAgain, packsLeft }) {
               incl. {result.bulkCount} bulk cards ({formatPrice(result.bulkValue)})
             </p>
           )}
-        </div>
-        <div>
-          <p className="label">{won ? 'You came out ahead' : result.floorCredit > 0 ? 'Net after floor credit' : 'Net'}</p>
-          <p className={`font-display text-3xl font-bold ${won ? 'text-gold-400' : 'text-slate-300'}`}>
-            {won ? '+' : '−'}
-            {formatPrice(Math.abs(result.net))}
-          </p>
         </div>
       </div>
 
