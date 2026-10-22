@@ -14,9 +14,9 @@ This is a demo. All products are mock data, nothing is stored on a server, and c
 
 | Page | What it does |
 | --- | --- |
-| **Home** (`/`) | Hero, featured rare-card drops with live countdowns, upcoming events banner, Gempack Mystery Packs |
+| **Home** (`/`) | Hero, featured rare-card drops with live countdowns, upcoming events banner, Gempack Series drops |
 | **Shop** (`/shop`) | 109 packs + 117 singles. Search, filter by type / game / rarity / source / price, sort. Filters live in the URL, so filtered views can be shared |
-| **Product** (`/product/:id`) | Card or pack details. Packs show the price floor, hit slots and pull odds |
+| **Product** (`/product/:id`) | Card or pack details. Packs show the price floor, hit slots and pull odds. Series packs show the drop's full checklist and how many of each card are still sealed |
 | **Rip a pack** (`/open/:id`) | Pack-tearing animation, tap-to-flip card reveal weighted by rarity, then pulled value vs. pack price and floor |
 | **Consign** (`/consign`) | Form for collectors to submit a card, with a payout estimate. Submissions live in React state only |
 | **Cart / Checkout** | Cart (saved in the browser), fake checkout form, order confirmation |
@@ -77,12 +77,27 @@ To change the catalog, edit `scripts/generate-data.mjs` and run `npm run generat
 The pack engine (`src/lib/packEngine.js`) is shared by the app and the data generator:
 
 1. **Odds.** Filler slots are Common or Uncommon. Hit slots are calibrated for each pack so the average pull is about
-   86% of the pack price (88% for Gempack Mystery Packs). Within a rarity tier, expensive chase cards are rarer, and
-   cards from the pack's own set come up more often.
+   86% of the pack price. Within a rarity tier, expensive chase cards are rarer, and cards from the pack's own set come
+   up more often.
 2. **Floors.** The generator simulates 1,500 openings for each pack and picks the highest floor whose expected
-   store-credit payout stays under 6% of the price (12% for Mystery Packs).
+   store-credit payout stays under 6% of the price.
 3. **Result.** Pulls plus floor credit return roughly 84–111% of the price, about 92% on average. The store keeps a
    margin and buyers never lose more than the floor allows.
+
+## Gempack Series drops
+
+The Gempack-built packs (Emerald, Amethyst and Gold, for each game) work differently. They are finite **drops**, with
+the data in `src/data/series.json`:
+
+- Each drop has a fixed print run: 60 Emerald, 30 Amethyst or 20 Gold packs.
+- The generator writes a **checklist** for each drop. Its total card value is 90% of what the whole drop sells for.
+  The biggest chase card that fits the budget goes in first.
+- Every checklist copy is sealed into exactly one pack. Bigger cards go into the weakest packs first, so the worst pack
+  is as strong as it can be. **Open every pack and you get every card.**
+- The price floor is exact: it's the value of the weakest pack in the drop.
+- Ripping a series pack opens a random sealed pack from that drop. The product page shows what's still sealed
+  ("2 of 3 left") and the live chance that the next pack has a Secret Rare. Progress is saved in your browser, and
+  each drop has a "Reset this drop" button for demos.
 
 ## Branding
 

@@ -10,8 +10,8 @@ const FILLER_ODDS = [
 // the rest count as bulk at a flat value.
 const MAX_SHOWN_FILLER = 5
 const BULK_VALUE = 0.05
-// Average return we price packs to: share of the pack price paid back in card value
-const TARGET_RETURN = { standard: 0.86, mystery: 0.88 }
+// Average return we price store packs to: share of the pack price paid back in card value
+const TARGET_RETURN = 0.86
 const SET_BONUS = 4
 
 const round2 = (n) => Math.round(n * 100) / 100
@@ -66,7 +66,7 @@ export function createPackEngine(singles) {
   function calibrate(pack) {
     const { hitSlots, shownFiller, bulkCount } = layout(pack)
     const fillerEV = FILLER_ODDS.reduce((s, [r, p]) => s + p * tierValue(pack, r), 0)
-    const target = pack.price * (pack.gemTier ? TARGET_RETURN.mystery : TARGET_RETURN.standard)
+    const target = pack.price * TARGET_RETURN
     const perSlot = (target - shownFiller * fillerEV - bulkCount * BULK_VALUE) / hitSlots
 
     const tiers = RARITIES.slice(rarityRank(pack.rarity))

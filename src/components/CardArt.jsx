@@ -65,10 +65,10 @@ export default function CardArt({ product, size = 'md', className = '' }) {
               <GameIcon game={product.game} className={`${big ? 'h-20 w-20' : 'h-10 w-10'} text-white drop-shadow-lg`} />
             )}
             <span className={`mt-2 font-display font-bold uppercase leading-tight text-white drop-shadow ${big ? 'text-xl' : 'text-[11px]'}`}>
-              {product.gemTier ? `${product.gemTier} Mystery` : product.set}
+              {product.gemTier ? `${product.gemTier} Pack` : product.set}
             </span>
             <span className={`mt-1 rounded bg-navy-950/50 px-1.5 py-0.5 font-semibold uppercase tracking-wider text-white/90 ${big ? 'text-xs' : 'text-[9px]'}`}>
-              {product.gemTier ? GAME_SHORT[product.game] : product.kind}
+              {product.gemTier ? `${GAME_SHORT[product.game]} · ${product.set.replace('Gempack ', '')}` : product.kind}
             </span>
           </div>
         </div>

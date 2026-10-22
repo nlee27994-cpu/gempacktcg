@@ -26,7 +26,7 @@ const STRATEGY = [
   {
     title: 'How we make money',
     color: 'text-gold-300',
-    body: 'Retail margin on direct sales, a commission on vendor listings, and a 12% fee on consigned cards. Curated Gempack Mystery Packs are our highest-margin signature product.',
+    body: 'Retail margin on direct sales, a commission on vendor listings, and a 12% fee on consigned cards. Gempack Series drops, packs we build ourselves with a public checklist, are our signature product.',
   },
   {
     title: 'How we grow',
@@ -89,6 +89,7 @@ export default function About() {
             <li><span className="font-semibold text-white">1. We set the floor</span> from current market prices and the pack's pull odds, and print it on the listing.</li>
             <li><span className="font-semibold text-white">2. You rip.</span> Every card you pull is valued at its near-mint market price.</li>
             <li><span className="font-semibold text-white">3. If the total is under the floor,</span> we credit the difference to your Gempack account automatically.</li>
+            <li><span className="font-semibold text-white">Gempack Series drops go further.</span> We seal every pack ourselves from a public checklist, so the floor is the value of the weakest pack in the drop. Open every pack and you get every card.</li>
           </ol>
           <Link to="/shop?type=pack&sort=floor" className="btn-primary mt-6">See packs with the best floors</Link>
         </div>

@@ -4,12 +4,15 @@ import CardArt from '../components/CardArt'
 import PriceFloorMeter from '../components/PriceFloorMeter'
 import ProductCard from '../components/ProductCard'
 import RarityBadge from '../components/RarityBadge'
+import SeriesChecklist from '../components/SeriesChecklist'
 import SourceBadge from '../components/SourceBadge'
 import { useCart } from '../context/CartContext'
+import { useSeries } from '../context/SeriesContext'
 import { getProduct, relatedProducts } from '../lib/catalog'
 import { formatPrice } from '../lib/format'
 import { oddsFor } from '../lib/packOpening'
 import { RARITY_STYLES } from '../lib/rarity'
+import { getSeries } from '../lib/series'
 import NotFound from './NotFound'
 
 const SOURCE_COPY = {
@@ -64,6 +67,7 @@ export default function Product() {
 function ProductDetail({ id }) {
   const product = getProduct(id)
   const { add, items } = useCart()
+  const { openedFor } = useSeries()
   const [qty, setQty] = useState(1)
   const [added, setAdded] = useState(false)
 
@@ -71,7 +75,10 @@ function ProductDetail({ id }) {
 
   const isPack = product.type === 'pack'
   const inCart = items.find((i) => i.id === product.id)?.qty ?? 0
-  const maxQty = product.stock - inCart
+  // Series drops sell down as packs are opened
+  const series = product.seriesId && getSeries(product.seriesId)
+  const stock = series ? series.packs.length - openedFor(series.id).length : product.stock
+  const maxQty = stock - inCart
 
   const handleAdd = () => {
     add(product.id, qty)
@@ -118,7 +125,7 @@ function ProductDetail({ id }) {
 
           {isPack && (
             <div className="mt-6">
-              <PriceFloorMeter price={product.price} floor={product.priceFloor} />
+              <PriceFloorMeter price={product.price} floor={product.priceFloor} exact={Boolean(series)} />
             </div>
           )}
 
@@ -129,16 +136,17 @@ function ProductDetail({ id }) {
               <button className="px-3 py-2.5 text-lg disabled:opacity-40" onClick={() => setQty((q) => q + 1)} disabled={qty >= maxQty} aria-label="Increase quantity">+</button>
             </div>
             <button className="btn-primary flex-1 py-3 sm:flex-none sm:px-8" onClick={handleAdd} disabled={maxQty <= 0}>
-              {added ? '✓ Added to cart' : maxQty <= 0 ? 'All in your cart' : 'Add to cart'}
+              {added ? '✓ Added to cart' : stock <= 0 ? 'Sold out' : maxQty <= 0 ? 'All in your cart' : 'Add to cart'}
             </button>
-            {isPack && (
+            {isPack && stock > 0 && (
               <Link to={`/open/${product.id}`} className="btn-gold flex-1 py-3 sm:flex-none">
                 ⚡ Demo rip
               </Link>
             )}
           </div>
           <p className="mt-2 text-xs text-slate-500">
-            {product.stock} in stock{inCart > 0 && ` · ${inCart} in your cart`}
+            {series ? `${stock} of ${series.packs.length} packs left in this drop` : `${stock} in stock`}
+            {inCart > 0 && ` · ${inCart} in your cart`}
           </p>
 
           <dl className="panel mt-6 divide-y divide-navy-700 text-sm">
@@ -149,6 +157,7 @@ function ProductDetail({ id }) {
                 ? [
                     ['Cards per pack', product.cardsPerPack],
                     ['Hit slots', `${product.hitSlots} × ${product.rarity} or better`],
+                    ...(series ? [['Print run', `${series.packs.length} packs, ${series.checklist.length} different cards`]] : []),
                   ]
                 : [
                     ['Condition', product.condition],
@@ -162,14 +171,25 @@ function ProductDetail({ id }) {
             ))}
           </dl>
 
-          {isPack && (
+          {isPack && !series && (
             <div className="mt-6">
               <h2 className="mb-3 text-lg font-semibold">Pull odds</h2>
               <OddsTable pack={product} />
             </div>
           )}
+          {series && (
+            <a href="#checklist" className="btn-ghost mt-6 w-full">
+              See all {series.checklist.length} cards in this drop ↓
+            </a>
+          )}
         </div>
       </div>
+
+      {series && (
+        <div id="checklist" className="mt-12 scroll-mt-24">
+          <SeriesChecklist pack={product} series={series} />
+        </div>
+      )}
 
       <section className="mt-16">
         <h2 className="mb-4 text-2xl font-bold">More {product.game} {isPack ? 'packs' : 'singles'}</h2>

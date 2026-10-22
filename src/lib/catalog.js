@@ -24,7 +24,7 @@ export const featuredDrops = singles
   .sort((a, b) => b.marketPrice - a.marketPrice)
   .slice(0, 6)
 
-export const mysteryPacks = packs.filter((p) => p.gemTier)
+export const seriesPacks = packs.filter((p) => p.gemTier)
 
 export const relatedProducts = (product, limit = 4) =>
   allProducts

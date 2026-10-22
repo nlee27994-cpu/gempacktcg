@@ -1,13 +1,15 @@
-import { useMemo, useState } from 'react'
+import { useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import CardArt from '../components/CardArt'
 import { GemMark } from '../components/Logo'
 import RarityBadge from '../components/RarityBadge'
 import { useCart } from '../context/CartContext'
-import { getProduct, mysteryPacks } from '../lib/catalog'
+import { useSeries } from '../context/SeriesContext'
+import { getProduct, seriesPacks } from '../lib/catalog'
 import { formatPrice } from '../lib/format'
 import { openPack } from '../lib/packOpening'
 import { RARITY_STYLES, rarityRank } from '../lib/rarity'
+import { getSeries, seriesPackResult } from '../lib/series'
 import NotFound from './NotFound'
 
 function FlipCard({ card, revealed, onReveal, index }) {
@@ -42,7 +44,7 @@ function FlipCard({ card, revealed, onReveal, index }) {
   )
 }
 
-function Summary({ pack, result, onAgain }) {
+function Summary({ pack, result, onAgain, packsLeft }) {
   const { add } = useCart()
   const [added, setAdded] = useState(false)
   const best = [...result.cards].sort((a, b) => b.pulledValue - a.pulledValue)[0]
@@ -121,6 +123,14 @@ function Summary({ pack, result, onAgain }) {
         </button>
         <Link to={`/product/${pack.id}`} className="btn-ghost">Pack details</Link>
       </div>
+      {packsLeft !== undefined && (
+        <p className="mt-4 text-center text-sm text-slate-300">
+          These cards are now out of the drop.{' '}
+          <Link to={`/product/${pack.id}#checklist`} className="font-semibold text-gold-300 hover:underline">
+            {packsLeft === 0 ? 'The drop is fully opened' : `${packsLeft} packs left`}: see what's still sealed →
+          </Link>
+        </p>
+      )}
       <p className="mt-4 text-center text-xs text-slate-500">
         Demo rip: values use near-mint market prices from our mock catalog. Nothing is charged.
       </p>
@@ -128,26 +138,42 @@ function Summary({ pack, result, onAgain }) {
   )
 }
 
+// Keyed on id so switching packs starts from a fresh, sealed pack
 export default function OpenPack() {
   const { id } = useParams()
+  return <OpenPackPage key={id} id={id} />
+}
+
+function OpenPackPage({ id }) {
   const pack = getProduct(id)
+  const { openedFor, openNext, reset } = useSeries()
   const [phase, setPhase] = useState('sealed') // sealed -> ripping -> revealing
   const [round, setRound] = useState(0)
+  const [result, setResult] = useState(null)
   const [revealed, setRevealed] = useState(() => new Set())
-
-  // A fresh result for every round; memo keyed on round so re-renders don't re-roll
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const result = useMemo(() => (pack?.type === 'pack' ? openPack(pack) : null), [pack, round])
 
   if (!pack || pack.type !== 'pack') return <NotFound />
 
+  // Series packs come out of a finite drop; store packs are rolled from the odds
+  const series = pack.seriesId && getSeries(pack.seriesId)
+  const packsLeft = series ? series.packs.length - openedFor(series.id).length : undefined
+  const soldOut = series && packsLeft === 0
+
   const rip = () => {
+    if (series) {
+      const cardIds = openNext(series)
+      if (!cardIds) return
+      setResult(seriesPackResult(pack, cardIds))
+    } else {
+      setResult(openPack(pack))
+    }
+    setRound((r) => r + 1)
     setPhase('ripping')
     setTimeout(() => setPhase('revealing'), 750)
   }
   const again = () => {
     setRevealed(new Set())
-    setRound((r) => r + 1)
+    setResult(null)
     setPhase('sealed')
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
@@ -155,8 +181,8 @@ export default function OpenPack() {
   const revealAll = () => setRevealed(new Set(result.cards.map((_, i) => i)))
 
   const allRevealed = result && revealed.size === result.cards.length
-  const running = result.cards.filter((_, i) => revealed.has(i)).reduce((s, c) => s + c.pulledValue, 0)
-  const topRevealed = result.cards
+  const running = (result?.cards ?? []).filter((_, i) => revealed.has(i)).reduce((s, c) => s + c.pulledValue, 0)
+  const topRevealed = (result?.cards ?? [])
     .filter((_, i) => revealed.has(i))
     .reduce((best, c) => (best && rarityRank(best.rarity) >= rarityRank(c.rarity) ? best : c), null)
 
@@ -169,9 +195,29 @@ export default function OpenPack() {
           {formatPrice(pack.price)} · Floor <span className="font-semibold text-emerald-300">{formatPrice(pack.priceFloor)}</span> ·{' '}
           {pack.hitSlots}× {pack.rarity}+ hit
         </p>
+        {series && (
+          <p className="mt-1 text-sm">
+            <Link to={`/product/${pack.id}#checklist`} className="font-semibold text-gold-300 hover:underline">
+              {pack.set} · {packsLeft} of {series.packs.length} packs left · see the checklist
+            </Link>
+          </p>
+        )}
       </div>
 
-      {phase !== 'revealing' && (
+      {soldOut && phase === 'sealed' && (
+        <div className="panel mx-auto mt-10 max-w-md p-8 text-center">
+          <p className="text-4xl">📦</p>
+          <h2 className="mt-3 text-xl font-bold">This drop is sold out</h2>
+          <p className="mt-2 text-sm text-slate-400">
+            All {series.packs.length} packs have been opened, and every card on the checklist has been pulled.
+          </p>
+          <button className="btn-ghost mt-6" onClick={() => reset(series.id)}>
+            Reset this drop (demo)
+          </button>
+        </div>
+      )}
+
+      {phase !== 'revealing' && !(soldOut && phase === 'sealed') && (
         <div className="mt-10 flex flex-col items-center">
           <button
             type="button"
@@ -231,18 +277,18 @@ export default function OpenPack() {
             ))}
           </div>
 
-          {allRevealed && <Summary pack={pack} result={result} onAgain={again} />}
+          {allRevealed && <Summary pack={pack} result={result} onAgain={again} packsLeft={packsLeft} />}
         </>
       )}
 
       <section className="mx-auto mt-16 max-w-5xl">
         <h2 className="mb-4 text-center text-lg font-semibold text-slate-300">Try another pack</h2>
         <div className="flex flex-wrap justify-center gap-2">
-          {mysteryPacks
+          {seriesPacks
             .filter((p) => p.id !== pack.id)
             .map((p) => (
-              <Link key={p.id} to={`/open/${p.id}`} onClick={again} className="rounded-full border border-navy-500 px-3 py-1.5 text-xs font-medium text-slate-300 hover:border-gold-400/60 hover:text-white">
-                {p.name.replace('Gempack ', '').replace(' Mystery Pack', '')}
+              <Link key={p.id} to={`/open/${p.id}`} className="rounded-full border border-navy-500 px-3 py-1.5 text-xs font-medium text-slate-300 hover:border-gold-400/60 hover:text-white">
+                {p.name.replace('Gempack ', '').replace(' Pack', '')}
               </Link>
             ))}
           <Link to="/shop?type=pack" className="rounded-full border border-emerald-gem/40 px-3 py-1.5 text-xs font-semibold text-emerald-300">

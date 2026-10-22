@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import CardArt from '../components/CardArt'
 import RarityBadge from '../components/RarityBadge'
 import ProductCard from '../components/ProductCard'
-import { events, featuredDrops, mysteryPacks, packs, singles } from '../lib/catalog'
+import { events, featuredDrops, seriesPacks, packs, singles } from '../lib/catalog'
 import { formatDate, formatPrice, formatTime } from '../lib/format'
 import useNow from '../lib/useNow'
 
@@ -19,7 +19,7 @@ function countdown(ms) {
 
 function Hero() {
   const [gold, amethyst, emerald] = ['Gold', 'Amethyst', 'Emerald'].map((t) =>
-    mysteryPacks.find((p) => p.gemTier === t && p.game === 'Pokémon'),
+    seriesPacks.find((p) => p.gemTier === t && p.game === 'Pokémon'),
   )
   return (
     <section className="container-page grid items-center gap-12 pb-16 pt-12 lg:grid-cols-2 lg:pt-20">
@@ -190,12 +190,16 @@ export default function Home() {
       <section className="container-page py-12">
         <div className="mb-6 flex items-end justify-between">
           <div>
-            <p className="label text-emerald-300">Gempack exclusives</p>
-            <h2 className="text-3xl font-bold">Mystery Packs: an Ultra Rare or better in every one</h2>
+            <p className="label text-emerald-300">Gempack Series 1 drops</p>
+            <h2 className="text-3xl font-bold">Hand-built packs with a public checklist</h2>
+            <p className="mt-2 max-w-2xl text-sm text-slate-400">
+              Each drop is a fixed run of packs. Every card on its checklist is sealed into exactly one pack, so open them all and
+              you get every card. Pulled cards leave the drop for good.
+            </p>
           </div>
         </div>
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
-          {mysteryPacks.slice(0, 5).map((p) => (
+          {seriesPacks.slice(0, 5).map((p) => (
             <ProductCard key={p.id} product={p} />
           ))}
         </div>

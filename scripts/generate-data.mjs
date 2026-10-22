@@ -61,6 +61,8 @@ const COLLECTORS = [
   '@gradedgabe', '@binderbrooke', '@topdeck_tay',
 ]
 
+const GAME_SLUG = { Pokémon: 'pokemon', 'Magic: The Gathering': 'mtg', 'One Piece': 'onepiece' }
+
 const sellerFor = (game, source) =>
   source === 'Direct' ? 'Gempack TCG' : source === 'Vendor' ? pick(VENDORS[game]) : pick(COLLECTORS)
 
@@ -239,39 +241,146 @@ for (const [game, sets] of Object.entries(SETS)) {
   }
 }
 
-// Gempack-exclusive curated mystery packs: our signature product, highest floors
-// Every tier guarantees Ultra Rare or better; higher tiers add hit slots and boost Secret Rare odds.
-const MYSTERY = [
-  { tier: 'Emerald', price: 29.99, hitSlots: 1 },
-  { tier: 'Amethyst', price: 59.99, hitSlots: 2 },
-  { tier: 'Gold', price: 149.99, hitSlots: 3 },
+// ---------- Gempack Series drops ----------
+// Our hand-built packs. Each tier is a numbered drop with a fixed print run and a public
+// checklist: every card on the checklist is sealed into exactly one pack, so whoever opens
+// every pack in the drop gets every card.
+const SERIES_NAME = 'Gempack Series 1'
+const SERIES_TIERS = [
+  { tier: 'Emerald', price: 29.99, hitSlots: 1, packCount: 60 },
+  { tier: 'Amethyst', price: 59.99, hitSlots: 2, packCount: 30 },
+  { tier: 'Gold', price: 149.99, hitSlots: 3, packCount: 20 },
 ]
+const SERIES_CARDS_PER_PACK = 5
+const SERIES_PAYOUT = 0.9 // total card value in a drop = 90% of what the drop sells for
+const FILLER_MIX = [[C, 0.55], [U, 0.3], [R, 0.15]]
+// Scarcer copies for pricier chase cards
+const maxCopies = (card) => (card.marketPrice >= 500 ? 1 : card.marketPrice >= 150 ? 2 : 3)
+
+const shuffle = (arr) => {
+  const a = [...arr]
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(rand() * (i + 1))
+    ;[a[i], a[j]] = [a[j], a[i]]
+  }
+  return a
+}
+const sumValue = (cards) => cards.reduce((s, c) => s + c.marketPrice, 0)
+const byPrice = (a, b) => a.marketPrice - b.marketPrice
+
+function buildSeries(game, t) {
+  const pool = (rarity) => singles.filter((s) => s.game === game && s.rarity === rarity).sort(byPrice)
+  const fillerPerPack = SERIES_CARDS_PER_PACK - t.hitSlots
+  const fillerTotal = t.packCount * fillerPerPack
+  const hitTotal = t.packCount * t.hitSlots
+
+  // Filler copies, spread round-robin over each tier's cards
+  const fillers = []
+  FILLER_MIX.forEach(([rarity, share], i) => {
+    const n = i === FILLER_MIX.length - 1 ? fillerTotal - fillers.length : Math.round(fillerTotal * share)
+    const cards = shuffle(pool(rarity))
+    for (let k = 0; k < n; k++) fillers.push(cards[k % cards.length])
+  })
+
+  // Hits start as the cheaper Ultra Rares, then get upgraded while the value budget allows
+  const budget = t.price * t.packCount * SERIES_PAYOUT - sumValue(fillers)
+  const urs = pool(UR)
+  const srs = pool(SR)
+  const cheapUrs = urs.slice(0, Math.ceil(urs.length / 2))
+  const hits = Array.from({ length: hitTotal }, (_, i) => cheapUrs[i % cheapUrs.length])
+  let value = sumValue(hits)
+  const copiesOf = (card) => hits.filter((h) => h.id === card.id).length
+  // Swap the cheapest hit for `card` if it fits the budget
+  const tryUpgrade = (card, eligible) => {
+    const target = hits.filter(eligible).sort(byPrice)[0]
+    if (!target) return false
+    const delta = card.marketPrice - target.marketPrice
+    if (delta <= 0 || value + delta > budget) return false
+    hits[hits.indexOf(target)] = card
+    value += delta
+    return true
+  }
+  // Small card pools (e.g. MTG) can run out of copies before the budget is spent,
+  // so copy limits loosen step by step until the drop holds its share of value.
+  for (let scale = 1; scale <= 4 && value < budget * 0.97; scale++) {
+    // 1) Chase cards: biggest Secret Rare that fits goes in first
+    for (let changed = true; changed; ) {
+      changed = false
+      for (const sr of [...srs].reverse()) {
+        if (copiesOf(sr) < maxCopies(sr) * scale) changed = tryUpgrade(sr, (h) => h.rarity === UR) || changed
+      }
+    }
+    // 2) Spend what's left upgrading cheap Ultra Rares to pricier ones
+    const urCap = (Math.ceil(hitTotal / urs.length) + 2) * scale
+    for (let changed = true; changed; ) {
+      changed = false
+      for (const ur of [...urs].reverse()) {
+        if (copiesOf(ur) < urCap) changed = tryUpgrade(ur, (h) => h.rarity === UR && h.marketPrice < ur.marketPrice) || changed
+      }
+    }
+  }
+
+  // Seal the packs: biggest cards first, each into the weakest pack with room,
+  // so the worst pack in the drop is as strong as possible. That worst pack is the floor.
+  const sealed = Array.from({ length: t.packCount }, () => ({ hits: [], fillers: [], value: 0 }))
+  const place = (cards, slot, cap) => {
+    for (const card of [...cards].sort(byPrice).reverse()) {
+      const target = sealed.filter((p) => p[slot].length < cap).sort((a, b) => a.value - b.value)[0]
+      target[slot].push(card)
+      target.value += card.marketPrice
+    }
+  }
+  place(hits, 'hits', t.hitSlots)
+  place(fillers, 'fillers', fillerPerPack)
+
+  const counts = new Map()
+  for (const c of [...hits, ...fillers]) counts.set(c.id, (counts.get(c.id) ?? 0) + 1)
+  const rank = [C, U, R, UR, SR]
+  const checklist = [...counts]
+    .map(([id, copies]) => ({ id, copies, card: singles.find((s) => s.id === id) }))
+    .sort((a, b) => rank.indexOf(b.card.rarity) - rank.indexOf(a.card.rarity) || b.card.marketPrice - a.card.marketPrice)
+    .map(({ id, copies }) => ({ id, copies }))
+
+  return {
+    checklist,
+    packs: shuffle(sealed).map((p) => [...p.fillers.sort(byPrice), ...p.hits.sort(byPrice)].map((c) => c.id)),
+    totalValue: money(value + sumValue(fillers)),
+    priceFloor: Math.floor(Math.min(...sealed.map((p) => p.value)) * 100) / 100,
+  }
+}
+
+const series = []
 for (const game of Object.keys(SETS)) {
-  for (const m of MYSTERY) {
+  for (const t of SERIES_TIERS) {
+    const built = buildSeries(game, t)
+    const id = `sr-${t.tier.toLowerCase()}-${GAME_SLUG[game]}`
     pushPack({
-      name: `Gempack ${m.tier} Mystery Pack — ${game}`,
+      name: `Gempack ${t.tier} Pack — ${game}`,
       game,
-      set: 'Gempack Curated',
-      kind: `${m.tier} Mystery Pack`,
+      set: SERIES_NAME,
+      kind: `${t.tier} Series Pack`,
       rarity: UR,
-      price: m.price,
-      cardsPerPack: 5,
-      hitSlots: m.hitSlots,
+      price: t.price,
+      priceFloor: built.priceFloor,
+      cardsPerPack: SERIES_CARDS_PER_PACK,
+      hitSlots: t.hitSlots,
       source: 'Direct',
       seller: 'Gempack TCG',
-      stock: Math.ceil(between(10, 40)),
+      stock: t.packCount,
       featured: true,
-      gemTier: m.tier,
+      gemTier: t.tier,
+      seriesId: id,
     })
+    series.push({ id, packId: packs.at(-1).id, name: `${SERIES_NAME}: ${t.tier} — ${game}`, game, tier: t.tier, ...built })
   }
 }
 
 // ---------- price floors ----------
-// Floors come from simulated pulls: the highest floor whose expected store-credit payout
-// stays within budget. Mystery packs get a bigger budget because they are our headline product.
+// Store packs: floors come from simulated pulls, set as the highest floor whose expected
+// store-credit payout stays under 6% of the price. Series packs already have exact floors.
 const engine = createPackEngine(singles)
 packs.forEach((p, i) => {
-  p.priceFloor = solveFloor(engine, p, p.gemTier ? 0.12 : 0.06, 1500, 1000 + i)
+  if (!p.seriesId) p.priceFloor = solveFloor(engine, p, 0.06, 1500, 1000 + i)
 })
 
 // ---------- events ----------
@@ -280,7 +389,7 @@ const events = [
   { id: 'ev-2', title: 'One Piece OP-13 Release Night', type: 'Set Release', date: '2026-11-07T17:00:00-07:00', location: 'Partner store: Grand Line Collectibles', game: 'One Piece', blurb: 'Midnight-style release with sealed pre-orders, a Leader draft and prizes.' },
   { id: 'ev-3', title: 'Magic Prerelease Weekend', type: 'Set Release', date: '2026-11-14T10:00:00-07:00', location: 'Partner store: Blue Mana Games', game: 'Magic: The Gathering', blurb: 'Sealed prerelease events all weekend. Prerelease Packs ship with a price floor.' },
   { id: 'ev-4', title: 'Collector Consignment Day', type: 'Community', date: '2026-11-21T12:00:00-08:00', location: 'Gempack HQ + online', game: 'All games', blurb: 'Bring your binder. Get it graded, priced and listed by our team on the spot.' },
-  { id: 'ev-5', title: 'Holiday Gold Pack Drop', type: 'Live Showcase', date: '2026-12-12T18:00:00-08:00', location: 'Livestream · Gempack TV', game: 'All games', blurb: 'A limited run of 250 Gold Mystery Packs, each with two Secret Rare hit slots.' },
+  { id: 'ev-5', title: 'Holiday Gold Pack Drop', type: 'Live Showcase', date: '2026-12-12T18:00:00-08:00', location: 'Livestream · Gempack TV', game: 'All games', blurb: 'Series 2 opens: new Emerald, Amethyst and Gold drops with a fresh checklist of chase cards.' },
 ]
 
 mkdirSync(OUT, { recursive: true })
@@ -288,4 +397,5 @@ const write = (file, data) => writeFileSync(join(OUT, file), JSON.stringify(data
 write('singles.json', singles)
 write('packs.json', packs)
 write('events.json', events)
-console.log(`Wrote ${singles.length} singles, ${packs.length} packs, ${events.length} events to src/data`)
+write('series.json', series)
+console.log(`Wrote ${singles.length} singles, ${packs.length} packs, ${series.length} series, ${events.length} events to src/data`)

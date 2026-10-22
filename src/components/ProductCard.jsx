@@ -4,9 +4,14 @@ import RarityBadge from './RarityBadge'
 import SourceBadge from './SourceBadge'
 import { formatPrice } from '../lib/format'
 import { GAME_SHORT } from '../lib/catalog'
+import { useSeries } from '../context/SeriesContext'
+import { getSeries } from '../lib/series'
 
 export default function ProductCard({ product }) {
   const isPack = product.type === 'pack'
+  const { openedFor } = useSeries()
+  const series = product.seriesId && getSeries(product.seriesId)
+  const packsLeft = series && series.packs.length - openedFor(series.id).length
   return (
     <Link
       to={`/product/${product.id}`}
@@ -26,6 +31,11 @@ export default function ProductCard({ product }) {
         <p className="text-xs text-slate-400">
           {GAME_SHORT[product.game]} · {isPack ? `${product.cardsPerPack} cards` : product.condition}
         </p>
+        {series && (
+          <p className={`text-[11px] font-semibold ${packsLeft ? 'text-gold-300' : 'text-rose-400'}`}>
+            {packsLeft ? `${packsLeft} of ${series.packs.length} packs left` : 'Sold out'}
+          </p>
+        )}
         <div className="mt-auto flex items-end justify-between pt-1">
           <span className="font-display text-lg font-bold">{formatPrice(product.price)}</span>
           {isPack && (
