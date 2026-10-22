@@ -9,6 +9,7 @@ import SeriesChecklist from '../components/SeriesChecklist'
 import SourceBadge from '../components/SourceBadge'
 import { useCart } from '../context/CartContext'
 import { useSeries } from '../context/SeriesContext'
+import { useLedger } from '../context/LedgerContext'
 import { isEnded, useAuctions } from '../context/AuctionContext'
 import { getProduct, relatedProducts } from '../lib/catalog'
 import { formatPrice } from '../lib/format'
@@ -87,6 +88,7 @@ function ProductDetail({ id }) {
   const { add, items } = useCart()
   const { openedFor } = useSeries()
   const { auctions } = useAuctions()
+  const { stockFor } = useLedger()
   const [qty, setQty] = useState(1)
   const [added, setAdded] = useState(false)
 
@@ -96,7 +98,7 @@ function ProductDetail({ id }) {
   const inCart = items.find((i) => i.id === product.id)?.qty ?? 0
   // Series drops sell down as packs are opened
   const series = product.seriesId && getSeries(product.seriesId)
-  const stock = series ? series.packs.length - openedFor(series.id).length : product.stock
+  const stock = series ? series.packs.length - openedFor(series.id).length : stockFor(product.id)
   const maxQty = stock - inCart
 
   const handleAdd = () => {

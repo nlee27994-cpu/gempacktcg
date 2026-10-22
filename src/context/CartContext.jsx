@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useMemo, useState } from 'react'
 import { getProduct, DATA_VERSION } from '../lib/catalog'
+import { useLedger } from './LedgerContext'
 
 const CartContext = createContext(null)
 // Keyed to the catalog version so saved ids never point at the wrong products
@@ -19,6 +20,7 @@ function loadCart() {
 const productFor = (line) => line.item ?? getProduct(line.id)
 
 export function CartProvider({ children }) {
+  const ledger = useLedger()
   const [lines, setLines] = useState(loadCart)
   const [lastOrder, setLastOrder] = useState(null)
 
@@ -32,14 +34,18 @@ export function CartProvider({ children }) {
 
   const value = useMemo(() => {
     const items = lines.map((l) => ({ ...productFor(l), qty: l.qty }))
-    const subtotal = items.reduce((s, i) => s + i.price * i.qty, 0)
+    // Money is rounded to the cent so totals never show float noise like 24.779999999999998
+    const subtotal = Math.round(items.reduce((s, i) => s + i.price * i.qty, 0) * 100) / 100
     const count = items.reduce((s, i) => s + i.qty, 0)
     const shipping = subtotal === 0 || subtotal >= 50 ? 0 : 4.99
     const tax = Math.round(subtotal * 0.0875 * 100) / 100
+    const total = Math.round((subtotal + shipping + tax) * 100) / 100
 
+    // One-off items carry their own stock; catalog products use live stock (minus units sold)
+    const stockOf = (id, item) => (item ? item.stock : ledger.stockFor(id))
     const add = (id, qty = 1, item) =>
       setLines((prev) => {
-        const stock = (item ?? getProduct(id)).stock
+        const stock = stockOf(id, item)
         const existing = prev.find((l) => l.id === id)
         if (existing) {
           return prev.map((l) => (l.id === id ? { ...l, qty: Math.min(stock, l.qty + qty) } : l))
@@ -50,7 +56,7 @@ export function CartProvider({ children }) {
       setLines((prev) =>
         qty <= 0
           ? prev.filter((l) => l.id !== id)
-          : prev.map((l) => (l.id === id ? { ...l, qty: Math.min(productFor(l).stock, qty) } : l)),
+          : prev.map((l) => (l.id === id ? { ...l, qty: Math.min(stockOf(l.id, l.item), qty) } : l)),
       )
     const remove = (id) => setLines((prev) => prev.filter((l) => l.id !== id))
 
@@ -63,15 +69,29 @@ export function CartProvider({ children }) {
         subtotal,
         shipping,
         tax,
-        total: subtotal + shipping + tax,
+        total,
       }
+      order.tx = ledger.record('order', {
+        summary: `Order ${order.number}: ${count} item${count === 1 ? '' : 's'}`,
+        amount: order.total,
+        actor: customer.name,
+        data: {
+          orderNumber: order.number,
+          customer,
+          items: items.map(({ id, auctionId, name, type, source, seller, price, qty }) => ({ id, auctionId, name, type, source, seller, price, qty })),
+          subtotal,
+          shipping,
+          tax,
+          total: order.total,
+        },
+      })
       setLastOrder(order)
       setLines([])
       return order
     }
 
-    return { items, count, subtotal, shipping, tax, total: subtotal + shipping + tax, add, setQty, remove, checkout, lastOrder }
-  }, [lines, lastOrder])
+    return { items, count, subtotal, shipping, tax, total, add, setQty, remove, checkout, lastOrder }
+  }, [lines, lastOrder, ledger])
 
   return <CartContext.Provider value={value}>{children}</CartContext.Provider>
 }

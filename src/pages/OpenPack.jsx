@@ -5,6 +5,7 @@ import { GemMark } from '../components/Logo'
 import RarityBadge from '../components/RarityBadge'
 import { useCart } from '../context/CartContext'
 import { useSeries } from '../context/SeriesContext'
+import { useLedger } from '../context/LedgerContext'
 import { getProduct, seriesPacks } from '../lib/catalog'
 import { formatPrice } from '../lib/format'
 import { openPack } from '../lib/packOpening'
@@ -147,6 +148,7 @@ export default function OpenPack() {
 function OpenPackPage({ id }) {
   const pack = getProduct(id)
   const { openedFor, openNext, reset } = useSeries()
+  const { record } = useLedger()
   const [phase, setPhase] = useState('sealed') // sealed -> ripping -> revealing
   const [round, setRound] = useState(0)
   const [result, setResult] = useState(null)
@@ -160,13 +162,32 @@ function OpenPackPage({ id }) {
   const soldOut = series && packsLeft === 0
 
   const rip = () => {
+    let opened
     if (series) {
       const cardIds = openNext(series)
       if (!cardIds) return
-      setResult(seriesPackResult(pack, cardIds))
+      opened = seriesPackResult(pack, cardIds)
     } else {
-      setResult(openPack(pack))
+      opened = openPack(pack)
     }
+    setResult(opened)
+    const best = opened.cards.reduce((a, b) => (b.pulledValue > a.pulledValue ? b : a))
+    record(series ? 'drop-open' : 'pack-rip', {
+      summary: `${pack.name}: pulled ${formatPrice(opened.pulledValue)}, best ${best.name}`,
+      amount: opened.pulledValue,
+      data: {
+        packId: pack.id,
+        packName: pack.name,
+        packPrice: pack.price,
+        priceFloor: pack.priceFloor,
+        ...(series && { seriesId: series.id, packsLeftAfter: packsLeft - 1 }),
+        cards: opened.cards.map(({ id, name, rarity, set, pulledValue }) => ({ id, name, rarity, set, value: pulledValue })),
+        bulkCards: opened.bulkCount,
+        pulledValue: opened.pulledValue,
+        floorCredit: opened.floorCredit,
+        net: opened.net,
+      },
+    })
     setRound((r) => r + 1)
     setPhase('ripping')
     setTimeout(() => setPhase('revealing'), 750)

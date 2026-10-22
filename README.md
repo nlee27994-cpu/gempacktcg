@@ -22,6 +22,7 @@ This is a demo. All products are mock data, nothing is stored on a server, and c
 | **Auction** (`/auctions/:id`) | Countdown, minimum raise, quick bids, Buy Now, bid history, and pay-to-claim when you win |
 | **Cart / Checkout** | Cart (saved in the browser), fake checkout form, order confirmation |
 | **About** (`/about`) | Mission, team, strategy, and how the price floor works |
+| **Dev Console** (`/admin`) | Staff view: every transaction with a unique number and full data, live inventory, Series drops, auctions, exports and demo resets |
 
 ## Getting started
 
@@ -185,6 +186,29 @@ Modelled on the auction houses in sports games like EA Sports FC and Madden:
 - The rules are in `src/lib/auction.js`, the live state is in `src/context/AuctionContext.jsx`, and the 36 starting
   listings are generated into `src/data/auctions.json`. State is saved in your browser, and the Auction House starts
   fresh once every listing has ended. My activity has a reset button for demos.
+
+## Dev Console
+
+`/admin` (linked in the footer as "Dev console (staff)") is the staff view of the store.
+
+- **Transactions:** every event gets a unique transaction number such as `TX-20261022-000042` (date + counter). The
+  counter never repeats, even after the ledger is cleared. Recorded events:
+  - orders, with items, customer and totals
+  - pack rips and drop openings, with every card pulled, its value and any floor credit
+  - bids, from you and the simulated rivals
+  - Buy Nows and finished auctions, with the winner, price and Gempack's revenue
+  - new listings, seller verifications and claimed auction wins
+
+  Click a row for the full record as JSON. You can search across all data, filter by type or by who did it, and export
+  as CSV or JSON.
+- **Inventory:** every product with its starting stock, units sold and units available. Purchases now reduce stock
+  across the whole site. There are also tabs for Series drop progress and all auctions.
+- **Overview:** gross sales, units sold, packs ripped, floor credit paid out, auction sales and revenue, low stock and
+  inventory value.
+- **Tools:** download the full ledger, clear it, reset the Auction House, refill all drops.
+
+The ledger is in `src/context/LedgerContext.jsx`. It's saved in the browser (newest 2,000 transactions), so each
+browser has its own history. A real store would put this behind a staff login and write transactions to a database.
 
 ## Branding
 

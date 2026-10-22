@@ -3,6 +3,7 @@ import { auctions as listings, getProduct, DATA_VERSION } from '../lib/catalog'
 import { CONDITION_VALUE, SELLER_FEE, minNextBid } from '../lib/auction'
 import { formatPrice } from '../lib/format'
 import { useCart } from './CartContext'
+import { useLedger } from './LedgerContext'
 
 // The Auction House runs entirely in the browser: listings come from src/data/auctions.json,
 // rival bidders are simulated, and state is saved to localStorage so countdowns survive a refresh.
@@ -42,6 +43,7 @@ function seed(now = Date.now()) {
     user: { handle: YOU, verified: false },
     notified: {},
     paid: {},
+    logged: {}, // auctions whose ending is already in the ledger
   }
 }
 
@@ -63,6 +65,11 @@ export function AuctionProvider({ children }) {
   const stateRef = useRef(state)
   stateRef.current = state
   const cart = useCart()
+  const ledger = useLedger()
+  // Intervals and timeouts outlive renders, so they reach the ledger through a ref
+  const ledgerRef = useRef(ledger)
+  ledgerRef.current = ledger
+  const cardName = (a) => getProduct(a.cardId).name
 
   useEffect(() => {
     try {
@@ -77,13 +84,21 @@ export function AuctionProvider({ children }) {
 
   const find = (id) => stateRef.current.auctions.find((a) => a.id === id)
   const update = (id, fn) => setState((s) => ({ ...s, auctions: s.auctions.map((a) => (a.id === id ? fn(a) : a)) }))
-  const applyBid = (id, bidder, amount) =>
-    update(id, (a) => ({
-      ...a,
+  const applyBid = (id, bidder, amount) => {
+    const a = find(id)
+    update(id, (x) => ({
+      ...x,
       currentBid: amount,
-      bidCount: a.bidCount + 1,
-      history: [{ bidder, amount, at: Date.now() }, ...a.history],
+      bidCount: x.bidCount + 1,
+      history: [{ bidder, amount, at: Date.now() }, ...x.history],
     }))
+    ledgerRef.current.record('bid', {
+      summary: `${bidder === YOU ? 'You' : bidder} bid ${formatPrice(amount)} on ${cardName(a)}`,
+      amount,
+      actor: bidder,
+      data: { auctionId: id, cardId: a.cardId, cardName: cardName(a), amount, previousLeader: leader(a), bidNumber: a.bidCount + 1 },
+    })
+  }
 
   // A rival raises by one increment, but never past Buy Now or roughly what the card is worth
   const rivalBid = (id) => {
@@ -115,11 +130,40 @@ export function AuctionProvider({ children }) {
     return () => clearInterval(t)
   }, [])
 
-  // Tell the visitor once when an auction they won or listed has finished
+  // Tell the visitor once when an auction they won or listed has finished,
+  // and write every finished auction to the ledger once
   useEffect(() => {
     const t = setInterval(() => {
       const now = Date.now()
       const s = stateRef.current
+      const unlogged = s.auctions.filter((a) => isEnded(a, now) && !s.logged?.[a.id])
+      if (unlogged.length) {
+        setState((st) => ({ ...st, logged: { ...st.logged, ...Object.fromEntries(unlogged.map((a) => [a.id, true])) } }))
+        for (const a of unlogged) {
+          const winner = leader(a)
+          const price = winner ? finalPrice(a) : 0
+          ledgerRef.current.record('auction-ended', {
+            summary: winner ? `${cardName(a)} sold to ${winner === YOU ? 'you' : winner} for ${formatPrice(price)}` : `${cardName(a)} ended with no bids`,
+            amount: price,
+            actor: a.seller,
+            data: {
+              auctionId: a.id,
+              cardId: a.cardId,
+              cardName: cardName(a),
+              condition: a.condition,
+              seller: a.seller,
+              sellerType: a.sellerType,
+              winner,
+              finalPrice: price,
+              boughtNow: Boolean(a.boughtBy),
+              bidCount: a.bidCount,
+              // Gempack keeps the whole price on its own listings and a fee on collectors' sales
+              gempackRevenue: winner ? Math.round((a.sellerType === 'Official' ? price : price * SELLER_FEE) * 100) / 100 : 0,
+              endedAt: new Date(Math.min(a.endsAt, now)).toISOString(),
+            },
+          })
+        }
+      }
       const done = s.auctions.filter((a) => isEnded(a, now) && !s.notified[a.id] && (leader(a) === YOU || a.seller === YOU))
       if (!done.length) return
       setState((st) => ({ ...st, notified: { ...st.notified, ...Object.fromEntries(done.map((a) => [a.id, true])) } }))
@@ -148,6 +192,11 @@ export function AuctionProvider({ children }) {
       if (!a || isEnded(a, Date.now()) || !a.buyNow) return { error: 'This auction has ended.' }
       if (a.seller === YOU) return { error: "You can't buy your own listing." }
       update(id, (x) => ({ ...x, boughtBy: YOU, currentBid: x.buyNow, endsAt: Date.now() }))
+      ledger.record('buy-now', {
+        summary: `You bought ${cardName(a)} at Buy Now for ${formatPrice(a.buyNow)}`,
+        amount: a.buyNow,
+        data: { auctionId: id, cardId: a.cardId, cardName: cardName(a), buyNow: a.buyNow, seller: a.seller, bidsBefore: a.bidCount },
+      })
       return { ok: true }
     }
 
@@ -185,6 +234,11 @@ export function AuctionProvider({ children }) {
         history: [],
       }
       setState((s) => ({ ...s, auctions: [listing, ...s.auctions] }))
+      ledger.record('listing-created', {
+        summary: `You listed ${card.name} (${condition}) from ${formatPrice(listing.startPrice)}`,
+        amount: listing.startPrice,
+        data: { auctionId: id, cardId, cardName: card.name, condition, startPrice: listing.startPrice, buyNow: listing.buyNow, minutes, endsAt: new Date(listing.endsAt).toISOString() },
+      })
       setTimeout(() => rivalBidRef.current(id), 5000 + Math.random() * 7000)
       return { ok: true, id }
     }
@@ -192,6 +246,11 @@ export function AuctionProvider({ children }) {
     const claim = (id) => {
       const a = find(id)
       const card = auctionCard(a)
+      ledger.record('auction-claimed', {
+        summary: `Added won ${card.name} to cart at ${formatPrice(finalPrice(a))}`,
+        amount: finalPrice(a),
+        data: { auctionId: id, cardId: a.cardId, cardName: card.name, price: finalPrice(a), seller: a.seller },
+      })
       cart.add(`auction-${id}`, 1, {
         ...card,
         id: `auction-${id}`,
@@ -214,14 +273,21 @@ export function AuctionProvider({ children }) {
       buyNow,
       createListing,
       claim,
-      verify: (details) => setState((s) => ({ ...s, user: { ...s.user, ...details, verified: true } })),
+      verify: (details) => {
+        setState((s) => ({ ...s, user: { ...s.user, ...details, verified: true } }))
+        ledger.record('seller-verified', {
+          summary: `${details.name} verified as a seller`,
+          actor: details.name,
+          data: { name: details.name, email: details.email, idCheck: 'submitted (demo)', agreedToAuthentication: true },
+        })
+      },
       reset: () => {
         setState((s) => ({ ...seed(), user: s.user }))
         setNotices([])
       },
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [state, notices, cart])
+  }, [state, notices, cart, ledger])
 
   return <AuctionContext.Provider value={value}>{children}</AuctionContext.Provider>
 }

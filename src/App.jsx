@@ -10,6 +10,7 @@ import Cart from './pages/Cart'
 import Checkout from './pages/Checkout'
 import OrderConfirmation from './pages/OrderConfirmation'
 import About from './pages/About'
+import AdminConsole from './pages/AdminConsole'
 import NotFound from './pages/NotFound'
 
 export default function App() {
@@ -27,6 +28,7 @@ export default function App() {
         <Route path="checkout" element={<Checkout />} />
         <Route path="order-confirmed" element={<OrderConfirmation />} />
         <Route path="about" element={<About />} />
+        <Route path="admin" element={<AdminConsole />} />
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>

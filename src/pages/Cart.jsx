@@ -4,11 +4,13 @@ import OrderSummary from '../components/OrderSummary'
 import RarityBadge from '../components/RarityBadge'
 import SourceBadge from '../components/SourceBadge'
 import { useCart } from '../context/CartContext'
+import { useLedger } from '../context/LedgerContext'
 import { formatPrice } from '../lib/format'
 
 export default function Cart() {
   const cart = useCart()
   const { items, setQty, remove } = cart
+  const { stockFor } = useLedger()
   const floorTotal = items.filter((i) => i.type === 'pack').reduce((s, i) => s + i.priceFloor * i.qty, 0)
 
   if (items.length === 0) {
@@ -50,7 +52,7 @@ export default function Cart() {
                   <div className="flex items-center rounded-lg border border-navy-500">
                     <button className="px-2.5 py-1" onClick={() => setQty(item.id, item.qty - 1)} aria-label={`Decrease ${item.name}`}>−</button>
                     <span className="w-7 text-center text-sm tabular-nums">{item.qty}</span>
-                    <button className="px-2.5 py-1 disabled:opacity-40" onClick={() => setQty(item.id, item.qty + 1)} disabled={item.qty >= item.stock} aria-label={`Increase ${item.name}`}>+</button>
+                    <button className="px-2.5 py-1 disabled:opacity-40" onClick={() => setQty(item.id, item.qty + 1)} disabled={item.qty >= (item.auctionId ? item.stock : stockFor(item.id))} aria-label={`Increase ${item.name}`}>+</button>
                   </div>
                   <button className="text-xs text-slate-400 hover:text-rose-400" onClick={() => remove(item.id)}>Remove</button>
                 </div>
