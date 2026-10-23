@@ -43,6 +43,20 @@ npm run sync:pokemon   # pull real Pokémon cards and prices, then regenerate (s
 npm run sync:mtg       # pull real Magic cards and prices from Scryfall, then regenerate
 ```
 
+## Deploying to Cloudflare
+
+The site is fully static, so Cloudflare can host it for free. `wrangler.jsonc` tells Cloudflare to serve the Vite build
+in `dist/`, and sends any address that isn't a file (like `/auctions` or `/admin`) to the app.
+
+In the Cloudflare dashboard (**Workers & Pages → Create → Import a repository**), pick this repo and use:
+
+- **Build command:** `npm run build`
+- **Deploy command:** `npx wrangler deploy`
+- **Branch:** the branch holding the code
+
+The Worker's name in the dashboard must match `"name"` in `wrangler.jsonc` (currently `gempacktcg`). Once it's
+deployed, add your own domain under the Worker's **Settings → Domains & Routes**. Each push to the branch redeploys.
+
 ## Project structure
 
 ```
