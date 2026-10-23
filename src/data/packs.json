@@ -10,9 +10,9 @@
     "rarity": "Rare",
     "cardsPerPack": 10,
     "hitSlots": 1,
-    "source": "Direct",
-    "seller": "Gempack TCG",
-    "stock": 46,
+    "source": "Vendor",
+    "seller": "PalletTown Collectibles",
+    "stock": 60,
     "featured": false,
     "price": 13.85,
     "priceSource": {
@@ -35,7 +35,7 @@
     "hitSlots": 1,
     "source": "Direct",
     "seller": "Gempack TCG",
-    "stock": 9,
+    "stock": 31,
     "featured": false,
     "price": 13.85,
     "priceSource": {
@@ -55,9 +55,9 @@
     "rarity": "Rare",
     "cardsPerPack": 30,
     "hitSlots": 3,
-    "source": "Direct",
-    "seller": "Gempack TCG",
-    "stock": 12,
+    "source": "Vendor",
+    "seller": "PalletTown Collectibles",
+    "stock": 36,
     "featured": false,
     "price": 43.55,
     "priceSource": {
@@ -79,7 +79,7 @@
     "hitSlots": 1,
     "source": "Direct",
     "seller": "Gempack TCG",
-    "stock": 50,
+    "stock": 24,
     "featured": false,
     "targetReturn": 0.86,
     "price": 8.85,
@@ -100,9 +100,9 @@
     "rarity": "Rare",
     "cardsPerPack": 10,
     "hitSlots": 1,
-    "source": "Vendor",
-    "seller": "Stadium Cards",
-    "stock": 59,
+    "source": "Direct",
+    "seller": "Gempack TCG",
+    "stock": 30,
     "featured": false,
     "price": 8.68,
     "priceSource": {
@@ -125,7 +125,7 @@
     "hitSlots": 1,
     "source": "Direct",
     "seller": "Gempack TCG",
-    "stock": 59,
+    "stock": 10,
     "featured": false,
     "price": 8.68,
     "priceSource": {
@@ -147,7 +147,7 @@
     "hitSlots": 3,
     "source": "Vendor",
     "seller": "PalletTown Collectibles",
-    "stock": 23,
+    "stock": 19,
     "featured": false,
     "price": 28.04,
     "priceSource": {
@@ -169,7 +169,7 @@
     "hitSlots": 1,
     "source": "Direct",
     "seller": "Gempack TCG",
-    "stock": 35,
+    "stock": 30,
     "featured": false,
     "targetReturn": 0.86,
     "price": 10.45,
@@ -191,8 +191,8 @@
     "cardsPerPack": 10,
     "hitSlots": 1,
     "source": "Vendor",
-    "seller": "PalletTown Collectibles",
-    "stock": 16,
+    "seller": "Kanto Card Co.",
+    "stock": 35,
     "featured": false,
     "price": 10.85,
     "priceSource": {
@@ -213,9 +213,9 @@
     "rarity": "Rare",
     "cardsPerPack": 10,
     "hitSlots": 1,
-    "source": "Collector",
-    "seller": "@pullrate_pete",
-    "stock": 3,
+    "source": "Direct",
+    "seller": "Gempack TCG",
+    "stock": 49,
     "featured": false,
     "price": 10.85,
     "priceSource": {
@@ -235,9 +235,9 @@
     "rarity": "Rare",
     "cardsPerPack": 30,
     "hitSlots": 3,
-    "source": "Vendor",
-    "seller": "Kanto Card Co.",
-    "stock": 58,
+    "source": "Direct",
+    "seller": "Gempack TCG",
+    "stock": 17,
     "featured": false,
     "price": 34.55,
     "priceSource": {
@@ -259,7 +259,7 @@
     "hitSlots": 1,
     "source": "Direct",
     "seller": "Gempack TCG",
-    "stock": 27,
+    "stock": 24,
     "featured": false,
     "targetReturn": 0.86,
     "price": 12.85,
@@ -280,9 +280,9 @@
     "rarity": "Rare",
     "cardsPerPack": 10,
     "hitSlots": 1,
-    "source": "Vendor",
-    "seller": "PalletTown Collectibles",
-    "stock": 50,
+    "source": "Direct",
+    "seller": "Gempack TCG",
+    "stock": 7,
     "featured": false,
     "price": 8.42,
     "priceSource": {
@@ -303,9 +303,9 @@
     "rarity": "Rare",
     "cardsPerPack": 10,
     "hitSlots": 1,
-    "source": "Direct",
-    "seller": "Gempack TCG",
-    "stock": 8,
+    "source": "Vendor",
+    "seller": "PalletTown Collectibles",
+    "stock": 41,
     "featured": false,
     "price": 8.42,
     "priceSource": {
@@ -325,9 +325,9 @@
     "rarity": "Rare",
     "cardsPerPack": 30,
     "hitSlots": 3,
-    "source": "Direct",
-    "seller": "Gempack TCG",
-    "stock": 14,
+    "source": "Vendor",
+    "seller": "Stadium Cards",
+    "stock": 34,
     "featured": false,
     "price": 27.26,
     "priceSource": {
@@ -349,7 +349,7 @@
     "hitSlots": 1,
     "source": "Direct",
     "seller": "Gempack TCG",
-    "stock": 7,
+    "stock": 60,
     "featured": false,
     "targetReturn": 0.86,
     "price": 11.51,
@@ -372,7 +372,7 @@
     "hitSlots": 1,
     "source": "Vendor",
     "seller": "Stadium Cards",
-    "stock": 9,
+    "stock": 33,
     "featured": false,
     "price": 31.79,
     "priceSource": {
@@ -394,9 +394,9 @@
     "rarity": "Rare",
     "cardsPerPack": 10,
     "hitSlots": 1,
-    "source": "Vendor",
-    "seller": "PalletTown Collectibles",
-    "stock": 7,
+    "source": "Direct",
+    "seller": "Gempack TCG",
+    "stock": 12,
     "featured": false,
     "price": 31.79,
     "priceSource": {
@@ -416,9 +416,9 @@
     "rarity": "Rare",
     "cardsPerPack": 30,
     "hitSlots": 3,
-    "source": "Direct",
-    "seller": "Gempack TCG",
-    "stock": 53,
+    "source": "Vendor",
+    "seller": "PalletTown Collectibles",
+    "stock": 24,
     "featured": false,
     "price": 97.37,
     "priceSource": {
@@ -440,7 +440,7 @@
     "hitSlots": 1,
     "source": "Direct",
     "seller": "Gempack TCG",
-    "stock": 35,
+    "stock": 49,
     "featured": false,
     "targetReturn": 0.86,
     "price": 12.23,
@@ -461,9 +461,9 @@
     "rarity": "Rare",
     "cardsPerPack": 10,
     "hitSlots": 1,
-    "source": "Vendor",
-    "seller": "PalletTown Collectibles",
-    "stock": 60,
+    "source": "Direct",
+    "seller": "Gempack TCG",
+    "stock": 58,
     "featured": false,
     "price": 12.36,
     "priceSource": {
@@ -484,9 +484,9 @@
     "rarity": "Rare",
     "cardsPerPack": 10,
     "hitSlots": 1,
-    "source": "Direct",
-    "seller": "Gempack TCG",
-    "stock": 31,
+    "source": "Vendor",
+    "seller": "Stadium Cards",
+    "stock": 54,
     "featured": false,
     "price": 12.36,
     "priceSource": {
@@ -507,8 +507,8 @@
     "cardsPerPack": 30,
     "hitSlots": 3,
     "source": "Vendor",
-    "seller": "PalletTown Collectibles",
-    "stock": 36,
+    "seller": "Stadium Cards",
+    "stock": 33,
     "featured": false,
     "price": 39.08,
     "priceSource": {
@@ -530,7 +530,7 @@
     "hitSlots": 1,
     "source": "Direct",
     "seller": "Gempack TCG",
-    "stock": 24,
+    "stock": 59,
     "featured": false,
     "targetReturn": 0.86,
     "price": 10.57,
@@ -551,9 +551,9 @@
     "rarity": "Rare",
     "cardsPerPack": 10,
     "hitSlots": 1,
-    "source": "Direct",
-    "seller": "Gempack TCG",
-    "stock": 30,
+    "source": "Vendor",
+    "seller": "Kanto Card Co.",
+    "stock": 18,
     "featured": false,
     "price": 23.99,
     "priceSource": {
@@ -574,9 +574,9 @@
     "rarity": "Rare",
     "cardsPerPack": 10,
     "hitSlots": 1,
-    "source": "Direct",
-    "seller": "Gempack TCG",
-    "stock": 10,
+    "source": "Vendor",
+    "seller": "PalletTown Collectibles",
+    "stock": 29,
     "featured": false,
     "price": 23.99,
     "priceSource": {
@@ -596,9 +596,9 @@
     "rarity": "Rare",
     "cardsPerPack": 30,
     "hitSlots": 3,
-    "source": "Vendor",
-    "seller": "PalletTown Collectibles",
-    "stock": 19,
+    "source": "Collector",
+    "seller": "@ripking22",
+    "stock": 4,
     "featured": false,
     "price": 73.97,
     "priceSource": {
@@ -620,7 +620,7 @@
     "hitSlots": 1,
     "source": "Direct",
     "seller": "Gempack TCG",
-    "stock": 30,
+    "stock": 11,
     "featured": false,
     "targetReturn": 0.86,
     "price": 10.27,
@@ -642,8 +642,8 @@
     "cardsPerPack": 10,
     "hitSlots": 1,
     "source": "Vendor",
-    "seller": "Kanto Card Co.",
-    "stock": 35,
+    "seller": "PalletTown Collectibles",
+    "stock": 54,
     "featured": false,
     "price": 11.65,
     "priceSource": {
@@ -664,9 +664,9 @@
     "rarity": "Rare",
     "cardsPerPack": 10,
     "hitSlots": 1,
-    "source": "Direct",
-    "seller": "Gempack TCG",
-    "stock": 49,
+    "source": "Vendor",
+    "seller": "Stadium Cards",
+    "stock": 16,
     "featured": false,
     "price": 11.65,
     "priceSource": {
@@ -686,9 +686,9 @@
     "rarity": "Rare",
     "cardsPerPack": 30,
     "hitSlots": 3,
-    "source": "Direct",
-    "seller": "Gempack TCG",
-    "stock": 17,
+    "source": "Vendor",
+    "seller": "Stadium Cards",
+    "stock": 52,
     "featured": false,
     "price": 36.95,
     "priceSource": {
@@ -710,7 +710,7 @@
     "hitSlots": 1,
     "source": "Direct",
     "seller": "Gempack TCG",
-    "stock": 24,
+    "stock": 38,
     "featured": false,
     "targetReturn": 0.86,
     "price": 13.36,
@@ -731,9 +731,9 @@
     "rarity": "Rare",
     "cardsPerPack": 10,
     "hitSlots": 1,
-    "source": "Direct",
-    "seller": "Gempack TCG",
-    "stock": 7,
+    "source": "Collector",
+    "seller": "@holo_hunter",
+    "stock": 3,
     "featured": false,
     "price": 6.77,
     "priceSource": {
@@ -755,8 +755,8 @@
     "cardsPerPack": 10,
     "hitSlots": 1,
     "source": "Vendor",
-    "seller": "PalletTown Collectibles",
-    "stock": 41,
+    "seller": "Kanto Card Co.",
+    "stock": 38,
     "featured": false,
     "price": 6.77,
     "priceSource": {
@@ -777,8 +777,8 @@
     "cardsPerPack": 30,
     "hitSlots": 3,
     "source": "Vendor",
-    "seller": "Stadium Cards",
-    "stock": 34,
+    "seller": "PalletTown Collectibles",
+    "stock": 43,
     "featured": false,
     "price": 22.31,
     "priceSource": {
@@ -800,7 +800,7 @@
     "hitSlots": 1,
     "source": "Direct",
     "seller": "Gempack TCG",
-    "stock": 60,
+    "stock": 31,
     "featured": false,
     "targetReturn": 0.86,
     "price": 11.12,
@@ -823,7 +823,7 @@
     "hitSlots": 1,
     "source": "Vendor",
     "seller": "Stadium Cards",
-    "stock": 33,
+    "stock": 52,
     "featured": false,
     "price": 9.46,
     "priceSource": {
@@ -844,9 +844,9 @@
     "rarity": "Rare",
     "cardsPerPack": 10,
     "hitSlots": 1,
-    "source": "Direct",
-    "seller": "Gempack TCG",
-    "stock": 12,
+    "source": "Collector",
+    "seller": "@mintcondition_mia",
+    "stock": 2,
     "featured": false,
     "price": 12.74,
     "priceSource": {
@@ -867,9 +867,9 @@
     "rarity": "Rare",
     "cardsPerPack": 30,
     "hitSlots": 3,
-    "source": "Vendor",
-    "seller": "PalletTown Collectibles",
-    "stock": 24,
+    "source": "Collector",
+    "seller": "@holo_hunter",
+    "stock": 4,
     "featured": false,
     "price": 30.38,
     "priceSource": {
@@ -891,7 +891,7 @@
     "hitSlots": 1,
     "source": "Direct",
     "seller": "Gempack TCG",
-    "stock": 49,
+    "stock": 16,
     "featured": false,
     "targetReturn": 0.86,
     "price": 10.88,
@@ -912,9 +912,9 @@
     "rarity": "Rare",
     "cardsPerPack": 10,
     "hitSlots": 1,
-    "source": "Direct",
-    "seller": "Gempack TCG",
-    "stock": 58,
+    "source": "Vendor",
+    "seller": "PalletTown Collectibles",
+    "stock": 37,
     "featured": false,
     "price": 13.95,
     "priceSource": {
@@ -935,9 +935,9 @@
     "rarity": "Rare",
     "cardsPerPack": 10,
     "hitSlots": 1,
-    "source": "Vendor",
-    "seller": "Stadium Cards",
-    "stock": 54,
+    "source": "Direct",
+    "seller": "Gempack TCG",
+    "stock": 24,
     "featured": false,
     "price": 13.95,
     "priceSource": {
@@ -958,8 +958,8 @@
     "cardsPerPack": 30,
     "hitSlots": 3,
     "source": "Vendor",
-    "seller": "Stadium Cards",
-    "stock": 33,
+    "seller": "Kanto Card Co.",
+    "stock": 19,
     "featured": false,
     "price": 43.85,
     "priceSource": {
@@ -981,7 +981,7 @@
     "hitSlots": 1,
     "source": "Direct",
     "seller": "Gempack TCG",
-    "stock": 59,
+    "stock": 56,
     "featured": false,
     "targetReturn": 0.86,
     "price": 11.65,
@@ -1002,9 +1002,9 @@
     "rarity": "Rare",
     "cardsPerPack": 14,
     "hitSlots": 1,
-    "source": "Vendor",
-    "seller": "Blue Mana Games",
-    "stock": 18,
+    "source": "Direct",
+    "seller": "Gempack TCG",
+    "stock": 49,
     "featured": false,
     "price": 5.49,
     "priceSource": {
@@ -1012,7 +1012,7 @@
       "url": "https://thecardshopfinder.com/shop/mtg/sealed/bloomburrow/",
       "asOf": "2026-09"
     },
-    "priceFloor": 4.94
+    "priceFloor": 2.07
   },
   {
     "id": "pk-046",
@@ -1025,9 +1025,9 @@
     "rarity": "Ultra Rare",
     "cardsPerPack": 15,
     "hitSlots": 1,
-    "source": "Vendor",
-    "seller": "Stadium Cards",
-    "stock": 29,
+    "source": "Collector",
+    "seller": "@topdeck_tay",
+    "stock": 3,
     "featured": false,
     "price": 20.83,
     "priceSource": {
@@ -1035,7 +1035,7 @@
       "url": "https://knightanddaygames.com/products/magic-the-gathering-bloomburrow-collector-booster-box",
       "asOf": "undated"
     },
-    "priceFloor": 12.31
+    "priceFloor": 6.25
   },
   {
     "id": "pk-047",
@@ -1048,16 +1048,16 @@
     "rarity": "Rare",
     "cardsPerPack": 14,
     "hitSlots": 1,
-    "source": "Collector",
-    "seller": "@ripking22",
-    "stock": 4,
+    "source": "Direct",
+    "seller": "Gempack TCG",
+    "stock": 44,
     "featured": false,
     "price": 5.49,
     "priceSource": {
       "label": "Estimate: same cards as a play booster, priced like one",
       "estimate": true
     },
-    "priceFloor": 4.94
+    "priceFloor": 2.11
   },
   {
     "id": "pk-048",
@@ -1070,16 +1070,16 @@
     "rarity": "Rare",
     "cardsPerPack": 36,
     "hitSlots": 6,
-    "source": "Direct",
-    "seller": "Gempack TCG",
-    "stock": 34,
+    "source": "Vendor",
+    "seller": "Planeswalker Supply",
+    "stock": 30,
     "featured": false,
     "price": 37.94,
     "priceSource": {
       "label": "Estimate: 6 × the play booster price + $5 for the promo and extras",
       "estimate": true
     },
-    "priceFloor": 17.92
+    "priceFloor": 11.38
   },
   {
     "id": "pk-049",
@@ -1092,9 +1092,9 @@
     "rarity": "Rare",
     "cardsPerPack": 14,
     "hitSlots": 1,
-    "source": "Vendor",
-    "seller": "Stadium Cards",
-    "stock": 44,
+    "source": "Direct",
+    "seller": "Gempack TCG",
+    "stock": 51,
     "featured": false,
     "price": 4.51,
     "priceSource": {
@@ -1102,7 +1102,7 @@
       "url": "https://thecardshopfinder.com/shop/mtg/sealed/duskmourn-house-of-horror/",
       "asOf": "2026-09"
     },
-    "priceFloor": 4.06
+    "priceFloor": 1.92
   },
   {
     "id": "pk-050",
@@ -1116,8 +1116,8 @@
     "cardsPerPack": 15,
     "hitSlots": 1,
     "source": "Vendor",
-    "seller": "Blue Mana Games",
-    "stock": 50,
+    "seller": "Stadium Cards",
+    "stock": 36,
     "featured": false,
     "price": 18.33,
     "priceSource": {
@@ -1125,7 +1125,7 @@
       "url": "https://knightanddaygames.com/products/magic-the-gathering-duskmourn-house-of-horror-collector-booster-box",
       "asOf": "undated"
     },
-    "priceFloor": 13.17
+    "priceFloor": 5.5
   },
   {
     "id": "pk-051",
@@ -1140,14 +1140,14 @@
     "hitSlots": 1,
     "source": "Vendor",
     "seller": "Stadium Cards",
-    "stock": 38,
+    "stock": 46,
     "featured": false,
     "price": 4.51,
     "priceSource": {
       "label": "Estimate: same cards as a play booster, priced like one",
       "estimate": true
     },
-    "priceFloor": 4.06
+    "priceFloor": 1.94
   },
   {
     "id": "pk-052",
@@ -1160,16 +1160,16 @@
     "rarity": "Rare",
     "cardsPerPack": 36,
     "hitSlots": 6,
-    "source": "Collector",
-    "seller": "@holo_hunter",
-    "stock": 3,
+    "source": "Direct",
+    "seller": "Gempack TCG",
+    "stock": 20,
     "featured": false,
     "price": 32.06,
     "priceSource": {
       "label": "Estimate: 6 × the play booster price + $5 for the promo and extras",
       "estimate": true
     },
-    "priceFloor": 18.41
+    "priceFloor": 9.62
   },
   {
     "id": "pk-053",
@@ -1182,9 +1182,9 @@
     "rarity": "Rare",
     "cardsPerPack": 14,
     "hitSlots": 1,
-    "source": "Vendor",
-    "seller": "Blue Mana Games",
-    "stock": 38,
+    "source": "Direct",
+    "seller": "Gempack TCG",
+    "stock": 19,
     "featured": false,
     "price": 4.51,
     "priceSource": {
@@ -1192,7 +1192,7 @@
       "url": "https://thecardshopfinder.com/shop/mtg/sealed/foundations/",
       "asOf": "2026-09"
     },
-    "priceFloor": 4.06
+    "priceFloor": 1.83
   },
   {
     "id": "pk-054",
@@ -1205,9 +1205,9 @@
     "rarity": "Ultra Rare",
     "cardsPerPack": 15,
     "hitSlots": 1,
-    "source": "Vendor",
-    "seller": "Stadium Cards",
-    "stock": 43,
+    "source": "Collector",
+    "seller": "@pullrate_pete",
+    "stock": 2,
     "featured": false,
     "price": 61.04,
     "priceSource": {
@@ -1215,7 +1215,7 @@
       "url": "https://thecardshopfinder.com/shop/mtg/sealed/foundations/",
       "asOf": "2026-09"
     },
-    "priceFloor": 21.3
+    "priceFloor": 18.31
   },
   {
     "id": "pk-055",
@@ -1228,16 +1228,16 @@
     "rarity": "Rare",
     "cardsPerPack": 14,
     "hitSlots": 1,
-    "source": "Vendor",
-    "seller": "Planeswalker Supply",
-    "stock": 31,
+    "source": "Direct",
+    "seller": "Gempack TCG",
+    "stock": 19,
     "featured": false,
     "price": 4.51,
     "priceSource": {
       "label": "Estimate: same cards as a play booster, priced like one",
       "estimate": true
     },
-    "priceFloor": 4.06
+    "priceFloor": 1.81
   },
   {
     "id": "pk-056",
@@ -1252,14 +1252,14 @@
     "hitSlots": 6,
     "source": "Vendor",
     "seller": "Stadium Cards",
-    "stock": 24,
+    "stock": 26,
     "featured": false,
     "price": 32.06,
     "priceSource": {
       "label": "Estimate: 6 × the play booster price + $5 for the promo and extras",
       "estimate": true
     },
-    "priceFloor": 21.28
+    "priceFloor": 9.62
   },
   {
     "id": "pk-057",
@@ -1272,16 +1272,16 @@
     "rarity": "Rare",
     "cardsPerPack": 14,
     "hitSlots": 1,
-    "source": "Direct",
-    "seller": "Gempack TCG",
-    "stock": 59,
+    "source": "Vendor",
+    "seller": "Stadium Cards",
+    "stock": 20,
     "featured": false,
     "price": 4.99,
     "priceSource": {
       "label": "Estimate: no play booster price found, so this uses a typical play booster price",
       "estimate": true
     },
-    "priceFloor": 4.49
+    "priceFloor": 1.9
   },
   {
     "id": "pk-058",
@@ -1294,9 +1294,9 @@
     "rarity": "Ultra Rare",
     "cardsPerPack": 15,
     "hitSlots": 1,
-    "source": "Direct",
-    "seller": "Gempack TCG",
-    "stock": 46,
+    "source": "Vendor",
+    "seller": "Planeswalker Supply",
+    "stock": 15,
     "featured": false,
     "price": 24.5,
     "priceSource": {
@@ -1304,7 +1304,7 @@
       "url": "https://www.pricecharting.com/game/magic-aetherdrift/booster-pack-collector",
       "asOf": "2026-07-12"
     },
-    "priceFloor": 18.17
+    "priceFloor": 7.35
   },
   {
     "id": "pk-059",
@@ -1317,16 +1317,16 @@
     "rarity": "Rare",
     "cardsPerPack": 14,
     "hitSlots": 1,
-    "source": "Direct",
-    "seller": "Gempack TCG",
-    "stock": 37,
+    "source": "Vendor",
+    "seller": "Stadium Cards",
+    "stock": 22,
     "featured": false,
     "price": 4.99,
     "priceSource": {
       "label": "Estimate: same cards as a play booster, priced like one",
       "estimate": true
     },
-    "priceFloor": 4.49
+    "priceFloor": 1.92
   },
   {
     "id": "pk-060",
@@ -1339,16 +1339,16 @@
     "rarity": "Rare",
     "cardsPerPack": 36,
     "hitSlots": 6,
-    "source": "Collector",
-    "seller": "@pullrate_pete",
-    "stock": 2,
+    "source": "Vendor",
+    "seller": "Planeswalker Supply",
+    "stock": 30,
     "featured": false,
     "price": 34.94,
     "priceSource": {
       "label": "Estimate: 6 × the play booster price + $5 for the promo and extras",
       "estimate": true
     },
-    "priceFloor": 23.59
+    "priceFloor": 10.48
   },
   {
     "id": "pk-061",
@@ -1363,7 +1363,7 @@
     "hitSlots": 1,
     "source": "Direct",
     "seller": "Gempack TCG",
-    "stock": 34,
+    "stock": 42,
     "featured": false,
     "price": 3.61,
     "priceSource": {
@@ -1371,7 +1371,7 @@
       "url": "https://poke-collect.com/en-gb/products/magic-the-gathering-tarkir-dragonstorm-play-booster-box",
       "asOf": "undated"
     },
-    "priceFloor": 3.25
+    "priceFloor": 1.86
   },
   {
     "id": "pk-062",
@@ -1384,9 +1384,9 @@
     "rarity": "Ultra Rare",
     "cardsPerPack": 15,
     "hitSlots": 1,
-    "source": "Direct",
-    "seller": "Gempack TCG",
-    "stock": 19,
+    "source": "Collector",
+    "seller": "@topdeck_tay",
+    "stock": 3,
     "featured": false,
     "price": 28.33,
     "priceSource": {
@@ -1394,7 +1394,7 @@
       "url": "https://www.retrofixgames.com/products/mtg-tarkir-dragonstorm-collector-booster-box",
       "asOf": "undated"
     },
-    "priceFloor": 17.64
+    "priceFloor": 8.5
   },
   {
     "id": "pk-063",
@@ -1407,16 +1407,16 @@
     "rarity": "Rare",
     "cardsPerPack": 14,
     "hitSlots": 1,
-    "source": "Collector",
-    "seller": "@holo_hunter",
-    "stock": 4,
+    "source": "Direct",
+    "seller": "Gempack TCG",
+    "stock": 35,
     "featured": false,
     "price": 3.61,
     "priceSource": {
       "label": "Estimate: same cards as a play booster, priced like one",
       "estimate": true
     },
-    "priceFloor": 3.25
+    "priceFloor": 1.87
   },
   {
     "id": "pk-064",
@@ -1429,16 +1429,16 @@
     "rarity": "Rare",
     "cardsPerPack": 36,
     "hitSlots": 6,
-    "source": "Collector",
-    "seller": "@topdeck_tay",
-    "stock": 3,
+    "source": "Vendor",
+    "seller": "Blue Mana Games",
+    "stock": 30,
     "featured": false,
     "price": 26.66,
     "priceSource": {
       "label": "Estimate: 6 × the play booster price + $5 for the promo and extras",
       "estimate": true
     },
-    "priceFloor": 21.52
+    "priceFloor": 8
   },
   {
     "id": "pk-065",
@@ -1451,9 +1451,9 @@
     "rarity": "Rare",
     "cardsPerPack": 14,
     "hitSlots": 1,
-    "source": "Direct",
-    "seller": "Gempack TCG",
-    "stock": 44,
+    "source": "Vendor",
+    "seller": "Blue Mana Games",
+    "stock": 23,
     "featured": false,
     "price": 16.67,
     "priceSource": {
@@ -1461,7 +1461,7 @@
       "url": "https://thecardshopfinder.com/shop/mtg/sealed/final-fantasy/",
       "asOf": "2026-09"
     },
-    "priceFloor": 15
+    "priceFloor": 5
   },
   {
     "id": "pk-066",
@@ -1474,9 +1474,9 @@
     "rarity": "Ultra Rare",
     "cardsPerPack": 15,
     "hitSlots": 1,
-    "source": "Vendor",
-    "seller": "Planeswalker Supply",
-    "stock": 30,
+    "source": "Collector",
+    "seller": "@mintcondition_mia",
+    "stock": 2,
     "featured": false,
     "price": 145.83,
     "priceSource": {
@@ -1499,14 +1499,14 @@
     "hitSlots": 1,
     "source": "Direct",
     "seller": "Gempack TCG",
-    "stock": 51,
+    "stock": 42,
     "featured": false,
     "price": 16.67,
     "priceSource": {
       "label": "Estimate: same cards as a play booster, priced like one",
       "estimate": true
     },
-    "priceFloor": 15
+    "priceFloor": 5
   },
   {
     "id": "pk-068",
@@ -1519,9 +1519,9 @@
     "rarity": "Rare",
     "cardsPerPack": 36,
     "hitSlots": 6,
-    "source": "Vendor",
-    "seller": "Stadium Cards",
-    "stock": 36,
+    "source": "Direct",
+    "seller": "Gempack TCG",
+    "stock": 19,
     "featured": false,
     "price": 105.02,
     "priceSource": {
@@ -1541,9 +1541,9 @@
     "rarity": "Rare",
     "cardsPerPack": 14,
     "hitSlots": 1,
-    "source": "Vendor",
-    "seller": "Stadium Cards",
-    "stock": 46,
+    "source": "Direct",
+    "seller": "Gempack TCG",
+    "stock": 35,
     "featured": false,
     "price": 6.31,
     "priceSource": {
@@ -1551,7 +1551,7 @@
       "url": "https://outof.games/realms/mtg/products/edge-of-eternities-play-booster-pack/",
       "asOf": "2026"
     },
-    "priceFloor": 5.68
+    "priceFloor": 1.98
   },
   {
     "id": "pk-070",
@@ -1564,9 +1564,9 @@
     "rarity": "Ultra Rare",
     "cardsPerPack": 15,
     "hitSlots": 1,
-    "source": "Direct",
-    "seller": "Gempack TCG",
-    "stock": 20,
+    "source": "Collector",
+    "seller": "@binderbrooke",
+    "stock": 2,
     "featured": false,
     "price": 63.5,
     "priceSource": {
@@ -1574,7 +1574,7 @@
       "url": "https://outof.games/realms/mtg/products/edge-of-eternities-play-booster-pack/",
       "asOf": "2026"
     },
-    "priceFloor": 22.63
+    "priceFloor": 19.05
   },
   {
     "id": "pk-071",
@@ -1589,14 +1589,14 @@
     "hitSlots": 1,
     "source": "Direct",
     "seller": "Gempack TCG",
-    "stock": 19,
+    "stock": 60,
     "featured": false,
     "price": 6.31,
     "priceSource": {
       "label": "Estimate: same cards as a play booster, priced like one",
       "estimate": true
     },
-    "priceFloor": 5.68
+    "priceFloor": 1.99
   },
   {
     "id": "pk-072",
@@ -1609,16 +1609,16 @@
     "rarity": "Rare",
     "cardsPerPack": 36,
     "hitSlots": 6,
-    "source": "Collector",
-    "seller": "@pullrate_pete",
-    "stock": 2,
+    "source": "Direct",
+    "seller": "Gempack TCG",
+    "stock": 52,
     "featured": false,
     "price": 42.86,
     "priceSource": {
       "label": "Estimate: 6 × the play booster price + $5 for the promo and extras",
       "estimate": true
     },
-    "priceFloor": 24.19
+    "priceFloor": 12.86
   },
   {
     "id": "pk-073",
@@ -1633,7 +1633,7 @@
     "hitSlots": 1,
     "source": "Direct",
     "seller": "Gempack TCG",
-    "stock": 19,
+    "stock": 38,
     "featured": false,
     "price": 13,
     "priceSource": {
@@ -1642,7 +1642,7 @@
       "asOf": "2026",
       "note": "Low confidence: first-print English boxes trade far higher"
     },
-    "priceFloor": 3.9
+    "priceFloor": 3.98
   },
   {
     "id": "pk-074",
@@ -1655,9 +1655,9 @@
     "rarity": "Rare",
     "cardsPerPack": 6,
     "hitSlots": 1,
-    "source": "Vendor",
-    "seller": "Stadium Cards",
-    "stock": 26,
+    "source": "Direct",
+    "seller": "Gempack TCG",
+    "stock": 42,
     "featured": false,
     "price": 10.96,
     "priceSource": {
@@ -1665,7 +1665,7 @@
       "url": "https://samuraiswordtokyo.com/id/tcg-index/cards/one-piece-card-game-booster-pack-romance-dawn-box-0f2f2c",
       "asOf": "2026-07-23"
     },
-    "priceFloor": 3.29
+    "priceFloor": 3.52
   },
   {
     "id": "pk-075",
@@ -1680,15 +1680,15 @@
     "hitSlots": 1,
     "source": "Direct",
     "seller": "Gempack TCG",
-    "stock": 50,
+    "stock": 9,
     "featured": false,
     "targetReturn": 0.86,
-    "price": 57.74,
+    "price": 59.34,
     "priceSource": {
       "label": "Gempack product: priced from the market value of its cards",
       "gempack": true
     },
-    "priceFloor": 25.1
+    "priceFloor": 26.78
   },
   {
     "id": "pk-076",
@@ -1702,7 +1702,7 @@
     "cardsPerPack": 12,
     "hitSlots": 1,
     "source": "Collector",
-    "seller": "@mintcondition_mia",
+    "seller": "@binderbrooke",
     "stock": 3,
     "featured": false,
     "price": 7.92,
@@ -1711,7 +1711,7 @@
       "url": "https://www.ebay.de/itm/277125348749",
       "asOf": "undated"
     },
-    "priceFloor": 3.52
+    "priceFloor": 3.64
   },
   {
     "id": "pk-077",
@@ -1724,9 +1724,9 @@
     "rarity": "Rare",
     "cardsPerPack": 6,
     "hitSlots": 1,
-    "source": "Vendor",
-    "seller": "Grand Line Collectibles",
-    "stock": 46,
+    "source": "Direct",
+    "seller": "Gempack TCG",
+    "stock": 34,
     "featured": false,
     "price": 20.15,
     "priceSource": {
@@ -1749,15 +1749,15 @@
     "hitSlots": 1,
     "source": "Direct",
     "seller": "Gempack TCG",
-    "stock": 45,
+    "stock": 59,
     "featured": false,
     "targetReturn": 0.86,
-    "price": 52.78,
+    "price": 52.98,
     "priceSource": {
       "label": "Gempack product: priced from the market value of its cards",
       "gempack": true
     },
-    "priceFloor": 24.6
+    "priceFloor": 24.82
   },
   {
     "id": "pk-079",
@@ -1770,9 +1770,9 @@
     "rarity": "Rare",
     "cardsPerPack": 12,
     "hitSlots": 1,
-    "source": "Direct",
-    "seller": "Gempack TCG",
-    "stock": 31,
+    "source": "Vendor",
+    "seller": "Stadium Cards",
+    "stock": 43,
     "featured": false,
     "price": 6.46,
     "priceSource": {
@@ -1780,7 +1780,7 @@
       "url": "https://www.ebay.de/itm/257096336328",
       "asOf": "undated"
     },
-    "priceFloor": 3.11
+    "priceFloor": 3.5
   },
   {
     "id": "pk-080",
@@ -1793,9 +1793,9 @@
     "rarity": "Rare",
     "cardsPerPack": 6,
     "hitSlots": 1,
-    "source": "Vendor",
-    "seller": "Thousand Sunny Cards",
-    "stock": 15,
+    "source": "Direct",
+    "seller": "Gempack TCG",
+    "stock": 44,
     "featured": false,
     "price": 6.85,
     "priceSource": {
@@ -1803,7 +1803,7 @@
       "url": "https://www.samuraiswordtokyo.com/products/op06box",
       "asOf": "2026-09-09"
     },
-    "priceFloor": 2.82
+    "priceFloor": 3.26
   },
   {
     "id": "pk-081",
@@ -1818,15 +1818,15 @@
     "hitSlots": 1,
     "source": "Direct",
     "seller": "Gempack TCG",
-    "stock": 42,
+    "stock": 56,
     "featured": false,
     "targetReturn": 0.86,
-    "price": 60.45,
+    "price": 58.43,
     "priceSource": {
       "label": "Gempack product: priced from the market value of its cards",
       "gempack": true
     },
-    "priceFloor": 24.11
+    "priceFloor": 22.84
   },
   {
     "id": "pk-082",
@@ -1839,9 +1839,9 @@
     "rarity": "Rare",
     "cardsPerPack": 12,
     "hitSlots": 1,
-    "source": "Collector",
-    "seller": "@topdeck_tay",
-    "stock": 3,
+    "source": "Vendor",
+    "seller": "Stadium Cards",
+    "stock": 23,
     "featured": false,
     "price": 6.17,
     "priceSource": {
@@ -1849,7 +1849,7 @@
       "url": "https://www.ebay.de/itm/156765422301",
       "asOf": "2025-09"
     },
-    "priceFloor": 3.61
+    "priceFloor": 3.49
   },
   {
     "id": "pk-083",
@@ -1864,7 +1864,7 @@
     "hitSlots": 1,
     "source": "Direct",
     "seller": "Gempack TCG",
-    "stock": 35,
+    "stock": 38,
     "featured": false,
     "price": 1.87,
     "priceSource": {
@@ -1887,15 +1887,15 @@
     "hitSlots": 1,
     "source": "Direct",
     "seller": "Gempack TCG",
-    "stock": 48,
+    "stock": 20,
     "featured": false,
     "targetReturn": 0.86,
-    "price": 51.86,
+    "price": 52.17,
     "priceSource": {
       "label": "Gempack product: priced from the market value of its cards",
       "gempack": true
     },
-    "priceFloor": 22.87
+    "priceFloor": 23.18
   },
   {
     "id": "pk-085",
@@ -1908,9 +1908,9 @@
     "rarity": "Rare",
     "cardsPerPack": 12,
     "hitSlots": 1,
-    "source": "Direct",
-    "seller": "Gempack TCG",
-    "stock": 30,
+    "source": "Vendor",
+    "seller": "Thousand Sunny Cards",
+    "stock": 55,
     "featured": false,
     "price": 9.52,
     "priceSource": {
@@ -1918,7 +1918,7 @@
       "url": "https://www.pricecharting.com/game/one-piece-two-legends/booster-pack",
       "asOf": "2026-07"
     },
-    "priceFloor": 3.41
+    "priceFloor": 3.76
   },
   {
     "id": "pk-086",
@@ -1932,8 +1932,8 @@
     "cardsPerPack": 6,
     "hitSlots": 1,
     "source": "Vendor",
-    "seller": "Grand Line Collectibles",
-    "stock": 23,
+    "seller": "Stadium Cards",
+    "stock": 29,
     "featured": false,
     "price": 3.84,
     "priceSource": {
@@ -1941,7 +1941,7 @@
       "url": "https://samuraiswordtokyo.com/id/tcg-index/cards/one-piece-card-game-booster-pack-two-legends-box-063490",
       "asOf": "2026-07-26"
     },
-    "priceFloor": 2.46
+    "priceFloor": 2.87
   },
   {
     "id": "pk-087",
@@ -1956,15 +1956,15 @@
     "hitSlots": 1,
     "source": "Direct",
     "seller": "Gempack TCG",
-    "stock": 57,
+    "stock": 9,
     "featured": false,
     "targetReturn": 0.86,
-    "price": 53.65,
+    "price": 55.06,
     "priceSource": {
       "label": "Gempack product: priced from the market value of its cards",
       "gempack": true
     },
-    "priceFloor": 25.07
+    "priceFloor": 25.12
   },
   {
     "id": "pk-088",
@@ -1977,9 +1977,9 @@
     "rarity": "Rare",
     "cardsPerPack": 12,
     "hitSlots": 1,
-    "source": "Direct",
-    "seller": "Gempack TCG",
-    "stock": 14,
+    "source": "Vendor",
+    "seller": "Thousand Sunny Cards",
+    "stock": 30,
     "featured": false,
     "price": 9,
     "priceSource": {
@@ -1987,7 +1987,7 @@
       "url": "https://www.ebay.com/itm/335959642217",
       "asOf": "2026"
     },
-    "priceFloor": 3.43
+    "priceFloor": 3.59
   },
   {
     "id": "pk-089",
@@ -2002,7 +2002,7 @@
     "hitSlots": 1,
     "source": "Direct",
     "seller": "Gempack TCG",
-    "stock": 42,
+    "stock": 20,
     "featured": false,
     "price": 1.45,
     "priceSource": {
@@ -2024,15 +2024,15 @@
     "hitSlots": 1,
     "source": "Direct",
     "seller": "Gempack TCG",
-    "stock": 18,
+    "stock": 34,
     "featured": false,
     "targetReturn": 0.86,
-    "price": 54.84,
+    "price": 57.23,
     "priceSource": {
       "label": "Gempack product: priced from the market value of its cards",
       "gempack": true
     },
-    "priceFloor": 24.77
+    "priceFloor": 26.98
   },
   {
     "id": "pk-091",
@@ -2045,9 +2045,9 @@
     "rarity": "Rare",
     "cardsPerPack": 12,
     "hitSlots": 1,
-    "source": "Direct",
-    "seller": "Gempack TCG",
-    "stock": 27,
+    "source": "Vendor",
+    "seller": "Stadium Cards",
+    "stock": 36,
     "featured": false,
     "price": 32.99,
     "priceSource": {
@@ -2068,9 +2068,9 @@
     "rarity": "Rare",
     "cardsPerPack": 6,
     "hitSlots": 1,
-    "source": "Vendor",
-    "seller": "Stadium Cards",
-    "stock": 51,
+    "source": "Collector",
+    "seller": "@pullrate_pete",
+    "stock": 2,
     "featured": false,
     "price": 5.33,
     "priceSource": {
@@ -2078,7 +2078,7 @@
       "url": "https://samuraiswordtokyo.com/de/blogs/news/eb-01-memorial-collection-booster-box-buying-guide",
       "asOf": "2026-10-02"
     },
-    "priceFloor": 3.16
+    "priceFloor": 3.41
   },
   {
     "id": "pk-093",
@@ -2093,15 +2093,15 @@
     "hitSlots": 1,
     "source": "Direct",
     "seller": "Gempack TCG",
-    "stock": 22,
+    "stock": 26,
     "featured": false,
     "targetReturn": 0.86,
-    "price": 54.31,
+    "price": 52.72,
     "priceSource": {
       "label": "Gempack product: priced from the market value of its cards",
       "gempack": true
     },
-    "priceFloor": 29.46
+    "priceFloor": 28.29
   },
   {
     "id": "pk-094",
@@ -2113,7 +2113,7 @@
     "kind": "Emerald Series Pack",
     "rarity": "Ultra Rare",
     "price": 29.99,
-    "priceFloor": 4.44,
+    "priceFloor": 4.3,
     "cardsPerPack": 5,
     "hitSlots": 1,
     "source": "Direct",
@@ -2137,7 +2137,7 @@
     "kind": "Amethyst Series Pack",
     "rarity": "Ultra Rare",
     "price": 59.99,
-    "priceFloor": 3.65,
+    "priceFloor": 3.84,
     "cardsPerPack": 5,
     "hitSlots": 2,
     "source": "Direct",
@@ -2161,7 +2161,7 @@
     "kind": "Gold Series Pack",
     "rarity": "Ultra Rare",
     "price": 149.99,
-    "priceFloor": 4.09,
+    "priceFloor": 4.25,
     "cardsPerPack": 5,
     "hitSlots": 3,
     "source": "Direct",
@@ -2185,7 +2185,7 @@
     "kind": "Emerald Series Pack",
     "rarity": "Ultra Rare",
     "price": 29.99,
-    "priceFloor": 24.31,
+    "priceFloor": 1.88,
     "cardsPerPack": 5,
     "hitSlots": 1,
     "source": "Direct",
@@ -2209,7 +2209,7 @@
     "kind": "Amethyst Series Pack",
     "rarity": "Ultra Rare",
     "price": 59.99,
-    "priceFloor": 17.21,
+    "priceFloor": 1.96,
     "cardsPerPack": 5,
     "hitSlots": 2,
     "source": "Direct",
@@ -2233,7 +2233,7 @@
     "kind": "Gold Series Pack",
     "rarity": "Ultra Rare",
     "price": 149.99,
-    "priceFloor": 13.68,
+    "priceFloor": 2.26,
     "cardsPerPack": 5,
     "hitSlots": 3,
     "source": "Direct",
@@ -2257,7 +2257,7 @@
     "kind": "Emerald Series Pack",
     "rarity": "Ultra Rare",
     "price": 29.99,
-    "priceFloor": 21.44,
+    "priceFloor": 21.04,
     "cardsPerPack": 5,
     "hitSlots": 1,
     "source": "Direct",
@@ -2281,7 +2281,7 @@
     "kind": "Amethyst Series Pack",
     "rarity": "Ultra Rare",
     "price": 59.99,
-    "priceFloor": 39.18,
+    "priceFloor": 39.12,
     "cardsPerPack": 5,
     "hitSlots": 2,
     "source": "Direct",
@@ -2305,7 +2305,7 @@
     "kind": "Gold Series Pack",
     "rarity": "Ultra Rare",
     "price": 149.99,
-    "priceFloor": 59.42,
+    "priceFloor": 59.34,
     "cardsPerPack": 5,
     "hitSlots": 3,
     "source": "Direct",

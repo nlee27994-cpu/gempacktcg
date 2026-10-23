@@ -26,10 +26,13 @@ export async function getJson(url, headers = {}, attempt = 1) {
 // How many cards of each tier to keep per set, picked across the price range for variety
 export const PER_SET = { 'Secret Rare': 2, 'Ultra Rare': 2, Rare: 2, Uncommon: 1, Common: 1 }
 
-// Evenly spaced picks from a price-sorted list: the chase card plus cheaper ones
+// Evenly spaced picks from a price-sorted list: the chase card plus cheaper ones.
+// A single pick takes the median card, so a tier is represented by a typical card
+// rather than its priciest outlier.
 export function spread(list, n) {
   if (list.length <= n) return list
-  return Array.from({ length: n }, (_, i) => list[Math.round((i * (list.length - 1)) / Math.max(1, n - 1))])
+  if (n === 1) return [list[Math.floor(list.length / 2)]]
+  return Array.from({ length: n }, (_, i) => list[Math.round((i * (list.length - 1)) / (n - 1))])
 }
 
 export function pickPerSet(priced) {

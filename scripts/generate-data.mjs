@@ -150,6 +150,9 @@ for (const [game, file, label] of SNAPSHOTS) {
   const path = join(OUT, file)
   if (!existsSync(path)) continue
   const snapshot = JSON.parse(readFileSync(path, 'utf8'))
+  // Tiers the snapshot doesn't cover keep the built-in (estimated) cards
+  const covered = new Set(snapshot.cards.map((c) => c.rarity))
+  const builtIn = CARDS[game].filter(([, rarity]) => !covered.has(rarity))
   CARDS[game] = snapshot.cards.map(({ name, rarity, marketPrice, set, ...api }) => [
     name,
     rarity,
@@ -157,6 +160,7 @@ for (const [game, file, label] of SNAPSHOTS) {
     set,
     { ...api, priceSource: { label, url: api.tcgplayerUrl, asOf: api.priceUpdatedAt } },
   ])
+  CARDS[game].push(...builtIn)
   console.log(`Using ${snapshot.cards.length} real ${game} cards from ${file} (synced ${snapshot.syncedAt})`)
 }
 // One Piece has no free price API, so its chase cards use researched prices

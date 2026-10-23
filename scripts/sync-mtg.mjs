@@ -34,14 +34,16 @@ function treatment(card) {
   return null
 }
 
-// Scryfall rarity + printing → the five gem tiers the site uses
+// Scryfall rarity + printing → the five gem tiers the site uses, or null to skip the card.
+// Commons and uncommons are pack filler, so only regular printings count; alt-art basic
+// lands and special-frame commons can sell for dollars and would skew pack values.
 function tierFor(card, special) {
-  if (card.type_line?.includes('Basic Land')) return 'Common'
+  if (card.type_line?.includes('Basic Land')) return null
   switch (card.rarity) {
     case 'common':
-      return 'Common'
+      return special ? null : 'Common'
     case 'uncommon':
-      return 'Uncommon'
+      return special ? null : 'Uncommon'
     case 'rare':
       return special ? 'Secret Rare' : 'Rare'
     case 'mythic':
@@ -84,7 +86,7 @@ for (const [setName, code] of Object.entries(SETS)) {
       const special = treatment(c)
       return { c, special, tier: tierFor(c, special), price: price(c) }
     })
-    .filter((x) => x.price)
+    .filter((x) => x.tier && x.price)
   const picks = pickPerSet(priced)
   for (const { c, special, tier, price: p } of picks) {
     kept.push({

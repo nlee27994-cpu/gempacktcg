@@ -81,32 +81,6 @@
       "priceUpdatedAt": "2026-10-23"
     },
     {
-      "apiId": "a8a982c8-bc08-44ba-b3ed-9e4b124615d6",
-      "name": "Patchwork Banner",
-      "set": "Bloomburrow",
-      "number": "247",
-      "rarity": "Uncommon",
-      "officialRarity": "Uncommon",
-      "marketPrice": 2.81,
-      "image": "https://cards.scryfall.io/normal/front/a/8/a8a982c8-bc08-44ba-b3ed-9e4b124615d6.jpg?1783910786",
-      "imageLarge": "https://cards.scryfall.io/large/front/a/8/a8a982c8-bc08-44ba-b3ed-9e4b124615d6.jpg?1783910786",
-      "tcgplayerUrl": "https://partner.tcgplayer.com/c/4931599/1830156/21018?subId1=api&u=https%3A%2F%2Fwww.tcgplayer.com%2Fproduct%2F559478%3Fpage%3D1",
-      "priceUpdatedAt": "2026-10-23"
-    },
-    {
-      "apiId": "11a94c04-b6d3-4118-b252-5146eedae4e8",
-      "name": "Plains",
-      "set": "Bloomburrow",
-      "number": "265",
-      "rarity": "Common",
-      "officialRarity": "Common",
-      "marketPrice": 0.95,
-      "image": "https://cards.scryfall.io/normal/front/1/1/11a94c04-b6d3-4118-b252-5146eedae4e8.jpg?1783910780",
-      "imageLarge": "https://cards.scryfall.io/large/front/1/1/11a94c04-b6d3-4118-b252-5146eedae4e8.jpg?1783910780",
-      "tcgplayerUrl": "https://partner.tcgplayer.com/c/4931599/1830156/21018?subId1=api&u=https%3A%2F%2Fwww.tcgplayer.com%2Fproduct%2F558422%3Fpage%3D1",
-      "priceUpdatedAt": "2026-10-23"
-    },
-    {
       "apiId": "8a8c711f-f29f-4f6a-88c4-3dbf9ce471c3",
       "name": "Enduring Vitality (Showcase)",
       "set": "Duskmourn",
@@ -182,32 +156,6 @@
       "image": "https://cards.scryfall.io/normal/front/7/7/7722f4f7-fe38-4107-a715-7b27b6a4e341.jpg?1783909434",
       "imageLarge": "https://cards.scryfall.io/large/front/7/7/7722f4f7-fe38-4107-a715-7b27b6a4e341.jpg?1783909434",
       "tcgplayerUrl": "https://partner.tcgplayer.com/c/4931599/1830156/21018?subId1=api&u=https%3A%2F%2Fwww.tcgplayer.com%2Fproduct%2F575084%3Fpage%3D1",
-      "priceUpdatedAt": "2026-10-23"
-    },
-    {
-      "apiId": "857bfb0e-17dc-4dda-bc37-3df927a9eae6",
-      "name": "Untimely Malfunction",
-      "set": "Duskmourn",
-      "number": "161",
-      "rarity": "Uncommon",
-      "officialRarity": "Uncommon",
-      "marketPrice": 7.74,
-      "image": "https://cards.scryfall.io/normal/front/8/5/857bfb0e-17dc-4dda-bc37-3df927a9eae6.jpg?1783909463",
-      "imageLarge": "https://cards.scryfall.io/large/front/8/5/857bfb0e-17dc-4dda-bc37-3df927a9eae6.jpg?1783909463",
-      "tcgplayerUrl": "https://partner.tcgplayer.com/c/4931599/1830156/21018?subId1=api&u=https%3A%2F%2Fwww.tcgplayer.com%2Fproduct%2F576504%3Fpage%3D1",
-      "priceUpdatedAt": "2026-10-23"
-    },
-    {
-      "apiId": "7442c1c7-1c10-4387-92e6-4bdea263064f",
-      "name": "Swamp",
-      "set": "Duskmourn",
-      "number": "274",
-      "rarity": "Common",
-      "officialRarity": "Common",
-      "marketPrice": 1.11,
-      "image": "https://cards.scryfall.io/normal/front/7/4/7442c1c7-1c10-4387-92e6-4bdea263064f.jpg?1783909422",
-      "imageLarge": "https://cards.scryfall.io/large/front/7/4/7442c1c7-1c10-4387-92e6-4bdea263064f.jpg?1783909422",
-      "tcgplayerUrl": "https://partner.tcgplayer.com/c/4931599/1830156/21018?subId1=api&u=https%3A%2F%2Fwww.tcgplayer.com%2Fproduct%2F557260%3Fpage%3D1",
       "priceUpdatedAt": "2026-10-23"
     },
     {
@@ -289,32 +237,6 @@
       "priceUpdatedAt": "2026-10-23"
     },
     {
-      "apiId": "6f6aaee9-8c44-4e23-8167-ead64e599711",
-      "name": "An Offer You Can't Refuse (Borderless)",
-      "set": "Foundations",
-      "number": "311",
-      "rarity": "Uncommon",
-      "officialRarity": "Uncommon · Borderless",
-      "marketPrice": 7.48,
-      "image": "https://cards.scryfall.io/normal/front/6/f/6f6aaee9-8c44-4e23-8167-ead64e599711.jpg?1783909029",
-      "imageLarge": "https://cards.scryfall.io/large/front/6/f/6f6aaee9-8c44-4e23-8167-ead64e599711.jpg?1783909029",
-      "tcgplayerUrl": "https://partner.tcgplayer.com/c/4931599/1830156/21018?subId1=api&u=https%3A%2F%2Fwww.tcgplayer.com%2Fproduct%2F590827%3Fpage%3D1",
-      "priceUpdatedAt": "2026-10-23"
-    },
-    {
-      "apiId": "9fc6f0e9-eb5f-4bc0-b3d7-756644b66d12",
-      "name": "Hare Apparent",
-      "set": "Foundations",
-      "number": "15",
-      "rarity": "Common",
-      "officialRarity": "Common",
-      "marketPrice": 3.03,
-      "image": "https://cards.scryfall.io/normal/front/9/f/9fc6f0e9-eb5f-4bc0-b3d7-756644b66d12.jpg?1783909127",
-      "imageLarge": "https://cards.scryfall.io/large/front/9/f/9fc6f0e9-eb5f-4bc0-b3d7-756644b66d12.jpg?1783909127",
-      "tcgplayerUrl": "https://partner.tcgplayer.com/c/4931599/1830156/21018?subId1=api&u=https%3A%2F%2Fwww.tcgplayer.com%2Fproduct%2F591214%3Fpage%3D1",
-      "priceUpdatedAt": "2026-10-23"
-    },
-    {
       "apiId": "934cc1ca-2ce8-4062-b1b7-1976e76da8b6",
       "name": "The Aetherspark (Serialized)",
       "set": "Aetherdrift",
@@ -390,32 +312,6 @@
       "image": "https://cards.scryfall.io/normal/front/9/6/96ed5b66-8e74-4a90-ad4e-c39d15993994.jpg?1783907914",
       "imageLarge": "https://cards.scryfall.io/large/front/9/6/96ed5b66-8e74-4a90-ad4e-c39d15993994.jpg?1783907914",
       "tcgplayerUrl": "https://partner.tcgplayer.com/c/4931599/1830156/21018?subId1=api&u=https%3A%2F%2Fwww.tcgplayer.com%2Fproduct%2F615554%3Fpage%3D1",
-      "priceUpdatedAt": "2026-10-23"
-    },
-    {
-      "apiId": "194ebb23-fecd-4aa5-96b7-447c9768794e",
-      "name": "Marauding Mako (Special Frame)",
-      "set": "Aetherdrift",
-      "number": "419",
-      "rarity": "Uncommon",
-      "officialRarity": "Uncommon · Special Frame",
-      "marketPrice": 2.09,
-      "image": "https://cards.scryfall.io/normal/front/1/9/194ebb23-fecd-4aa5-96b7-447c9768794e.jpg?1783907793",
-      "imageLarge": "https://cards.scryfall.io/large/front/1/9/194ebb23-fecd-4aa5-96b7-447c9768794e.jpg?1783907793",
-      "tcgplayerUrl": "https://partner.tcgplayer.com/c/4931599/1830156/21018?subId1=api&u=https%3A%2F%2Fwww.tcgplayer.com%2Fproduct%2F614499%3Fpage%3D1",
-      "priceUpdatedAt": "2026-10-23"
-    },
-    {
-      "apiId": "5e4952a8-4e1f-4a74-8a06-c9d633b25dcd",
-      "name": "Mountain (Special Frame)",
-      "set": "Aetherdrift",
-      "number": "515",
-      "rarity": "Common",
-      "officialRarity": "Common · Special Frame",
-      "marketPrice": 8.3,
-      "image": "https://cards.scryfall.io/normal/front/5/e/5e4952a8-4e1f-4a74-8a06-c9d633b25dcd.jpg?1783907764",
-      "imageLarge": "https://cards.scryfall.io/large/front/5/e/5e4952a8-4e1f-4a74-8a06-c9d633b25dcd.jpg?1783907764",
-      "tcgplayerUrl": "https://partner.tcgplayer.com/c/4931599/1830156/21018?subId1=api&u=https%3A%2F%2Fwww.tcgplayer.com%2Fproduct%2F614200%3Fpage%3D1",
       "priceUpdatedAt": "2026-10-23"
     },
     {
@@ -497,32 +393,6 @@
       "priceUpdatedAt": "2026-10-23"
     },
     {
-      "apiId": "95617742-548d-464a-bb89-a858ffa9018f",
-      "name": "Strategic Betrayal",
-      "set": "Tarkir: Dragonstorm",
-      "number": "94",
-      "rarity": "Uncommon",
-      "officialRarity": "Uncommon",
-      "marketPrice": 1.12,
-      "image": "https://cards.scryfall.io/normal/front/9/5/95617742-548d-464a-bb89-a858ffa9018f.jpg?1783907371",
-      "imageLarge": "https://cards.scryfall.io/large/front/9/5/95617742-548d-464a-bb89-a858ffa9018f.jpg?1783907371",
-      "tcgplayerUrl": "https://partner.tcgplayer.com/c/4931599/1830156/21018?subId1=api&u=https%3A%2F%2Fwww.tcgplayer.com%2Fproduct%2F625197%3Fpage%3D1",
-      "priceUpdatedAt": "2026-10-23"
-    },
-    {
-      "apiId": "a4db1b7a-93f2-40a5-b649-80a099ddeb62",
-      "name": "Mountain",
-      "set": "Tarkir: Dragonstorm",
-      "number": "290",
-      "rarity": "Common",
-      "officialRarity": "Common",
-      "marketPrice": 16.71,
-      "image": "https://cards.scryfall.io/normal/front/a/4/a4db1b7a-93f2-40a5-b649-80a099ddeb62.jpg?1783907259",
-      "imageLarge": "https://cards.scryfall.io/large/front/a/4/a4db1b7a-93f2-40a5-b649-80a099ddeb62.jpg?1783907259",
-      "tcgplayerUrl": "https://partner.tcgplayer.com/c/4931599/1830156/21018?subId1=api&u=https%3A%2F%2Fwww.tcgplayer.com%2Fproduct%2F623900%3Fpage%3D1",
-      "priceUpdatedAt": "2026-10-23"
-    },
-    {
       "apiId": "156cfd45-1556-4804-becf-039cfff7de3d",
       "name": "Traveling Chocobo (Borderless)",
       "set": "Final Fantasy",
@@ -601,32 +471,6 @@
       "priceUpdatedAt": "2026-10-23"
     },
     {
-      "apiId": "90ab9143-23e0-437e-bc51-a46f3497c195",
-      "name": "Zack Fair (Special Foil)",
-      "set": "Final Fantasy",
-      "number": "580",
-      "rarity": "Uncommon",
-      "officialRarity": "Uncommon · Special Foil",
-      "marketPrice": 9.12,
-      "image": "https://cards.scryfall.io/normal/front/9/0/90ab9143-23e0-437e-bc51-a46f3497c195.jpg?1783906429",
-      "imageLarge": "https://cards.scryfall.io/large/front/9/0/90ab9143-23e0-437e-bc51-a46f3497c195.jpg?1783906429",
-      "tcgplayerUrl": "https://partner.tcgplayer.com/c/4931599/1830156/21018?subId1=api&u=https%3A%2F%2Fwww.tcgplayer.com%2Fproduct%2F631572%3Fpage%3D1",
-      "priceUpdatedAt": "2026-10-23"
-    },
-    {
-      "apiId": "9268ccdb-0b5b-4624-9443-f7b5330ec71f",
-      "name": "Laughing Mad (Special Foil)",
-      "set": "Final Fantasy",
-      "number": "585",
-      "rarity": "Common",
-      "officialRarity": "Common · Special Foil",
-      "marketPrice": 3.42,
-      "image": "https://cards.scryfall.io/normal/front/9/2/9268ccdb-0b5b-4624-9443-f7b5330ec71f.jpg?1783906426",
-      "imageLarge": "https://cards.scryfall.io/large/front/9/2/9268ccdb-0b5b-4624-9443-f7b5330ec71f.jpg?1783906426",
-      "tcgplayerUrl": "https://partner.tcgplayer.com/c/4931599/1830156/21018?subId1=api&u=https%3A%2F%2Fwww.tcgplayer.com%2Fproduct%2F631604%3Fpage%3D1",
-      "priceUpdatedAt": "2026-10-23"
-    },
-    {
       "apiId": "07b10f1b-b03b-4f19-bc7e-69d5eaa5ff07",
       "name": "Sothera, the Supervoid (Borderless)",
       "set": "Edge of Eternities",
@@ -702,32 +546,6 @@
       "image": "https://cards.scryfall.io/normal/front/1/d/1d18dc06-16f0-4a3b-8d52-dbf4aa2c393d.jpg?1783905945",
       "imageLarge": "https://cards.scryfall.io/large/front/1/d/1d18dc06-16f0-4a3b-8d52-dbf4aa2c393d.jpg?1783905945",
       "tcgplayerUrl": "https://partner.tcgplayer.com/c/4931599/1830156/21018?subId1=api&u=https%3A%2F%2Fwww.tcgplayer.com%2Fproduct%2F644798%3Fpage%3D1",
-      "priceUpdatedAt": "2026-10-23"
-    },
-    {
-      "apiId": "cddb48cc-8eb1-47ce-90f0-7aad1e93e2c4",
-      "name": "Weftstalker Ardent",
-      "set": "Edge of Eternities",
-      "number": "169",
-      "rarity": "Uncommon",
-      "officialRarity": "Uncommon",
-      "marketPrice": 3.11,
-      "image": "https://cards.scryfall.io/normal/front/c/d/cddb48cc-8eb1-47ce-90f0-7aad1e93e2c4.jpg?1783905943",
-      "imageLarge": "https://cards.scryfall.io/large/front/c/d/cddb48cc-8eb1-47ce-90f0-7aad1e93e2c4.jpg?1783905943",
-      "tcgplayerUrl": "https://partner.tcgplayer.com/c/4931599/1830156/21018?subId1=api&u=https%3A%2F%2Fwww.tcgplayer.com%2Fproduct%2F641779%3Fpage%3D1",
-      "priceUpdatedAt": "2026-10-23"
-    },
-    {
-      "apiId": "b938ac10-bd0f-4ce3-a743-958d5beadf58",
-      "name": "Swamp (Borderless)",
-      "set": "Edge of Eternities",
-      "number": "369",
-      "rarity": "Common",
-      "officialRarity": "Common · Borderless",
-      "marketPrice": 5.43,
-      "image": "https://cards.scryfall.io/normal/front/b/9/b938ac10-bd0f-4ce3-a743-958d5beadf58.jpg?1783905874",
-      "imageLarge": "https://cards.scryfall.io/large/front/b/9/b938ac10-bd0f-4ce3-a743-958d5beadf58.jpg?1783905874",
-      "tcgplayerUrl": "https://partner.tcgplayer.com/c/4931599/1830156/21018?subId1=api&u=https%3A%2F%2Fwww.tcgplayer.com%2Fproduct%2F638922%3Fpage%3D1",
       "priceUpdatedAt": "2026-10-23"
     }
   ]
