@@ -1,644 +1,435 @@
 [
   {
     "id": "au-001",
-    "cardId": "sg-058",
+    "cardId": "sg-019",
     "condition": "Lightly Played",
-    "seller": "Gempack TCG",
-    "sellerType": "Official",
-    "startPrice": 6.99,
-    "buyNow": 16.99,
-    "currentBid": 8.99,
+    "seller": "@topdeck_tay",
+    "sellerType": "Verified",
+    "startPrice": 28.99,
+    "buyNow": null,
+    "currentBid": 33.99,
     "bidCount": 3,
-    "endsInMinutes": 108,
-    "botCeiling": 12.74,
+    "endsInMinutes": 1702,
+    "botCeiling": 90.63,
     "history": [
       {
-        "bidder": "@binderbrooke",
-        "amount": 8.99,
-        "minutesAgo": 146
-      },
-      {
-        "bidder": "@pullrate_pete",
-        "amount": 7.99,
-        "minutesAgo": 293
+        "bidder": "@ripking22",
+        "amount": 33.99,
+        "minutesAgo": 512
       },
       {
         "bidder": "@holo_hunter",
-        "amount": 6.99,
-        "minutesAgo": 439
+        "amount": 30.99,
+        "minutesAgo": 1024
+      },
+      {
+        "bidder": "@nm_or_bust",
+        "amount": 28.99,
+        "minutesAgo": 1536
       }
     ]
   },
   {
     "id": "au-002",
-    "cardId": "sg-007",
+    "cardId": "sg-139",
     "condition": "Near Mint",
-    "seller": "@pullrate_pete",
+    "seller": "@sleevedup",
     "sellerType": "Verified",
-    "startPrice": 54.99,
-    "buyNow": 98.99,
-    "currentBid": 84.99,
-    "bidCount": 4,
-    "endsInMinutes": 378,
-    "botCeiling": 97.2,
+    "startPrice": 22.99,
+    "buyNow": 45.99,
+    "currentBid": 32.99,
+    "bidCount": 5,
+    "endsInMinutes": 130,
+    "botCeiling": 35.63,
     "history": [
       {
-        "bidder": "@holo_hunter",
-        "amount": 84.99,
-        "minutesAgo": 116
+        "bidder": "@mintcondition_mia",
+        "amount": 32.99,
+        "minutesAgo": 46
+      },
+      {
+        "bidder": "@pullrate_pete",
+        "amount": 29.99,
+        "minutesAgo": 91
       },
       {
         "bidder": "@binderbrooke",
-        "amount": 74.99,
-        "minutesAgo": 232
+        "amount": 27.99,
+        "minutesAgo": 137
       },
       {
-        "bidder": "@sleevedup",
-        "amount": 64.99,
-        "minutesAgo": 348
+        "bidder": "@ripking22",
+        "amount": 24.99,
+        "minutesAgo": 183
       },
       {
-        "bidder": "@cardboardcrack",
-        "amount": 54.99,
-        "minutesAgo": 465
+        "bidder": "@binderbrooke",
+        "amount": 22.99,
+        "minutesAgo": 229
       }
     ]
   },
   {
     "id": "au-003",
-    "cardId": "sg-050",
+    "cardId": "sg-148",
     "condition": "Near Mint",
-    "seller": "@ripking22",
+    "seller": "@topdeck_tay",
     "sellerType": "Verified",
-    "startPrice": 14.99,
-    "buyNow": 42.99,
-    "currentBid": 18.99,
-    "bidCount": 3,
-    "endsInMinutes": 3015,
-    "botCeiling": 31.48,
+    "startPrice": 437.99,
+    "buyNow": 1341.99,
+    "currentBid": 737.99,
+    "bidCount": 13,
+    "endsInMinutes": 188,
+    "botCeiling": 1171.31,
     "history": [
       {
         "bidder": "@gradedgabe",
-        "amount": 18.99,
-        "minutesAgo": 786
+        "amount": 737.99,
+        "minutesAgo": 49
+      },
+      {
+        "bidder": "@cardboardcrack",
+        "amount": 707.99,
+        "minutesAgo": 97
+      },
+      {
+        "bidder": "@mintcondition_mia",
+        "amount": 687.99,
+        "minutesAgo": 146
       },
       {
         "bidder": "@sleevedup",
-        "amount": 16.99,
-        "minutesAgo": 1572
+        "amount": 667.99,
+        "minutesAgo": 195
       },
       {
-        "bidder": "@topdeck_tay",
-        "amount": 14.99,
-        "minutesAgo": 2358
+        "bidder": "@ripking22",
+        "amount": 637.99,
+        "minutesAgo": 244
+      },
+      {
+        "bidder": "@holo_hunter",
+        "amount": 617.99,
+        "minutesAgo": 292
+      },
+      {
+        "bidder": "@cardboardcrack",
+        "amount": 597.99,
+        "minutesAgo": 341
+      },
+      {
+        "bidder": "@nm_or_bust",
+        "amount": 567.99,
+        "minutesAgo": 390
+      },
+      {
+        "bidder": "@ripking22",
+        "amount": 537.99,
+        "minutesAgo": 438
+      },
+      {
+        "bidder": "@gradedgabe",
+        "amount": 507.99,
+        "minutesAgo": 487
+      },
+      {
+        "bidder": "@sleevedup",
+        "amount": 487.99,
+        "minutesAgo": 536
+      },
+      {
+        "bidder": "@ripking22",
+        "amount": 457.99,
+        "minutesAgo": 584
+      },
+      {
+        "bidder": "@cardboardcrack",
+        "amount": 437.99,
+        "minutesAgo": 633
       }
     ]
   },
   {
     "id": "au-004",
-    "cardId": "sg-010",
-    "condition": "Near Mint",
+    "cardId": "sg-018",
+    "condition": "Lightly Played",
     "seller": "@mintcondition_mia",
     "sellerType": "Verified",
-    "startPrice": 168.99,
-    "buyNow": 387.99,
-    "currentBid": 283.99,
-    "bidCount": 7,
-    "endsInMinutes": 3250,
-    "botCeiling": 291.92,
+    "startPrice": 1.99,
+    "buyNow": 2.99,
+    "currentBid": 1.99,
+    "bidCount": 1,
+    "endsInMinutes": 283,
+    "botCeiling": 3.02,
     "history": [
       {
         "bidder": "@pullrate_pete",
-        "amount": 283.99,
-        "minutesAgo": 413
-      },
-      {
-        "bidder": "@gradedgabe",
-        "amount": 253.99,
-        "minutesAgo": 826
-      },
-      {
-        "bidder": "@cardboardcrack",
-        "amount": 233.99,
-        "minutesAgo": 1238
-      },
-      {
-        "bidder": "@topdeck_tay",
-        "amount": 203.99,
-        "minutesAgo": 1651
-      },
-      {
-        "bidder": "@pullrate_pete",
-        "amount": 193.99,
-        "minutesAgo": 2064
-      },
-      {
-        "bidder": "@topdeck_tay",
-        "amount": 178.99,
-        "minutesAgo": 2477
-      },
-      {
-        "bidder": "@gradedgabe",
-        "amount": 168.99,
-        "minutesAgo": 2889
+        "amount": 1.99,
+        "minutesAgo": 224
       }
     ]
   },
   {
     "id": "au-005",
-    "cardId": "sg-102",
-    "condition": "Near Mint",
-    "seller": "@mintcondition_mia",
-    "sellerType": "Verified",
-    "startPrice": 0.99,
-    "buyNow": 2.99,
-    "currentBid": 2.49,
+    "cardId": "sg-103",
+    "condition": "Lightly Played",
+    "seller": "Gempack TCG",
+    "sellerType": "Official",
+    "startPrice": 2.99,
+    "buyNow": 6.99,
+    "currentBid": 3.99,
     "bidCount": 2,
-    "endsInMinutes": 7,
-    "botCeiling": 2.44,
+    "endsInMinutes": 1064,
+    "botCeiling": 6.03,
     "history": [
       {
-        "bidder": "@topdeck_tay",
-        "amount": 2.49,
-        "minutesAgo": 175
+        "bidder": "@holo_hunter",
+        "amount": 3.99,
+        "minutesAgo": 523
       },
       {
-        "bidder": "@binderbrooke",
-        "amount": 0.99,
-        "minutesAgo": 349
+        "bidder": "@nm_or_bust",
+        "amount": 2.99,
+        "minutesAgo": 1046
       }
     ]
   },
   {
     "id": "au-006",
-    "cardId": "sg-092",
+    "cardId": "sg-001",
     "condition": "Near Mint",
-    "seller": "@holo_hunter",
+    "seller": "@topdeck_tay",
     "sellerType": "Verified",
-    "startPrice": 5.99,
-    "buyNow": 17.99,
-    "currentBid": 10.99,
-    "bidCount": 5,
-    "endsInMinutes": 1476,
-    "botCeiling": 17.14,
+    "startPrice": 481.99,
+    "buyNow": 1448.99,
+    "currentBid": 661.99,
+    "bidCount": 8,
+    "endsInMinutes": 15,
+    "botCeiling": 1323.06,
     "history": [
       {
-        "bidder": "@pullrate_pete",
-        "amount": 10.99,
-        "minutesAgo": 315
-      },
-      {
-        "bidder": "@gradedgabe",
-        "amount": 9.99,
-        "minutesAgo": 629
+        "bidder": "@binderbrooke",
+        "amount": 661.99,
+        "minutesAgo": 15
       },
       {
         "bidder": "@cardboardcrack",
-        "amount": 8.99,
-        "minutesAgo": 944
+        "amount": 641.99,
+        "minutesAgo": 31
       },
       {
-        "bidder": "@mintcondition_mia",
-        "amount": 7.49,
-        "minutesAgo": 1258
+        "bidder": "@binderbrooke",
+        "amount": 611.99,
+        "minutesAgo": 46
+      },
+      {
+        "bidder": "@holo_hunter",
+        "amount": 581.99,
+        "minutesAgo": 62
+      },
+      {
+        "bidder": "@cardboardcrack",
+        "amount": 561.99,
+        "minutesAgo": 77
       },
       {
         "bidder": "@nm_or_bust",
-        "amount": 5.99,
-        "minutesAgo": 1573
+        "amount": 531.99,
+        "minutesAgo": 93
+      },
+      {
+        "bidder": "@sleevedup",
+        "amount": 511.99,
+        "minutesAgo": 108
+      },
+      {
+        "bidder": "@binderbrooke",
+        "amount": 481.99,
+        "minutesAgo": 124
       }
     ]
   },
   {
     "id": "au-007",
-    "cardId": "sg-022",
+    "cardId": "sg-075",
     "condition": "Near Mint",
     "seller": "Gempack TCG",
     "sellerType": "Official",
-    "startPrice": 1.99,
-    "buyNow": 3.99,
-    "currentBid": 2.99,
+    "startPrice": 28.99,
+    "buyNow": 54.99,
+    "currentBid": 31.99,
     "bidCount": 2,
-    "endsInMinutes": 353,
-    "botCeiling": 3.83,
+    "endsInMinutes": 1870,
+    "botCeiling": 43.35,
     "history": [
       {
-        "bidder": "@nm_or_bust",
-        "amount": 2.99,
-        "minutesAgo": 249
+        "bidder": "@sleevedup",
+        "amount": 31.99,
+        "minutesAgo": 678
       },
       {
-        "bidder": "@pullrate_pete",
-        "amount": 1.99,
-        "minutesAgo": 498
+        "bidder": "@topdeck_tay",
+        "amount": 28.99,
+        "minutesAgo": 1356
       }
     ]
   },
   {
     "id": "au-008",
-    "cardId": "sg-011",
+    "cardId": "sg-167",
     "condition": "Near Mint",
-    "seller": "@ripking22",
+    "seller": "@holo_hunter",
     "sellerType": "Verified",
-    "startPrice": 34.99,
-    "buyNow": 71.99,
-    "currentBid": 42.99,
-    "bidCount": 4,
-    "endsInMinutes": 3476,
-    "botCeiling": 62.3,
-    "history": [
-      {
-        "bidder": "@sleevedup",
-        "amount": 42.99,
-        "minutesAgo": 728
-      },
-      {
-        "bidder": "@holo_hunter",
-        "amount": 39.99,
-        "minutesAgo": 1456
-      },
-      {
-        "bidder": "@binderbrooke",
-        "amount": 37.99,
-        "minutesAgo": 2184
-      },
-      {
-        "bidder": "@topdeck_tay",
-        "amount": 34.99,
-        "minutesAgo": 2911
-      }
-    ]
+    "startPrice": 1.99,
+    "buyNow": null,
+    "currentBid": 0,
+    "bidCount": 0,
+    "endsInMinutes": 177,
+    "botCeiling": 3.7,
+    "history": []
   },
   {
     "id": "au-009",
-    "cardId": "sg-091",
-    "condition": "Near Mint",
+    "cardId": "sg-045",
+    "condition": "Lightly Played",
     "seller": "@topdeck_tay",
     "sellerType": "Verified",
-    "startPrice": 16.99,
-    "buyNow": 41.99,
-    "currentBid": 28.99,
-    "bidCount": 6,
-    "endsInMinutes": 828,
-    "botCeiling": 36.97,
+    "startPrice": 1.99,
+    "buyNow": null,
+    "currentBid": 4.49,
+    "bidCount": 3,
+    "endsInMinutes": 552,
+    "botCeiling": 4.57,
     "history": [
       {
-        "bidder": "@mintcondition_mia",
-        "amount": 28.99,
-        "minutesAgo": 183
+        "bidder": "@holo_hunter",
+        "amount": 4.49,
+        "minutesAgo": 159
       },
       {
-        "bidder": "@gradedgabe",
-        "amount": 25.99,
-        "minutesAgo": 366
+        "bidder": "@nm_or_bust",
+        "amount": 2.99,
+        "minutesAgo": 319
       },
       {
-        "bidder": "@ripking22",
-        "amount": 23.99,
-        "minutesAgo": 549
-      },
-      {
-        "bidder": "@gradedgabe",
-        "amount": 20.99,
-        "minutesAgo": 732
-      },
-      {
-        "bidder": "@sleevedup",
-        "amount": 18.99,
-        "minutesAgo": 914
-      },
-      {
-        "bidder": "@pullrate_pete",
-        "amount": 16.99,
-        "minutesAgo": 1097
+        "bidder": "@binderbrooke",
+        "amount": 1.99,
+        "minutesAgo": 478
       }
     ]
   },
   {
     "id": "au-010",
-    "cardId": "sg-067",
+    "cardId": "sg-097",
     "condition": "Near Mint",
-    "seller": "@mintcondition_mia",
+    "seller": "@gradedgabe",
     "sellerType": "Verified",
-    "startPrice": 0.99,
-    "buyNow": 2.99,
-    "currentBid": 1.99,
-    "bidCount": 2,
-    "endsInMinutes": 9,
-    "botCeiling": 2.07,
+    "startPrice": 192.99,
+    "buyNow": 433.99,
+    "currentBid": 332.99,
+    "bidCount": 7,
+    "endsInMinutes": 65,
+    "botCeiling": 371.68,
     "history": [
       {
         "bidder": "@holo_hunter",
-        "amount": 1.99,
-        "minutesAgo": 158
+        "amount": 332.99,
+        "minutesAgo": 47
       },
       {
         "bidder": "@nm_or_bust",
-        "amount": 0.99,
-        "minutesAgo": 316
+        "amount": 312.99,
+        "minutesAgo": 94
+      },
+      {
+        "bidder": "@cardboardcrack",
+        "amount": 282.99,
+        "minutesAgo": 141
+      },
+      {
+        "bidder": "@binderbrooke",
+        "amount": 252.99,
+        "minutesAgo": 189
+      },
+      {
+        "bidder": "@pullrate_pete",
+        "amount": 222.99,
+        "minutesAgo": 236
+      },
+      {
+        "bidder": "@binderbrooke",
+        "amount": 202.99,
+        "minutesAgo": 283
+      },
+      {
+        "bidder": "@holo_hunter",
+        "amount": 192.99,
+        "minutesAgo": 330
       }
     ]
   },
   {
     "id": "au-011",
-    "cardId": "sg-056",
+    "cardId": "sg-105",
     "condition": "Near Mint",
-    "seller": "Gempack TCG",
-    "sellerType": "Official",
-    "startPrice": 5.99,
-    "buyNow": null,
-    "currentBid": 9.99,
-    "bidCount": 4,
-    "endsInMinutes": 666,
-    "botCeiling": 11.98,
+    "seller": "@gradedgabe",
+    "sellerType": "Verified",
+    "startPrice": 473.99,
+    "buyNow": 1051.99,
+    "currentBid": 603.99,
+    "bidCount": 7,
+    "endsInMinutes": 7,
+    "botCeiling": 990.16,
     "history": [
       {
-        "bidder": "@sleevedup",
-        "amount": 9.99,
-        "minutesAgo": 144
+        "bidder": "@nm_or_bust",
+        "amount": 603.99,
+        "minutesAgo": 23
       },
       {
-        "bidder": "@cardboardcrack",
-        "amount": 8.49,
-        "minutesAgo": 287
+        "bidder": "@topdeck_tay",
+        "amount": 583.99,
+        "minutesAgo": 46
       },
       {
-        "bidder": "@gradedgabe",
-        "amount": 6.99,
-        "minutesAgo": 431
+        "bidder": "@mintcondition_mia",
+        "amount": 563.99,
+        "minutesAgo": 69
       },
       {
-        "bidder": "@binderbrooke",
-        "amount": 5.99,
-        "minutesAgo": 574
+        "bidder": "@pullrate_pete",
+        "amount": 533.99,
+        "minutesAgo": 92
+      },
+      {
+        "bidder": "@holo_hunter",
+        "amount": 513.99,
+        "minutesAgo": 114
+      },
+      {
+        "bidder": "@nm_or_bust",
+        "amount": 493.99,
+        "minutesAgo": 137
+      },
+      {
+        "bidder": "@topdeck_tay",
+        "amount": 473.99,
+        "minutesAgo": 160
       }
     ]
   },
   {
     "id": "au-012",
-    "cardId": "sg-060",
-    "condition": "Lightly Played",
-    "seller": "@ripking22",
-    "sellerType": "Verified",
-    "startPrice": 9.99,
-    "buyNow": 24.99,
-    "currentBid": 14.49,
-    "bidCount": 3,
-    "endsInMinutes": 4,
-    "botCeiling": 20.63,
-    "history": [
-      {
-        "bidder": "@pullrate_pete",
-        "amount": 14.49,
-        "minutesAgo": 143
-      },
-      {
-        "bidder": "@topdeck_tay",
-        "amount": 11.49,
-        "minutesAgo": 286
-      },
-      {
-        "bidder": "@sleevedup",
-        "amount": 9.99,
-        "minutesAgo": 430
-      }
-    ]
-  },
-  {
-    "id": "au-013",
-    "cardId": "sg-053",
+    "cardId": "sg-119",
     "condition": "Near Mint",
     "seller": "Gempack TCG",
     "sellerType": "Official",
-    "startPrice": 48.99,
-    "buyNow": 92.99,
-    "currentBid": 0,
-    "bidCount": 0,
-    "endsInMinutes": 698,
-    "botCeiling": 73.36,
-    "history": []
-  },
-  {
-    "id": "au-014",
-    "cardId": "sg-003",
-    "condition": "Near Mint",
-    "seller": "Gempack TCG",
-    "sellerType": "Official",
-    "startPrice": 123.99,
-    "buyNow": 283.99,
-    "currentBid": 148.99,
-    "bidCount": 3,
-    "endsInMinutes": 3804,
-    "botCeiling": 254.28,
-    "history": [
-      {
-        "bidder": "@nm_or_bust",
-        "amount": 148.99,
-        "minutesAgo": 1019
-      },
-      {
-        "bidder": "@binderbrooke",
-        "amount": 138.99,
-        "minutesAgo": 2038
-      },
-      {
-        "bidder": "@gradedgabe",
-        "amount": 123.99,
-        "minutesAgo": 3056
-      }
-    ]
-  },
-  {
-    "id": "au-015",
-    "cardId": "sg-006",
-    "condition": "Lightly Played",
-    "seller": "Gempack TCG",
-    "sellerType": "Official",
-    "startPrice": 40.99,
-    "buyNow": 109.99,
-    "currentBid": 61.99,
-    "bidCount": 6,
-    "endsInMinutes": 14,
-    "botCeiling": 109.57,
-    "history": [
-      {
-        "bidder": "@sleevedup",
-        "amount": 61.99,
-        "minutesAgo": 26
-      },
-      {
-        "bidder": "@ripking22",
-        "amount": 51.99,
-        "minutesAgo": 52
-      },
-      {
-        "bidder": "@sleevedup",
-        "amount": 48.99,
-        "minutesAgo": 78
-      },
-      {
-        "bidder": "@gradedgabe",
-        "amount": 45.99,
-        "minutesAgo": 104
-      },
-      {
-        "bidder": "@sleevedup",
-        "amount": 42.99,
-        "minutesAgo": 130
-      },
-      {
-        "bidder": "@topdeck_tay",
-        "amount": 40.99,
-        "minutesAgo": 156
-      }
-    ]
-  },
-  {
-    "id": "au-016",
-    "cardId": "sg-059",
-    "condition": "Lightly Played",
-    "seller": "Gempack TCG",
-    "sellerType": "Official",
-    "startPrice": 24.99,
-    "buyNow": 62.99,
-    "currentBid": 37.99,
-    "bidCount": 6,
-    "endsInMinutes": 1227,
-    "botCeiling": 54.67,
-    "history": [
-      {
-        "bidder": "@pullrate_pete",
-        "amount": 37.99,
-        "minutesAgo": 208
-      },
-      {
-        "bidder": "@mintcondition_mia",
-        "amount": 35.99,
-        "minutesAgo": 416
-      },
-      {
-        "bidder": "@nm_or_bust",
-        "amount": 33.99,
-        "minutesAgo": 624
-      },
-      {
-        "bidder": "@cardboardcrack",
-        "amount": 30.99,
-        "minutesAgo": 832
-      },
-      {
-        "bidder": "@mintcondition_mia",
-        "amount": 27.99,
-        "minutesAgo": 1040
-      },
-      {
-        "bidder": "@gradedgabe",
-        "amount": 24.99,
-        "minutesAgo": 1248
-      }
-    ]
-  },
-  {
-    "id": "au-017",
-    "cardId": "sg-012",
-    "condition": "Near Mint",
-    "seller": "Gempack TCG",
-    "sellerType": "Official",
-    "startPrice": 10.99,
-    "buyNow": 26.99,
-    "currentBid": 16.99,
-    "bidCount": 3,
-    "endsInMinutes": 110,
-    "botCeiling": 24.25,
-    "history": [
-      {
-        "bidder": "@holo_hunter",
-        "amount": 16.99,
-        "minutesAgo": 46
-      },
-      {
-        "bidder": "@nm_or_bust",
-        "amount": 13.99,
-        "minutesAgo": 92
-      },
-      {
-        "bidder": "@pullrate_pete",
-        "amount": 10.99,
-        "minutesAgo": 138
-      }
-    ]
-  },
-  {
-    "id": "au-018",
-    "cardId": "sg-024",
-    "condition": "Near Mint",
-    "seller": "Gempack TCG",
-    "sellerType": "Official",
-    "startPrice": 1.99,
-    "buyNow": 3.99,
-    "currentBid": 0,
-    "bidCount": 0,
-    "endsInMinutes": 65,
-    "botCeiling": 3.12,
-    "history": []
-  },
-  {
-    "id": "au-019",
-    "cardId": "sg-084",
-    "condition": "Near Mint",
-    "seller": "@gradedgabe",
-    "sellerType": "Verified",
-    "startPrice": 1103.99,
-    "buyNow": 2448.99,
-    "currentBid": 1378.99,
-    "bidCount": 6,
-    "endsInMinutes": 878,
-    "botCeiling": 2201.86,
-    "history": [
-      {
-        "bidder": "@topdeck_tay",
-        "amount": 1378.99,
-        "minutesAgo": 162
-      },
-      {
-        "bidder": "@mintcondition_mia",
-        "amount": 1328.99,
-        "minutesAgo": 323
-      },
-      {
-        "bidder": "@pullrate_pete",
-        "amount": 1253.99,
-        "minutesAgo": 485
-      },
-      {
-        "bidder": "@holo_hunter",
-        "amount": 1203.99,
-        "minutesAgo": 646
-      },
-      {
-        "bidder": "@nm_or_bust",
-        "amount": 1153.99,
-        "minutesAgo": 808
-      },
-      {
-        "bidder": "@topdeck_tay",
-        "amount": 1103.99,
-        "minutesAgo": 969
-      }
-    ]
-  },
-  {
-    "id": "au-020",
-    "cardId": "sg-063",
-    "condition": "Near Mint",
-    "seller": "@ripking22",
-    "sellerType": "Verified",
     "startPrice": 0.99,
     "buyNow": null,
     "currentBid": 1.99,
     "bidCount": 2,
     "endsInMinutes": 3279,
-    "botCeiling": 2.64,
+    "botCeiling": 2.31,
     "history": [
       {
         "bidder": "@pullrate_pete",
@@ -653,550 +444,810 @@
     ]
   },
   {
-    "id": "au-021",
-    "cardId": "sg-087",
+    "id": "au-013",
+    "cardId": "sg-149",
     "condition": "Near Mint",
     "seller": "@gradedgabe",
     "sellerType": "Verified",
-    "startPrice": 674.99,
-    "buyNow": 1098.99,
+    "startPrice": 407.99,
+    "buyNow": 663.99,
     "currentBid": 0,
     "bidCount": 0,
     "endsInMinutes": 10,
-    "botCeiling": 984.17,
+    "botCeiling": 594.64,
     "history": []
   },
   {
-    "id": "au-022",
-    "cardId": "sg-088",
+    "id": "au-014",
+    "cardId": "sg-156",
     "condition": "Near Mint",
     "seller": "@topdeck_tay",
     "sellerType": "Verified",
-    "startPrice": 224.99,
-    "buyNow": 770.99,
-    "currentBid": 454.99,
-    "bidCount": 10,
-    "endsInMinutes": 2333,
-    "botCeiling": 690.94,
+    "startPrice": 8.99,
+    "buyNow": 31.99,
+    "currentBid": 18.99,
+    "bidCount": 6,
+    "endsInMinutes": 1819,
+    "botCeiling": 26.83,
     "history": [
       {
-        "bidder": "@nm_or_bust",
-        "amount": 454.99,
-        "minutesAgo": 259
-      },
-      {
         "bidder": "@binderbrooke",
-        "amount": 424.99,
-        "minutesAgo": 519
-      },
-      {
-        "bidder": "@pullrate_pete",
-        "amount": 394.99,
-        "minutesAgo": 778
-      },
-      {
-        "bidder": "@nm_or_bust",
-        "amount": 374.99,
-        "minutesAgo": 1037
-      },
-      {
-        "bidder": "@binderbrooke",
-        "amount": 344.99,
-        "minutesAgo": 1297
+        "amount": 18.99,
+        "minutesAgo": 266
       },
       {
         "bidder": "@ripking22",
-        "amount": 314.99,
-        "minutesAgo": 1556
+        "amount": 15.99,
+        "minutesAgo": 532
       },
       {
         "bidder": "@holo_hunter",
-        "amount": 284.99,
-        "minutesAgo": 1815
+        "amount": 12.99,
+        "minutesAgo": 799
       },
       {
         "bidder": "@pullrate_pete",
-        "amount": 264.99,
-        "minutesAgo": 2074
+        "amount": 10.99,
+        "minutesAgo": 1065
       },
       {
         "bidder": "@sleevedup",
-        "amount": 244.99,
-        "minutesAgo": 2334
+        "amount": 9.99,
+        "minutesAgo": 1331
       },
       {
         "bidder": "@cardboardcrack",
-        "amount": 224.99,
-        "minutesAgo": 2593
+        "amount": 8.99,
+        "minutesAgo": 1597
+      }
+    ]
+  },
+  {
+    "id": "au-015",
+    "cardId": "sg-057",
+    "condition": "Lightly Played",
+    "seller": "@binderbrooke",
+    "sellerType": "Verified",
+    "startPrice": 32.99,
+    "buyNow": null,
+    "currentBid": 40.99,
+    "bidCount": 4,
+    "endsInMinutes": 4,
+    "botCeiling": 48.12,
+    "history": [
+      {
+        "bidder": "@gradedgabe",
+        "amount": 40.99,
+        "minutesAgo": 62
+      },
+      {
+        "bidder": "@sleevedup",
+        "amount": 37.99,
+        "minutesAgo": 123
+      },
+      {
+        "bidder": "@gradedgabe",
+        "amount": 35.99,
+        "minutesAgo": 185
+      },
+      {
+        "bidder": "@mintcondition_mia",
+        "amount": 32.99,
+        "minutesAgo": 246
+      }
+    ]
+  },
+  {
+    "id": "au-016",
+    "cardId": "sg-009",
+    "condition": "Lightly Played",
+    "seller": "Gempack TCG",
+    "sellerType": "Official",
+    "startPrice": 106.99,
+    "buyNow": 301.99,
+    "currentBid": 151.99,
+    "bidCount": 4,
+    "endsInMinutes": 326,
+    "botCeiling": 259.28,
+    "history": [
+      {
+        "bidder": "@cardboardcrack",
+        "amount": 151.99,
+        "minutesAgo": 102
+      },
+      {
+        "bidder": "@gradedgabe",
+        "amount": 136.99,
+        "minutesAgo": 205
+      },
+      {
+        "bidder": "@sleevedup",
+        "amount": 121.99,
+        "minutesAgo": 307
+      },
+      {
+        "bidder": "@topdeck_tay",
+        "amount": 106.99,
+        "minutesAgo": 409
+      }
+    ]
+  },
+  {
+    "id": "au-017",
+    "cardId": "sg-083",
+    "condition": "Near Mint",
+    "seller": "Gempack TCG",
+    "sellerType": "Official",
+    "startPrice": 36.99,
+    "buyNow": 88.99,
+    "currentBid": 51.99,
+    "bidCount": 7,
+    "endsInMinutes": 3008,
+    "botCeiling": 74.08,
+    "history": [
+      {
+        "bidder": "@topdeck_tay",
+        "amount": 51.99,
+        "minutesAgo": 449
+      },
+      {
+        "bidder": "@ripking22",
+        "amount": 49.99,
+        "minutesAgo": 897
+      },
+      {
+        "bidder": "@cardboardcrack",
+        "amount": 47.99,
+        "minutesAgo": 1346
+      },
+      {
+        "bidder": "@gradedgabe",
+        "amount": 44.99,
+        "minutesAgo": 1795
+      },
+      {
+        "bidder": "@ripking22",
+        "amount": 41.99,
+        "minutesAgo": 2244
+      },
+      {
+        "bidder": "@binderbrooke",
+        "amount": 38.99,
+        "minutesAgo": 2692
+      },
+      {
+        "bidder": "@topdeck_tay",
+        "amount": 36.99,
+        "minutesAgo": 3141
+      }
+    ]
+  },
+  {
+    "id": "au-018",
+    "cardId": "sg-011",
+    "condition": "Near Mint",
+    "seller": "@topdeck_tay",
+    "sellerType": "Verified",
+    "startPrice": 14.99,
+    "buyNow": 34.99,
+    "currentBid": 24.99,
+    "bidCount": 5,
+    "endsInMinutes": 1408,
+    "botCeiling": 26.91,
+    "history": [
+      {
+        "bidder": "@cardboardcrack",
+        "amount": 24.99,
+        "minutesAgo": 291
+      },
+      {
+        "bidder": "@ripking22",
+        "amount": 21.99,
+        "minutesAgo": 582
+      },
+      {
+        "bidder": "@sleevedup",
+        "amount": 18.99,
+        "minutesAgo": 872
+      },
+      {
+        "bidder": "@holo_hunter",
+        "amount": 16.99,
+        "minutesAgo": 1163
+      },
+      {
+        "bidder": "@binderbrooke",
+        "amount": 14.99,
+        "minutesAgo": 1454
+      }
+    ]
+  },
+  {
+    "id": "au-019",
+    "cardId": "sg-034",
+    "condition": "Lightly Played",
+    "seller": "@holo_hunter",
+    "sellerType": "Verified",
+    "startPrice": 0.99,
+    "buyNow": 2.99,
+    "currentBid": 2.49,
+    "bidCount": 2,
+    "endsInMinutes": 3317,
+    "botCeiling": 2.06,
+    "history": [
+      {
+        "bidder": "@ripking22",
+        "amount": 2.49,
+        "minutesAgo": 1256
+      },
+      {
+        "bidder": "@gradedgabe",
+        "amount": 0.99,
+        "minutesAgo": 2512
+      }
+    ]
+  },
+  {
+    "id": "au-020",
+    "cardId": "sg-082",
+    "condition": "Near Mint",
+    "seller": "@ripking22",
+    "sellerType": "Verified",
+    "startPrice": 7.99,
+    "buyNow": 18.99,
+    "currentBid": 10.99,
+    "bidCount": 3,
+    "endsInMinutes": 5,
+    "botCeiling": 16.24,
+    "history": [
+      {
+        "bidder": "@nm_or_bust",
+        "amount": 10.99,
+        "minutesAgo": 27
+      },
+      {
+        "bidder": "@binderbrooke",
+        "amount": 9.49,
+        "minutesAgo": 54
+      },
+      {
+        "bidder": "@gradedgabe",
+        "amount": 7.99,
+        "minutesAgo": 81
+      }
+    ]
+  },
+  {
+    "id": "au-021",
+    "cardId": "sg-117",
+    "condition": "Near Mint",
+    "seller": "@binderbrooke",
+    "sellerType": "Verified",
+    "startPrice": 6.99,
+    "buyNow": null,
+    "currentBid": 6.99,
+    "bidCount": 1,
+    "endsInMinutes": 221,
+    "botCeiling": 14,
+    "history": [
+      {
+        "bidder": "@cardboardcrack",
+        "amount": 6.99,
+        "minutesAgo": 218
+      }
+    ]
+  },
+  {
+    "id": "au-022",
+    "cardId": "sg-131",
+    "condition": "Near Mint",
+    "seller": "@binderbrooke",
+    "sellerType": "Verified",
+    "startPrice": 27.99,
+    "buyNow": null,
+    "currentBid": 32.99,
+    "bidCount": 3,
+    "endsInMinutes": 94,
+    "botCeiling": 44.31,
+    "history": [
+      {
+        "bidder": "@holo_hunter",
+        "amount": 32.99,
+        "minutesAgo": 82
+      },
+      {
+        "bidder": "@mintcondition_mia",
+        "amount": 30.99,
+        "minutesAgo": 165
+      },
+      {
+        "bidder": "@nm_or_bust",
+        "amount": 27.99,
+        "minutesAgo": 247
       }
     ]
   },
   {
     "id": "au-023",
-    "cardId": "sg-009",
-    "condition": "Near Mint",
-    "seller": "@pullrate_pete",
-    "sellerType": "Verified",
-    "startPrice": 74.99,
-    "buyNow": 185.99,
-    "currentBid": 84.99,
-    "bidCount": 2,
-    "endsInMinutes": 43,
-    "botCeiling": 152.19,
+    "cardId": "sg-043",
+    "condition": "Lightly Played",
+    "seller": "Gempack TCG",
+    "sellerType": "Official",
+    "startPrice": 10.99,
+    "buyNow": null,
+    "currentBid": 26.99,
+    "bidCount": 8,
+    "endsInMinutes": 309,
+    "botCeiling": 31.08,
     "history": [
       {
-        "bidder": "@sleevedup",
-        "amount": 84.99,
-        "minutesAgo": 210
+        "bidder": "@cardboardcrack",
+        "amount": 26.99,
+        "minutesAgo": 90
       },
       {
-        "bidder": "@gradedgabe",
-        "amount": 74.99,
-        "minutesAgo": 421
+        "bidder": "@binderbrooke",
+        "amount": 23.99,
+        "minutesAgo": 180
+      },
+      {
+        "bidder": "@topdeck_tay",
+        "amount": 20.99,
+        "minutesAgo": 269
+      },
+      {
+        "bidder": "@mintcondition_mia",
+        "amount": 18.99,
+        "minutesAgo": 359
+      },
+      {
+        "bidder": "@cardboardcrack",
+        "amount": 16.99,
+        "minutesAgo": 449
+      },
+      {
+        "bidder": "@binderbrooke",
+        "amount": 14.99,
+        "minutesAgo": 539
+      },
+      {
+        "bidder": "@cardboardcrack",
+        "amount": 12.99,
+        "minutesAgo": 629
+      },
+      {
+        "bidder": "@topdeck_tay",
+        "amount": 10.99,
+        "minutesAgo": 718
       }
     ]
   },
   {
     "id": "au-024",
-    "cardId": "sg-015",
-    "condition": "Near Mint",
-    "seller": "@sleevedup",
+    "cardId": "sg-145",
+    "condition": "Lightly Played",
+    "seller": "@gradedgabe",
     "sellerType": "Verified",
-    "startPrice": 6.99,
-    "buyNow": 18.99,
-    "currentBid": 13.99,
-    "bidCount": 6,
-    "endsInMinutes": 27,
-    "botCeiling": 17.32,
+    "startPrice": 1007.99,
+    "buyNow": 2189.99,
+    "currentBid": 1607.99,
+    "bidCount": 11,
+    "endsInMinutes": 3072,
+    "botCeiling": 1967.26,
     "history": [
       {
-        "bidder": "@gradedgabe",
-        "amount": 13.99,
-        "minutesAgo": 37
+        "bidder": "@topdeck_tay",
+        "amount": 1607.99,
+        "minutesAgo": 276
       },
       {
         "bidder": "@holo_hunter",
-        "amount": 10.99,
-        "minutesAgo": 73
+        "amount": 1532.99,
+        "minutesAgo": 552
       },
       {
-        "bidder": "@gradedgabe",
-        "amount": 9.99,
-        "minutesAgo": 110
-      },
-      {
-        "bidder": "@mintcondition_mia",
-        "amount": 8.99,
-        "minutesAgo": 147
-      },
-      {
-        "bidder": "@cardboardcrack",
-        "amount": 7.99,
-        "minutesAgo": 184
+        "bidder": "@sleevedup",
+        "amount": 1482.99,
+        "minutesAgo": 828
       },
       {
         "bidder": "@nm_or_bust",
-        "amount": 6.99,
-        "minutesAgo": 220
+        "amount": 1432.99,
+        "minutesAgo": 1104
+      },
+      {
+        "bidder": "@pullrate_pete",
+        "amount": 1382.99,
+        "minutesAgo": 1381
+      },
+      {
+        "bidder": "@ripking22",
+        "amount": 1332.99,
+        "minutesAgo": 1657
+      },
+      {
+        "bidder": "@holo_hunter",
+        "amount": 1282.99,
+        "minutesAgo": 1933
+      },
+      {
+        "bidder": "@sleevedup",
+        "amount": 1232.99,
+        "minutesAgo": 2209
+      },
+      {
+        "bidder": "@nm_or_bust",
+        "amount": 1157.99,
+        "minutesAgo": 2485
+      },
+      {
+        "bidder": "@mintcondition_mia",
+        "amount": 1082.99,
+        "minutesAgo": 2761
+      },
+      {
+        "bidder": "@pullrate_pete",
+        "amount": 1007.99,
+        "minutesAgo": 3037
       }
     ]
   },
   {
     "id": "au-025",
-    "cardId": "sg-090",
-    "condition": "Near Mint",
-    "seller": "@binderbrooke",
-    "sellerType": "Verified",
-    "startPrice": 18.99,
-    "buyNow": null,
-    "currentBid": 27.99,
-    "bidCount": 4,
-    "endsInMinutes": 2976,
-    "botCeiling": 34.71,
+    "cardId": "sg-147",
+    "condition": "Lightly Played",
+    "seller": "Gempack TCG",
+    "sellerType": "Official",
+    "startPrice": 703.99,
+    "buyNow": 1650.99,
+    "currentBid": 753.99,
+    "bidCount": 3,
+    "endsInMinutes": 2191,
+    "botCeiling": 1267.75,
     "history": [
       {
         "bidder": "@gradedgabe",
-        "amount": 27.99,
-        "minutesAgo": 655
+        "amount": 753.99,
+        "minutesAgo": 647
       },
       {
-        "bidder": "@ripking22",
-        "amount": 24.99,
-        "minutesAgo": 1310
+        "bidder": "@sleevedup",
+        "amount": 723.99,
+        "minutesAgo": 1294
       },
       {
-        "bidder": "@mintcondition_mia",
-        "amount": 21.99,
-        "minutesAgo": 1966
-      },
-      {
-        "bidder": "@holo_hunter",
-        "amount": 18.99,
-        "minutesAgo": 2621
+        "bidder": "@nm_or_bust",
+        "amount": 703.99,
+        "minutesAgo": 1941
       }
     ]
   },
   {
     "id": "au-026",
-    "cardId": "sg-018",
-    "condition": "Near Mint",
-    "seller": "@pullrate_pete",
-    "sellerType": "Verified",
-    "startPrice": 19.99,
-    "buyNow": 45.99,
-    "currentBid": 25.99,
-    "bidCount": 3,
-    "endsInMinutes": 201,
-    "botCeiling": 47.58,
-    "history": [
-      {
-        "bidder": "@cardboardcrack",
-        "amount": 25.99,
-        "minutesAgo": 79
-      },
-      {
-        "bidder": "@gradedgabe",
-        "amount": 22.99,
-        "minutesAgo": 158
-      },
-      {
-        "bidder": "@ripking22",
-        "amount": 19.99,
-        "minutesAgo": 237
-      }
-    ]
-  },
-  {
-    "id": "au-027",
-    "cardId": "sg-085",
+    "cardId": "sg-073",
     "condition": "Lightly Played",
-    "seller": "Gempack TCG",
-    "sellerType": "Official",
-    "startPrice": 526.99,
-    "buyNow": 1875.99,
-    "currentBid": 716.99,
-    "bidCount": 8,
-    "endsInMinutes": 3728,
-    "botCeiling": 1492.69,
-    "history": [
-      {
-        "bidder": "@sleevedup",
-        "amount": 716.99,
-        "minutesAgo": 449
-      },
-      {
-        "bidder": "@pullrate_pete",
-        "amount": 686.99,
-        "minutesAgo": 898
-      },
-      {
-        "bidder": "@binderbrooke",
-        "amount": 666.99,
-        "minutesAgo": 1347
-      },
-      {
-        "bidder": "@gradedgabe",
-        "amount": 646.99,
-        "minutesAgo": 1795
-      },
-      {
-        "bidder": "@mintcondition_mia",
-        "amount": 616.99,
-        "minutesAgo": 2244
-      },
-      {
-        "bidder": "@gradedgabe",
-        "amount": 586.99,
-        "minutesAgo": 2693
-      },
-      {
-        "bidder": "@ripking22",
-        "amount": 556.99,
-        "minutesAgo": 3142
-      },
-      {
-        "bidder": "@topdeck_tay",
-        "amount": 526.99,
-        "minutesAgo": 3591
-      }
-    ]
-  },
-  {
-    "id": "au-028",
-    "cardId": "sg-094",
-    "condition": "Near Mint",
     "seller": "@holo_hunter",
     "sellerType": "Verified",
-    "startPrice": 7.99,
-    "buyNow": 25.99,
-    "currentBid": 13.49,
-    "bidCount": 4,
-    "endsInMinutes": 128,
-    "botCeiling": 23.42,
-    "history": [
-      {
-        "bidder": "@topdeck_tay",
-        "amount": 13.49,
-        "minutesAgo": 83
-      },
-      {
-        "bidder": "@cardboardcrack",
-        "amount": 10.49,
-        "minutesAgo": 166
-      },
-      {
-        "bidder": "@sleevedup",
-        "amount": 9.49,
-        "minutesAgo": 249
-      },
-      {
-        "bidder": "@gradedgabe",
-        "amount": 7.99,
-        "minutesAgo": 333
-      }
-    ]
-  },
-  {
-    "id": "au-029",
-    "cardId": "sg-016",
-    "condition": "Near Mint",
-    "seller": "Gempack TCG",
-    "sellerType": "Official",
-    "startPrice": 21.99,
-    "buyNow": 38.99,
-    "currentBid": 28.99,
-    "bidCount": 4,
-    "endsInMinutes": 5,
-    "botCeiling": 28.08,
-    "history": [
-      {
-        "bidder": "@binderbrooke",
-        "amount": 28.99,
-        "minutesAgo": 98
-      },
-      {
-        "bidder": "@topdeck_tay",
-        "amount": 26.99,
-        "minutesAgo": 196
-      },
-      {
-        "bidder": "@holo_hunter",
-        "amount": 23.99,
-        "minutesAgo": 293
-      },
-      {
-        "bidder": "@mintcondition_mia",
-        "amount": 21.99,
-        "minutesAgo": 391
-      }
-    ]
-  },
-  {
-    "id": "au-030",
-    "cardId": "sg-026",
-    "condition": "Lightly Played",
-    "seller": "@topdeck_tay",
-    "sellerType": "Verified",
-    "startPrice": 1.99,
-    "buyNow": 3.99,
-    "currentBid": 3.49,
-    "bidCount": 2,
-    "endsInMinutes": 176,
-    "botCeiling": 3.27,
-    "history": [
-      {
-        "bidder": "@gradedgabe",
-        "amount": 3.49,
-        "minutesAgo": 168
-      },
-      {
-        "bidder": "@pullrate_pete",
-        "amount": 1.99,
-        "minutesAgo": 337
-      }
-    ]
-  },
-  {
-    "id": "au-031",
-    "cardId": "sg-004",
-    "condition": "Near Mint",
-    "seller": "@binderbrooke",
-    "sellerType": "Verified",
-    "startPrice": 83.99,
+    "startPrice": 212.99,
     "buyNow": null,
-    "currentBid": 178.99,
-    "bidCount": 8,
-    "endsInMinutes": 132,
-    "botCeiling": 192.08,
-    "history": [
-      {
-        "bidder": "@sleevedup",
-        "amount": 178.99,
-        "minutesAgo": 50
-      },
-      {
-        "bidder": "@nm_or_bust",
-        "amount": 163.99,
-        "minutesAgo": 100
-      },
-      {
-        "bidder": "@mintcondition_mia",
-        "amount": 148.99,
-        "minutesAgo": 150
-      },
-      {
-        "bidder": "@pullrate_pete",
-        "amount": 133.99,
-        "minutesAgo": 200
-      },
-      {
-        "bidder": "@cardboardcrack",
-        "amount": 118.99,
-        "minutesAgo": 250
-      },
-      {
-        "bidder": "@pullrate_pete",
-        "amount": 108.99,
-        "minutesAgo": 300
-      },
-      {
-        "bidder": "@nm_or_bust",
-        "amount": 98.99,
-        "minutesAgo": 350
-      },
-      {
-        "bidder": "@gradedgabe",
-        "amount": 83.99,
-        "minutesAgo": 400
-      }
-    ]
-  },
-  {
-    "id": "au-032",
-    "cardId": "sg-001",
-    "condition": "Near Mint",
-    "seller": "Gempack TCG",
-    "sellerType": "Official",
-    "startPrice": 753.99,
-    "buyNow": 1299.99,
-    "currentBid": 0,
-    "bidCount": 0,
-    "endsInMinutes": 3913,
-    "botCeiling": 1230.81,
-    "history": []
-  },
-  {
-    "id": "au-033",
-    "cardId": "sg-020",
-    "condition": "Near Mint",
-    "seller": "@sleevedup",
-    "sellerType": "Verified",
-    "startPrice": 7.99,
-    "buyNow": 12.99,
-    "currentBid": 12.49,
-    "bidCount": 4,
-    "endsInMinutes": 2909,
-    "botCeiling": 12.4,
-    "history": [
-      {
-        "bidder": "@gradedgabe",
-        "amount": 12.49,
-        "minutesAgo": 631
-      },
-      {
-        "bidder": "@nm_or_bust",
-        "amount": 10.49,
-        "minutesAgo": 1262
-      },
-      {
-        "bidder": "@gradedgabe",
-        "amount": 9.49,
-        "minutesAgo": 1892
-      },
-      {
-        "bidder": "@binderbrooke",
-        "amount": 7.99,
-        "minutesAgo": 2523
-      }
-    ]
-  },
-  {
-    "id": "au-034",
-    "cardId": "sg-097",
-    "condition": "Lightly Played",
-    "seller": "Gempack TCG",
-    "sellerType": "Official",
-    "startPrice": 9.99,
-    "buyNow": null,
-    "currentBid": 9.99,
+    "currentBid": 212.99,
     "bidCount": 1,
     "endsInMinutes": 4025,
-    "botCeiling": 16.33,
+    "botCeiling": 345.86,
     "history": [
       {
         "bidder": "@ripking22",
-        "amount": 9.99,
+        "amount": 212.99,
         "minutesAgo": 2159
       }
     ]
   },
   {
-    "id": "au-035",
-    "cardId": "sg-089",
+    "id": "au-027",
+    "cardId": "sg-133",
     "condition": "Lightly Played",
     "seller": "@topdeck_tay",
     "sellerType": "Verified",
-    "startPrice": 122.99,
-    "buyNow": 409.99,
-    "currentBid": 122.99,
+    "startPrice": 3.99,
+    "buyNow": 11.99,
+    "currentBid": 3.99,
     "bidCount": 1,
     "endsInMinutes": 3,
-    "botCeiling": 361.33,
+    "botCeiling": 10.82,
     "history": [
       {
         "bidder": "@cardboardcrack",
-        "amount": 122.99,
+        "amount": 3.99,
         "minutesAgo": 114
       }
     ]
   },
   {
-    "id": "au-036",
-    "cardId": "sg-052",
+    "id": "au-028",
+    "cardId": "sg-154",
     "condition": "Near Mint",
     "seller": "@gradedgabe",
     "sellerType": "Verified",
-    "startPrice": 48.99,
-    "buyNow": 99.99,
-    "currentBid": 86.99,
-    "bidCount": 5,
-    "endsInMinutes": 1448,
-    "botCeiling": 102.13,
+    "startPrice": 20.99,
+    "buyNow": 42.99,
+    "currentBid": 35.99,
+    "bidCount": 7,
+    "endsInMinutes": 4243,
+    "botCeiling": 42.5,
     "history": [
       {
-        "bidder": "@holo_hunter",
-        "amount": 86.99,
-        "minutesAgo": 322
+        "bidder": "@cardboardcrack",
+        "amount": 35.99,
+        "minutesAgo": 554
       },
       {
         "bidder": "@ripking22",
-        "amount": 76.99,
-        "minutesAgo": 644
+        "amount": 33.99,
+        "minutesAgo": 1108
+      },
+      {
+        "bidder": "@holo_hunter",
+        "amount": 30.99,
+        "minutesAgo": 1662
+      },
+      {
+        "bidder": "@ripking22",
+        "amount": 28.99,
+        "minutesAgo": 2216
       },
       {
         "bidder": "@pullrate_pete",
-        "amount": 61.99,
-        "minutesAgo": 966
+        "amount": 25.99,
+        "minutesAgo": 2769
       },
       {
         "bidder": "@sleevedup",
-        "amount": 51.99,
-        "minutesAgo": 1288
+        "amount": 23.99,
+        "minutesAgo": 3323
       },
       {
         "bidder": "@binderbrooke",
-        "amount": 48.99,
-        "minutesAgo": 1610
+        "amount": 20.99,
+        "minutesAgo": 3877
+      }
+    ]
+  },
+  {
+    "id": "au-029",
+    "cardId": "sg-113",
+    "condition": "Near Mint",
+    "seller": "@ripking22",
+    "sellerType": "Verified",
+    "startPrice": 1016.99,
+    "buyNow": 2342.99,
+    "currentBid": 1116.99,
+    "bidCount": 3,
+    "endsInMinutes": 3025,
+    "botCeiling": 1834.26,
+    "history": [
+      {
+        "bidder": "@pullrate_pete",
+        "amount": 1116.99,
+        "minutesAgo": 815
+      },
+      {
+        "bidder": "@mintcondition_mia",
+        "amount": 1066.99,
+        "minutesAgo": 1630
+      },
+      {
+        "bidder": "@sleevedup",
+        "amount": 1016.99,
+        "minutesAgo": 2444
+      }
+    ]
+  },
+  {
+    "id": "au-030",
+    "cardId": "sg-135",
+    "condition": "Near Mint",
+    "seller": "@sleevedup",
+    "sellerType": "Verified",
+    "startPrice": 4.99,
+    "buyNow": 9.99,
+    "currentBid": 7.99,
+    "bidCount": 3,
+    "endsInMinutes": 4,
+    "botCeiling": 8.87,
+    "history": [
+      {
+        "bidder": "@binderbrooke",
+        "amount": 7.99,
+        "minutesAgo": 120
+      },
+      {
+        "bidder": "@ripking22",
+        "amount": 6.49,
+        "minutesAgo": 240
+      },
+      {
+        "bidder": "@nm_or_bust",
+        "amount": 4.99,
+        "minutesAgo": 359
+      }
+    ]
+  },
+  {
+    "id": "au-031",
+    "cardId": "sg-036",
+    "condition": "Near Mint",
+    "seller": "Gempack TCG",
+    "sellerType": "Official",
+    "startPrice": 0.99,
+    "buyNow": null,
+    "currentBid": 2.49,
+    "bidCount": 2,
+    "endsInMinutes": 1942,
+    "botCeiling": 2.5,
+    "history": [
+      {
+        "bidder": "@binderbrooke",
+        "amount": 2.49,
+        "minutesAgo": 809
+      },
+      {
+        "bidder": "@topdeck_tay",
+        "amount": 0.99,
+        "minutesAgo": 1618
+      }
+    ]
+  },
+  {
+    "id": "au-032",
+    "cardId": "sg-067",
+    "condition": "Near Mint",
+    "seller": "Gempack TCG",
+    "sellerType": "Official",
+    "startPrice": 7.99,
+    "buyNow": 24.99,
+    "currentBid": 16.49,
+    "bidCount": 6,
+    "endsInMinutes": 55,
+    "botCeiling": 20.75,
+    "history": [
+      {
+        "bidder": "@holo_hunter",
+        "amount": 16.49,
+        "minutesAgo": 52
+      },
+      {
+        "bidder": "@nm_or_bust",
+        "amount": 14.49,
+        "minutesAgo": 103
+      },
+      {
+        "bidder": "@sleevedup",
+        "amount": 12.49,
+        "minutesAgo": 155
+      },
+      {
+        "bidder": "@topdeck_tay",
+        "amount": 10.49,
+        "minutesAgo": 207
+      },
+      {
+        "bidder": "@cardboardcrack",
+        "amount": 8.99,
+        "minutesAgo": 258
+      },
+      {
+        "bidder": "@pullrate_pete",
+        "amount": 7.99,
+        "minutesAgo": 310
+      }
+    ]
+  },
+  {
+    "id": "au-033",
+    "cardId": "sg-058",
+    "condition": "Near Mint",
+    "seller": "@binderbrooke",
+    "sellerType": "Verified",
+    "startPrice": 2.99,
+    "buyNow": 9.99,
+    "currentBid": 2.99,
+    "bidCount": 1,
+    "endsInMinutes": 3615,
+    "botCeiling": 9.23,
+    "history": [
+      {
+        "bidder": "@cardboardcrack",
+        "amount": 2.99,
+        "minutesAgo": 2089
+      }
+    ]
+  },
+  {
+    "id": "au-034",
+    "cardId": "sg-137",
+    "condition": "Lightly Played",
+    "seller": "@pullrate_pete",
+    "sellerType": "Verified",
+    "startPrice": 726.99,
+    "buyNow": 1489.99,
+    "currentBid": 846.99,
+    "bidCount": 5,
+    "endsInMinutes": 27,
+    "botCeiling": 1141.34,
+    "history": [
+      {
+        "bidder": "@ripking22",
+        "amount": 846.99,
+        "minutesAgo": 55
+      },
+      {
+        "bidder": "@cardboardcrack",
+        "amount": 816.99,
+        "minutesAgo": 110
+      },
+      {
+        "bidder": "@topdeck_tay",
+        "amount": 786.99,
+        "minutesAgo": 164
+      },
+      {
+        "bidder": "@holo_hunter",
+        "amount": 756.99,
+        "minutesAgo": 219
+      },
+      {
+        "bidder": "@ripking22",
+        "amount": 726.99,
+        "minutesAgo": 274
+      }
+    ]
+  },
+  {
+    "id": "au-035",
+    "cardId": "sg-013",
+    "condition": "Near Mint",
+    "seller": "@mintcondition_mia",
+    "sellerType": "Verified",
+    "startPrice": 1.99,
+    "buyNow": 5.99,
+    "currentBid": 0,
+    "bidCount": 0,
+    "endsInMinutes": 1760,
+    "botCeiling": 5.5,
+    "history": []
+  },
+  {
+    "id": "au-036",
+    "cardId": "sg-035",
+    "condition": "Lightly Played",
+    "seller": "@binderbrooke",
+    "sellerType": "Verified",
+    "startPrice": 39.99,
+    "buyNow": 99.99,
+    "currentBid": 46.99,
+    "bidCount": 4,
+    "endsInMinutes": 3468,
+    "botCeiling": 86.17,
+    "history": [
+      {
+        "bidder": "@cardboardcrack",
+        "amount": 46.99,
+        "minutesAgo": 731
+      },
+      {
+        "bidder": "@holo_hunter",
+        "amount": 43.99,
+        "minutesAgo": 1461
+      },
+      {
+        "bidder": "@ripking22",
+        "amount": 41.99,
+        "minutesAgo": 2192
+      },
+      {
+        "bidder": "@holo_hunter",
+        "amount": 39.99,
+        "minutesAgo": 2923
       }
     ]
   }
