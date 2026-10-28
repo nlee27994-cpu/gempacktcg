@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import CardArt from '../components/CardArt'
-import PriceFloorMeter from '../components/PriceFloorMeter'
 import ProductCard from '../components/ProductCard'
 import RarityBadge from '../components/RarityBadge'
 import PriceSource from '../components/PriceSource'
@@ -55,7 +54,7 @@ function OddsTable({ pack }) {
       </div>
       <p className="mt-5 border-t border-navy-700 pt-4 text-xs text-slate-400">
         Average pull value: <span className="font-semibold text-slate-200">{formatPrice(expectedValue)}</span>. Most packs land below
-        the average and a few chase pulls land far above it. The floor protects the low end.
+        the average and a few chase pulls land far above it.
       </p>
     </div>
   )
@@ -145,12 +144,6 @@ function ProductDetail({ id }) {
           </div>
 
           <PriceSource source={product.priceSource} />
-
-          {isPack && (
-            <div className="mt-6">
-              <PriceFloorMeter price={product.price} floor={product.priceFloor} exact={Boolean(series)} />
-            </div>
-          )}
 
           <div className="mt-6 flex flex-wrap items-center gap-3">
             <div className="flex items-center rounded-xl border border-navy-500 bg-navy-900">

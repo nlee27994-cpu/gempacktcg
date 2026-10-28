@@ -8,7 +8,7 @@ export default function Footer() {
         <div>
           <Logo />
           <p className="mt-3 max-w-xs text-sm text-slate-400">
-            Packs and singles for Pokémon, Magic: The Gathering and One Piece. Every pack shows its price floor.
+            Packs and singles for Pokémon, Magic: The Gathering and One Piece. Every pack shows its odds.
           </p>
         </div>
         <div className="text-sm">

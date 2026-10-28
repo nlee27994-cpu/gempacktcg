@@ -16,7 +16,7 @@ const STRATEGY = [
   {
     title: 'What makes us different',
     color: 'text-amethyst-300',
-    body: 'Every pack lists a price floor: the minimum card value you are guaranteed. If your pulls land below it, we credit the difference. You get the excitement without the feeling of getting ripped off.',
+    body: 'Nothing is hidden. Every pack shows its pull odds, our own Series drops publish every card inside them, and every price says where it came from. You get the excitement of the pull and know exactly what you are chasing.',
   },
   {
     title: 'Many sources, one cart',
@@ -84,14 +84,13 @@ export default function About() {
 
       <section className="mt-20">
         <div className="panel mx-auto max-w-3xl p-6 sm:p-8">
-          <h2 className="text-2xl font-bold">How the price floor works</h2>
+          <h2 className="text-2xl font-bold">Know what you're ripping</h2>
           <ol className="mt-4 space-y-3 text-sm text-slate-300">
-            <li><span className="font-semibold text-white">1. We set the floor</span> from current market prices and the pack's pull odds, and print it on the listing.</li>
-            <li><span className="font-semibold text-white">2. You rip.</span> Every card you pull is valued at its near-mint market price.</li>
-            <li><span className="font-semibold text-white">3. If the total is under the floor,</span> we credit the difference to your Gempack account automatically.</li>
-            <li><span className="font-semibold text-white">Gempack Series drops go further.</span> We seal every pack ourselves from a public checklist, so the floor is the value of the weakest pack in the drop. Open every pack and you get every card.</li>
+            <li><span className="font-semibold text-white">1. Odds on every pack.</span> Each pack page shows the chance of every rarity in its hit slot.</li>
+            <li><span className="font-semibold text-white">2. Real prices.</span> Cards are valued at their market price, and every price says where it came from.</li>
+            <li><span className="font-semibold text-white">3. Gempack Series drops go further.</span> We seal every pack ourselves from a public checklist. Open every pack and you get every card, and pulled cards leave the drop for good.</li>
           </ol>
-          <Link to="/shop?type=pack&sort=floor" className="btn-primary mt-6">See packs with the best floors</Link>
+          <Link to="/shop?type=pack" className="btn-primary mt-6">Browse packs</Link>
         </div>
       </section>
     </div>

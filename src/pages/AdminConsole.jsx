@@ -97,7 +97,7 @@ function Overview({ entries, go }) {
     ['Gross sales', formatPrice(sum(orders, (e) => e.amount)), `${orders.length} orders`],
     ['Units sold', sum(orders, (e) => sum(e.data.items, (i) => i.qty)), 'Across all orders'],
     ['Packs ripped', rips.length, `${of('drop-open').length} from Series drops`],
-    ['Floor credit paid', formatPrice(sum(rips, (e) => e.data.floorCredit ?? 0)), 'Store credit owed to rippers'],
+    ['Card value pulled', formatPrice(sum(rips, (e) => e.data.pulledValue ?? 0)), 'Across all rips'],
     ['Auction sales', formatPrice(sum(ended, (e) => e.amount)), `${ended.length} auctions sold`],
     ['Gempack auction revenue', formatPrice(sum(ended, (e) => e.data.gempackRevenue ?? 0)), 'Own listings + 5% fees'],
     ['Live auctions', auctions.filter((a) => !isEnded(a, now)).length, `${of('bid').length} bids recorded`],
@@ -294,7 +294,7 @@ function Inventory() {
       )}
 
       {view === 'drops' && (
-        <Table head={['Drop', 'Price', 'Packs left', 'Card value sealed', 'Next pack has a Secret Rare', 'Floor (worst pack)']}>
+        <Table head={['Drop', 'Price', 'Packs left', 'Card value sealed', 'Next pack has a Secret Rare']}>
           {seriesList.map(({ pack, series }) => {
             const st = seriesStatus(series, openedFor(series.id))
             return (
@@ -307,7 +307,6 @@ function Inventory() {
                 <td className="px-3 py-2 font-semibold tabular-nums">{st.packsLeft} / {st.totalPacks}</td>
                 <td className="px-3 py-2 tabular-nums">{formatPrice(st.valueLeft)}</td>
                 <td className="px-3 py-2 tabular-nums">{Math.round(st.secretRareChance * 100)}%</td>
-                <td className="px-3 py-2 tabular-nums">{formatPrice(pack.priceFloor)}</td>
               </tr>
             )
           })}

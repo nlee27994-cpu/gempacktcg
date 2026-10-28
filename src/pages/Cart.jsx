@@ -11,14 +11,13 @@ export default function Cart() {
   const cart = useCart()
   const { items, setQty, remove } = cart
   const { stockFor } = useLedger()
-  const floorTotal = items.filter((i) => i.type === 'pack').reduce((s, i) => s + i.priceFloor * i.qty, 0)
 
   if (items.length === 0) {
     return (
       <div className="container-page py-24 text-center">
         <p className="text-5xl">🛒</p>
         <h1 className="mt-4 text-2xl font-bold">Your cart is empty</h1>
-        <p className="mt-2 text-slate-400">Every pack ships with a price floor. Go find one worth ripping.</p>
+        <p className="mt-2 text-slate-400">Every pack shows its odds. Go find one worth ripping.</p>
         <Link to="/shop" className="btn-primary mt-8">Browse the shop</Link>
       </div>
     )
@@ -39,7 +38,7 @@ export default function Cart() {
                   <div className="min-w-0">
                     <Link to={item.href ?? `/product/${item.id}`} className="line-clamp-2 font-semibold hover:underline">{item.name}</Link>
                     <p className="text-xs text-slate-400">
-                      {item.type === 'pack' ? `Sealed · floor ${formatPrice(item.priceFloor)}` : item.condition} · {item.seller}
+                      {item.type === 'pack' ? 'Sealed pack' : item.condition} · {item.seller}
                     </p>
                   </div>
                   <p className="font-display font-bold">{formatPrice(item.price * item.qty)}</p>
@@ -62,11 +61,6 @@ export default function Cart() {
         </ul>
 
         <OrderSummary {...cart}>
-          {floorTotal > 0 && (
-            <p className="mt-4 rounded-lg bg-emerald-gem/10 p-3 text-xs text-emerald-200">
-              🛡️ Your packs carry a combined <span className="font-semibold">{formatPrice(floorTotal)}</span> price floor.
-            </p>
-          )}
           <Link to="/checkout" className="btn-primary mt-4 w-full py-3">Checkout</Link>
           <Link to="/shop" className="mt-3 block text-center text-sm text-slate-400 hover:text-white">Continue shopping</Link>
         </OrderSummary>

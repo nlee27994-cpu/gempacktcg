@@ -5,7 +5,7 @@ import { createHash } from 'node:crypto'
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { createPackEngine, solveFloor } from '../src/lib/packEngine.js'
+import { createPackEngine } from '../src/lib/packEngine.js'
 import { bidIncrement, CONDITION_VALUE } from '../src/lib/auction.js'
 import { ONE_PIECE_CHASE, PACK_PRICES } from './market-prices.mjs'
 
@@ -360,7 +360,7 @@ function buildSeries(game, t) {
   }
 
   // Seal the packs: biggest cards first, each into the weakest pack with room,
-  // so the worst pack in the drop is as strong as possible. That worst pack is the floor.
+  // so the hits are spread across the drop instead of piling into a few packs.
   const sealed = Array.from({ length: t.packCount }, () => ({ hits: [], fillers: [], value: 0 }))
   const place = (cards, slot, cap) => {
     for (const card of [...cards].sort(byPrice).reverse()) {
@@ -384,7 +384,6 @@ function buildSeries(game, t) {
     checklist,
     packs: shuffle(sealed).map((p) => [...p.fillers.sort(byPrice), ...p.hits.sort(byPrice)].map((c) => c.id)),
     totalValue: money(value + sumValue(fillers)),
-    priceFloor: Math.floor(Math.min(...sealed.map((p) => p.value)) * 100) / 100,
   }
 }
 
@@ -400,7 +399,6 @@ for (const game of Object.keys(SETS)) {
       kind: `${t.tier} Series Pack`,
       rarity: UR,
       price: t.price,
-      priceFloor: built.priceFloor,
       cardsPerPack: SERIES_CARDS_PER_PACK,
       hitSlots: t.hitSlots,
       source: 'Direct',
@@ -414,13 +412,6 @@ for (const game of Object.keys(SETS)) {
     series.push({ id, packId: packs.at(-1).id, name: `${SERIES_NAME}: ${t.tier} — ${game}`, game, tier: t.tier, ...built })
   }
 }
-
-// ---------- price floors ----------
-// Store packs: floors come from simulated pulls, set as the highest floor whose expected
-// store-credit payout stays under 6% of the price. Series packs already have exact floors.
-packs.forEach((p, i) => {
-  if (!p.seriesId) p.priceFloor = solveFloor(engine, p, 0.06, 1500, 1000 + i)
-})
 
 // ---------- auction house ----------
 // Live listings from Gempack (official) and verified collectors. End times are stored as
@@ -471,7 +462,7 @@ const auctions = auctionCards.map((card, i) => {
 const events = [
   { id: 'ev-1', title: 'Live Rip Showcase: Prismatic Evolutions', type: 'Live Showcase', date: '2026-10-30T19:00:00-07:00', location: 'Livestream · Gempack TV', game: 'Pokémon', blurb: 'We open 36 packs on stream. Every pull is listed in the shop within the hour.' },
   { id: 'ev-2', title: 'One Piece OP-13 Release Night', type: 'Set Release', date: '2026-11-07T17:00:00-07:00', location: 'Partner store: Grand Line Collectibles', game: 'One Piece', blurb: 'Midnight-style release with sealed pre-orders, a Leader draft and prizes.' },
-  { id: 'ev-3', title: 'Magic Prerelease Weekend', type: 'Set Release', date: '2026-11-14T10:00:00-07:00', location: 'Partner store: Blue Mana Games', game: 'Magic: The Gathering', blurb: 'Sealed prerelease events all weekend. Prerelease Packs ship with a price floor.' },
+  { id: 'ev-3', title: 'Magic Prerelease Weekend', type: 'Set Release', date: '2026-11-14T10:00:00-07:00', location: 'Partner store: Blue Mana Games', game: 'Magic: The Gathering', blurb: 'Sealed prerelease events all weekend, with Prerelease Packs in stock for the whole weekend.' },
   { id: 'ev-4', title: 'Collector Auction Day', type: 'Community', date: '2026-11-21T12:00:00-08:00', location: 'Gempack HQ + online', game: 'All games', blurb: 'Bring your binder. Get verified on the spot and list your best cards in the Auction House.' },
   { id: 'ev-5', title: 'Holiday Gold Pack Drop', type: 'Live Showcase', date: '2026-12-12T18:00:00-08:00', location: 'Livestream · Gempack TV', game: 'All games', blurb: 'Series 2 opens: new Emerald, Amethyst and Gold drops with a fresh checklist of chase cards.' },
 ]

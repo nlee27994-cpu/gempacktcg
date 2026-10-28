@@ -36,15 +36,8 @@ export default function ProductCard({ product }) {
             {packsLeft ? `${packsLeft} of ${series.packs.length} packs left` : 'Sold out'}
           </p>
         )}
-        <div className="mt-auto flex items-end justify-between pt-1">
+        <div className="mt-auto pt-1">
           <span className="font-display text-lg font-bold">{formatPrice(product.price)}</span>
-          {isPack && (
-            <span className="text-right text-[11px] leading-tight text-emerald-300">
-              Floor
-              <br />
-              <span className="font-semibold">{formatPrice(product.priceFloor)}</span>
-            </span>
-          )}
         </div>
       </div>
     </Link>

@@ -75,7 +75,6 @@ export default function SeriesChecklist({ pack, series }) {
     ['Packs left', `${status.packsLeft} / ${status.totalPacks}`],
     ['Card value still sealed', formatPrice(status.valueLeft)],
     ['Next pack has a Secret Rare', `${Math.round(status.secretRareChance * 100)}%`],
-    ['Worst pack in the drop', formatPrice(pack.priceFloor)],
   ]
 
   return (
@@ -94,7 +93,7 @@ export default function SeriesChecklist({ pack, series }) {
           style={{ width: `${(status.packsLeft / status.totalPacks) * 100}%` }}
         />
       </div>
-      <dl className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-4">
+      <dl className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-3">
         {stats.map(([k, v]) => (
           <div key={k} className="rounded-xl bg-navy-950/60 p-3 ring-1 ring-navy-700">
             <dt className="text-[11px] text-slate-400">{k}</dt>

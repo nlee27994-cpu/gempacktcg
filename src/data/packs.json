@@ -19,8 +19,7 @@
       "label": "PokemonWizard (TCGplayer market)",
       "url": "https://www.pokemonwizard.com/products/593294/prismatic-evolutions-booster-pack",
       "asOf": "2026-07-10"
-    },
-    "priceFloor": 4.15
+    }
   },
   {
     "id": "pk-002",
@@ -41,8 +40,7 @@
     "priceSource": {
       "label": "Estimate: same cards as a booster pack, priced like one",
       "estimate": true
-    },
-    "priceFloor": 4.15
+    }
   },
   {
     "id": "pk-003",
@@ -63,8 +61,7 @@
     "priceSource": {
       "label": "Estimate: 3 × the booster pack price + $2 for the promo card",
       "estimate": true
-    },
-    "priceFloor": 13.07
+    }
   },
   {
     "id": "pk-004",
@@ -86,8 +83,7 @@
     "priceSource": {
       "label": "Gempack product: priced from the market value of its cards",
       "gempack": true
-    },
-    "priceFloor": 3.5
+    }
   },
   {
     "id": "pk-005",
@@ -109,8 +105,7 @@
       "label": "The Hobby Bin",
       "url": "https://thehobbybin.com/products/surging-sparks-booster-pack",
       "asOf": "2026-10-15"
-    },
-    "priceFloor": 2.86
+    }
   },
   {
     "id": "pk-006",
@@ -131,8 +126,7 @@
     "priceSource": {
       "label": "Estimate: same cards as a booster pack, priced like one",
       "estimate": true
-    },
-    "priceFloor": 2.84
+    }
   },
   {
     "id": "pk-007",
@@ -153,8 +147,7 @@
     "priceSource": {
       "label": "Estimate: 3 × the booster pack price + $2 for the promo card",
       "estimate": true
-    },
-    "priceFloor": 8.41
+    }
   },
   {
     "id": "pk-008",
@@ -176,8 +169,7 @@
     "priceSource": {
       "label": "Gempack product: priced from the market value of its cards",
       "gempack": true
-    },
-    "priceFloor": 3.86
+    }
   },
   {
     "id": "pk-009",
@@ -199,8 +191,7 @@
       "label": "The Hobby Bin (sleeved pack)",
       "url": "https://thehobbybin.com/products/stellar-crown-sleeved-booster-pack",
       "asOf": "2026-10-16"
-    },
-    "priceFloor": 3.73
+    }
   },
   {
     "id": "pk-010",
@@ -221,8 +212,7 @@
     "priceSource": {
       "label": "Estimate: same cards as a booster pack, priced like one",
       "estimate": true
-    },
-    "priceFloor": 3.74
+    }
   },
   {
     "id": "pk-011",
@@ -243,8 +233,7 @@
     "priceSource": {
       "label": "Estimate: 3 × the booster pack price + $2 for the promo card",
       "estimate": true
-    },
-    "priceFloor": 10.36
+    }
   },
   {
     "id": "pk-012",
@@ -266,8 +255,7 @@
     "priceSource": {
       "label": "Gempack product: priced from the market value of its cards",
       "gempack": true
-    },
-    "priceFloor": 4.84
+    }
   },
   {
     "id": "pk-013",
@@ -289,8 +277,7 @@
       "label": "PokeInvesting (updated daily)",
       "url": "https://pokeinvesting.com/sealed/twilight-masquerade-booster-pack",
       "asOf": "2026-10"
-    },
-    "priceFloor": 3.05
+    }
   },
   {
     "id": "pk-014",
@@ -311,8 +298,7 @@
     "priceSource": {
       "label": "Estimate: same cards as a booster pack, priced like one",
       "estimate": true
-    },
-    "priceFloor": 3.03
+    }
   },
   {
     "id": "pk-015",
@@ -333,8 +319,7 @@
     "priceSource": {
       "label": "Estimate: 3 × the booster pack price + $2 for the promo card",
       "estimate": true
-    },
-    "priceFloor": 8.18
+    }
   },
   {
     "id": "pk-016",
@@ -356,8 +341,7 @@
     "priceSource": {
       "label": "Gempack product: priced from the market value of its cards",
       "gempack": true
-    },
-    "priceFloor": 4.17
+    }
   },
   {
     "id": "pk-017",
@@ -380,8 +364,7 @@
       "url": "https://pokeinvesting.com/sealed/151-booster-pack",
       "asOf": "2026-10",
       "note": "Other listings were as low as $12–13, so this one is uncertain"
-    },
-    "priceFloor": 9.54
+    }
   },
   {
     "id": "pk-018",
@@ -402,8 +385,7 @@
     "priceSource": {
       "label": "Estimate: same cards as a booster pack, priced like one",
       "estimate": true
-    },
-    "priceFloor": 9.54
+    }
   },
   {
     "id": "pk-019",
@@ -424,8 +406,7 @@
     "priceSource": {
       "label": "Estimate: 3 × the booster pack price + $2 for the promo card",
       "estimate": true
-    },
-    "priceFloor": 29.21
+    }
   },
   {
     "id": "pk-020",
@@ -447,8 +428,7 @@
     "priceSource": {
       "label": "Gempack product: priced from the market value of its cards",
       "gempack": true
-    },
-    "priceFloor": 4.32
+    }
   },
   {
     "id": "pk-021",
@@ -470,8 +450,7 @@
       "label": "The Hobby Bin",
       "url": "https://thehobbybin.com/products/obsidian-flames-booster-packs",
       "asOf": "2026-10-17"
-    },
-    "priceFloor": 3.71
+    }
   },
   {
     "id": "pk-022",
@@ -492,8 +471,7 @@
     "priceSource": {
       "label": "Estimate: same cards as a booster pack, priced like one",
       "estimate": true
-    },
-    "priceFloor": 3.71
+    }
   },
   {
     "id": "pk-023",
@@ -514,8 +492,7 @@
     "priceSource": {
       "label": "Estimate: 3 × the booster pack price + $2 for the promo card",
       "estimate": true
-    },
-    "priceFloor": 11.72
+    }
   },
   {
     "id": "pk-024",
@@ -537,8 +514,7 @@
     "priceSource": {
       "label": "Gempack product: priced from the market value of its cards",
       "gempack": true
-    },
-    "priceFloor": 3.93
+    }
   },
   {
     "id": "pk-025",
@@ -560,8 +536,7 @@
       "label": "PackMagik",
       "url": "https://www.packmagik.com/products/pkmn-prod-6276913",
       "asOf": "2026-07"
-    },
-    "priceFloor": 7.2
+    }
   },
   {
     "id": "pk-026",
@@ -582,8 +557,7 @@
     "priceSource": {
       "label": "Estimate: same cards as a booster pack, priced like one",
       "estimate": true
-    },
-    "priceFloor": 7.2
+    }
   },
   {
     "id": "pk-027",
@@ -604,8 +578,7 @@
     "priceSource": {
       "label": "Estimate: 3 × the booster pack price + $2 for the promo card",
       "estimate": true
-    },
-    "priceFloor": 22.19
+    }
   },
   {
     "id": "pk-028",
@@ -627,8 +600,7 @@
     "priceSource": {
       "label": "Gempack product: priced from the market value of its cards",
       "gempack": true
-    },
-    "priceFloor": 3.6
+    }
   },
   {
     "id": "pk-029",
@@ -650,8 +622,7 @@
       "label": "The Hobby Bin (sleeved pack)",
       "url": "https://thehobbybin.com/products/temporal-forces-sleeved-booster-pack",
       "asOf": "2026-10-17"
-    },
-    "priceFloor": 4.14
+    }
   },
   {
     "id": "pk-030",
@@ -672,8 +643,7 @@
     "priceSource": {
       "label": "Estimate: same cards as a booster pack, priced like one",
       "estimate": true
-    },
-    "priceFloor": 4
+    }
   },
   {
     "id": "pk-031",
@@ -694,8 +664,7 @@
     "priceSource": {
       "label": "Estimate: 3 × the booster pack price + $2 for the promo card",
       "estimate": true
-    },
-    "priceFloor": 11.09
+    }
   },
   {
     "id": "pk-032",
@@ -717,8 +686,7 @@
     "priceSource": {
       "label": "Gempack product: priced from the market value of its cards",
       "gempack": true
-    },
-    "priceFloor": 5.14
+    }
   },
   {
     "id": "pk-033",
@@ -740,8 +708,7 @@
       "label": "PokemonWizard (TCGplayer market)",
       "url": "https://www.pokemonwizard.com/products/610935/journey-together-booster-pack",
       "asOf": "2026"
-    },
-    "priceFloor": 3.18
+    }
   },
   {
     "id": "pk-034",
@@ -762,8 +729,7 @@
     "priceSource": {
       "label": "Estimate: same cards as a booster pack, priced like one",
       "estimate": true
-    },
-    "priceFloor": 3.21
+    }
   },
   {
     "id": "pk-035",
@@ -784,8 +750,7 @@
     "priceSource": {
       "label": "Estimate: 3 × the booster pack price + $2 for the promo card",
       "estimate": true
-    },
-    "priceFloor": 6.69
+    }
   },
   {
     "id": "pk-036",
@@ -807,8 +772,7 @@
     "priceSource": {
       "label": "Gempack product: priced from the market value of its cards",
       "gempack": true
-    },
-    "priceFloor": 4.46
+    }
   },
   {
     "id": "pk-037",
@@ -830,8 +794,7 @@
       "label": "PokemonWizard (TCGplayer market)",
       "url": "https://www.pokemonwizard.com/products/624683/destined-rivals-booster-pack",
       "asOf": "2026"
-    },
-    "priceFloor": 2.96
+    }
   },
   {
     "id": "pk-038",
@@ -853,8 +816,7 @@
       "label": "PokemonWizard (TCGplayer market)",
       "url": "https://www.pokemonwizard.com/products/624683/destined-rivals-booster-pack",
       "asOf": "2026"
-    },
-    "priceFloor": 3.82
+    }
   },
   {
     "id": "pk-039",
@@ -875,8 +837,7 @@
     "priceSource": {
       "label": "Estimate: 3 × the booster pack price + $2 for the promo card",
       "estimate": true
-    },
-    "priceFloor": 9.11
+    }
   },
   {
     "id": "pk-040",
@@ -898,8 +859,7 @@
     "priceSource": {
       "label": "Gempack product: priced from the market value of its cards",
       "gempack": true
-    },
-    "priceFloor": 3.82
+    }
   },
   {
     "id": "pk-041",
@@ -921,8 +881,7 @@
       "label": "PackMagik",
       "url": "https://www.packmagik.com/products/pkmn-prod-7108652",
       "asOf": "2026-07-14"
-    },
-    "priceFloor": 4.18
+    }
   },
   {
     "id": "pk-042",
@@ -943,8 +902,7 @@
     "priceSource": {
       "label": "Estimate: same cards as a booster pack, priced like one",
       "estimate": true
-    },
-    "priceFloor": 4.18
+    }
   },
   {
     "id": "pk-043",
@@ -965,8 +923,7 @@
     "priceSource": {
       "label": "Estimate: 3 × the booster pack price + $2 for the promo card",
       "estimate": true
-    },
-    "priceFloor": 13.16
+    }
   },
   {
     "id": "pk-044",
@@ -988,8 +945,7 @@
     "priceSource": {
       "label": "Gempack product: priced from the market value of its cards",
       "gempack": true
-    },
-    "priceFloor": 4.12
+    }
   },
   {
     "id": "pk-045",
@@ -1011,8 +967,7 @@
       "label": "The Card Shop Finder (play box $190–205 ÷ 36)",
       "url": "https://thecardshopfinder.com/shop/mtg/sealed/bloomburrow/",
       "asOf": "2026-09"
-    },
-    "priceFloor": 2.07
+    }
   },
   {
     "id": "pk-046",
@@ -1034,8 +989,7 @@
       "label": "Knight and Day Games (collector box $249.99 ÷ 12)",
       "url": "https://knightanddaygames.com/products/magic-the-gathering-bloomburrow-collector-booster-box",
       "asOf": "undated"
-    },
-    "priceFloor": 6.25
+    }
   },
   {
     "id": "pk-047",
@@ -1056,8 +1010,7 @@
     "priceSource": {
       "label": "Estimate: same cards as a play booster, priced like one",
       "estimate": true
-    },
-    "priceFloor": 2.11
+    }
   },
   {
     "id": "pk-048",
@@ -1078,8 +1031,7 @@
     "priceSource": {
       "label": "Estimate: 6 × the play booster price + $5 for the promo and extras",
       "estimate": true
-    },
-    "priceFloor": 11.38
+    }
   },
   {
     "id": "pk-049",
@@ -1101,8 +1053,7 @@
       "label": "The Card Shop Finder (play box ~$162 ÷ 36)",
       "url": "https://thecardshopfinder.com/shop/mtg/sealed/duskmourn-house-of-horror/",
       "asOf": "2026-09"
-    },
-    "priceFloor": 1.92
+    }
   },
   {
     "id": "pk-050",
@@ -1124,8 +1075,7 @@
       "label": "Knight and Day Games (collector box $219.99 ÷ 12)",
       "url": "https://knightanddaygames.com/products/magic-the-gathering-duskmourn-house-of-horror-collector-booster-box",
       "asOf": "undated"
-    },
-    "priceFloor": 5.5
+    }
   },
   {
     "id": "pk-051",
@@ -1146,8 +1096,7 @@
     "priceSource": {
       "label": "Estimate: same cards as a play booster, priced like one",
       "estimate": true
-    },
-    "priceFloor": 1.94
+    }
   },
   {
     "id": "pk-052",
@@ -1168,8 +1117,7 @@
     "priceSource": {
       "label": "Estimate: 6 × the play booster price + $5 for the promo and extras",
       "estimate": true
-    },
-    "priceFloor": 9.62
+    }
   },
   {
     "id": "pk-053",
@@ -1191,8 +1139,7 @@
       "label": "The Card Shop Finder (play box ~$162 ÷ 36)",
       "url": "https://thecardshopfinder.com/shop/mtg/sealed/foundations/",
       "asOf": "2026-09"
-    },
-    "priceFloor": 1.83
+    }
   },
   {
     "id": "pk-054",
@@ -1214,8 +1161,7 @@
       "label": "The Card Shop Finder (collector box ~$732 ÷ 12)",
       "url": "https://thecardshopfinder.com/shop/mtg/sealed/foundations/",
       "asOf": "2026-09"
-    },
-    "priceFloor": 18.31
+    }
   },
   {
     "id": "pk-055",
@@ -1236,8 +1182,7 @@
     "priceSource": {
       "label": "Estimate: same cards as a play booster, priced like one",
       "estimate": true
-    },
-    "priceFloor": 1.81
+    }
   },
   {
     "id": "pk-056",
@@ -1258,8 +1203,7 @@
     "priceSource": {
       "label": "Estimate: 6 × the play booster price + $5 for the promo and extras",
       "estimate": true
-    },
-    "priceFloor": 9.62
+    }
   },
   {
     "id": "pk-057",
@@ -1280,8 +1224,7 @@
     "priceSource": {
       "label": "Estimate: no play booster price found, so this uses a typical play booster price",
       "estimate": true
-    },
-    "priceFloor": 1.9
+    }
   },
   {
     "id": "pk-058",
@@ -1303,8 +1246,7 @@
       "label": "PriceCharting (sold packs $24–25)",
       "url": "https://www.pricecharting.com/game/magic-aetherdrift/booster-pack-collector",
       "asOf": "2026-07-12"
-    },
-    "priceFloor": 7.35
+    }
   },
   {
     "id": "pk-059",
@@ -1325,8 +1267,7 @@
     "priceSource": {
       "label": "Estimate: same cards as a play booster, priced like one",
       "estimate": true
-    },
-    "priceFloor": 1.92
+    }
   },
   {
     "id": "pk-060",
@@ -1347,8 +1288,7 @@
     "priceSource": {
       "label": "Estimate: 6 × the play booster price + $5 for the promo and extras",
       "estimate": true
-    },
-    "priceFloor": 10.48
+    }
   },
   {
     "id": "pk-061",
@@ -1370,8 +1310,7 @@
       "label": "Poke-Collect (play box $129.95 ÷ 36)",
       "url": "https://poke-collect.com/en-gb/products/magic-the-gathering-tarkir-dragonstorm-play-booster-box",
       "asOf": "undated"
-    },
-    "priceFloor": 1.86
+    }
   },
   {
     "id": "pk-062",
@@ -1393,8 +1332,7 @@
       "label": "Retrofix / eBay (collector box $310–370 ÷ 12)",
       "url": "https://www.retrofixgames.com/products/mtg-tarkir-dragonstorm-collector-booster-box",
       "asOf": "undated"
-    },
-    "priceFloor": 8.5
+    }
   },
   {
     "id": "pk-063",
@@ -1415,8 +1353,7 @@
     "priceSource": {
       "label": "Estimate: same cards as a play booster, priced like one",
       "estimate": true
-    },
-    "priceFloor": 1.87
+    }
   },
   {
     "id": "pk-064",
@@ -1437,8 +1374,7 @@
     "priceSource": {
       "label": "Estimate: 6 × the play booster price + $5 for the promo and extras",
       "estimate": true
-    },
-    "priceFloor": 8
+    }
   },
   {
     "id": "pk-065",
@@ -1460,8 +1396,7 @@
       "label": "The Card Shop Finder (play box $500–700 ÷ 36)",
       "url": "https://thecardshopfinder.com/shop/mtg/sealed/final-fantasy/",
       "asOf": "2026-09"
-    },
-    "priceFloor": 5
+    }
   },
   {
     "id": "pk-066",
@@ -1483,8 +1418,7 @@
       "label": "The Card Shop Finder (collector box $1,500–2,000 ÷ 12)",
       "url": "https://thecardshopfinder.com/shop/mtg/sealed/final-fantasy/",
       "asOf": "2026-09"
-    },
-    "priceFloor": 43.75
+    }
   },
   {
     "id": "pk-067",
@@ -1505,8 +1439,7 @@
     "priceSource": {
       "label": "Estimate: same cards as a play booster, priced like one",
       "estimate": true
-    },
-    "priceFloor": 5
+    }
   },
   {
     "id": "pk-068",
@@ -1527,8 +1460,7 @@
     "priceSource": {
       "label": "Estimate: 6 × the play booster price + $5 for the promo and extras",
       "estimate": true
-    },
-    "priceFloor": 31.51
+    }
   },
   {
     "id": "pk-069",
@@ -1550,8 +1482,7 @@
       "label": "Out of Games (TCGplayer market)",
       "url": "https://outof.games/realms/mtg/products/edge-of-eternities-play-booster-pack/",
       "asOf": "2026"
-    },
-    "priceFloor": 1.98
+    }
   },
   {
     "id": "pk-070",
@@ -1573,8 +1504,7 @@
       "label": "Out of Games (market price)",
       "url": "https://outof.games/realms/mtg/products/edge-of-eternities-play-booster-pack/",
       "asOf": "2026"
-    },
-    "priceFloor": 19.05
+    }
   },
   {
     "id": "pk-071",
@@ -1595,8 +1525,7 @@
     "priceSource": {
       "label": "Estimate: same cards as a play booster, priced like one",
       "estimate": true
-    },
-    "priceFloor": 1.99
+    }
   },
   {
     "id": "pk-072",
@@ -1617,8 +1546,7 @@
     "priceSource": {
       "label": "Estimate: 6 × the play booster price + $5 for the promo and extras",
       "estimate": true
-    },
-    "priceFloor": 12.86
+    }
   },
   {
     "id": "pk-073",
@@ -1641,8 +1569,7 @@
       "url": null,
       "asOf": "2026",
       "note": "Low confidence: first-print English boxes trade far higher"
-    },
-    "priceFloor": 3.98
+    }
   },
   {
     "id": "pk-074",
@@ -1664,8 +1591,7 @@
       "label": "Samurai Sword Tokyo (JP box median ¥40,000 ÷ 24)",
       "url": "https://samuraiswordtokyo.com/id/tcg-index/cards/one-piece-card-game-booster-pack-romance-dawn-box-0f2f2c",
       "asOf": "2026-07-23"
-    },
-    "priceFloor": 3.52
+    }
   },
   {
     "id": "pk-075",
@@ -1687,8 +1613,7 @@
     "priceSource": {
       "label": "Gempack product: priced from the market value of its cards",
       "gempack": true
-    },
-    "priceFloor": 26.78
+    }
   },
   {
     "id": "pk-076",
@@ -1710,8 +1635,7 @@
       "label": "eBay UK sold box (£149.99 ÷ 24)",
       "url": "https://www.ebay.de/itm/277125348749",
       "asOf": "undated"
-    },
-    "priceFloor": 3.64
+    }
   },
   {
     "id": "pk-077",
@@ -1733,8 +1657,7 @@
       "label": "Samurai Sword Tokyo (JP box median ¥73,500 ÷ 24)",
       "url": "https://samuraiswordtokyo.com/products/op05box",
       "asOf": "2026-07-21"
-    },
-    "priceFloor": 6.04
+    }
   },
   {
     "id": "pk-078",
@@ -1756,8 +1679,7 @@
     "priceSource": {
       "label": "Gempack product: priced from the market value of its cards",
       "gempack": true
-    },
-    "priceFloor": 24.82
+    }
   },
   {
     "id": "pk-079",
@@ -1779,8 +1701,7 @@
       "label": "eBay listings (sealed box ~$155 ÷ 24)",
       "url": "https://www.ebay.de/itm/257096336328",
       "asOf": "undated"
-    },
-    "priceFloor": 3.5
+    }
   },
   {
     "id": "pk-080",
@@ -1802,8 +1723,7 @@
       "label": "Samurai Sword Tokyo (JP box ¥25,000 ÷ 24)",
       "url": "https://www.samuraiswordtokyo.com/products/op06box",
       "asOf": "2026-09-09"
-    },
-    "priceFloor": 3.26
+    }
   },
   {
     "id": "pk-081",
@@ -1825,8 +1745,7 @@
     "priceSource": {
       "label": "Gempack product: priced from the market value of its cards",
       "gempack": true
-    },
-    "priceFloor": 22.84
+    }
   },
   {
     "id": "pk-082",
@@ -1848,8 +1767,7 @@
       "label": "eBay sold boxes ($146–150 ÷ 24)",
       "url": "https://www.ebay.de/itm/156765422301",
       "asOf": "2025-09"
-    },
-    "priceFloor": 3.49
+    }
   },
   {
     "id": "pk-083",
@@ -1871,8 +1789,7 @@
       "label": "eBay sold JP box ($44.99 ÷ 24)",
       "url": "https://www.ebay.de/itm/116743179021",
       "asOf": "2025-08"
-    },
-    "priceFloor": 1.68
+    }
   },
   {
     "id": "pk-084",
@@ -1894,8 +1811,7 @@
     "priceSource": {
       "label": "Gempack product: priced from the market value of its cards",
       "gempack": true
-    },
-    "priceFloor": 23.18
+    }
   },
   {
     "id": "pk-085",
@@ -1917,8 +1833,7 @@
       "label": "PriceCharting (sold packs)",
       "url": "https://www.pricecharting.com/game/one-piece-two-legends/booster-pack",
       "asOf": "2026-07"
-    },
-    "priceFloor": 3.76
+    }
   },
   {
     "id": "pk-086",
@@ -1940,8 +1855,7 @@
       "label": "Samurai Sword Tokyo (JP box median ¥13,990 ÷ 24)",
       "url": "https://samuraiswordtokyo.com/id/tcg-index/cards/one-piece-card-game-booster-pack-two-legends-box-063490",
       "asOf": "2026-07-26"
-    },
-    "priceFloor": 2.87
+    }
   },
   {
     "id": "pk-087",
@@ -1963,8 +1877,7 @@
     "priceSource": {
       "label": "Gempack product: priced from the market value of its cards",
       "gempack": true
-    },
-    "priceFloor": 25.12
+    }
   },
   {
     "id": "pk-088",
@@ -1986,8 +1899,7 @@
       "label": "eBay listings ($7.49–11 per pack)",
       "url": "https://www.ebay.com/itm/335959642217",
       "asOf": "2026"
-    },
-    "priceFloor": 3.59
+    }
   },
   {
     "id": "pk-089",
@@ -2008,8 +1920,7 @@
     "priceSource": {
       "label": "Estimate: no market price found, so this uses the Japanese retail price of ¥220",
       "estimate": true
-    },
-    "priceFloor": 1.31
+    }
   },
   {
     "id": "pk-090",
@@ -2031,8 +1942,7 @@
     "priceSource": {
       "label": "Gempack product: priced from the market value of its cards",
       "gempack": true
-    },
-    "priceFloor": 26.98
+    }
   },
   {
     "id": "pk-091",
@@ -2054,8 +1964,7 @@
       "label": "eBay sold 4-pack lot ($131.94 ÷ 4)",
       "url": "https://www.ebay.de/itm/306187441647",
       "asOf": "undated"
-    },
-    "priceFloor": 9.9
+    }
   },
   {
     "id": "pk-092",
@@ -2077,8 +1986,7 @@
       "label": "Samurai Sword Tokyo (JP box ¥19,732 ÷ 24)",
       "url": "https://samuraiswordtokyo.com/de/blogs/news/eb-01-memorial-collection-booster-box-buying-guide",
       "asOf": "2026-10-02"
-    },
-    "priceFloor": 3.41
+    }
   },
   {
     "id": "pk-093",
@@ -2100,8 +2008,7 @@
     "priceSource": {
       "label": "Gempack product: priced from the market value of its cards",
       "gempack": true
-    },
-    "priceFloor": 28.29
+    }
   },
   {
     "id": "pk-094",
@@ -2113,7 +2020,6 @@
     "kind": "Emerald Series Pack",
     "rarity": "Ultra Rare",
     "price": 29.99,
-    "priceFloor": 4.3,
     "cardsPerPack": 5,
     "hitSlots": 1,
     "source": "Direct",
@@ -2137,7 +2043,6 @@
     "kind": "Amethyst Series Pack",
     "rarity": "Ultra Rare",
     "price": 59.99,
-    "priceFloor": 3.84,
     "cardsPerPack": 5,
     "hitSlots": 2,
     "source": "Direct",
@@ -2161,7 +2066,6 @@
     "kind": "Gold Series Pack",
     "rarity": "Ultra Rare",
     "price": 149.99,
-    "priceFloor": 4.25,
     "cardsPerPack": 5,
     "hitSlots": 3,
     "source": "Direct",
@@ -2185,7 +2089,6 @@
     "kind": "Emerald Series Pack",
     "rarity": "Ultra Rare",
     "price": 29.99,
-    "priceFloor": 1.88,
     "cardsPerPack": 5,
     "hitSlots": 1,
     "source": "Direct",
@@ -2209,7 +2112,6 @@
     "kind": "Amethyst Series Pack",
     "rarity": "Ultra Rare",
     "price": 59.99,
-    "priceFloor": 1.96,
     "cardsPerPack": 5,
     "hitSlots": 2,
     "source": "Direct",
@@ -2233,7 +2135,6 @@
     "kind": "Gold Series Pack",
     "rarity": "Ultra Rare",
     "price": 149.99,
-    "priceFloor": 2.26,
     "cardsPerPack": 5,
     "hitSlots": 3,
     "source": "Direct",
@@ -2257,7 +2158,6 @@
     "kind": "Emerald Series Pack",
     "rarity": "Ultra Rare",
     "price": 29.99,
-    "priceFloor": 21.04,
     "cardsPerPack": 5,
     "hitSlots": 1,
     "source": "Direct",
@@ -2281,7 +2181,6 @@
     "kind": "Amethyst Series Pack",
     "rarity": "Ultra Rare",
     "price": 59.99,
-    "priceFloor": 39.12,
     "cardsPerPack": 5,
     "hitSlots": 2,
     "source": "Direct",
@@ -2305,7 +2204,6 @@
     "kind": "Gold Series Pack",
     "rarity": "Ultra Rare",
     "price": 149.99,
-    "priceFloor": 59.34,
     "cardsPerPack": 5,
     "hitSlots": 3,
     "source": "Direct",

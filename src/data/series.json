@@ -665,8 +665,7 @@
         "sg-052"
       ]
     ],
-    "totalValue": 1618.87,
-    "priceFloor": 4.3
+    "totalValue": 1618.87
   },
   {
     "id": "sr-amethyst-pokemon",
@@ -1092,8 +1091,7 @@
         "sg-050"
       ]
     ],
-    "totalValue": 1619.14,
-    "priceFloor": 3.84
+    "totalValue": 1619.14
   },
   {
     "id": "sr-gold-pokemon",
@@ -1425,8 +1423,7 @@
         "sg-028"
       ]
     ],
-    "totalValue": 2699.44,
-    "priceFloor": 4.25
+    "totalValue": 2699.44
   },
   {
     "id": "sr-emerald-mtg",
@@ -2030,8 +2027,7 @@
         "sg-128"
       ]
     ],
-    "totalValue": 1607.61,
-    "priceFloor": 1.88
+    "totalValue": 1607.61
   },
   {
     "id": "sr-amethyst-mtg",
@@ -2405,8 +2401,7 @@
         "sg-098"
       ]
     ],
-    "totalValue": 1601.92,
-    "priceFloor": 1.96
+    "totalValue": 1601.92
   },
   {
     "id": "sr-gold-mtg",
@@ -2682,8 +2677,7 @@
         "sg-120"
       ]
     ],
-    "totalValue": 2693.38,
-    "priceFloor": 2.26
+    "totalValue": 2693.38
   },
   {
     "id": "sr-emerald-onepiece",
@@ -3235,8 +3229,7 @@
         "sg-159"
       ]
     ],
-    "totalValue": 1610.4,
-    "priceFloor": 21.04
+    "totalValue": 1610.4
   },
   {
     "id": "sr-amethyst-onepiece",
@@ -3578,8 +3571,7 @@
         "sg-156"
       ]
     ],
-    "totalValue": 1618.6,
-    "priceFloor": 39.12
+    "totalValue": 1618.6
   },
   {
     "id": "sr-gold-onepiece",
@@ -3843,7 +3835,6 @@
         "sg-157"
       ]
     ],
-    "totalValue": 2684.59,
-    "priceFloor": 59.34
+    "totalValue": 2684.59
   }
 ]

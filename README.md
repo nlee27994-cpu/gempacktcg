@@ -5,8 +5,8 @@ Built as a high school business project by **Mason Do, Nicholas Lee and Rachel L
 
 > **Mission:** Sell cards to Pokémon card enjoyers, direct or through other vendors.
 
-Every pack shows a **price floor**: the minimum card value you're guaranteed. If your pulls come in under it, the
-difference is credited back. You get the thrill of the pull with a clear safety net.
+Nothing is hidden: every pack shows its **pull odds**, Gempack's own Series drops publish **every card inside them**,
+and every price says where it came from. You get the thrill of the pull and know exactly what you're chasing.
 
 This is a demo. All products are mock data, nothing is stored on a server, and checkout takes no real payment.
 
@@ -16,12 +16,12 @@ This is a demo. All products are mock data, nothing is stored on a server, and c
 | --- | --- |
 | **Home** (`/`) | Hero, featured rare-card drops with live countdowns, upcoming events banner, Gempack Series drops |
 | **Shop** (`/shop`) | 102 packs + 120 singles (more once card data is synced). Search, filter by type / game / rarity / source / price, sort. Filters live in the URL, so filtered views can be shared |
-| **Product** (`/product/:id`) | Card or pack details. Packs show the price floor, hit slots and pull odds. Series packs show the drop's full checklist and how many of each card are still sealed |
-| **Rip a pack** (`/open/:id`) | Pack-tearing animation, tap-to-flip card reveal weighted by rarity, then pulled value vs. pack price and floor |
+| **Product** (`/product/:id`) | Card or pack details. Packs show their hit slots and pull odds. Series packs show the drop's full checklist and how many of each card are still sealed |
+| **Rip a pack** (`/open/:id`) | Pack-tearing animation, tap-to-flip card reveal weighted by rarity, then pulled value vs. pack price |
 | **Auction House** (`/auctions`) | Live auctions for single cards from Gempack (Official) and verified collectors. Bid, Buy Now, track your bids and wins, or get verified and list your own card |
 | **Auction** (`/auctions/:id`) | Countdown, minimum raise, quick bids, Buy Now, bid history, and pay-to-claim when you win |
 | **Cart / Checkout** | Cart (saved in the browser), fake checkout form, order confirmation |
-| **About** (`/about`) | Mission, team, strategy, and how the price floor works |
+| **About** (`/about`) | Mission, team, strategy, and how the odds and checklists work |
 | **Dev Console** (`/admin`) | Staff view: every transaction with a unique number and full data, live inventory, Series drops, auctions, exports and demo resets |
 
 ## Getting started
@@ -75,7 +75,7 @@ deployed, add your own domain under the Worker's **Settings → Domains & Routes
    ├─ data/                      # packs, singles, series, auctions, events (generated)
    ├─ lib/
    │  ├─ catalog.js              # loads the JSON, lookups, featured drops
-   │  ├─ packEngine.js           # pull odds, pack opening, price-floor solver (pure JS)
+   │  ├─ packEngine.js           # pull odds and pack opening (pure JS)
    │  ├─ packOpening.js          # the engine bound to the app's catalog
    │  ├─ auction.js              # auction rules: bid increments, fees, durations
    │  ├─ series.js               # Gempack Series drop status
@@ -97,7 +97,7 @@ npm run sync:pokemon
 
 This downloads the 11 Scarlet & Violet sets the shop uses. It keeps 8 cards per set (2 Secret Rare tier, 2 Ultra
 Rare, 2 Rare, 1 Uncommon, 1 Common), picked across the price range, and saves them to `src/data/pokemon-api.json`.
-Then it rebuilds the catalog, so packs, drops, floors and auctions all use the real cards and prices. Commit
+Then it rebuilds the catalog, so packs, drops and auctions all use the real cards and prices. Commit
 `pokemon-api.json` so teammates get the same cards without syncing.
 
 - **Official rarities map to the site's gem tiers.** Special Illustration Rare and Hyper Rare become Secret Rare.
@@ -147,7 +147,7 @@ Every product has `name`, `game`, `set`, `rarity`, `condition`, `price` and `sou
 (`Direct`, `Vendor` or `Collector`), plus a `seller`. `Collector` listings are fixed-price cards from verified collectors.
 
 - **Singles** add `marketPrice` (near-mint raw value), a card `number` and a `priceSource`.
-- **Packs** add `priceFloor`, `cardsPerPack` and `hitSlots`. For packs, `rarity` is the *guaranteed hit*,
+- **Packs** add `cardsPerPack` and `hitSlots`. For packs, `rarity` is the *guaranteed hit*,
   for example "Rare or better".
 
 To change the catalog, edit `scripts/generate-data.mjs` and run `npm run generate-data`.
@@ -160,10 +160,8 @@ The pack engine (`src/lib/packEngine.js`) is shared by the app and the data gene
    return: about **30% of the price** for store packs. Price trackers put real packs at 17–27%. For example,
    PackMagik (mid-2026) has Destined Rivals at $3.09 of card value on an $11.50 pack. Gempack's own Hit Packs return
    86%. Within a rarity tier, expensive chase cards are rarer, and cards from the pack's own set come up more often.
-2. **Floors.** The generator simulates 1,500 openings for each pack and picks the highest floor whose expected
-   store-credit payout stays under 6% of the price.
-3. **Result.** Store packs pay back about 35–45% of their price once floor credit is counted. That's realistic, and
-   it's the point of the pitch: Gempack's own Series drops (90%) and Hit Packs (86%) are the fair way to rip.
+2. **Result.** Store packs pay back about 30–40% of their price, which is realistic. That's the point of the pitch:
+   Gempack's own Series drops (90%) and Hit Packs (86%) are the fair way to rip.
    Packs whose card values are still estimates (Magic and One Piece before syncing) can come out higher, because
    cheap boosters with lots of bulk cards really do return more.
 
@@ -175,9 +173,8 @@ the data in `src/data/series.json`:
 - Each drop has a fixed print run: 60 Emerald, 30 Amethyst or 20 Gold packs.
 - The generator writes a **checklist** for each drop. Its total card value is 90% of what the whole drop sells for.
   The biggest chase card that fits the budget goes in first.
-- Every checklist copy is sealed into exactly one pack. Bigger cards go into the weakest packs first, so the worst pack
-  is as strong as it can be. **Open every pack and you get every card.**
-- The price floor is exact: it's the value of the weakest pack in the drop.
+- Every checklist copy is sealed into exactly one pack. Bigger cards go into the weakest packs first, so the hits are
+  spread across the drop. **Open every pack and you get every card.**
 - Ripping a series pack opens a random sealed pack from that drop. The product page shows what's still sealed
   ("2 of 3 left") and the live chance that the next pack has a Secret Rare. Progress is saved in your browser, and
   each drop has a "Reset this drop" button for demos.
@@ -208,7 +205,7 @@ Modelled on the auction houses in sports games like EA Sports FC and Madden:
 - **Transactions:** every event gets a unique transaction number such as `TX-20261022-000042` (date + counter). The
   counter never repeats, even after the ledger is cleared. Recorded events:
   - orders, with items, customer and totals
-  - pack rips and drop openings, with every card pulled, its value and any floor credit
+  - pack rips and drop openings, with every card pulled and its value
   - bids, from you and the simulated rivals
   - Buy Nows and finished auctions, with the winner, price and Gempack's revenue
   - new listings, seller verifications and claimed auction wins
@@ -217,7 +214,7 @@ Modelled on the auction houses in sports games like EA Sports FC and Madden:
   as CSV or JSON.
 - **Inventory:** every product with its starting stock, units sold and units available. Purchases now reduce stock
   across the whole site. There are also tabs for Series drop progress and all auctions.
-- **Overview:** gross sales, units sold, packs ripped, floor credit paid out, auction sales and revenue, low stock and
+- **Overview:** gross sales, units sold, packs ripped, card value pulled, auction sales and revenue, low stock and
   inventory value.
 - **Tools:** download the full ledger, clear it, reset the Auction House, refill all drops.
 

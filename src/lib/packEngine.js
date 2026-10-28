@@ -121,8 +121,6 @@ export function createPackEngine(singles) {
   /**
    * Simulates opening a pack.
    * Hit slots go last so the reveal builds toward the best card.
-   * If the pulled value lands under the pack's price floor, the difference
-   * is paid out as Gempack store credit — that's the floor guarantee.
    */
   function openPack(pack, rand = Math.random) {
     const { hitSlots, shownFiller, bulkCount } = layout(pack)
@@ -141,47 +139,15 @@ export function createPackEngine(singles) {
 
     const bulkValue = round2(bulkCount * BULK_VALUE)
     const pulledValue = round2(cards.reduce((s, c) => s + c.pulledValue, 0) + bulkValue)
-    const floorCredit = Math.max(0, round2(pack.priceFloor - pulledValue))
 
     return {
       cards: cards.map((c, i) => ({ ...c, slot: i })),
       bulkCount,
       bulkValue,
       pulledValue,
-      floorCredit,
-      totalValue: round2(pulledValue + floorCredit),
-      net: round2(pulledValue + floorCredit - pack.price),
+      net: round2(pulledValue - pack.price),
     }
   }
 
   return { oddsFor, openPack, fairPrice }
-}
-
-// Seeded PRNG so floor-setting simulations are reproducible
-export function mulberry32(seed) {
-  return function () {
-    seed |= 0
-    seed = (seed + 0x6d2b79f5) | 0
-    let t = Math.imul(seed ^ (seed >>> 15), 1 | seed)
-    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t
-    return ((t ^ (t >>> 14)) >>> 0) / 4294967296
-  }
-}
-
-/**
- * Picks the highest floor whose expected payout (store credit when pulls land under it)
- * stays within `creditBudget` × price. Binary search over simulated pulls.
- */
-export function solveFloor(engine, pack, creditBudget, runs = 1500, seed = 1) {
-  const rand = mulberry32(seed)
-  const values = Array.from({ length: runs }, () => engine.openPack({ ...pack, priceFloor: 0 }, rand).pulledValue)
-  const credit = (f) => values.reduce((s, v) => s + Math.max(0, f - v), 0) / runs
-  let lo = 0
-  let hi = pack.price
-  for (let i = 0; i < 40; i++) {
-    const mid = (lo + hi) / 2
-    if (credit(mid) > creditBudget * pack.price) hi = mid
-    else lo = mid
-  }
-  return round2(Math.min(0.9 * pack.price, Math.max(0.3 * pack.price, lo)))
 }

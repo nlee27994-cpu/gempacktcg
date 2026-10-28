@@ -32,11 +32,11 @@ function Hero() {
         <h1 className="text-4xl font-bold leading-[1.05] sm:text-5xl lg:text-6xl">
           Rip packs for the thrill.
           <br />
-          <span className="gem-text">Every pack has a floor.</span>
+          <span className="gem-text">Know the odds before you do.</span>
         </h1>
         <p className="mt-5 max-w-xl text-lg text-slate-300">
           Sealed packs and singles from our own store, partner vendors and verified collectors, plus a live Auction House. Every pack
-          lists a guaranteed minimum value, so you always know what's at stake before you rip.
+          shows its pull odds, and our own Series drops list every card inside, so you always know what you're chasing.
         </p>
         <div className="mt-8 flex flex-wrap gap-3">
           <Link to="/shop?type=pack" className="btn-primary px-6 py-3 text-base">Shop packs</Link>
@@ -67,7 +67,7 @@ function Hero() {
         <Link to={`/product/${gold.id}`} className="relative z-10 w-44 animate-float sm:w-52">
           <CardArt product={gold} size="lg" />
           <span className="absolute -bottom-4 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full bg-navy-950 px-3 py-1 text-xs font-semibold text-emerald-300 ring-1 ring-emerald-gem/40">
-            Floor {formatPrice(gold.priceFloor)}
+            {formatPrice(gold.price)}
           </span>
         </Link>
       </div>

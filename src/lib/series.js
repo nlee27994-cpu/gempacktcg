@@ -39,14 +39,5 @@ export function seriesPackResult(pack, cardIds) {
     })
     .map((c, slot) => ({ ...c, slot }))
   const pulledValue = round2(cards.reduce((s, c) => s + c.pulledValue, 0))
-  const floorCredit = Math.max(0, round2(pack.priceFloor - pulledValue))
-  return {
-    cards,
-    bulkCount: 0,
-    bulkValue: 0,
-    pulledValue,
-    floorCredit,
-    totalValue: round2(pulledValue + floorCredit),
-    net: round2(pulledValue + floorCredit - pack.price),
-  }
+  return { cards, bulkCount: 0, bulkValue: 0, pulledValue, net: round2(pulledValue - pack.price) }
 }

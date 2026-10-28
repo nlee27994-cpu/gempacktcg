@@ -13,7 +13,6 @@ const SORTS = {
   'price-asc': (a, b) => a.price - b.price,
   'price-desc': (a, b) => b.price - a.price,
   rarity: (a, b) => rarityRank(b.rarity) - rarityRank(a.rarity) || b.price - a.price,
-  floor: (a, b) => (b.priceFloor ?? 0) / b.price - (a.priceFloor ?? 0) / a.price,
   name: (a, b) => a.name.localeCompare(b.name),
 }
 
@@ -109,7 +108,6 @@ export default function Shop() {
             <option value="price-asc">Price: low to high</option>
             <option value="price-desc">Price: high to low</option>
             <option value="rarity">Rarity</option>
-            <option value="floor">Best floor %</option>
             <option value="name">Name A–Z</option>
           </select>
         </div>

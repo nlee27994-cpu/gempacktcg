@@ -50,8 +50,6 @@ function Summary({ pack, result, onAgain, packsLeft }) {
   const [added, setAdded] = useState(false)
   const best = [...result.cards].sort((a, b) => b.pulledValue - a.pulledValue)[0]
   const won = result.net >= 0
-  const pct = Math.min(100, Math.round((result.pulledValue / pack.price) * 100))
-  const floorPct = Math.round((pack.priceFloor / pack.price) * 100)
 
   return (
     <div className="panel mx-auto mt-10 max-w-3xl animate-pop-in p-6 sm:p-8">
@@ -73,36 +71,9 @@ function Summary({ pack, result, onAgain, packsLeft }) {
         </div>
       </div>
 
-      {/* value bar with floor marker */}
-      <div className="relative mt-8">
-        <div className="h-4 overflow-hidden rounded-full bg-navy-700">
-          <div
-            className={`h-full rounded-full bg-gradient-to-r ${won ? 'from-emerald-gem via-amethyst-400 to-gold-400' : 'from-emerald-gem to-emerald-400'}`}
-            style={{ width: `${pct}%` }}
-          />
-        </div>
-        <div className="absolute -top-1 h-6 w-0.5 bg-gold-300" style={{ left: `${floorPct}%` }} />
-        <div className="relative mt-2 h-4 text-xs text-slate-400">
-          <span className="absolute left-0">$0</span>
-          <span className="absolute -translate-x-1/2 whitespace-nowrap text-gold-300" style={{ left: `${floorPct}%` }}>
-            Floor {formatPrice(pack.priceFloor)}
-          </span>
-          <span className="absolute right-0">{formatPrice(pack.price)}</span>
-        </div>
-      </div>
-
-      {result.floorCredit > 0 ? (
-        <p className="mt-8 rounded-xl border border-emerald-gem/40 bg-emerald-gem/10 p-4 text-sm text-emerald-200">
-          🛡️ <span className="font-semibold">Floor protection kicked in.</span> Your pulls came in under the{' '}
-          {formatPrice(pack.priceFloor)} floor, so we'd credit <span className="font-semibold">{formatPrice(result.floorCredit)}</span> to your
-          Gempack account.
-        </p>
-      ) : (
-        <p className="mt-8 rounded-xl border border-gold-400/40 bg-gold-400/10 p-4 text-sm text-gold-200">
-          ✨ Best pull: <span className="font-semibold">{best.name}</span> ({best.rarity}) worth {formatPrice(best.pulledValue)}.
-          You cleared the floor without needing protection.
-        </p>
-      )}
+      <p className="mt-8 rounded-xl border border-gold-400/40 bg-gold-400/10 p-4 text-sm text-gold-200">
+        ✨ Best pull: <span className="font-semibold">{best.name}</span> ({best.rarity}) worth {formatPrice(best.pulledValue)}.
+      </p>
 
       <div className="mt-6 grid gap-3 sm:grid-cols-3">
         <button className="btn-gold" onClick={onAgain}>⚡ Rip another</button>
@@ -172,12 +143,10 @@ function OpenPackPage({ id }) {
         packId: pack.id,
         packName: pack.name,
         packPrice: pack.price,
-        priceFloor: pack.priceFloor,
         ...(series && { seriesId: series.id, packsLeftAfter: packsLeft - 1 }),
         cards: opened.cards.map(({ id, name, rarity, set, pulledValue }) => ({ id, name, rarity, set, value: pulledValue })),
         bulkCards: opened.bulkCount,
         pulledValue: opened.pulledValue,
-        floorCredit: opened.floorCredit,
         net: opened.net,
       },
     })
@@ -206,7 +175,7 @@ function OpenPackPage({ id }) {
         <p className="label text-gold-400">Rip a pack</p>
         <h1 className="text-3xl font-bold sm:text-4xl">{pack.name}</h1>
         <p className="mt-2 text-slate-400">
-          {formatPrice(pack.price)} · Floor <span className="font-semibold text-emerald-300">{formatPrice(pack.priceFloor)}</span> ·{' '}
+          {formatPrice(pack.price)} ·{' '}
           {pack.hitSlots}× {pack.rarity}+ hit
         </p>
         {series && (
