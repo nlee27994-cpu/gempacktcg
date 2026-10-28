@@ -292,6 +292,7 @@ const SERIES_TIERS = [
 ]
 const SERIES_CARDS_PER_PACK = 5
 const SERIES_PAYOUT = 0.9 // total card value in a drop = 90% of what the drop sells for
+const SERIES_PACK_MIN = 0.5 // and every single pack holds at least 50% of its price
 const FILLER_MIX = [[C, 0.55], [U, 0.3], [R, 0.15]]
 // Scarcer copies for pricier chase cards
 const maxCopies = (card) => (card.marketPrice >= 500 ? 1 : card.marketPrice >= 150 ? 2 : 3)
@@ -310,70 +311,75 @@ const byPrice = (a, b) => a.marketPrice - b.marketPrice
 function buildSeries(game, t) {
   const pool = (rarity) => singles.filter((s) => s.game === game && s.rarity === rarity).sort(byPrice)
   const fillerPerPack = SERIES_CARDS_PER_PACK - t.hitSlots
-  const fillerTotal = t.packCount * fillerPerPack
-  const hitTotal = t.packCount * t.hitSlots
+  const budget = t.price * t.packCount * SERIES_PAYOUT // total card value the whole drop may hold
+  const packMin = t.price * SERIES_PACK_MIN // value every single pack must hold
 
-  // Filler copies, spread round-robin over each tier's cards
+  // Filler copies (Common/Uncommon/Rare), spread round-robin over each tier's cards
+  const fillerTotal = t.packCount * fillerPerPack
   const fillers = []
   FILLER_MIX.forEach(([rarity, share], i) => {
     const n = i === FILLER_MIX.length - 1 ? fillerTotal - fillers.length : Math.round(fillerTotal * share)
     const cards = shuffle(pool(rarity))
     for (let k = 0; k < n; k++) fillers.push(cards[k % cards.length])
   })
+  const sealed = Array.from({ length: t.packCount }, (_, i) => ({
+    fillers: fillers.slice(i * fillerPerPack, (i + 1) * fillerPerPack),
+    hits: [],
+  }))
+  const packValue = (p) => sumValue(p.fillers) + sumValue(p.hits)
 
-  // Hits start as the cheaper Ultra Rares, then get upgraded while the value budget allows
-  const budget = t.price * t.packCount * SERIES_PAYOUT - sumValue(fillers)
-  const urs = pool(UR)
-  const srs = pool(SR)
-  const cheapUrs = urs.slice(0, Math.ceil(urs.length / 2))
-  const hits = Array.from({ length: hitTotal }, (_, i) => cheapUrs[i % cheapUrs.length])
-  let value = sumValue(hits)
-  const copiesOf = (card) => hits.filter((h) => h.id === card.id).length
-  // Swap the cheapest hit for `card` if it fits the budget
-  const tryUpgrade = (card, eligible) => {
-    const target = hits.filter(eligible).sort(byPrice)[0]
-    if (!target) return false
-    const delta = card.marketPrice - target.marketPrice
-    if (delta <= 0 || value + delta > budget) return false
-    hits[hits.indexOf(target)] = card
-    value += delta
-    return true
-  }
-  // Small card pools (e.g. MTG) can run out of copies before the budget is spent,
-  // so copy limits loosen step by step until the drop holds its share of value.
-  for (let scale = 1; scale <= 4 && value < budget * 0.97; scale++) {
-    // 1) Chase cards: biggest Secret Rare that fits goes in first
-    for (let changed = true; changed; ) {
-      changed = false
-      for (const sr of [...srs].reverse()) {
-        if (copiesOf(sr) < maxCopies(sr) * scale) changed = tryUpgrade(sr, (h) => h.rarity === UR) || changed
-      }
-    }
-    // 2) Spend what's left upgrading cheap Ultra Rares to pricier ones
-    const urCap = (Math.ceil(hitTotal / urs.length) + 2) * scale
-    for (let changed = true; changed; ) {
-      changed = false
-      for (const ur of [...urs].reverse()) {
-        if (copiesOf(ur) < urCap) changed = tryUpgrade(ur, (h) => h.rarity === UR && h.marketPrice < ur.marketPrice) || changed
-      }
+  // Hit cards (Ultra Rare or better). Chase cards (worth more than the pack itself) are
+  // scarce, with a few copies each; everyday hits can repeat as often as the drop needs.
+  const hitPool = [...pool(UR), ...pool(SR)].sort(byPrice)
+  const isChase = (card) => card.marketPrice > t.price
+  const used = new Map()
+  const count = (card) => used.get(card.id) ?? 0
+  const copiesLeft = (card) => (isChase(card) ? maxCopies(card) - count(card) : Infinity)
+  const take = (card) => used.set(card.id, count(card) + 1)
+  const release = (card) => used.set(card.id, count(card) - 1)
+
+  // 1) Every pack first: pick hits that bring the pack up to its minimum with as little
+  //    overshoot as possible. Among cards close in price to the cheapest one that covers
+  //    this slot's share of what's missing, use the least-used one so drops stay varied.
+  for (const pack of sealed) {
+    for (let slot = 0; slot < t.hitSlots; slot++) {
+      const missing = Math.max(0, packMin - packValue(pack)) / (t.hitSlots - slot)
+      const available = hitPool.filter((c) => copiesLeft(c) > 0)
+      const cheapestEnough = available.find((c) => c.marketPrice >= missing) ?? available.at(-1)
+      const similar = available.filter((c) => c.marketPrice >= cheapestEnough.marketPrice && c.marketPrice <= cheapestEnough.marketPrice * 1.5 + 1)
+      const card = similar.sort((a, b) => count(a) - count(b) || byPrice(a, b))[0]
+      take(card)
+      pack.hits.push(card)
     }
   }
 
-  // Seal the packs: biggest cards first, each into the weakest pack with room,
-  // so the hits are spread across the drop instead of piling into a few packs.
-  const sealed = Array.from({ length: t.packCount }, () => ({ hits: [], fillers: [], value: 0 }))
-  const place = (cards, slot, cap) => {
-    for (const card of [...cards].sort(byPrice).reverse()) {
-      const target = sealed.filter((p) => p[slot].length < cap).sort((a, b) => a.value - b.value)[0]
-      target[slot].push(card)
-      target.value += card.marketPrice
+  // 2) Then the chase cards: spend what's left of the budget swapping a pack's cheapest hit
+  //    for something better, biggest chase card first. Swaps only add value, so every pack
+  //    keeps its minimum.
+  let total = sumValue(sealed.map(packValue).map((v) => ({ marketPrice: v })))
+  for (let changed = true; changed; ) {
+    changed = false
+    for (const card of [...hitPool].reverse()) {
+      if (copiesLeft(card) <= 0) continue
+      const pack = sealed[Math.floor(rand() * sealed.length)]
+      const cheapest = [...pack.hits].sort(byPrice)[0]
+      const delta = card.marketPrice - cheapest.marketPrice
+      if (delta <= 0 || total + delta > budget) continue
+      pack.hits[pack.hits.indexOf(cheapest)] = card
+      release(cheapest)
+      take(card)
+      total += delta
+      changed = true
     }
   }
-  place(hits, 'hits', t.hitSlots)
-  place(fillers, 'fillers', fillerPerPack)
+
+  // Checks: every pack holds its minimum, and the drop never pays out more than the budget
+  const values = sealed.map(packValue)
+  if (Math.min(...values) < packMin - 0.01) throw new Error(`${game} ${t.tier}: a pack is under ${SERIES_PACK_MIN * 100}% of its price`)
+  if (total > budget + 0.01) throw new Error(`${game} ${t.tier}: the drop holds more value than its budget`)
 
   const counts = new Map()
-  for (const c of [...hits, ...fillers]) counts.set(c.id, (counts.get(c.id) ?? 0) + 1)
+  for (const c of sealed.flatMap((p) => [...p.hits, ...p.fillers])) counts.set(c.id, (counts.get(c.id) ?? 0) + 1)
   const rank = [C, U, R, UR, SR]
   const checklist = [...counts]
     .map(([id, copies]) => ({ id, copies, card: singles.find((s) => s.id === id) }))
@@ -383,7 +389,8 @@ function buildSeries(game, t) {
   return {
     checklist,
     packs: shuffle(sealed).map((p) => [...p.fillers.sort(byPrice), ...p.hits.sort(byPrice)].map((c) => c.id)),
-    totalValue: money(value + sumValue(fillers)),
+    totalValue: money(total),
+    minPackValue: money(Math.min(...values)),
   }
 }
 

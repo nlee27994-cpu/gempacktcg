@@ -88,7 +88,7 @@ export default function About() {
           <ol className="mt-4 space-y-3 text-sm text-slate-300">
             <li><span className="font-semibold text-white">1. Odds on every pack.</span> Each pack page shows the chance of every rarity in its hit slot.</li>
             <li><span className="font-semibold text-white">2. Real prices.</span> Cards are valued at their market price, and every price says where it came from.</li>
-            <li><span className="font-semibold text-white">3. Gempack Series drops go further.</span> We seal every pack ourselves from a public checklist. Open every pack and you get every card, and pulled cards leave the drop for good.</li>
+            <li><span className="font-semibold text-white">3. Gempack Series drops go further.</span> We seal every pack ourselves from a public checklist, and every pack holds at least half its price in cards. Open every pack and you get every card, and pulled cards leave the drop for good.</li>
           </ol>
           <Link to="/shop?type=pack" className="btn-primary mt-6">Browse packs</Link>
         </div>

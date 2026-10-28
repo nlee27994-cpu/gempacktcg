@@ -83,8 +83,9 @@ export default function SeriesChecklist({ pack, series }) {
       <h2 className="text-2xl font-bold">Every card in this drop</h2>
       <p className="mt-2 text-sm text-slate-300">
         This drop has a print run of <span className="font-semibold text-white">{status.totalPacks} packs</span>. Every card below
-        is sealed into exactly one of them, so if you opened all {status.totalPacks} you'd get the whole checklist. When a card is
-        pulled, it's gone from the drop.
+        is sealed into exactly one of them, so if you opened all {status.totalPacks} you'd get the whole checklist. We built every
+        pack to hold at least <span className="font-semibold text-white">{formatPrice(series.minPackValue)}</span> in cards, half its
+        price or more. When a card is pulled, it's gone from the drop.
       </p>
 
       <div className="mt-5 h-2.5 overflow-hidden rounded-full bg-navy-700">

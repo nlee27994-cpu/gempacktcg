@@ -172,9 +172,11 @@ the data in `src/data/series.json`:
 
 - Each drop has a fixed print run: 60 Emerald, 30 Amethyst or 20 Gold packs.
 - The generator writes a **checklist** for each drop. Its total card value is 90% of what the whole drop sells for.
-  The biggest chase card that fits the budget goes in first.
-- Every checklist copy is sealed into exactly one pack. Bigger cards go into the weakest packs first, so the hits are
-  spread across the drop. **Open every pack and you get every card.**
+- Every checklist copy is sealed into exactly one pack. **Open every pack and you get every card.**
+- **Every pack holds at least 50% of its price in cards.** The builder first fills each pack up to that minimum with
+  everyday hits (as close to the minimum as it can), then spends the rest of the 90% budget on chase cards. Chase
+  cards (worth more than the pack) are scarce; everyday hits can repeat. The generator refuses to write a drop that
+  breaks either rule, so Gempack always keeps about 10% of a drop's sales.
 - Ripping a series pack opens a random sealed pack from that drop. The product page shows what's still sealed
   ("2 of 3 left") and the live chance that the next pack has a Secret Rare. Progress is saved in your browser, and
   each drop has a "Reset this drop" button for demos.
