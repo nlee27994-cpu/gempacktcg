@@ -39,7 +39,8 @@ Other commands:
 npm run build          # production build into dist/
 npm run preview        # serve the production build locally
 npm run generate-data  # regenerate the mock catalog in src/data/
-npm run sync:pokemon   # pull real Pokémon cards and prices, then regenerate (see below)
+npm run sync:pokemon   # pull real Pokémon cards, prices and images, then regenerate (see below)
+npm run fetch-images   # download card images for already-synced cards (self-hosting)
 ```
 
 ## Deploying to Cloudflare
@@ -65,6 +66,7 @@ deployed, add your own domain under the Worker's **Settings → Domains & Routes
 │  ├─ generate-data.mjs          # builds the catalog (seeded, so it's reproducible)
 │  ├─ market-prices.mjs          # researched sealed pack prices, with sources
 │  ├─ sync-pokemon.mjs           # real Pokémon cards + prices (Pokémon TCG API)
+│  ├─ fetch-images.mjs           # downloads card images into public/card-images
 │  └─ sync-utils.mjs             # shared download helpers
 └─ src/
    ├─ App.jsx                    # routes
@@ -106,8 +108,12 @@ Then it rebuilds the catalog, so packs, drops and auctions all use the real card
   `POKEMONTCG_API_KEY=your-key npm run sync:pokemon`. The script retries when the API is busy.
 - Run it again any time to refresh prices. If too few cards come back (no internet, say), the existing data is left
   alone. Delete `src/data/pokemon-api.json` and run `npm run generate-data` to go back to the built-in card list.
-- Card images are © The Pokémon Company and are loaded from the API's image server. That's fine for a class demo,
-  but a real store would need permission. If an image can't load, the card falls back to the drawn art.
+- **Card images are self-hosted.** The sync also downloads each card's picture into `public/card-images/`, so the
+  site serves them from your own domain instead of the API's image server (which can be slow, down, or blocked on
+  some networks). Already-downloaded images are skipped. For cards synced before this existed, run
+  `npm run fetch-images`. Commit `public/card-images/` along with `src/data` so the live site gets them. Cards
+  without a downloaded image still load from the API's server, and fall back to the drawn art if that fails.
+- Card images are © The Pokémon Company. That's fine for a class demo, but a real store would need permission.
 
 ## Where prices come from
 

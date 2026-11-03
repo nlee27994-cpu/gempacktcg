@@ -8,6 +8,7 @@ import { fileURLToPath } from 'node:url'
 import { createPackEngine } from '../src/lib/packEngine.js'
 import { bidIncrement, CONDITION_VALUE } from '../src/lib/auction.js'
 import { PACK_PRICES } from './market-prices.mjs'
+import { IMAGE_DIR, imageFileFor } from './fetch-images.mjs'
 
 const OUT = join(dirname(fileURLToPath(import.meta.url)), '..', 'src', 'data')
 
@@ -148,8 +149,10 @@ for (const [game, cards] of Object.entries(CARDS)) {
       ...(api?.apiId && {
         apiId: api.apiId,
         officialRarity: api.officialRarity,
-        image: api.image,
-        imageLarge: api.imageLarge,
+        // Self-hosted copy from npm run fetch-images if there is one, else the API's image server
+        ...(existsSync(join(IMAGE_DIR, imageFileFor(api)))
+          ? { image: `/card-images/${imageFileFor(api)}`, imageLarge: `/card-images/${imageFileFor(api)}` }
+          : { image: api.image, imageLarge: api.imageLarge }),
         tcgplayerUrl: api.tcgplayerUrl,
         priceUpdatedAt: api.priceUpdatedAt,
       }),
