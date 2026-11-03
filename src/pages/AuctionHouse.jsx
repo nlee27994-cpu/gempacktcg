@@ -4,7 +4,7 @@ import AuctionCard from '../components/AuctionCard'
 import CardArt from '../components/CardArt'
 import { YOU, isEnded, leader, useAuctions, viewerStatus } from '../context/AuctionContext'
 import { CONDITION_VALUE, DURATIONS, SELLER_FEE } from '../lib/auction'
-import { GAMES, getProduct, singles } from '../lib/catalog'
+import { getProduct, singles } from '../lib/catalog'
 import { formatPrice } from '../lib/format'
 import { RARITIES } from '../lib/rarity'
 import useNow from '../lib/useNow'
@@ -25,7 +25,7 @@ const price = (a) => (a.bidCount ? a.currentBid : a.startPrice)
 
 function Browse({ now }) {
   const { auctions } = useAuctions()
-  const [f, setF] = useState({ q: '', game: '', rarity: '', seller: '', buyNowOnly: false, sort: 'ending' })
+  const [f, setF] = useState({ q: '', rarity: '', seller: '', buyNowOnly: false, sort: 'ending' })
   const set = (key) => (e) => setF((prev) => ({ ...prev, [key]: e.target.type === 'checkbox' ? e.target.checked : e.target.value }))
 
   const live = auctions.filter((a) => !isEnded(a, now))
@@ -33,7 +33,6 @@ function Browse({ now }) {
   const results = live
     .filter((a) => {
       const card = getProduct(a.cardId)
-      if (f.game && card.game !== f.game) return false
       if (f.rarity && card.rarity !== f.rarity) return false
       if (f.seller && a.sellerType !== f.seller) return false
       if (f.buyNowOnly && !a.buyNow) return false
@@ -44,12 +43,8 @@ function Browse({ now }) {
 
   return (
     <>
-      <div className="panel grid gap-3 p-4 sm:grid-cols-2 lg:grid-cols-6">
+      <div className="panel grid gap-3 p-4 sm:grid-cols-2 lg:grid-cols-5">
         <input className="input lg:col-span-2" type="search" placeholder="Search cards, sets, sellers…" value={f.q} onChange={set('q')} aria-label="Search auctions" />
-        <select className="input" value={f.game} onChange={set('game')} aria-label="Game">
-          <option value="">All games</option>
-          {GAMES.map((g) => <option key={g}>{g}</option>)}
-        </select>
         <select className="input" value={f.rarity} onChange={set('rarity')} aria-label="Rarity">
           <option value="">All rarities</option>
           {RARITIES.map((r) => <option key={r}>{r}</option>)}
@@ -65,7 +60,7 @@ function Browse({ now }) {
           <option value="price-desc">Price: high to low</option>
           <option value="bids">Most bids</option>
         </select>
-        <label className="flex items-center gap-2 text-sm text-slate-300 lg:col-span-6">
+        <label className="flex items-center gap-2 text-sm text-slate-300 lg:col-span-5">
           <input type="checkbox" checked={f.buyNowOnly} onChange={set('buyNowOnly')} className="h-4 w-4 accent-amber-400" />
           Only show auctions with a Buy Now price
         </label>

@@ -6,7 +6,7 @@ import { allProducts } from '../lib/catalog'
 import { rarityRank } from '../lib/rarity'
 
 const PAGE_SIZE = 24
-const LIST_KEYS = ['game', 'rarity', 'source']
+const LIST_KEYS = ['rarity', 'source']
 
 const SORTS = {
   featured: (a, b) => Number(b.featured) - Number(a.featured) || rarityRank(b.rarity) - rarityRank(a.rarity),
@@ -64,13 +64,12 @@ export default function Shop() {
     return allProducts
       .filter((p) => {
         if (filters.type && p.type !== filters.type) return false
-        if (filters.game.length && !filters.game.includes(p.game)) return false
         if (filters.rarity.length && !filters.rarity.includes(p.rarity)) return false
         if (filters.source.length && !filters.source.includes(p.source)) return false
         if (!Number.isNaN(min) && p.price < min) return false
         if (!Number.isNaN(max) && p.price > max) return false
         if (words.length) {
-          const hay = `${p.name} ${p.set} ${p.game} ${p.seller} ${p.kind ?? ''}`.toLowerCase()
+          const hay = `${p.name} ${p.set} ${p.seller} ${p.kind ?? ''}`.toLowerCase()
           if (!words.every((w) => hay.includes(w))) return false
         }
         return true

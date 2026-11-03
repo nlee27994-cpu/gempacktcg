@@ -1,4 +1,4 @@
-// Shared helpers for the card-data sync scripts (sync-pokemon.mjs, sync-mtg.mjs)
+// Helpers for the card-data sync script (sync-pokemon.mjs)
 import { writeFileSync } from 'node:fs'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'

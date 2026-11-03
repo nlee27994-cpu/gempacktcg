@@ -9,15 +9,8 @@ export { packs, singles, events, auctions }
 // Changes whenever the catalog is regenerated; used to key saved browser state
 export const DATA_VERSION = meta.version
 
-export const GAMES = ['Pokémon', 'Magic: The Gathering', 'One Piece']
 export const SOURCES = ['Direct', 'Vendor', 'Collector']
 export const CONDITIONS = ['Near Mint', 'Lightly Played', 'Moderately Played', 'PSA 9', 'PSA 10']
-
-export const GAME_SHORT = {
-  Pokémon: 'Pokémon',
-  'Magic: The Gathering': 'MTG',
-  'One Piece': 'One Piece',
-}
 
 export const allProducts = [...packs, ...singles]
 const byId = new Map(allProducts.map((p) => [p.id, p]))

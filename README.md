@@ -1,6 +1,6 @@
 # Gempack TCG — demo storefront
 
-A front-end demo for **Gempack TCG**, a trading card marketplace for Pokémon, Magic: The Gathering and One Piece.
+A front-end demo for **Gempack TCG**, a Pokémon trading card marketplace.
 Built as a high school business project by **Mason Do, Nicholas Lee and Rachel Lim**.
 
 > **Mission:** Sell cards to Pokémon card enjoyers, direct or through other vendors.
@@ -15,7 +15,7 @@ This is a demo. All products are mock data, nothing is stored on a server, and c
 | Page | What it does |
 | --- | --- |
 | **Home** (`/`) | Hero, featured rare-card drops with live countdowns, upcoming events banner, Gempack Series drops |
-| **Shop** (`/shop`) | 102 packs + 120 singles (more once card data is synced). Search, filter by type / game / rarity / source / price, sort. Filters live in the URL, so filtered views can be shared |
+| **Shop** (`/shop`) | 47 packs + 88 singles. Search, filter by type / rarity / source / price, sort. Filters live in the URL, so filtered views can be shared |
 | **Product** (`/product/:id`) | Card or pack details. Packs show their hit slots and pull odds. Series packs show the drop's full checklist and how many of each card are still sealed |
 | **Rip a pack** (`/open/:id`) | Pack-tearing animation, tap-to-flip card reveal weighted by rarity, then pulled value vs. pack price |
 | **Auction House** (`/auctions`) | Live auctions for single cards from Gempack (Official) and verified collectors. Bid, Buy Now, track your bids and wins, or get verified and list your own card |
@@ -40,7 +40,6 @@ npm run build          # production build into dist/
 npm run preview        # serve the production build locally
 npm run generate-data  # regenerate the mock catalog in src/data/
 npm run sync:pokemon   # pull real Pokémon cards and prices, then regenerate (see below)
-npm run sync:mtg       # pull real Magic cards and prices from Scryfall, then regenerate
 ```
 
 ## Deploying to Cloudflare
@@ -64,9 +63,8 @@ deployed, add your own domain under the Worker's **Settings → Domains & Routes
 ├─ public/favicon.svg            # gem-shaped booster pack logo
 ├─ scripts/
 │  ├─ generate-data.mjs          # builds the catalog (seeded, so it's reproducible)
-│  ├─ market-prices.mjs          # researched sealed + One Piece prices, with sources
+│  ├─ market-prices.mjs          # researched sealed pack prices, with sources
 │  ├─ sync-pokemon.mjs           # real Pokémon cards + prices (Pokémon TCG API)
-│  ├─ sync-mtg.mjs               # real Magic cards + prices (Scryfall)
 │  └─ sync-utils.mjs             # shared download helpers
 └─ src/
    ├─ App.jsx                    # routes
@@ -111,26 +109,17 @@ Then it rebuilds the catalog, so packs, drops and auctions all use the real card
 - Card images are © The Pokémon Company and are loaded from the API's image server. That's fine for a class demo,
   but a real store would need permission. If an image can't load, the card falls back to the drawn art.
 
-## Real Magic card data
-
-`npm run sync:mtg` does the same for Magic, using [Scryfall](https://scryfall.com/docs/api) (free, no key needed).
-It saves `src/data/mtg-api.json` for the 7 Magic sets the shop uses. Scryfall's USD prices are TCGplayer market
-prices, updated daily. Special printings (borderless, showcase, extended art, serialized, fancy foils) count as the
-Secret Rare tier, mythics as Ultra Rare.
-
 ## Where prices come from
 
 Every product page says where its price comes from:
 
-- **Market price, live:** Pokémon and Magic singles, once synced. These are TCGplayer market prices from the Pokémon
-  TCG API and Scryfall.
-- **Market price, researched:** sealed packs and One Piece chase cards (manga rares and so on). They were looked up
+- **Market price, live:** singles, once synced. These are TCGplayer market prices from the Pokémon TCG API.
+- **Market price, researched:** sealed packs. They were looked up
   from public price trackers on 2026-10-22, and `scripts/market-prices.mjs` lists each one with its source link and
   date. Sealed prices move fast, so re-check them before relying on them. Some are low-confidence and say so.
 - **Gempack product:** Series drops and Gempack Hit Packs are priced from the market value of the cards inside them.
-- **Estimate:** anything without a source, labelled on the page. This covers One Piece commons and uncommons, plus the
-  built-in Pokémon and Magic cards until you run the syncs. Pack types with no market price of their own also follow
-  a stated rule: a 3-pack blister is 3 boosters + $2, and a prerelease pack is 6 play boosters + $5.
+- **Estimate:** anything without a source, labelled on the page. This covers the built-in cards until you run the
+  sync. Pack types with no market price of their own also follow a stated rule: a 3-pack blister is 3 boosters + $2.
 
 Other rules:
 
@@ -162,12 +151,10 @@ The pack engine (`src/lib/packEngine.js`) is shared by the app and the data gene
    86%. Within a rarity tier, expensive chase cards are rarer, and cards from the pack's own set come up more often.
 2. **Result.** Store packs pay back about 30–40% of their price, which is realistic. That's the point of the pitch:
    Gempack's own Series drops (90%) and Hit Packs (86%) are the fair way to rip.
-   Packs whose card values are still estimates (Magic and One Piece before syncing) can come out higher, because
-   cheap boosters with lots of bulk cards really do return more.
 
 ## Gempack Series drops
 
-The Gempack-built packs (Emerald, Amethyst and Gold, for each game) work differently. They are finite **drops**, with
+The Gempack-built packs (Emerald, Amethyst and Gold) work differently. They are finite **drops**, with
 the data in `src/data/series.json`:
 
 - Each drop has a fixed print run: 60 Emerald, 30 Amethyst or 20 Gold packs.

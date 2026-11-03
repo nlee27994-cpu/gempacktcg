@@ -27,7 +27,7 @@ function Hero() {
     <section className="container-page grid items-center gap-12 pb-16 pt-12 lg:grid-cols-2 lg:pt-20">
       <div>
         <p className="mb-4 inline-flex items-center gap-2 rounded-full border border-emerald-gem/30 bg-emerald-gem/10 px-3 py-1 text-xs font-semibold text-emerald-300">
-          <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-gem" /> Pokémon · Magic: The Gathering · One Piece
+          <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-gem" /> Pokémon TCG
         </p>
         <h1 className="text-4xl font-bold leading-[1.05] sm:text-5xl lg:text-6xl">
           Rip packs for the thrill.
@@ -224,8 +224,8 @@ export default function Home() {
             </p>
           </div>
         </div>
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
-          {seriesPacks.slice(0, 5).map((p) => (
+        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
+          {seriesPacks.map((p) => (
             <ProductCard key={p.id} product={p} />
           ))}
         </div>

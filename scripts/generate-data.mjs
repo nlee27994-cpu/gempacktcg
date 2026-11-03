@@ -7,7 +7,7 @@ import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { createPackEngine } from '../src/lib/packEngine.js'
 import { bidIncrement, CONDITION_VALUE } from '../src/lib/auction.js'
-import { ONE_PIECE_CHASE, PACK_PRICES } from './market-prices.mjs'
+import { PACK_PRICES } from './market-prices.mjs'
 
 const OUT = join(dirname(fileURLToPath(import.meta.url)), '..', 'src', 'data')
 
@@ -43,28 +43,16 @@ const SETS = {
     'Scarlet & Violet 151', 'Obsidian Flames', 'Paldean Fates', 'Temporal Forces',
     'Journey Together', 'Destined Rivals', 'Shrouded Fable',
   ],
-  'Magic: The Gathering': [
-    'Bloomburrow', 'Duskmourn', 'Foundations', 'Aetherdrift',
-    'Tarkir: Dragonstorm', 'Final Fantasy', 'Edge of Eternities',
-  ],
-  'One Piece': [
-    'Romance Dawn (OP-01)', 'Awakening of the New Era (OP-05)', 'Wings of the Captain (OP-06)',
-    '500 Years in the Future (OP-07)', 'Two Legends (OP-08)', 'Emperors in the New World (OP-09)',
-    'Memorial Collection (EB-01)',
-  ],
 }
 
 const VENDORS = {
   Pokémon: ['Kanto Card Co.', 'Stadium Cards', 'PalletTown Collectibles'],
-  'Magic: The Gathering': ['Blue Mana Games', 'Planeswalker Supply', 'Stadium Cards'],
-  'One Piece': ['Grand Line Collectibles', 'Thousand Sunny Cards', 'Stadium Cards'],
 }
 const COLLECTORS = [
   '@ripking22', '@holo_hunter', '@mintcondition_mia', '@sleevedup', '@pullrate_pete',
   '@gradedgabe', '@binderbrooke', '@topdeck_tay',
 ]
 
-const GAME_SLUG = { Pokémon: 'pokemon', 'Magic: The Gathering': 'mtg', 'One Piece': 'onepiece' }
 
 const sellerFor = (game, source) =>
   source === 'Direct' ? 'Gempack TCG' : source === 'Vendor' ? pick(VENDORS[game]) : pick(COLLECTORS)
@@ -100,52 +88,13 @@ const CARDS = {
     ['Bulbasaur', C], ['Charmander', C], ['Squirtle', C], ['Caterpie', C], ['Pidgey', C],
     ['Rattata', C], ['Magikarp', C], ['Zubat', C], ['Oddish', C], ['Sprigatito', C],
   ],
-  'Magic: The Gathering': [
-    ['The One Ring (Borderless)', SR, 129],
-    ['Maha, Its Feathers Night', SR, 34, 'Bloomburrow'],
-    ['Overlord of the Hauntwoods', SR, 46, 'Duskmourn'],
-    ['Cloud, Midgar Mercenary (Surge Foil)', SR, 89, 'Final Fantasy'],
-    ['Sephiroth, Fabled SOLDIER', SR, 74, 'Final Fantasy'],
-    ['Sunderflock (Showcase)', SR, 28],
-    ['Ygra, Eater of All', UR, 18, 'Bloomburrow'],
-    ['Valley Questcaller', UR, 12, 'Bloomburrow'],
-    ['Enduring Innocence', UR, 9, 'Duskmourn'],
-    ['Leyline of the Void', UR, 16, 'Duskmourn'],
-    ['Sheoldred, the Apocalypse', UR, 62, 'Foundations'],
-    ['Elesh Norn (Borderless)', UR, 24, 'Tarkir: Dragonstorm'],
-    ['Lightning Bolt', R, 3.5], ['Counterspell', R, 2.75], ['Llanowar Elves', R],
-    ['Mabel\'s Mettle', R], ['Vren, the Relentless', R], ['Pawpatch Recruit', R],
-    ['Doomsday Excruciator', R], ['Cavern-Hoard Dragon', R],
-    ['Shock', U], ['Heartfire Hero', U], ['Thought Shucker', U], ['Fear of Missing Out', U],
-    ['Unholy Annex', U], ['Gloom Ripper', U], ['Brightblade Stoat', U],
-    ['Island', C, 0.15], ['Forest', C, 0.15], ['Mountain', C, 0.15], ['Plains', C, 0.15], ['Swamp', C, 0.15],
-    ['Fell', C], ['Lilypad Village', C], ['Bandit\'s Talent', C],
-  ],
-  'One Piece': [
-    // Secret Rare / Ultra Rare chase cards come from ONE_PIECE_CHASE (researched prices)
-    ['Trafalgar Law (SEC)', UR, 38],
-    ['Nami (SR)', UR, 21],
-    ['Yamato (SR)', UR, 26, 'Awakening of the New Era (OP-05)'],
-    ['Kaido (Leader Parallel)', UR, 33],
-    ['Sabo (SR)', UR, 17, 'Awakening of the New Era (OP-05)'],
-    ['Eustass Kid (SR)', UR, 14],
-    ['Sanji', R], ['Nico Robin', R], ['Tony Tony.Chopper', R], ['Usopp', R],
-    ['Franky', R], ['Brook', R], ['Jinbe', R], ['Kozuki Oden', R],
-    ['Koby', U], ['Buggy', U], ['Smoker', U], ['Perona', U], ['Crocodile', U],
-    ['Arlong', U], ['Bartolomeo', U],
-    ['Marine Soldier', C], ['Straw Hat Crew Member', C], ['Baroque Works Agent', C],
-    ['Going Merry', C], ['Gum-Gum Pistol', C], ['Thousand Sunny', C], ['Den Den Mushi', C],
-  ],
 }
 
 const estimate = (label) => ({ label, estimate: true })
 
-// Real cards with live market prices, if the sync scripts have been run
-// (npm run sync:pokemon / npm run sync:mtg). Otherwise the built-in lists below are used.
-const SNAPSHOTS = [
-  ['Pokémon', 'pokemon-api.json', 'TCGplayer market price via the Pokémon TCG API'],
-  ['Magic: The Gathering', 'mtg-api.json', 'TCGplayer market price via Scryfall'],
-]
+// Real cards with live market prices, if the sync script has been run
+// (npm run sync:pokemon). Otherwise the built-in list below is used.
+const SNAPSHOTS = [['Pokémon', 'pokemon-api.json', 'TCGplayer market price via the Pokémon TCG API']]
 for (const [game, file, label] of SNAPSHOTS) {
   const path = join(OUT, file)
   if (!existsSync(path)) continue
@@ -163,10 +112,6 @@ for (const [game, file, label] of SNAPSHOTS) {
   CARDS[game].push(...builtIn)
   console.log(`Using ${snapshot.cards.length} real ${game} cards from ${file} (synced ${snapshot.syncedAt})`)
 }
-// One Piece has no free price API, so its chase cards use researched prices
-CARDS['One Piece'].unshift(
-  ...ONE_PIECE_CHASE.map((c) => [c.name, c.ultra ? UR : SR, c.marketPrice, c.set, { number: c.number, priceSource: c.source }]),
-)
 
 const NM_RANGE = { [C]: [0.05, 0.35], [U]: [0.1, 0.9], [R]: [0.5, 4], [UR]: [8, 40], [SR]: [40, 200] }
 const CONDITION_MULT = CONDITION_VALUE
@@ -230,17 +175,6 @@ const PACK_TYPES = {
     },
     { kind: '3-Pack Blister', cards: 30, hit: R, hitSlots: 3, price: (m) => [m.price * 3 + 2, estimate('Estimate: 3 × the booster pack price + $2 for the promo card')] },
     { kind: 'Gempack Hit Pack', cards: 10, hit: UR, hitSlots: 1, gempack: true },
-  ],
-  'Magic: The Gathering': [
-    { kind: 'Play Booster', cards: 14, hit: R, hitSlots: 1, price: (m) => [m.price, m.source] },
-    { kind: 'Collector Booster', cards: 15, hit: UR, hitSlots: 1, price: (m) => [m.collector, m.collectorSource] },
-    { kind: 'Sleeved Play Booster', cards: 14, hit: R, hitSlots: 1, price: (m) => [m.price, estimate('Estimate: same cards as a play booster, priced like one')] },
-    { kind: 'Prerelease Pack', cards: 36, hit: R, hitSlots: 6, price: (m) => [m.price * 6 + 5, estimate('Estimate: 6 × the play booster price + $5 for the promo and extras')] },
-  ],
-  'One Piece': [
-    { kind: 'Booster Pack', cards: 12, hit: R, hitSlots: 1, price: (m) => [m.price, m.source] },
-    { kind: 'Booster Pack (Japanese)', cards: 6, hit: R, hitSlots: 1, price: (m) => [m.japanese, m.japaneseSource] },
-    { kind: 'Gempack Hit Pack', cards: 12, hit: UR, hitSlots: 1, gempack: true },
   ],
 }
 
@@ -398,9 +332,9 @@ const series = []
 for (const game of Object.keys(SETS)) {
   for (const t of SERIES_TIERS) {
     const built = buildSeries(game, t)
-    const id = `sr-${t.tier.toLowerCase()}-${GAME_SLUG[game]}`
+    const id = `sr-${t.tier.toLowerCase()}`
     pushPack({
-      name: `Gempack ${t.tier} Pack — ${game}`,
+      name: `Gempack ${t.tier} Pack`,
       game,
       set: SERIES_NAME,
       kind: `${t.tier} Series Pack`,
@@ -416,7 +350,7 @@ for (const game of Object.keys(SETS)) {
       seriesId: id,
       priceSource: { label: `Gempack product: the drop's cards add up to ${SERIES_PAYOUT * 100}% of what the drop sells for`, gempack: true },
     })
-    series.push({ id, packId: packs.at(-1).id, name: `${SERIES_NAME}: ${t.tier} — ${game}`, game, tier: t.tier, ...built })
+    series.push({ id, packId: packs.at(-1).id, name: `${SERIES_NAME}: ${t.tier}`, game, tier: t.tier, ...built })
   }
 }
 
@@ -467,11 +401,11 @@ const auctions = auctionCards.map((card, i) => {
 
 // ---------- events ----------
 const events = [
-  { id: 'ev-1', title: 'Live Rip Showcase: Prismatic Evolutions', type: 'Live Showcase', date: '2026-10-30T19:00:00-07:00', location: 'Livestream · Gempack TV', game: 'Pokémon', blurb: 'We open 36 packs on stream. Every pull is listed in the shop within the hour.' },
-  { id: 'ev-2', title: 'One Piece OP-13 Release Night', type: 'Set Release', date: '2026-11-07T17:00:00-07:00', location: 'Partner store: Grand Line Collectibles', game: 'One Piece', blurb: 'Midnight-style release with sealed pre-orders, a Leader draft and prizes.' },
-  { id: 'ev-3', title: 'Magic Prerelease Weekend', type: 'Set Release', date: '2026-11-14T10:00:00-07:00', location: 'Partner store: Blue Mana Games', game: 'Magic: The Gathering', blurb: 'Sealed prerelease events all weekend, with Prerelease Packs in stock for the whole weekend.' },
-  { id: 'ev-4', title: 'Collector Auction Day', type: 'Community', date: '2026-11-21T12:00:00-08:00', location: 'Gempack HQ + online', game: 'All games', blurb: 'Bring your binder. Get verified on the spot and list your best cards in the Auction House.' },
-  { id: 'ev-5', title: 'Holiday Gold Pack Drop', type: 'Live Showcase', date: '2026-12-12T18:00:00-08:00', location: 'Livestream · Gempack TV', game: 'All games', blurb: 'Series 2 opens: new Emerald, Amethyst and Gold drops with a fresh checklist of chase cards.' },
+  { id: 'ev-1', title: 'Live Rip Showcase: Destined Rivals', type: 'Live Showcase', date: '2026-11-13T19:00:00-08:00', location: 'Livestream · Gempack TV', game: 'Pokémon', blurb: 'We open 36 packs on stream. Every pull is listed in the shop within the hour.' },
+  { id: 'ev-2', title: 'League Challenge Night', type: 'Community', date: '2026-11-20T17:00:00-08:00', location: 'Partner store: Kanto Card Co.', game: 'Pokémon', blurb: 'Bring a deck and play for packs. Every entrant gets a Gempack Emerald Pack.' },
+  { id: 'ev-3', title: 'Collector Auction Day', type: 'Community', date: '2026-11-21T12:00:00-08:00', location: 'Gempack HQ + online', game: 'Pokémon', blurb: 'Bring your binder. Get verified on the spot and list your best cards in the Auction House.' },
+  { id: 'ev-4', title: 'Prerelease Weekend', type: 'Set Release', date: '2026-12-05T10:00:00-08:00', location: 'Partner store: Stadium Cards', game: 'Pokémon', blurb: 'Build and Battle prerelease events all weekend, with sealed packs in stock.' },
+  { id: 'ev-5', title: 'Holiday Gold Pack Drop', type: 'Live Showcase', date: '2026-12-12T18:00:00-08:00', location: 'Livestream · Gempack TV', game: 'Pokémon', blurb: 'Series 2 opens: new Emerald, Amethyst and Gold drops with a fresh checklist of chase cards.' },
 ]
 
 mkdirSync(OUT, { recursive: true })

@@ -1,39 +1,39 @@
 [
   {
     "id": "ev-1",
-    "title": "Live Rip Showcase: Prismatic Evolutions",
+    "title": "Live Rip Showcase: Destined Rivals",
     "type": "Live Showcase",
-    "date": "2026-10-30T19:00:00-07:00",
+    "date": "2026-11-13T19:00:00-08:00",
     "location": "Livestream · Gempack TV",
     "game": "Pokémon",
     "blurb": "We open 36 packs on stream. Every pull is listed in the shop within the hour."
   },
   {
     "id": "ev-2",
-    "title": "One Piece OP-13 Release Night",
-    "type": "Set Release",
-    "date": "2026-11-07T17:00:00-07:00",
-    "location": "Partner store: Grand Line Collectibles",
-    "game": "One Piece",
-    "blurb": "Midnight-style release with sealed pre-orders, a Leader draft and prizes."
+    "title": "League Challenge Night",
+    "type": "Community",
+    "date": "2026-11-20T17:00:00-08:00",
+    "location": "Partner store: Kanto Card Co.",
+    "game": "Pokémon",
+    "blurb": "Bring a deck and play for packs. Every entrant gets a Gempack Emerald Pack."
   },
   {
     "id": "ev-3",
-    "title": "Magic Prerelease Weekend",
-    "type": "Set Release",
-    "date": "2026-11-14T10:00:00-07:00",
-    "location": "Partner store: Blue Mana Games",
-    "game": "Magic: The Gathering",
-    "blurb": "Sealed prerelease events all weekend, with Prerelease Packs in stock for the whole weekend."
-  },
-  {
-    "id": "ev-4",
     "title": "Collector Auction Day",
     "type": "Community",
     "date": "2026-11-21T12:00:00-08:00",
     "location": "Gempack HQ + online",
-    "game": "All games",
+    "game": "Pokémon",
     "blurb": "Bring your binder. Get verified on the spot and list your best cards in the Auction House."
+  },
+  {
+    "id": "ev-4",
+    "title": "Prerelease Weekend",
+    "type": "Set Release",
+    "date": "2026-12-05T10:00:00-08:00",
+    "location": "Partner store: Stadium Cards",
+    "game": "Pokémon",
+    "blurb": "Build and Battle prerelease events all weekend, with sealed packs in stock."
   },
   {
     "id": "ev-5",
@@ -41,7 +41,7 @@
     "type": "Live Showcase",
     "date": "2026-12-12T18:00:00-08:00",
     "location": "Livestream · Gempack TV",
-    "game": "All games",
+    "game": "Pokémon",
     "blurb": "Series 2 opens: new Emerald, Amethyst and Gold drops with a fresh checklist of chase cards."
   }
 ]

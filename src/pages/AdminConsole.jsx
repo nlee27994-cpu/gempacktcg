@@ -6,7 +6,7 @@ import { isEnded, leader, useAuctions, YOU } from '../context/AuctionContext'
 import { TX_TYPES, useLedger } from '../context/LedgerContext'
 import { useSeries } from '../context/SeriesContext'
 import { formatCountdown } from '../lib/auction'
-import { allProducts, DATA_VERSION, GAMES, getProduct, packs, singles } from '../lib/catalog'
+import { allProducts, DATA_VERSION, getProduct, packs, singles } from '../lib/catalog'
 import { formatPrice } from '../lib/format'
 import { getSeries, seriesStatus } from '../lib/series'
 import useNow from '../lib/useNow'
@@ -222,7 +222,6 @@ function Inventory() {
   const now = useNow(5000)
   const [view, setView] = useState('products')
   const [q, setQ] = useState('')
-  const [game, setGame] = useState('')
   const [status, setStatus] = useState('')
 
   const rows = allProducts
@@ -232,7 +231,6 @@ function Inventory() {
       return { p, available, status: stockStatus(p.stock, available) }
     })
     .filter(({ p, status: s }) => {
-      if (game && p.game !== game) return false
       if (status && s !== status) return false
       return !q || `${p.id} ${p.name} ${p.set} ${p.seller}`.toLowerCase().includes(q.toLowerCase())
     })
@@ -256,12 +254,8 @@ function Inventory() {
 
       {view === 'products' && (
         <>
-          <div className="panel grid gap-3 p-4 sm:grid-cols-3">
+          <div className="panel grid gap-3 p-4 sm:grid-cols-2">
             <input className="input" type="search" placeholder="Search id, name, set, seller…" value={q} onChange={(e) => setQ(e.target.value)} aria-label="Search inventory" />
-            <select className="input" value={game} onChange={(e) => setGame(e.target.value)} aria-label="Game">
-              <option value="">All games</option>
-              {GAMES.map((g) => <option key={g}>{g}</option>)}
-            </select>
             <select className="input" value={status} onChange={(e) => setStatus(e.target.value)} aria-label="Stock status">
               <option value="">Any stock status</option>
               <option>In stock</option>
@@ -278,7 +272,7 @@ function Inventory() {
                 <td className="whitespace-nowrap px-3 py-2 font-mono text-xs text-slate-400">{p.id}</td>
                 <td className="px-3 py-2">
                   <Link to={`/product/${p.id}`} className="font-semibold hover:underline">{p.name}</Link>
-                  <p className="text-[11px] text-slate-500">{p.type === 'pack' ? 'Pack' : `Single · ${p.condition}`} · {p.game}</p>
+                  <p className="text-[11px] text-slate-500">{p.type === 'pack' ? 'Pack' : `Single · ${p.condition}`}</p>
                 </td>
                 <td className="px-3 py-2"><RarityBadge rarity={p.rarity} /></td>
                 <td className="px-3 py-2"><SourceBadge source={p.source} /></td>

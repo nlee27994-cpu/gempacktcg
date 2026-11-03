@@ -3,7 +3,6 @@ import CardArt from './CardArt'
 import RarityBadge from './RarityBadge'
 import SourceBadge from './SourceBadge'
 import { formatPrice } from '../lib/format'
-import { GAME_SHORT } from '../lib/catalog'
 import { useSeries } from '../context/SeriesContext'
 import { getSeries } from '../lib/series'
 
@@ -29,7 +28,7 @@ export default function ProductCard({ product }) {
         </div>
         <h3 className="line-clamp-2 text-sm font-semibold leading-snug text-slate-100">{product.name}</h3>
         <p className="text-xs text-slate-400">
-          {GAME_SHORT[product.game]} · {isPack ? `${product.cardsPerPack} cards` : product.condition}
+          {isPack ? `${product.cardsPerPack} cards` : product.condition}
         </p>
         {series && (
           <p className={`text-[11px] font-semibold ${packsLeft ? 'text-gold-300' : 'text-rose-400'}`}>

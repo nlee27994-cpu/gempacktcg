@@ -1,4 +1,4 @@
-import { GAMES, SOURCES } from '../lib/catalog'
+import { SOURCES } from '../lib/catalog'
 import { RARITIES, RARITY_STYLES } from '../lib/rarity'
 
 function CheckGroup({ title, options, selected, onToggle, render }) {
@@ -46,8 +46,6 @@ export default function ShopFilters({ filters, toggle, set, reset, activeCount }
           ))}
         </div>
       </fieldset>
-
-      <CheckGroup title="Game" options={GAMES} selected={filters.game} onToggle={(v) => toggle('game', v)} />
 
       <CheckGroup
         title={filters.type === 'pack' ? 'Guaranteed hit' : 'Rarity'}

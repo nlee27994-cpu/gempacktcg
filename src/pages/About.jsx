@@ -36,7 +36,7 @@ const STRATEGY = [
   {
     title: 'Where we start',
     color: 'text-amethyst-300',
-    body: 'Pokémon first, because it has the biggest and most engaged audience. Magic: The Gathering and One Piece round out the catalog for collectors who play more than one game.',
+    body: 'Pokémon only, because it has the biggest and most engaged audience. Focusing on one game lets us know every set, price every card well and build better drops.',
   },
 ]
 
@@ -50,7 +50,7 @@ export default function About() {
           Sell cards to <span className="gem-text">Pokémon card enjoyers</span>, direct or through other vendors.
         </h1>
         <p className="mt-6 text-lg text-slate-300">
-          Gempack TCG is one marketplace for sealed packs and singles across Pokémon, Magic: The Gathering and One Piece. We
+          Gempack TCG is one marketplace for sealed Pokémon packs and singles. We
           built it around one promise: every pack you buy should feel fair.
         </p>
       </section>
