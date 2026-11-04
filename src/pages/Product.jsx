@@ -156,7 +156,7 @@ function ProductDetail({ id }) {
             </button>
             {isPack && stock > 0 && (
               <Link to={`/open/${product.id}`} className="btn-gold flex-1 py-3 sm:flex-none">
-                ⚡ Demo rip
+                {series ? '🎡 Pick your pack' : '⚡ Demo rip'}
               </Link>
             )}
           </div>

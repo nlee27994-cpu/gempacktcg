@@ -39,6 +39,12 @@ export function SeriesProvider({ children }) {
         setOpened((prev) => ({ ...prev, [series.id]: [...(prev[series.id] ?? []), index] }))
         return series.packs[index]
       },
+      // Opens the pack the customer picked (pack #1 is index 0); null if it's already open
+      openAt: (series, index) => {
+        if ((opened[series.id] ?? []).includes(index) || !series.packs[index]) return null
+        setOpened((prev) => ({ ...prev, [series.id]: [...(prev[series.id] ?? []), index] }))
+        return series.packs[index]
+      },
       reset: (seriesId) =>
         setOpened((prev) => {
           const next = { ...prev }

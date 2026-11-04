@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import CardArt from '../components/CardArt'
+import PackWheel from '../components/PackWheel'
 import { GemMark } from '../components/Logo'
 import RarityBadge from '../components/RarityBadge'
 import { useCart } from '../context/CartContext'
@@ -45,7 +46,7 @@ function FlipCard({ card, revealed, onReveal, index }) {
   )
 }
 
-function Summary({ pack, result, onAgain, packsLeft }) {
+function Summary({ pack, result, onAgain, packsLeft, packNumber }) {
   const { add } = useCart()
   const [added, setAdded] = useState(false)
   const best = [...result.cards].sort((a, b) => b.pulledValue - a.pulledValue)[0]
@@ -90,7 +91,7 @@ function Summary({ pack, result, onAgain, packsLeft }) {
       </div>
       {packsLeft !== undefined && (
         <p className="mt-4 text-center text-sm text-slate-300">
-          These cards are now out of the drop.{' '}
+          {packNumber ? `Pack #${packNumber} and its cards are now out of the drop.` : 'These cards are now out of the drop.'}{' '}
           <Link to={`/product/${pack.id}#checklist`} className="font-semibold text-gold-300 hover:underline">
             {packsLeft === 0 ? 'The drop is fully opened' : `${packsLeft} packs left`}: see what's still sealed →
           </Link>
@@ -111,12 +112,14 @@ export default function OpenPack() {
 
 function OpenPackPage({ id }) {
   const pack = getProduct(id)
-  const { openedFor, openNext, reset } = useSeries()
+  const { openedFor, openAt, reset } = useSeries()
   const { record } = useLedger()
   const [phase, setPhase] = useState('sealed') // sealed -> ripping -> revealing
   const [round, setRound] = useState(0)
   const [result, setResult] = useState(null)
   const [revealed, setRevealed] = useState(() => new Set())
+  const [pick, setPick] = useState(null) // pack index chosen on the wheel (pack #1 is index 0)
+  const [rippedNumber, setRippedNumber] = useState(null)
 
   if (!pack || pack.type !== 'pack') return <NotFound />
 
@@ -124,30 +127,38 @@ function OpenPackPage({ id }) {
   const series = pack.seriesId && getSeries(pack.seriesId)
   const packsLeft = series ? series.packs.length - openedFor(series.id).length : undefined
   const soldOut = series && packsLeft === 0
+  // Sealed packs on the wheel; the front one defaults to the lowest number
+  const opened = new Set(series ? openedFor(series.id) : [])
+  const available = series ? series.packs.map((_, i) => i).filter((i) => !opened.has(i)) : []
+  const chosen = available.includes(pick) ? pick : available[0]
 
   const rip = () => {
-    let opened
+    let result
     if (series) {
-      const cardIds = openNext(series)
+      const cardIds = openAt(series, chosen)
       if (!cardIds) return
-      opened = seriesPackResult(pack, cardIds)
+      result = seriesPackResult(pack, cardIds)
+      setRippedNumber(chosen + 1)
+      // Next time, the wheel starts on the pack after the one just opened
+      const rest = available.filter((i) => i !== chosen)
+      setPick(rest.find((i) => i > chosen) ?? rest[0] ?? null)
     } else {
-      opened = openPack(pack)
+      result = openPack(pack)
     }
-    setResult(opened)
-    const best = opened.cards.reduce((a, b) => (b.pulledValue > a.pulledValue ? b : a))
+    setResult(result)
+    const best = result.cards.reduce((a, b) => (b.pulledValue > a.pulledValue ? b : a))
     record(series ? 'drop-open' : 'pack-rip', {
-      summary: `${pack.name}: pulled ${formatPrice(opened.pulledValue)}, best ${best.name}`,
-      amount: opened.pulledValue,
+      summary: `${pack.name}${series ? ` #${chosen + 1}` : ''}: pulled ${formatPrice(result.pulledValue)}, best ${best.name}`,
+      amount: result.pulledValue,
       data: {
         packId: pack.id,
         packName: pack.name,
         packPrice: pack.price,
-        ...(series && { seriesId: series.id, packsLeftAfter: packsLeft - 1 }),
-        cards: opened.cards.map(({ id, name, rarity, set, pulledValue }) => ({ id, name, rarity, set, value: pulledValue })),
-        bulkCards: opened.bulkCount,
-        pulledValue: opened.pulledValue,
-        net: opened.net,
+        ...(series && { seriesId: series.id, packNumber: chosen + 1, packsLeftAfter: packsLeft - 1 }),
+        cards: result.cards.map(({ id, name, rarity, set, pulledValue }) => ({ id, name, rarity, set, value: pulledValue })),
+        bulkCards: result.bulkCount,
+        pulledValue: result.pulledValue,
+        net: result.net,
       },
     })
     setRound((r) => r + 1)
@@ -200,7 +211,19 @@ function OpenPackPage({ id }) {
         </div>
       )}
 
-      {phase !== 'revealing' && !(soldOut && phase === 'sealed') && (
+      {series && phase === 'sealed' && !soldOut && (
+        <div className="mt-8 flex flex-col items-center">
+          <PackWheel pack={pack} available={available} selected={chosen} onSelect={setPick} onPick={rip} />
+          <button className="btn-gold mt-6 px-10 py-3 text-base" onClick={rip}>
+            ⚡ Rip pack #{chosen + 1}
+          </button>
+          <p className="mt-3 text-center text-xs text-slate-500">
+            Pick any sealed pack: spin, swipe, use the arrows or choose a number. Tap the front pack to rip it.
+          </p>
+        </div>
+      )}
+
+      {(phase === 'ripping' || (phase === 'sealed' && !series)) && (
         <div className="mt-10 flex flex-col items-center">
           <button
             type="button"
@@ -212,13 +235,13 @@ function OpenPackPage({ id }) {
             {/* Two copies of the pack art, clipped into a top strip and a body, so the top can tear away */}
             <div className="relative">
               <div className={phase === 'ripping' ? 'animate-rip-top' : 'group-hover:animate-shake'} style={{ clipPath: 'inset(0 0 82% 0)' }}>
-                <CardArt product={pack} size="lg" />
+                <CardArt product={pack} size="lg" packNumber={series ? rippedNumber : undefined} />
               </div>
               <div
                 className={`absolute inset-0 ${phase === 'ripping' ? 'animate-rip-bottom' : 'group-hover:animate-shake'}`}
                 style={{ clipPath: 'inset(18% 0 0 0)' }}
               >
-                <CardArt product={pack} size="lg" />
+                <CardArt product={pack} size="lg" packNumber={series ? rippedNumber : undefined} />
               </div>
             </div>
             {phase === 'sealed' && (
@@ -260,7 +283,7 @@ function OpenPackPage({ id }) {
             ))}
           </div>
 
-          {allRevealed && <Summary pack={pack} result={result} onAgain={again} packsLeft={packsLeft} />}
+          {allRevealed && <Summary pack={pack} result={result} onAgain={again} packsLeft={packsLeft} packNumber={series ? rippedNumber : undefined} />}
         </>
       )}
 

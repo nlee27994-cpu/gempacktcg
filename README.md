@@ -170,14 +170,14 @@ the data in `src/data/series.json`:
   everyday hits (as close to the minimum as it can), then spends the rest of the 90% budget on chase cards. Chase
   cards (worth more than the pack) are scarce; everyday hits can repeat. The generator refuses to write a drop that
   breaks either rule, so Gempack always keeps about 10% of a drop's sales.
-- Ripping a series pack opens a random sealed pack from that drop. The product page shows what's still sealed
+- **Pick your pack.** Opening a drop shows a revolving wheel of its sealed packs, numbered #1 to #60 (Emerald),
+  #30 (Amethyst) or #20 (Gold). Turn it with the arrows, arrow keys, mouse wheel or a swipe, jump to a number, or hit
+  "Spin the wheel" to land on a random one. Tap the front pack (or "Rip pack #N") to open that exact pack. Each number
+  always holds the same cards, and opened packs leave the wheel. The product page shows what's still sealed
   ("2 of 3 left") and the live chance that the next pack has a Secret Rare. Progress is saved in your browser, and
   each drop has a "Reset this drop" button for demos.
-
-## Auction House
-
-Modelled on the auction houses in sports games like EA Sports FC and Madden:
-
+- **Covers** show the Gempack TCG logo, the pack's title, and the drop's chase card (its most valuable card). The cover
+  is the same on every pack in a drop, so it never gives away which pack holds what.
 - **Sellers:** only Gempack staff (**Official** badge) and **verified** collectors can list. Visitors get verified on the
   Sell tab, with a simulated ID check and an agreement to ship sold cards to Gempack for authentication.
 - **Listings** have a starting price, an optional **Buy Now** price and a duration, from 5 minutes (for demos) to 3 days.

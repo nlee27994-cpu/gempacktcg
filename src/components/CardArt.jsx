@@ -1,5 +1,7 @@
 import { useState } from 'react'
+import { GemMark } from './Logo'
 import { RARITY_STYLES, isHolo } from '../lib/rarity'
+import { chaseCard, getSeries } from '../lib/series'
 
 // Placeholder art: no licensed images, so cards and packs are drawn with gradients.
 const TINT = 'from-yellow-300/30 to-red-500/20'
@@ -21,11 +23,13 @@ const GEM_TIER_GRADIENT = {
   Gold: 'from-gold-300 via-gold-500 to-amethyst-600',
 }
 
-export default function CardArt({ product, size = 'md', className = '' }) {
+export default function CardArt({ product, size = 'md', className = '', packNumber }) {
   const r = RARITY_STYLES[product.rarity]
   const isPack = product.type === 'pack'
   const holo = isHolo(product.rarity)
   const big = size === 'lg'
+
+  if (isPack && product.seriesId) return <GemPackCover pack={product} big={big} className={className} packNumber={packNumber} />
 
   if (isPack) {
     const gradient = product.gemTier ? GEM_TIER_GRADIENT[product.gemTier] : r.gradient
@@ -108,6 +112,64 @@ function DrawnCardArt({ product, big, holo, className }) {
           </p>
         </div>
         <PsaLabel condition={product.condition} />
+      </div>
+    </div>
+  )
+}
+
+const PACK_SHAPE = { clipPath: 'polygon(6% 0, 94% 0, 100% 4%, 100% 96%, 94% 100%, 6% 100%, 0 96%, 0 4%)' }
+const CRIMP = 'absolute inset-x-0 h-[5%] bg-[repeating-linear-gradient(90deg,rgba(255,255,255,.35)_0_3px,transparent_3px_7px)]'
+
+// Cover for Gempack's own drop packs: logo, the drop's chase card, and the pack title.
+// The chase card is the drop's most valuable card, not this pack's contents.
+function GemPackCover({ pack, big, className, packNumber }) {
+  const chase = chaseCard(getSeries(pack.seriesId))
+  const chaseStyle = RARITY_STYLES[chase.rarity]
+  return (
+    <div className={`relative aspect-[5/7] w-full ${className}`}>
+      <div className={`holo relative h-full w-full overflow-hidden bg-gradient-to-br ${GEM_TIER_GRADIENT[pack.gemTier]} ${RARITY_STYLES[pack.rarity].glow}`} style={PACK_SHAPE}>
+        <div className={`${CRIMP} top-0`} />
+        <div className={`${CRIMP} bottom-0`} />
+        <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,.18)_0_30%,transparent_30%_60%,rgba(0,0,0,.18)_60%)]" />
+
+        <div className="absolute inset-x-0 top-[7%] bottom-[7%] flex flex-col items-center px-[8%] text-center">
+          {/* brand */}
+          <div className="flex items-center gap-1">
+            <GemMark className={big ? 'h-6 w-6' : 'h-3.5 w-3.5'} />
+            <span className={`font-display font-bold uppercase tracking-wider text-white drop-shadow ${big ? 'text-sm' : 'text-[8px]'}`}>Gempack TCG</span>
+          </div>
+
+          {/* chase card */}
+          <div className="relative mt-[6%] w-[52%] -rotate-3">
+            <div className="absolute -inset-2 rounded-xl bg-white/30 blur-md" />
+            <div className={`relative aspect-[5/7] overflow-hidden rounded-md border-2 bg-navy-800 shadow-xl ${chaseStyle.border}`}>
+              {chase.image ? (
+                <img src={chase.image} alt="" loading="lazy" draggable={false} className="h-full w-full object-cover" />
+              ) : (
+                <div className={`flex h-full w-full items-center justify-center bg-gradient-to-br ${chaseStyle.gradient}`}>
+                  <GameIcon className="h-1/2 w-1/2 text-white/85" />
+                </div>
+              )}
+            </div>
+          </div>
+          <p className={`mt-[5%] w-full truncate font-semibold uppercase tracking-wide text-white/90 drop-shadow ${big ? 'text-xs' : 'text-[7px]'}`}>
+            Chase: {chase.name}
+          </p>
+
+          {/* title */}
+          <div className="mt-auto">
+            <p className={`font-display font-black uppercase leading-none text-white drop-shadow-lg ${big ? 'text-3xl' : 'text-sm'}`}>{pack.gemTier} Pack</p>
+            <p className={`mt-1 font-semibold uppercase tracking-widest text-white/80 ${big ? 'text-xs' : 'text-[7px]'}`}>
+              {pack.set.replace('Gempack ', '')} · {pack.cardsPerPack} cards
+            </p>
+          </div>
+        </div>
+
+        {packNumber && (
+          <span className={`absolute right-[7%] top-[7%] rounded-full bg-navy-950/80 font-display font-bold text-white ring-1 ring-white/40 ${big ? 'px-2.5 py-1 text-base' : 'px-1.5 py-0.5 text-[10px]'}`}>
+            #{packNumber}
+          </span>
+        )}
       </div>
     </div>
   )

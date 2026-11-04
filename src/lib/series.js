@@ -5,6 +5,10 @@ import { rarityRank } from './rarity'
 const byId = new Map(seriesList.map((s) => [s.id, s]))
 export const getSeries = (id) => byId.get(id)
 
+// The drop's most valuable card: the chase card shown on the pack cover
+export const chaseCard = (series) =>
+  series.checklist.map((c) => getProduct(c.id)).reduce((best, c) => (c.marketPrice > best.marketPrice ? c : best))
+
 const round2 = (n) => Math.round(n * 100) / 100
 
 /** Live state of a drop, given the indices of packs already opened */
