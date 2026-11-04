@@ -19,7 +19,8 @@
       "label": "PokemonWizard (TCGplayer market)",
       "url": "https://www.pokemonwizard.com/products/593294/prismatic-evolutions-booster-pack",
       "asOf": "2026-07-10"
-    }
+    },
+    "image": "/pack-covers/593294.jpg"
   },
   {
     "id": "pk-002",
@@ -41,7 +42,8 @@
       "label": "The Hobby Bin",
       "url": "https://thehobbybin.com/products/surging-sparks-booster-pack",
       "asOf": "2026-10-15"
-    }
+    },
+    "image": "/pack-covers/565604.jpg"
   },
   {
     "id": "pk-003",
@@ -62,7 +64,8 @@
     "priceSource": {
       "label": "Estimate: same cards as a booster pack, priced like one",
       "estimate": true
-    }
+    },
+    "image": "/pack-covers/565602.jpg"
   },
   {
     "id": "pk-004",
@@ -83,7 +86,8 @@
     "priceSource": {
       "label": "Estimate: 3 × the booster pack price + $2 for the promo card",
       "estimate": true
-    }
+    },
+    "image": "/pack-covers/565635.jpg"
   },
   {
     "id": "pk-005",
@@ -105,7 +109,8 @@
       "label": "The Hobby Bin (sleeved pack)",
       "url": "https://thehobbybin.com/products/stellar-crown-sleeved-booster-pack",
       "asOf": "2026-10-16"
-    }
+    },
+    "image": "/pack-covers/557352.jpg"
   },
   {
     "id": "pk-006",
@@ -126,7 +131,8 @@
     "priceSource": {
       "label": "Estimate: same cards as a booster pack, priced like one",
       "estimate": true
-    }
+    },
+    "image": "/pack-covers/557352.jpg"
   },
   {
     "id": "pk-007",
@@ -147,7 +153,8 @@
     "priceSource": {
       "label": "Estimate: 3 × the booster pack price + $2 for the promo card",
       "estimate": true
-    }
+    },
+    "image": "/pack-covers/557337.jpg"
   },
   {
     "id": "pk-008",
@@ -169,7 +176,8 @@
       "label": "PokeInvesting (updated daily)",
       "url": "https://pokeinvesting.com/sealed/twilight-masquerade-booster-pack",
       "asOf": "2026-10"
-    }
+    },
+    "image": "/pack-covers/543843.jpg"
   },
   {
     "id": "pk-009",
@@ -190,7 +198,8 @@
     "priceSource": {
       "label": "Estimate: same cards as a booster pack, priced like one",
       "estimate": true
-    }
+    },
+    "image": "/pack-covers/544170.jpg"
   },
   {
     "id": "pk-010",
@@ -211,7 +220,8 @@
     "priceSource": {
       "label": "Estimate: 3 × the booster pack price + $2 for the promo card",
       "estimate": true
-    }
+    },
+    "image": "/pack-covers/544171.jpg"
   },
   {
     "id": "pk-011",
@@ -234,7 +244,8 @@
       "url": "https://pokeinvesting.com/sealed/151-booster-pack",
       "asOf": "2026-10",
       "note": "Other listings were as low as $12–13, so this one is uncertain"
-    }
+    },
+    "image": "/pack-covers/504467.jpg"
   },
   {
     "id": "pk-012",
@@ -256,7 +267,8 @@
       "label": "The Hobby Bin",
       "url": "https://thehobbybin.com/products/obsidian-flames-booster-packs",
       "asOf": "2026-10-17"
-    }
+    },
+    "image": "/pack-covers/501256.jpg"
   },
   {
     "id": "pk-013",
@@ -277,7 +289,8 @@
     "priceSource": {
       "label": "Estimate: same cards as a booster pack, priced like one",
       "estimate": true
-    }
+    },
+    "image": "/pack-covers/534087.jpg"
   },
   {
     "id": "pk-014",
@@ -320,7 +333,8 @@
       "label": "PackMagik",
       "url": "https://www.packmagik.com/products/pkmn-prod-6276913",
       "asOf": "2026-07"
-    }
+    },
+    "image": "/pack-covers/528038.jpg"
   },
   {
     "id": "pk-016",
@@ -342,7 +356,8 @@
       "label": "The Hobby Bin (sleeved pack)",
       "url": "https://thehobbybin.com/products/temporal-forces-sleeved-booster-pack",
       "asOf": "2026-10-17"
-    }
+    },
+    "image": "/pack-covers/532841.jpg"
   },
   {
     "id": "pk-017",
@@ -363,7 +378,8 @@
     "priceSource": {
       "label": "Estimate: same cards as a booster pack, priced like one",
       "estimate": true
-    }
+    },
+    "image": "/pack-covers/538787.jpg"
   },
   {
     "id": "pk-018",
@@ -384,7 +400,8 @@
     "priceSource": {
       "label": "Estimate: 3 × the booster pack price + $2 for the promo card",
       "estimate": true
-    }
+    },
+    "image": "/pack-covers/536229.jpg"
   },
   {
     "id": "pk-019",
@@ -406,7 +423,8 @@
       "label": "PokemonWizard (TCGplayer market)",
       "url": "https://www.pokemonwizard.com/products/610935/journey-together-booster-pack",
       "asOf": "2026"
-    }
+    },
+    "image": "/pack-covers/610935.jpg"
   },
   {
     "id": "pk-020",
@@ -427,7 +445,8 @@
     "priceSource": {
       "label": "Estimate: same cards as a booster pack, priced like one",
       "estimate": true
-    }
+    },
+    "image": "/pack-covers/610934.jpg"
   },
   {
     "id": "pk-021",
@@ -448,7 +467,8 @@
     "priceSource": {
       "label": "Estimate: 3 × the booster pack price + $2 for the promo card",
       "estimate": true
-    }
+    },
+    "image": "/pack-covers/610948.jpg"
   },
   {
     "id": "pk-022",
@@ -470,7 +490,8 @@
       "label": "PokemonWizard (TCGplayer market)",
       "url": "https://www.pokemonwizard.com/products/624683/destined-rivals-booster-pack",
       "asOf": "2026"
-    }
+    },
+    "image": "/pack-covers/624683.jpg"
   },
   {
     "id": "pk-023",
@@ -492,7 +513,8 @@
       "label": "PokemonWizard (TCGplayer market)",
       "url": "https://www.pokemonwizard.com/products/624683/destined-rivals-booster-pack",
       "asOf": "2026"
-    }
+    },
+    "image": "/pack-covers/624684.jpg"
   },
   {
     "id": "pk-024",
@@ -513,7 +535,8 @@
     "priceSource": {
       "label": "Estimate: 3 × the booster pack price + $2 for the promo card",
       "estimate": true
-    }
+    },
+    "image": "/pack-covers/625683.jpg"
   },
   {
     "id": "pk-025",
@@ -535,7 +558,8 @@
       "label": "PackMagik",
       "url": "https://www.packmagik.com/products/pkmn-prod-7108652",
       "asOf": "2026-07-14"
-    }
+    },
+    "image": "/pack-covers/552997.jpg"
   },
   {
     "id": "pk-026",
@@ -556,7 +580,8 @@
     "priceSource": {
       "label": "Estimate: 3 × the booster pack price + $2 for the promo card",
       "estimate": true
-    }
+    },
+    "image": "/pack-covers/553007.jpg"
   },
   {
     "id": "pk-027",
