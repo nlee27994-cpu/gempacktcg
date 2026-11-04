@@ -10,7 +10,8 @@
     "generate-data": "node scripts/generate-data.mjs",
     "sync:pokemon": "node scripts/sync-pokemon.mjs && node scripts/fetch-images.mjs && node scripts/generate-data.mjs",
     "fetch-images": "node scripts/fetch-images.mjs && node scripts/generate-data.mjs",
-    "fetch-covers": "node scripts/fetch-covers.mjs && node scripts/generate-data.mjs"
+    "fetch-covers": "node scripts/fetch-covers.mjs && node scripts/cutout-covers.mjs && node scripts/generate-data.mjs",
+    "cutout-covers": "node scripts/cutout-covers.mjs && node scripts/generate-data.mjs"
   },
   "dependencies": {
     "react": "^18.3.1",
@@ -20,6 +21,8 @@
   "devDependencies": {
     "@vitejs/plugin-react": "^4.3.3",
     "autoprefixer": "^10.4.20",
+    "jpeg-js": "^0.4.4",
+    "pngjs": "^7.0.0",
     "postcss": "^8.4.47",
     "tailwindcss": "^3.4.14",
     "vite": "^5.4.10",

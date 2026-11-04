@@ -209,7 +209,12 @@ for (const [game, sets] of Object.entries(SETS)) {
       pack.priceSource = priceSource
       // Official product photo, once downloaded with npm run fetch-covers
       const coverId = coverIdFor(set, t.slot)
-      if (coverId && existsSync(join(COVER_DIR, coverFileFor(coverId)))) pack.image = `/pack-covers/${coverFileFor(coverId)}`
+      // Prefer the transparent cut-out (npm run cutout-covers) when there is one
+      if (coverId) {
+        const png = coverFileFor(coverId).replace(/\.jpg$/, '.png')
+        if (existsSync(join(COVER_DIR, png))) pack.image = `/pack-covers/${png}`
+        else if (existsSync(join(COVER_DIR, coverFileFor(coverId)))) pack.image = `/pack-covers/${coverFileFor(coverId)}`
+      }
       pushPack(pack)
     }
   }

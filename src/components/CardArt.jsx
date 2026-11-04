@@ -30,7 +30,6 @@ export default function CardArt({ product, size = 'md', className = '', packNumb
   const big = size === 'lg'
 
   if (isPack && product.seriesId) return <GemPackCover pack={product} big={big} className={className} packNumber={packNumber} />
-  if (isPack && product.image) return <PackPhoto product={product} size={size} className={className} />
 
   if (isPack) {
     const gradient = product.gemTier ? GEM_TIER_GRADIENT[product.gemTier] : r.gradient
@@ -45,19 +44,11 @@ export default function CardArt({ product, size = 'md', className = '', packNumb
           <div className="absolute inset-x-0 bottom-0 h-[6%] bg-[repeating-linear-gradient(90deg,rgba(255,255,255,.35)_0_3px,transparent_3px_7px)]" />
           {/* facets */}
           <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(255,255,255,.18)_0_30%,transparent_30%_60%,rgba(0,0,0,.15)_60%)]" />
-          <div className="absolute inset-0 flex flex-col items-center justify-center p-3 text-center">
-            {product.gemTier ? (
-              <span className={`${big ? 'text-7xl' : 'text-4xl'} drop-shadow-lg`}>💎</span>
-            ) : (
-              <GameIcon game={product.game} className={`${big ? 'h-20 w-20' : 'h-10 w-10'} text-white drop-shadow-lg`} />
-            )}
-            <span className={`mt-2 font-display font-bold uppercase leading-tight text-white drop-shadow ${big ? 'text-xl' : 'text-[11px]'}`}>
-              {product.gemTier ? `${product.gemTier} Pack` : product.set}
-            </span>
-            <span className={`mt-1 rounded bg-navy-950/50 px-1.5 py-0.5 font-semibold uppercase tracking-wider text-white/90 ${big ? 'text-xs' : 'text-[9px]'}`}>
-              {product.gemTier ? product.set.replace('Gempack ', '') : product.kind}
-            </span>
-          </div>
+          {product.image ? (
+            <PackImage product={product} fallback={<DrawnPackLabel product={product} big={big} />} />
+          ) : (
+            <DrawnPackLabel product={product} big={big} />
+          )}
         </div>
       </div>
     )
@@ -176,23 +167,40 @@ function GemPackCover({ pack, big, className, packNumber }) {
   )
 }
 
-// Official product photo for a real sealed product (from npm run fetch-covers).
-// Falls back to the drawn cover if the photo can't load.
-function PackPhoto({ product, size, className }) {
-  const [failed, setFailed] = useState(false)
-  if (failed) return <CardArt product={{ ...product, image: undefined }} size={size} className={className} />
+// The original drawn pack face: game icon, set name and product type
+function DrawnPackLabel({ product, big }) {
   return (
-    <div className={`relative aspect-[5/7] w-full ${className}`}>
-      <div className="flex h-full w-full items-center justify-center overflow-hidden rounded-xl bg-white p-[6%] shadow-lg">
-        <img
-          src={product.image}
-          alt={`${product.name}, official product photo`}
-          loading="lazy"
-          draggable={false}
-          onError={() => setFailed(true)}
-          className="h-full w-full object-contain"
-        />
-      </div>
+    <div className="absolute inset-0 flex flex-col items-center justify-center p-3 text-center">
+      {product.gemTier ? (
+        <span className={`${big ? 'text-7xl' : 'text-4xl'} drop-shadow-lg`}>💎</span>
+      ) : (
+        <GameIcon game={product.game} className={`${big ? 'h-20 w-20' : 'h-10 w-10'} text-white drop-shadow-lg`} />
+      )}
+      <span className={`mt-2 font-display font-bold uppercase leading-tight text-white drop-shadow ${big ? 'text-xl' : 'text-[11px]'}`}>
+        {product.gemTier ? `${product.gemTier} Pack` : product.set}
+      </span>
+      <span className={`mt-1 rounded bg-navy-950/50 px-1.5 py-0.5 font-semibold uppercase tracking-wider text-white/90 ${big ? 'text-xs' : 'text-[9px]'}`}>
+        {product.gemTier ? product.set.replace('Gempack ', '') : product.kind}
+      </span>
+    </div>
+  )
+}
+
+// Official product photo (npm run fetch-covers), laid on top of the drawn pack.
+// Transparent cut-outs sit straight on the pack's colours; falls back to the drawn face.
+function PackImage({ product, fallback }) {
+  const [failed, setFailed] = useState(false)
+  if (failed) return fallback
+  return (
+    <div className="absolute inset-[9%] flex items-center justify-center">
+      <img
+        src={product.image}
+        alt={`${product.name}, official product photo`}
+        loading="lazy"
+        draggable={false}
+        onError={() => setFailed(true)}
+        className="max-h-full max-w-full object-contain drop-shadow-[0_10px_18px_rgba(5,10,26,0.55)]"
+      />
     </div>
   )
 }

@@ -41,7 +41,8 @@ npm run preview        # serve the production build locally
 npm run generate-data  # regenerate the mock catalog in src/data/
 npm run sync:pokemon   # pull real Pokémon cards, prices and images, then regenerate (see below)
 npm run fetch-images   # download card images for already-synced cards (self-hosting)
-npm run fetch-covers   # download official product photos for the sealed packs
+npm run fetch-covers   # download official product photos for the sealed packs (+ transparent cut-outs)
+npm run cutout-covers  # remake the transparent cut-outs from downloaded photos
 ```
 
 ## Deploying to Cloudflare
@@ -70,6 +71,7 @@ deployed, add your own domain under the Worker's **Settings → Domains & Routes
 │  ├─ fetch-images.mjs           # downloads card images into public/card-images
 │  ├─ pack-covers.mjs            # TCGplayer product ids for the official pack photos
 │  ├─ fetch-covers.mjs           # downloads those photos into public/pack-covers
+│  ├─ cutout-covers.mjs          # makes transparent versions of those photos
 │  └─ sync-utils.mjs             # shared download helpers
 └─ src/
    ├─ App.jsx                    # routes
@@ -127,9 +129,16 @@ product id (the number in its tcgplayer.com URL). Run this on a computer with no
 npm run fetch-covers
 ```
 
-It downloads each photo into `public/pack-covers/`, skipping ones it already has, and rebuilds the catalog to use
-them. Commit `public/pack-covers/` so the live site gets them. Products without a downloaded photo keep the drawn
-cover. Gempack's own drop packs keep their custom covers.
+It downloads each photo into `public/pack-covers/`, skipping ones it already has, then makes transparent versions
+and rebuilds the catalog. Commit `public/pack-covers/` so the live site gets them.
+
+- **Transparent cut-outs** (`npm run cutout-covers`, which runs automatically after a fetch): the white background
+  around a product is removed, along with see-through holes like a sleeve's hang hole, and saved as `<id>.png`. Only
+  white touching the photo's edge (or large enclosed white patches) is removed, so white printed on the pack stays.
+  Clear plastic at the edge becomes see-through. Photos with no real background (booster packs and blisters are
+  cropped to the product) keep their smaller JPG.
+- **The photo sits on the original pack design** (coloured gradient, crimped seals) rather than a white box.
+  Products without a downloaded photo keep the drawn cover, and Gempack's own drop packs keep their custom covers.
 
 The catalog only sells products that exist. Special sets (Prismatic Evolutions, 151, Paldean Fates) come only as
 booster packs, and Shrouded Fable has no sleeved booster. Two ids weren't found: the plain Stellar Crown booster
