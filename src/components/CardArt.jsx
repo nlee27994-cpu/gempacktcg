@@ -30,6 +30,7 @@ export default function CardArt({ product, size = 'md', className = '', packNumb
   const big = size === 'lg'
 
   if (isPack && product.seriesId) return <GemPackCover pack={product} big={big} className={className} packNumber={packNumber} />
+  if (isPack && product.image) return <PackPhoto product={product} size={size} className={className} />
 
   if (isPack) {
     const gradient = product.gemTier ? GEM_TIER_GRADIENT[product.gemTier] : r.gradient
@@ -170,6 +171,27 @@ function GemPackCover({ pack, big, className, packNumber }) {
             #{packNumber}
           </span>
         )}
+      </div>
+    </div>
+  )
+}
+
+// Official product photo for a real sealed product (from npm run fetch-covers).
+// Falls back to the drawn cover if the photo can't load.
+function PackPhoto({ product, size, className }) {
+  const [failed, setFailed] = useState(false)
+  if (failed) return <CardArt product={{ ...product, image: undefined }} size={size} className={className} />
+  return (
+    <div className={`relative aspect-[5/7] w-full ${className}`}>
+      <div className="flex h-full w-full items-center justify-center overflow-hidden rounded-xl bg-white p-[6%] shadow-lg">
+        <img
+          src={product.image}
+          alt={`${product.name}, official product photo`}
+          loading="lazy"
+          draggable={false}
+          onError={() => setFailed(true)}
+          className="h-full w-full object-contain"
+        />
       </div>
     </div>
   )

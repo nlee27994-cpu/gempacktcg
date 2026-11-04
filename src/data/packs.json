@@ -25,48 +25,6 @@
     "id": "pk-002",
     "type": "pack",
     "condition": "Sealed",
-    "name": "Prismatic Evolutions Sleeved Booster",
-    "game": "Pokémon",
-    "set": "Prismatic Evolutions",
-    "kind": "Sleeved Booster",
-    "rarity": "Rare",
-    "cardsPerPack": 10,
-    "hitSlots": 1,
-    "source": "Collector",
-    "seller": "@binderbrooke",
-    "stock": 2,
-    "featured": false,
-    "price": 13.85,
-    "priceSource": {
-      "label": "Estimate: same cards as a booster pack, priced like one",
-      "estimate": true
-    }
-  },
-  {
-    "id": "pk-003",
-    "type": "pack",
-    "condition": "Sealed",
-    "name": "Prismatic Evolutions 3-Pack Blister",
-    "game": "Pokémon",
-    "set": "Prismatic Evolutions",
-    "kind": "3-Pack Blister",
-    "rarity": "Rare",
-    "cardsPerPack": 30,
-    "hitSlots": 3,
-    "source": "Direct",
-    "seller": "Gempack TCG",
-    "stock": 51,
-    "featured": false,
-    "price": 43.55,
-    "priceSource": {
-      "label": "Estimate: 3 × the booster pack price + $2 for the promo card",
-      "estimate": true
-    }
-  },
-  {
-    "id": "pk-004",
-    "type": "pack",
-    "condition": "Sealed",
     "name": "Surging Sparks Booster Pack",
     "game": "Pokémon",
     "set": "Surging Sparks",
@@ -74,9 +32,9 @@
     "rarity": "Rare",
     "cardsPerPack": 10,
     "hitSlots": 1,
-    "source": "Direct",
-    "seller": "Gempack TCG",
-    "stock": 54,
+    "source": "Collector",
+    "seller": "@binderbrooke",
+    "stock": 2,
     "featured": false,
     "price": 8.68,
     "priceSource": {
@@ -86,7 +44,7 @@
     }
   },
   {
-    "id": "pk-005",
+    "id": "pk-003",
     "type": "pack",
     "condition": "Sealed",
     "name": "Surging Sparks Sleeved Booster",
@@ -98,7 +56,7 @@
     "hitSlots": 1,
     "source": "Direct",
     "seller": "Gempack TCG",
-    "stock": 19,
+    "stock": 51,
     "featured": false,
     "price": 8.68,
     "priceSource": {
@@ -107,7 +65,7 @@
     }
   },
   {
-    "id": "pk-006",
+    "id": "pk-004",
     "type": "pack",
     "condition": "Sealed",
     "name": "Surging Sparks 3-Pack Blister",
@@ -117,9 +75,9 @@
     "rarity": "Rare",
     "cardsPerPack": 30,
     "hitSlots": 3,
-    "source": "Vendor",
-    "seller": "Kanto Card Co.",
-    "stock": 33,
+    "source": "Direct",
+    "seller": "Gempack TCG",
+    "stock": 54,
     "featured": false,
     "price": 28.04,
     "priceSource": {
@@ -128,7 +86,7 @@
     }
   },
   {
-    "id": "pk-007",
+    "id": "pk-005",
     "type": "pack",
     "condition": "Sealed",
     "name": "Stellar Crown Booster Pack",
@@ -140,7 +98,7 @@
     "hitSlots": 1,
     "source": "Direct",
     "seller": "Gempack TCG",
-    "stock": 18,
+    "stock": 19,
     "featured": false,
     "price": 10.85,
     "priceSource": {
@@ -150,7 +108,7 @@
     }
   },
   {
-    "id": "pk-008",
+    "id": "pk-006",
     "type": "pack",
     "condition": "Sealed",
     "name": "Stellar Crown Sleeved Booster",
@@ -160,9 +118,9 @@
     "rarity": "Rare",
     "cardsPerPack": 10,
     "hitSlots": 1,
-    "source": "Direct",
-    "seller": "Gempack TCG",
-    "stock": 46,
+    "source": "Vendor",
+    "seller": "Kanto Card Co.",
+    "stock": 33,
     "featured": false,
     "price": 10.85,
     "priceSource": {
@@ -171,7 +129,7 @@
     }
   },
   {
-    "id": "pk-009",
+    "id": "pk-007",
     "type": "pack",
     "condition": "Sealed",
     "name": "Stellar Crown 3-Pack Blister",
@@ -181,9 +139,9 @@
     "rarity": "Rare",
     "cardsPerPack": 30,
     "hitSlots": 3,
-    "source": "Vendor",
-    "seller": "PalletTown Collectibles",
-    "stock": 36,
+    "source": "Direct",
+    "seller": "Gempack TCG",
+    "stock": 18,
     "featured": false,
     "price": 34.55,
     "priceSource": {
@@ -192,7 +150,7 @@
     }
   },
   {
-    "id": "pk-010",
+    "id": "pk-008",
     "type": "pack",
     "condition": "Sealed",
     "name": "Twilight Masquerade Booster Pack",
@@ -202,9 +160,9 @@
     "rarity": "Rare",
     "cardsPerPack": 10,
     "hitSlots": 1,
-    "source": "Vendor",
-    "seller": "Kanto Card Co.",
-    "stock": 18,
+    "source": "Direct",
+    "seller": "Gempack TCG",
+    "stock": 46,
     "featured": false,
     "price": 8.42,
     "priceSource": {
@@ -214,7 +172,7 @@
     }
   },
   {
-    "id": "pk-011",
+    "id": "pk-009",
     "type": "pack",
     "condition": "Sealed",
     "name": "Twilight Masquerade Sleeved Booster",
@@ -225,8 +183,8 @@
     "cardsPerPack": 10,
     "hitSlots": 1,
     "source": "Vendor",
-    "seller": "Stadium Cards",
-    "stock": 23,
+    "seller": "PalletTown Collectibles",
+    "stock": 36,
     "featured": false,
     "price": 8.42,
     "priceSource": {
@@ -235,7 +193,7 @@
     }
   },
   {
-    "id": "pk-012",
+    "id": "pk-010",
     "type": "pack",
     "condition": "Sealed",
     "name": "Twilight Masquerade 3-Pack Blister",
@@ -245,9 +203,9 @@
     "rarity": "Rare",
     "cardsPerPack": 30,
     "hitSlots": 3,
-    "source": "Direct",
-    "seller": "Gempack TCG",
-    "stock": 49,
+    "source": "Vendor",
+    "seller": "Kanto Card Co.",
+    "stock": 18,
     "featured": false,
     "price": 27.26,
     "priceSource": {
@@ -256,7 +214,7 @@
     }
   },
   {
-    "id": "pk-013",
+    "id": "pk-011",
     "type": "pack",
     "condition": "Sealed",
     "name": "Scarlet & Violet 151 Booster Pack",
@@ -266,9 +224,9 @@
     "rarity": "Rare",
     "cardsPerPack": 10,
     "hitSlots": 1,
-    "source": "Direct",
-    "seller": "Gempack TCG",
-    "stock": 35,
+    "source": "Vendor",
+    "seller": "Stadium Cards",
+    "stock": 23,
     "featured": false,
     "price": 31.79,
     "priceSource": {
@@ -279,49 +237,7 @@
     }
   },
   {
-    "id": "pk-014",
-    "type": "pack",
-    "condition": "Sealed",
-    "name": "Scarlet & Violet 151 Sleeved Booster",
-    "game": "Pokémon",
-    "set": "Scarlet & Violet 151",
-    "kind": "Sleeved Booster",
-    "rarity": "Rare",
-    "cardsPerPack": 10,
-    "hitSlots": 1,
-    "source": "Vendor",
-    "seller": "Kanto Card Co.",
-    "stock": 7,
-    "featured": false,
-    "price": 31.79,
-    "priceSource": {
-      "label": "Estimate: same cards as a booster pack, priced like one",
-      "estimate": true
-    }
-  },
-  {
-    "id": "pk-015",
-    "type": "pack",
-    "condition": "Sealed",
-    "name": "Scarlet & Violet 151 3-Pack Blister",
-    "game": "Pokémon",
-    "set": "Scarlet & Violet 151",
-    "kind": "3-Pack Blister",
-    "rarity": "Rare",
-    "cardsPerPack": 30,
-    "hitSlots": 3,
-    "source": "Collector",
-    "seller": "@gradedgabe",
-    "stock": 4,
-    "featured": false,
-    "price": 97.37,
-    "priceSource": {
-      "label": "Estimate: 3 × the booster pack price + $2 for the promo card",
-      "estimate": true
-    }
-  },
-  {
-    "id": "pk-016",
+    "id": "pk-012",
     "type": "pack",
     "condition": "Sealed",
     "name": "Obsidian Flames Booster Pack",
@@ -333,7 +249,7 @@
     "hitSlots": 1,
     "source": "Direct",
     "seller": "Gempack TCG",
-    "stock": 46,
+    "stock": 49,
     "featured": false,
     "price": 12.36,
     "priceSource": {
@@ -343,7 +259,7 @@
     }
   },
   {
-    "id": "pk-017",
+    "id": "pk-013",
     "type": "pack",
     "condition": "Sealed",
     "name": "Obsidian Flames Sleeved Booster",
@@ -355,7 +271,7 @@
     "hitSlots": 1,
     "source": "Direct",
     "seller": "Gempack TCG",
-    "stock": 9,
+    "stock": 35,
     "featured": false,
     "price": 12.36,
     "priceSource": {
@@ -364,7 +280,7 @@
     }
   },
   {
-    "id": "pk-018",
+    "id": "pk-014",
     "type": "pack",
     "condition": "Sealed",
     "name": "Obsidian Flames 3-Pack Blister",
@@ -375,8 +291,8 @@
     "cardsPerPack": 30,
     "hitSlots": 3,
     "source": "Vendor",
-    "seller": "Stadium Cards",
-    "stock": 55,
+    "seller": "Kanto Card Co.",
+    "stock": 7,
     "featured": false,
     "price": 39.08,
     "priceSource": {
@@ -385,7 +301,7 @@
     }
   },
   {
-    "id": "pk-019",
+    "id": "pk-015",
     "type": "pack",
     "condition": "Sealed",
     "name": "Paldean Fates Booster Pack",
@@ -395,9 +311,9 @@
     "rarity": "Rare",
     "cardsPerPack": 10,
     "hitSlots": 1,
-    "source": "Vendor",
-    "seller": "PalletTown Collectibles",
-    "stock": 14,
+    "source": "Collector",
+    "seller": "@gradedgabe",
+    "stock": 4,
     "featured": false,
     "price": 23.99,
     "priceSource": {
@@ -407,49 +323,7 @@
     }
   },
   {
-    "id": "pk-020",
-    "type": "pack",
-    "condition": "Sealed",
-    "name": "Paldean Fates Sleeved Booster",
-    "game": "Pokémon",
-    "set": "Paldean Fates",
-    "kind": "Sleeved Booster",
-    "rarity": "Rare",
-    "cardsPerPack": 10,
-    "hitSlots": 1,
-    "source": "Direct",
-    "seller": "Gempack TCG",
-    "stock": 52,
-    "featured": false,
-    "price": 23.99,
-    "priceSource": {
-      "label": "Estimate: same cards as a booster pack, priced like one",
-      "estimate": true
-    }
-  },
-  {
-    "id": "pk-021",
-    "type": "pack",
-    "condition": "Sealed",
-    "name": "Paldean Fates 3-Pack Blister",
-    "game": "Pokémon",
-    "set": "Paldean Fates",
-    "kind": "3-Pack Blister",
-    "rarity": "Rare",
-    "cardsPerPack": 30,
-    "hitSlots": 3,
-    "source": "Collector",
-    "seller": "@binderbrooke",
-    "stock": 2,
-    "featured": false,
-    "price": 73.97,
-    "priceSource": {
-      "label": "Estimate: 3 × the booster pack price + $2 for the promo card",
-      "estimate": true
-    }
-  },
-  {
-    "id": "pk-022",
+    "id": "pk-016",
     "type": "pack",
     "condition": "Sealed",
     "name": "Temporal Forces Booster Pack",
@@ -459,9 +333,9 @@
     "rarity": "Rare",
     "cardsPerPack": 10,
     "hitSlots": 1,
-    "source": "Vendor",
-    "seller": "PalletTown Collectibles",
-    "stock": 11,
+    "source": "Direct",
+    "seller": "Gempack TCG",
+    "stock": 46,
     "featured": false,
     "price": 11.65,
     "priceSource": {
@@ -471,7 +345,7 @@
     }
   },
   {
-    "id": "pk-023",
+    "id": "pk-017",
     "type": "pack",
     "condition": "Sealed",
     "name": "Temporal Forces Sleeved Booster",
@@ -481,9 +355,9 @@
     "rarity": "Rare",
     "cardsPerPack": 10,
     "hitSlots": 1,
-    "source": "Collector",
-    "seller": "@binderbrooke",
-    "stock": 4,
+    "source": "Direct",
+    "seller": "Gempack TCG",
+    "stock": 9,
     "featured": false,
     "price": 11.65,
     "priceSource": {
@@ -492,7 +366,7 @@
     }
   },
   {
-    "id": "pk-024",
+    "id": "pk-018",
     "type": "pack",
     "condition": "Sealed",
     "name": "Temporal Forces 3-Pack Blister",
@@ -502,9 +376,9 @@
     "rarity": "Rare",
     "cardsPerPack": 30,
     "hitSlots": 3,
-    "source": "Direct",
-    "seller": "Gempack TCG",
-    "stock": 40,
+    "source": "Vendor",
+    "seller": "Stadium Cards",
+    "stock": 55,
     "featured": false,
     "price": 36.95,
     "priceSource": {
@@ -513,7 +387,7 @@
     }
   },
   {
-    "id": "pk-025",
+    "id": "pk-019",
     "type": "pack",
     "condition": "Sealed",
     "name": "Journey Together Booster Pack",
@@ -523,9 +397,9 @@
     "rarity": "Rare",
     "cardsPerPack": 10,
     "hitSlots": 1,
-    "source": "Direct",
-    "seller": "Gempack TCG",
-    "stock": 24,
+    "source": "Vendor",
+    "seller": "PalletTown Collectibles",
+    "stock": 14,
     "featured": false,
     "price": 6.77,
     "priceSource": {
@@ -535,7 +409,7 @@
     }
   },
   {
-    "id": "pk-026",
+    "id": "pk-020",
     "type": "pack",
     "condition": "Sealed",
     "name": "Journey Together Sleeved Booster",
@@ -547,7 +421,7 @@
     "hitSlots": 1,
     "source": "Direct",
     "seller": "Gempack TCG",
-    "stock": 45,
+    "stock": 52,
     "featured": false,
     "price": 6.77,
     "priceSource": {
@@ -556,7 +430,7 @@
     }
   },
   {
-    "id": "pk-027",
+    "id": "pk-021",
     "type": "pack",
     "condition": "Sealed",
     "name": "Journey Together 3-Pack Blister",
@@ -566,9 +440,9 @@
     "rarity": "Rare",
     "cardsPerPack": 30,
     "hitSlots": 3,
-    "source": "Vendor",
-    "seller": "Kanto Card Co.",
-    "stock": 19,
+    "source": "Collector",
+    "seller": "@binderbrooke",
+    "stock": 2,
     "featured": false,
     "price": 22.31,
     "priceSource": {
@@ -577,7 +451,7 @@
     }
   },
   {
-    "id": "pk-028",
+    "id": "pk-022",
     "type": "pack",
     "condition": "Sealed",
     "name": "Destined Rivals Booster Pack",
@@ -588,8 +462,8 @@
     "cardsPerPack": 10,
     "hitSlots": 1,
     "source": "Vendor",
-    "seller": "Kanto Card Co.",
-    "stock": 7,
+    "seller": "PalletTown Collectibles",
+    "stock": 11,
     "featured": false,
     "price": 9.46,
     "priceSource": {
@@ -599,7 +473,7 @@
     }
   },
   {
-    "id": "pk-029",
+    "id": "pk-023",
     "type": "pack",
     "condition": "Sealed",
     "name": "Destined Rivals Sleeved Booster",
@@ -610,8 +484,8 @@
     "cardsPerPack": 10,
     "hitSlots": 1,
     "source": "Collector",
-    "seller": "@topdeck_tay",
-    "stock": 2,
+    "seller": "@binderbrooke",
+    "stock": 4,
     "featured": false,
     "price": 12.74,
     "priceSource": {
@@ -621,7 +495,7 @@
     }
   },
   {
-    "id": "pk-030",
+    "id": "pk-024",
     "type": "pack",
     "condition": "Sealed",
     "name": "Destined Rivals 3-Pack Blister",
@@ -631,9 +505,9 @@
     "rarity": "Rare",
     "cardsPerPack": 30,
     "hitSlots": 3,
-    "source": "Vendor",
-    "seller": "PalletTown Collectibles",
-    "stock": 46,
+    "source": "Direct",
+    "seller": "Gempack TCG",
+    "stock": 40,
     "featured": false,
     "price": 30.38,
     "priceSource": {
@@ -642,7 +516,7 @@
     }
   },
   {
-    "id": "pk-031",
+    "id": "pk-025",
     "type": "pack",
     "condition": "Sealed",
     "name": "Shrouded Fable Booster Pack",
@@ -652,9 +526,9 @@
     "rarity": "Rare",
     "cardsPerPack": 10,
     "hitSlots": 1,
-    "source": "Vendor",
-    "seller": "PalletTown Collectibles",
-    "stock": 12,
+    "source": "Direct",
+    "seller": "Gempack TCG",
+    "stock": 24,
     "featured": false,
     "price": 13.95,
     "priceSource": {
@@ -664,28 +538,7 @@
     }
   },
   {
-    "id": "pk-032",
-    "type": "pack",
-    "condition": "Sealed",
-    "name": "Shrouded Fable Sleeved Booster",
-    "game": "Pokémon",
-    "set": "Shrouded Fable",
-    "kind": "Sleeved Booster",
-    "rarity": "Rare",
-    "cardsPerPack": 10,
-    "hitSlots": 1,
-    "source": "Vendor",
-    "seller": "Stadium Cards",
-    "stock": 16,
-    "featured": false,
-    "price": 13.95,
-    "priceSource": {
-      "label": "Estimate: same cards as a booster pack, priced like one",
-      "estimate": true
-    }
-  },
-  {
-    "id": "pk-033",
+    "id": "pk-026",
     "type": "pack",
     "condition": "Sealed",
     "name": "Shrouded Fable 3-Pack Blister",
@@ -697,7 +550,7 @@
     "hitSlots": 3,
     "source": "Direct",
     "seller": "Gempack TCG",
-    "stock": 32,
+    "stock": 45,
     "featured": false,
     "price": 43.85,
     "priceSource": {
@@ -706,7 +559,7 @@
     }
   },
   {
-    "id": "pk-034",
+    "id": "pk-027",
     "type": "pack",
     "condition": "Sealed",
     "name": "Gempack Emerald Pack",
@@ -729,7 +582,7 @@
     }
   },
   {
-    "id": "pk-035",
+    "id": "pk-028",
     "type": "pack",
     "condition": "Sealed",
     "name": "Gempack Amethyst Pack",
@@ -752,7 +605,7 @@
     }
   },
   {
-    "id": "pk-036",
+    "id": "pk-029",
     "type": "pack",
     "condition": "Sealed",
     "name": "Gempack Gold Pack",

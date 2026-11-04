@@ -8,6 +8,8 @@ import { fileURLToPath } from 'node:url'
 import { bidIncrement, CONDITION_VALUE } from '../src/lib/auction.js'
 import { PACK_PRICES } from './market-prices.mjs'
 import { IMAGE_DIR, imageFileFor } from './fetch-images.mjs'
+import { COVER_DIR, coverFileFor } from './fetch-covers.mjs'
+import { PACK_COVERS, coverIdFor } from './pack-covers.mjs'
 
 const OUT = join(dirname(fileURLToPath(import.meta.url)), '..', 'src', 'data')
 
@@ -165,15 +167,16 @@ for (const [game, cards] of Object.entries(CARDS)) {
 // their own market price follow a stated rule and are labelled as estimates.
 const PACK_TYPES = {
   Pokémon: [
-    { kind: 'Booster Pack', cards: 10, hit: R, hitSlots: 1, price: (m) => [m.price, m.source] },
+    { kind: 'Booster Pack', slot: 'booster', cards: 10, hit: R, hitSlots: 1, price: (m) => [m.price, m.source] },
     {
       kind: 'Sleeved Booster',
+      slot: 'sleeved',
       cards: 10,
       hit: R,
       hitSlots: 1,
       price: (m) => (m.sleeved ? [m.sleeved, m.source] : [m.price, estimate('Estimate: same cards as a booster pack, priced like one')]),
     },
-    { kind: '3-Pack Blister', cards: 30, hit: R, hitSlots: 3, price: (m) => [m.price * 3 + 2, estimate('Estimate: 3 × the booster pack price + $2 for the promo card')] },
+    { kind: '3-Pack Blister', slot: 'blister', cards: 30, hit: R, hitSlots: 3, price: (m) => [m.price * 3 + 2, estimate('Estimate: 3 × the booster pack price + $2 for the promo card')] },
   ],
 }
 
@@ -184,6 +187,9 @@ const pushPack = (p) => packs.push({ id: `pk-${String(pIdx++).padStart(3, '0')}`
 for (const [game, sets] of Object.entries(SETS)) {
   for (const set of sets) {
     for (const t of PACK_TYPES[game]) {
+      // Only sell products that really exist for this set (special sets have no sleeved
+      // boosters or 3-pack blisters)
+      if (PACK_COVERS[set]?.[t.slot] === null) continue
       const source = weighted([['Direct', 45], ['Vendor', 40], ['Collector', 15]])
       const pack = {
         name: `${set} ${t.kind}`,
@@ -201,6 +207,9 @@ for (const [game, sets] of Object.entries(SETS)) {
       const [price, priceSource] = t.price(PACK_PRICES[set])
       pack.price = money(price)
       pack.priceSource = priceSource
+      // Official product photo, once downloaded with npm run fetch-covers
+      const coverId = coverIdFor(set, t.slot)
+      if (coverId && existsSync(join(COVER_DIR, coverFileFor(coverId)))) pack.image = `/pack-covers/${coverFileFor(coverId)}`
       pushPack(pack)
     }
   }

@@ -15,7 +15,7 @@ This is a demo. All products are mock data, nothing is stored on a server, and c
 | Page | What it does |
 | --- | --- |
 | **Home** (`/`) | Hero, featured rare-card drops with live countdowns, upcoming events banner, Gempack Series drops |
-| **Shop** (`/shop`) | 36 packs + 88 singles. Search, filter by type / rarity / source / price, sort. Filters live in the URL, so filtered views can be shared |
+| **Shop** (`/shop`) | 29 packs + 88 singles. Search, filter by type / rarity / source / price, sort. Filters live in the URL, so filtered views can be shared |
 | **Product** (`/product/:id`) | Card or pack details. Packs show their hit slots and pull odds. Series packs show the drop's full checklist and how many of each card are still sealed |
 | **Rip a pack** (`/open/:id`) | Pack-tearing animation, tap-to-flip card reveal weighted by rarity, then pulled value vs. pack price |
 | **Auction House** (`/auctions`) | Live auctions for single cards from Gempack (Official) and verified collectors. Bid, Buy Now, track your bids and wins, or get verified and list your own card |
@@ -41,6 +41,7 @@ npm run preview        # serve the production build locally
 npm run generate-data  # regenerate the mock catalog in src/data/
 npm run sync:pokemon   # pull real Pokémon cards, prices and images, then regenerate (see below)
 npm run fetch-images   # download card images for already-synced cards (self-hosting)
+npm run fetch-covers   # download official product photos for the sealed packs
 ```
 
 ## Deploying to Cloudflare
@@ -67,6 +68,8 @@ deployed, add your own domain under the Worker's **Settings → Domains & Routes
 │  ├─ market-prices.mjs          # researched sealed pack prices, with sources
 │  ├─ sync-pokemon.mjs           # real Pokémon cards + prices (Pokémon TCG API)
 │  ├─ fetch-images.mjs           # downloads card images into public/card-images
+│  ├─ pack-covers.mjs            # TCGplayer product ids for the official pack photos
+│  ├─ fetch-covers.mjs           # downloads those photos into public/pack-covers
 │  └─ sync-utils.mjs             # shared download helpers
 └─ src/
    ├─ App.jsx                    # routes
@@ -114,6 +117,24 @@ Then it rebuilds the catalog, so packs, drops and auctions all use the real card
   `npm run fetch-images`. Commit `public/card-images/` along with `src/data` so the live site gets them. Cards
   without a downloaded image still load from the API's server, and fall back to the drawn art if that fails.
 - Card images are © The Pokémon Company. That's fine for a class demo, but a real store would need permission.
+
+## Official pack covers
+
+The real sealed products use their official product photos. `scripts/pack-covers.mjs` lists each product's TCGplayer
+product id (the number in its tcgplayer.com URL). Run this on a computer with normal internet:
+
+```bash
+npm run fetch-covers
+```
+
+It downloads each photo into `public/pack-covers/`, skipping ones it already has, and rebuilds the catalog to use
+them. Commit `public/pack-covers/` so the live site gets them. Products without a downloaded photo keep the drawn
+cover. Gempack's own drop packs keep their custom covers.
+
+The catalog only sells products that exist. Special sets (Prismatic Evolutions, 151, Paldean Fates) come only as
+booster packs, and Shrouded Fable has no sleeved booster. Two ids weren't found: the plain Stellar Crown booster
+(it uses the sleeved pack's photo, which has the same art) and the single Obsidian Flames 3-pack blister (it keeps
+the drawn cover). Add an id to `pack-covers.mjs` to fix either.
 
 ## Where prices come from
 
