@@ -5,7 +5,6 @@ import { createHash } from 'node:crypto'
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { createPackEngine } from '../src/lib/packEngine.js'
 import { bidIncrement, CONDITION_VALUE } from '../src/lib/auction.js'
 import { PACK_PRICES } from './market-prices.mjs'
 import { IMAGE_DIR, imageFileFor } from './fetch-images.mjs'
@@ -164,8 +163,6 @@ for (const [game, cards] of Object.entries(CARDS)) {
 // rarity on a pack = the guaranteed minimum "hit" rarity.
 // Prices come from PACK_PRICES (researched market prices, with sources). Products without
 // their own market price follow a stated rule and are labelled as estimates.
-const engine = createPackEngine(singles)
-const GEMPACK_HIT_RETURN = 0.86 // our own Hit Packs pay back 86% of their price in card value
 const PACK_TYPES = {
   Pokémon: [
     { kind: 'Booster Pack', cards: 10, hit: R, hitSlots: 1, price: (m) => [m.price, m.source] },
@@ -177,7 +174,6 @@ const PACK_TYPES = {
       price: (m) => (m.sleeved ? [m.sleeved, m.source] : [m.price, estimate('Estimate: same cards as a booster pack, priced like one')]),
     },
     { kind: '3-Pack Blister', cards: 30, hit: R, hitSlots: 3, price: (m) => [m.price * 3 + 2, estimate('Estimate: 3 × the booster pack price + $2 for the promo card')] },
-    { kind: 'Gempack Hit Pack', cards: 10, hit: UR, hitSlots: 1, gempack: true },
   ],
 }
 
@@ -188,7 +184,7 @@ const pushPack = (p) => packs.push({ id: `pk-${String(pIdx++).padStart(3, '0')}`
 for (const [game, sets] of Object.entries(SETS)) {
   for (const set of sets) {
     for (const t of PACK_TYPES[game]) {
-      const source = t.gempack ? 'Direct' : weighted([['Direct', 45], ['Vendor', 40], ['Collector', 15]])
+      const source = weighted([['Direct', 45], ['Vendor', 40], ['Collector', 15]])
       const pack = {
         name: `${set} ${t.kind}`,
         game,
@@ -202,16 +198,9 @@ for (const [game, sets] of Object.entries(SETS)) {
         stock: Math.ceil(between(source === 'Collector' ? 1 : 6, source === 'Collector' ? 4 : 60)),
         featured: false,
       }
-      if (t.gempack) {
-        // Our own product: 1 guaranteed Ultra Rare or better, priced from what its cards are worth
-        pack.targetReturn = GEMPACK_HIT_RETURN
-        pack.price = engine.fairPrice({ ...pack, id: `fair-${pIdx}` })
-        pack.priceSource = { label: 'Gempack product: priced from the market value of its cards', gempack: true }
-      } else {
-        const [price, priceSource] = t.price(PACK_PRICES[set])
-        pack.price = money(price)
-        pack.priceSource = priceSource
-      }
+      const [price, priceSource] = t.price(PACK_PRICES[set])
+      pack.price = money(price)
+      pack.priceSource = priceSource
       pushPack(pack)
     }
   }

@@ -15,7 +15,7 @@ This is a demo. All products are mock data, nothing is stored on a server, and c
 | Page | What it does |
 | --- | --- |
 | **Home** (`/`) | Hero, featured rare-card drops with live countdowns, upcoming events banner, Gempack Series drops |
-| **Shop** (`/shop`) | 47 packs + 88 singles. Search, filter by type / rarity / source / price, sort. Filters live in the URL, so filtered views can be shared |
+| **Shop** (`/shop`) | 36 packs + 88 singles. Search, filter by type / rarity / source / price, sort. Filters live in the URL, so filtered views can be shared |
 | **Product** (`/product/:id`) | Card or pack details. Packs show their hit slots and pull odds. Series packs show the drop's full checklist and how many of each card are still sealed |
 | **Rip a pack** (`/open/:id`) | Pack-tearing animation, tap-to-flip card reveal weighted by rarity, then pulled value vs. pack price |
 | **Auction House** (`/auctions`) | Live auctions for single cards from Gempack (Official) and verified collectors. Bid, Buy Now, track your bids and wins, or get verified and list your own card |
@@ -123,7 +123,7 @@ Every product page says where its price comes from:
 - **Market price, researched:** sealed packs. They were looked up
   from public price trackers on 2026-10-22, and `scripts/market-prices.mjs` lists each one with its source link and
   date. Sealed prices move fast, so re-check them before relying on them. Some are low-confidence and say so.
-- **Gempack product:** Series drops and Gempack Hit Packs are priced from the market value of the cards inside them.
+- **Gempack product:** Series drops are priced from the market value of the cards inside them.
 - **Estimate:** anything without a source, labelled on the page. This covers the built-in cards until you run the
   sync. Pack types with no market price of their own also follow a stated rule: a 3-pack blister is 3 boosters + $2.
 
@@ -149,14 +149,13 @@ To change the catalog, edit `scripts/generate-data.mjs` and run `npm run generat
 
 ## How the pack math works
 
-The pack engine (`src/lib/packEngine.js`) is shared by the app and the data generator:
+The pack engine (`src/lib/packEngine.js`) works out store packs' odds and simulates their openings:
 
 1. **Odds.** Filler slots are Common or Uncommon. Hit slots are calibrated so the average pull matches what real packs
    return: about **30% of the price** for store packs. Price trackers put real packs at 17–27%. For example,
-   PackMagik (mid-2026) has Destined Rivals at $3.09 of card value on an $11.50 pack. Gempack's own Hit Packs return
-   86%. Within a rarity tier, expensive chase cards are rarer, and cards from the pack's own set come up more often.
+   PackMagik (mid-2026) has Destined Rivals at $3.09 of card value on an $11.50 pack. Within a rarity tier, expensive chase cards are rarer, and cards from the pack's own set come up more often.
 2. **Result.** Store packs pay back about 30–40% of their price, which is realistic. That's the point of the pitch:
-   Gempack's own Series drops (90%) and Hit Packs (86%) are the fair way to rip.
+   Gempack's own Series drops (90%, and at least 50% in every pack) are the fair way to rip.
 
 ## Gempack Series drops
 

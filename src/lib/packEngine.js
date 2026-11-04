@@ -1,4 +1,4 @@
-// Pure pack-opening engine (no app imports), shared by the app and scripts/generate-data.mjs
+// Pure pack-opening engine (no app imports) for store packs: pull odds and simulated openings
 import { RARITIES, rarityRank } from './rarity.js'
 
 // Odds for regular (non-hit) slots
@@ -13,7 +13,6 @@ const BULK_VALUE = 0.05
 // Share of a pack's price that an average pack pays back in card value. Real sealed packs
 // return well under half: PackMagik (mid-2026) puts Destined Rivals at $3.09 on $11.50 (27%),
 // Shrouded Fable at $3.57 on $13.95 (26%) and Paldean Fates at $4.11 on $23.99 (17%).
-// Packs Gempack builds itself set their own, fairer `targetReturn`.
 export const STORE_PACK_RETURN = 0.3
 const SET_BONUS = 4
 
@@ -62,23 +61,15 @@ export function createPackEngine(singles) {
   }
 
   /**
-   * Hit-slot odds are solved per pack so the average pull lands near targetReturn × price.
+   * Hit-slot odds are solved per pack so the average pull lands near STORE_PACK_RETURN × price.
    * Shape: each tier above the guaranteed one gets probability a, a/5, ... and `a` is solved
    * from the expected value of each tier. Clamped so every pack keeps a real shot at a chase card.
    */
   function calibrate(pack) {
     const { shownFiller, bulkCount, hitSlots } = layout(pack)
     const fillerEV = FILLER_ODDS.reduce((s, [r, p]) => s + p * tierValue(pack, r), 0)
-    const target = pack.price * (pack.targetReturn ?? STORE_PACK_RETURN)
+    const target = pack.price * STORE_PACK_RETURN
     return solveHitOdds(pack, (target - shownFiller * fillerEV - bulkCount * BULK_VALUE) / hitSlots)
-  }
-
-  /**
-   * Price for a pack Gempack builds itself: what its contents are worth at the lowest
-   * chase-card odds, divided by the share of value it promises to pay back.
-   */
-  function fairPrice(pack) {
-    return round2(solveHitOdds(pack, -Infinity).expectedValue / pack.targetReturn)
   }
 
   // Hit-slot odds whose average value per hit slot comes as close to `perSlot` as the clamps allow
@@ -149,5 +140,5 @@ export function createPackEngine(singles) {
     }
   }
 
-  return { oddsFor, openPack, fairPrice }
+  return { oddsFor, openPack }
 }
