@@ -29,8 +29,9 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 z-40 border-b border-navy-700/80 bg-navy-950/85 backdrop-blur-lg">
-      <nav className="container-page flex h-16 items-center justify-between gap-4">
-        <Link to="/" aria-label="Gempack TCG home">
+      {/* On md+ the outer columns are equal width, so the menu sits in the true centre */}
+      <nav className="container-page flex h-16 items-center justify-between gap-4 md:grid md:grid-cols-[1fr_auto_1fr]">
+        <Link to="/" aria-label="Gempack TCG home" className="md:justify-self-start">
           <Logo />
         </Link>
 
@@ -52,7 +53,7 @@ export default function Navbar() {
           ))}
         </ul>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 md:justify-self-end">
           <Link to="/cart" className="btn-ghost relative px-3" aria-label={`Cart, ${count} items`}>
             <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2">
               <path d="M3 3h2l2.4 12.2a2 2 0 0 0 2 1.6h8.2a2 2 0 0 0 2-1.5L21 8H6" strokeLinecap="round" strokeLinejoin="round" />
