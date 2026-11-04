@@ -7,6 +7,7 @@ import RarityBadge from '../components/RarityBadge'
 import { useCart } from '../context/CartContext'
 import { useSeries } from '../context/SeriesContext'
 import { useLedger } from '../context/LedgerContext'
+import { useVault } from '../context/VaultContext'
 import { getProduct, seriesPacks } from '../lib/catalog'
 import { formatPrice } from '../lib/format'
 import { openPack } from '../lib/packOpening'
@@ -50,29 +51,10 @@ function Summary({ pack, result, onAgain, packsLeft, packNumber }) {
   const { add } = useCart()
   const [added, setAdded] = useState(false)
   const best = [...result.cards].sort((a, b) => b.pulledValue - a.pulledValue)[0]
-  const won = result.net >= 0
 
   return (
     <div className="panel mx-auto mt-10 max-w-3xl animate-pop-in p-6 sm:p-8">
-      <div className="grid gap-6 sm:grid-cols-2">
-        <div>
-          <p className="label">Pack price</p>
-          <p className="font-display text-3xl font-bold">{formatPrice(pack.price)}</p>
-        </div>
-        <div>
-          <p className="label">Pulled value</p>
-          <p className={`font-display text-3xl font-bold ${won ? 'text-emerald-gem' : 'text-slate-100'}`}>
-            {formatPrice(result.pulledValue)}
-          </p>
-          {result.bulkCount > 0 && (
-            <p className="text-xs text-slate-500">
-              incl. {result.bulkCount} bulk cards ({formatPrice(result.bulkValue)})
-            </p>
-          )}
-        </div>
-      </div>
-
-      <p className="mt-8 rounded-xl border border-gold-400/40 bg-gold-400/10 p-4 text-sm text-gold-200">
+      <p className="rounded-xl border border-gold-400/40 bg-gold-400/10 p-4 text-sm text-gold-200">
         ✨ Best pull: <span className="font-semibold">{best.name}</span> ({best.rarity}) worth {formatPrice(best.pulledValue)}.
       </p>
 
@@ -85,12 +67,16 @@ function Summary({ pack, result, onAgain, packsLeft, packNumber }) {
             setAdded(true)
           }}
         >
-          {added ? '✓ Added. Rip it for real' : `Buy this pack · ${formatPrice(pack.price)}`}
+          {added ? '✓ Added to cart' : `🔁 Buy again · ${formatPrice(pack.price)}`}
         </button>
         <Link to={`/product/${pack.id}`} className="btn-ghost">Pack details</Link>
       </div>
+      <p className="mt-5 text-center text-sm text-slate-300">
+        🔐 All {result.cards.length} cards went to your Vault.{' '}
+        <Link to="/vault" className="font-semibold text-emerald-300 hover:underline">Open your Vault →</Link>
+      </p>
       {packsLeft !== undefined && (
-        <p className="mt-4 text-center text-sm text-slate-300">
+        <p className="mt-2 text-center text-sm text-slate-300">
           {packNumber ? `Pack #${packNumber} and its cards are now out of the drop.` : 'These cards are now out of the drop.'}{' '}
           <Link to={`/product/${pack.id}#checklist`} className="font-semibold text-gold-300 hover:underline">
             {packsLeft === 0 ? 'The drop is fully opened' : `${packsLeft} packs left`}: see what's still sealed →
@@ -114,6 +100,7 @@ function OpenPackPage({ id }) {
   const pack = getProduct(id)
   const { openedFor, openAt, reset } = useSeries()
   const { record } = useLedger()
+  const { addPulls } = useVault()
   const [phase, setPhase] = useState('sealed') // sealed -> ripping -> revealing
   const [round, setRound] = useState(0)
   const [result, setResult] = useState(null)
@@ -147,6 +134,8 @@ function OpenPackPage({ id }) {
     }
     setResult(result)
     const best = result.cards.reduce((a, b) => (b.pulledValue > a.pulledValue ? b : a))
+    // Every pulled card goes into the visitor's Vault
+    addPulls(result.cards, { packId: pack.id, packName: pack.name, ...(series && { packNumber: chosen + 1 }) })
     record(series ? 'drop-open' : 'pack-rip', {
       summary: `${pack.name}${series ? ` #${chosen + 1}` : ''}: pulled ${formatPrice(result.pulledValue)}, best ${best.name}`,
       amount: result.pulledValue,
@@ -175,7 +164,6 @@ function OpenPackPage({ id }) {
   const revealAll = () => setRevealed(new Set(result.cards.map((_, i) => i)))
 
   const allRevealed = result && revealed.size === result.cards.length
-  const running = (result?.cards ?? []).filter((_, i) => revealed.has(i)).reduce((s, c) => s + c.pulledValue, 0)
   const topRevealed = (result?.cards ?? [])
     .filter((_, i) => revealed.has(i))
     .reduce((best, c) => (best && rarityRank(best.rarity) >= rarityRank(c.rarity) ? best : c), null)
@@ -262,12 +250,9 @@ function OpenPackPage({ id }) {
       {phase === 'revealing' && (
         <>
           <div className="sticky top-16 z-20 mx-auto mt-6 flex max-w-3xl items-center justify-between gap-3 rounded-xl border border-navy-600 bg-navy-900/95 px-4 py-3 backdrop-blur">
-            <div>
-              <p className="text-xs text-slate-400">
-                {revealed.size}/{result.cards.length} revealed
-              </p>
-              <p className="font-display text-xl font-bold tabular-nums">{formatPrice(running)}</p>
-            </div>
+            <p className="font-display text-lg font-bold tabular-nums">
+              {revealed.size}/{result.cards.length} <span className="text-sm font-medium text-slate-400">revealed</span>
+            </p>
             {topRevealed && <RarityBadge rarity={topRevealed.rarity} prefix="Best: " />}
             {!allRevealed && (
               <button className="btn-ghost px-3 py-2 text-xs" onClick={revealAll}>

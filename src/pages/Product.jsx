@@ -9,7 +9,7 @@ import SourceBadge from '../components/SourceBadge'
 import { useCart } from '../context/CartContext'
 import { useSeries } from '../context/SeriesContext'
 import { useLedger } from '../context/LedgerContext'
-import { isEnded, useAuctions } from '../context/AuctionContext'
+import { YOU, isEnded, useAuctions } from '../context/AuctionContext'
 import { getProduct, relatedProducts } from '../lib/catalog'
 import { formatPrice } from '../lib/format'
 import { oddsFor } from '../lib/packOpening'
@@ -145,6 +145,12 @@ function ProductDetail({ id }) {
 
           <PriceSource source={product.priceSource} />
 
+          {product.seller === YOU ? (
+            <p className="mt-6 rounded-xl border border-sky-400/40 bg-sky-400/10 p-4 text-sm text-sky-100">
+              This is your listing from your Vault.{' '}
+              <Link to="/vault" className="font-semibold text-sky-300 hover:underline">Manage it in your Vault →</Link>
+            </p>
+          ) : (
           <div className="mt-6 flex flex-wrap items-center gap-3">
             <div className="flex items-center rounded-xl border border-navy-500 bg-navy-900">
               <button className="px-3 py-2.5 text-lg disabled:opacity-40" onClick={() => setQty((q) => q - 1)} disabled={qty <= 1} aria-label="Decrease quantity">−</button>
@@ -160,6 +166,7 @@ function ProductDetail({ id }) {
               </Link>
             )}
           </div>
+          )}
           <p className="mt-2 text-xs text-slate-500">
             {series ? `${stock} of ${series.packs.length} packs left in this drop` : `${stock} in stock`}
             {inCart > 0 && ` · ${inCart} in your cart`}

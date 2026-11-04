@@ -15,7 +15,15 @@ export const CONDITIONS = ['Near Mint', 'Lightly Played', 'Moderately Played', '
 export const allProducts = [...packs, ...singles]
 const byId = new Map(allProducts.map((p) => [p.id, p]))
 
-export const getProduct = (id) => byId.get(id)
+// Singles listed by the visitor from their Vault (registered by VaultContext)
+const listed = new Map()
+export const registerListing = (product) => listed.set(product.id, product)
+export const unregisterListing = (id) => listed.delete(id)
+
+export const getProduct = (id) => byId.get(id) ?? listed.get(id)
+
+// Everything the shop sells: the catalog plus the visitor's own listings
+export const shopProducts = () => [...allProducts, ...listed.values()]
 
 export const featuredDrops = singles
   .filter((s) => s.featured)

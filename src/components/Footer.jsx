@@ -17,6 +17,7 @@ export default function Footer() {
             <li><Link to="/shop?type=pack" className="hover:text-white">Sealed packs</Link></li>
             <li><Link to="/shop?type=single" className="hover:text-white">Singles</Link></li>
             <li><Link to="/auctions" className="hover:text-white">Auction House</Link></li>
+            <li><Link to="/vault" className="hover:text-white">Your Vault</Link></li>
             <li><Link to="/auctions?tab=sell" className="hover:text-white">Sell a card</Link></li>
           </ul>
         </div>

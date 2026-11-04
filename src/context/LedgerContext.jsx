@@ -18,6 +18,8 @@ export const TX_TYPES = {
   'listing-created': 'Listing created',
   'auction-claimed': 'Auction win claimed',
   'seller-verified': 'Seller verified',
+  'vault-listed': 'Listed in Singles',
+  'vault-ship': 'Shipped from Vault',
 }
 
 function load() {

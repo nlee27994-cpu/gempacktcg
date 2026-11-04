@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import ProductCard from '../components/ProductCard'
 import ShopFilters from '../components/ShopFilters'
-import { allProducts } from '../lib/catalog'
+import { shopProducts } from '../lib/catalog'
 import { rarityRank } from '../lib/rarity'
 
 const PAGE_SIZE = 24
@@ -61,7 +61,7 @@ export default function Shop() {
     const words = filters.q.toLowerCase().split(/\s+/).filter(Boolean)
     const min = parseFloat(filters.min)
     const max = parseFloat(filters.max)
-    return allProducts
+    return shopProducts()
       .filter((p) => {
         if (filters.type && p.type !== filters.type) return false
         if (filters.rarity.length && !filters.rarity.includes(p.rarity)) return false

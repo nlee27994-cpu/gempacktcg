@@ -17,11 +17,12 @@ This is a demo. All products are mock data, nothing is stored on a server, and c
 | **Home** (`/`) | Hero, featured rare-card drops with live countdowns, upcoming events banner, Gempack Series drops |
 | **Shop** (`/shop`) | 29 packs + 88 singles. Search, filter by type / rarity / source / price, sort. Filters live in the URL, so filtered views can be shared |
 | **Product** (`/product/:id`) | Card or pack details. Packs show their hit slots and pull odds. Series packs show the drop's full checklist and how many of each card are still sealed |
-| **Rip a pack** (`/open/:id`) | Pack-tearing animation, tap-to-flip card reveal weighted by rarity, then pulled value vs. pack price |
+| **Rip a pack** (`/open/:id`) | Pack-tearing animation and tap-to-flip card reveal weighted by rarity. Pulled cards go to your Vault |
 | **Auction House** (`/auctions`) | Live auctions for single cards from Gempack (Official) and verified collectors. Bid, Buy Now, track your bids and wins, or get verified and list your own card |
 | **Auction** (`/auctions/:id`) | Countdown, minimum raise, quick bids, Buy Now, bid history, and pay-to-claim when you win |
 | **Cart / Checkout** | Cart (saved in the browser), fake checkout form, order confirmation |
 | **About** (`/about`) | Mission, team, strategy, and how the odds and checklists work |
+| **Vault** (`/vault`) | Every card you've pulled from a pack. Open one to list it on auction, list it in Singles at your own price, or ship it to yourself |
 | **Dev Console** (`/admin`) | Staff view: every transaction with a unique number and full data, live inventory, Series drops, auctions, exports and demo resets |
 
 ## Getting started
@@ -63,7 +64,7 @@ deployed, add your own domain under the Worker's **Settings → Domains & Routes
 
 ```
 ├─ index.html
-├─ public/favicon.svg            # gem-shaped booster pack logo
+├─ public/logo.webp, logo.png    # the Gempack TCG emblem (also favicon.png, apple-touch-icon.png)
 ├─ scripts/
 │  ├─ generate-data.mjs          # builds the catalog (seeded, so it's reproducible)
 │  ├─ market-prices.mjs          # researched sealed pack prices, with sources
@@ -222,6 +223,21 @@ the data in `src/data/series.json`:
   listings are generated into `src/data/auctions.json`. State is saved in your browser, and the Auction House starts
   fresh once every listing has ended. My activity has a reset button for demos.
 
+## Vault
+
+Every card you pull from a pack, store pack or Gempack drop, goes into your **Vault** (`/vault`). The menu shows
+how many cards you're holding. The Vault keeps each card's value, the pack it came from (and the pack number for
+drops) and when you pulled it. Filter by status, sort by value, rarity or date, and open a card to:
+
+- **List on auction.** This creates an Auction House listing (you need to be a verified seller). The Vault follows
+  it: "On auction", then "Sold" with the price and your payout after the 5% fee, or back in the Vault if nobody bid.
+- **List in Singles.** The card appears in the shop as a Collector listing from you at your price, with its own
+  product page. Remove the listing any time to put it back in the Vault.
+- **Ship to me.** Enter an address and the card is marked shipped with a tracking number (nothing is really sent).
+
+Listings and shipments are recorded in the Dev Console. The Vault lives in `src/context/VaultContext.jsx` and is
+saved in your browser.
+
 ## Dev Console
 
 `/admin` (linked in the footer as "Dev console (staff)") is the staff view of the store.
@@ -249,7 +265,7 @@ browser has its own history. A real store would put this behind a staff login an
 
 - **Colors:** deep navy base, with gem accents that also mark rarity:
   Common = quartz (slate), Uncommon = emerald, Rare = sapphire, Ultra Rare = amethyst, Secret Rare = gold.
-- **Logo:** a faceted gemstone in the shape of a crimped booster pack (`src/components/Logo.jsx`).
+- **Logo:** a faceted crystal "G" ringed by sparkles (`public/logo.webp`, used by `src/components/Logo.jsx`).
 - **Type:** Space Grotesk for headings, Inter for body text.
 
 ## Tech

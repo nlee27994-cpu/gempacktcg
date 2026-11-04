@@ -6,6 +6,7 @@ import { CartProvider } from './context/CartContext'
 import { LedgerProvider } from './context/LedgerContext'
 import { AuctionProvider } from './context/AuctionContext'
 import { SeriesProvider } from './context/SeriesContext'
+import { VaultProvider } from './context/VaultContext'
 import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -14,9 +15,11 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       <LedgerProvider>
         <CartProvider>
           <AuctionProvider>
-            <SeriesProvider>
-              <App />
-            </SeriesProvider>
+            <VaultProvider>
+              <SeriesProvider>
+                <App />
+              </SeriesProvider>
+            </VaultProvider>
           </AuctionProvider>
         </CartProvider>
       </LedgerProvider>

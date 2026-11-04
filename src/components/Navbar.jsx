@@ -2,17 +2,20 @@ import { useEffect, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import Logo from './Logo'
 import { useCart } from '../context/CartContext'
+import { useVault } from '../context/VaultContext'
 
 const LINKS = [
   { to: '/shop', label: 'Shop' },
   { to: '/shop?type=pack', label: 'Packs' },
   { to: '/shop?type=single', label: 'Singles' },
   { to: '/auctions', label: 'Auctions' },
+  { to: '/vault', label: 'Vault' },
   { to: '/about', label: 'About' },
 ]
 
 export default function Navbar() {
   const { count } = useCart()
+  const { inVault } = useVault()
   const [open, setOpen] = useState(false)
   const location = useLocation()
 
@@ -41,6 +44,9 @@ export default function Navbar() {
                 }`}
               >
                 {l.label}
+                {l.to === '/vault' && inVault.length > 0 && (
+                  <span className="ml-1.5 rounded-full bg-emerald-gem/20 px-1.5 py-0.5 text-[10px] font-bold text-emerald-300">{inVault.length}</span>
+                )}
               </NavLink>
             </li>
           ))}
