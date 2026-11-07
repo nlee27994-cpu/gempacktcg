@@ -8,7 +8,7 @@ Built as a high school business project by **Mason Do, Nicholas Lee and Rachel L
 Nothing is hidden: every pack shows its **pull odds**, Gempack's own Series drops publish **every card inside them**,
 and every price says where it came from. You get the thrill of the pull and know exactly what you're chasing.
 
-This is a demo. All products are mock data, nothing is stored on a server, and checkout takes no real payment.
+This is a demo. All products are mock data, nothing is stored on a server, and checkout takes no real payment unless Shopify is connected (see [Shopify checkout](#shopify-checkout)).
 
 ## Features
 
@@ -20,7 +20,7 @@ This is a demo. All products are mock data, nothing is stored on a server, and c
 | **Rip a pack** (`/open/:id`) | Pack-tearing animation and tap-to-flip card reveal weighted by rarity. Pulled cards go to your Vault |
 | **Auction House** (`/auctions`) | Live auctions for single cards from Gempack (Official) and verified collectors. Bid, Buy Now, track your bids and wins, or get verified and list your own card |
 | **Auction** (`/auctions/:id`) | Countdown, minimum raise, quick bids, Buy Now, bid history, and pay-to-claim when you win |
-| **Cart / Checkout** | Cart (saved in the browser), fake checkout form, order confirmation |
+| **Cart / Checkout** | Cart (saved in the browser), then Shopify's secure checkout when connected, or a fake checkout form and order confirmation |
 | **About** (`/about`) | Mission, team, strategy, and how the odds and checklists work |
 | **Vault** (`/vault`) | Every card you've pulled from a pack. Open one to list it on auction, list it in Singles at your own price, or ship it to yourself |
 | **Dev Console** (`/admin`) | Staff view: every transaction with a unique number and full data, live inventory, Series drops, auctions, exports and demo resets |
@@ -44,6 +44,7 @@ npm run sync:pokemon   # pull real Pokémon cards, prices and images, then regen
 npm run fetch-images   # download card images for already-synced cards (self-hosting)
 npm run fetch-covers   # download official product photos for the sealed packs (+ transparent cut-outs)
 npm run cutout-covers  # remake the transparent cut-outs from downloaded photos
+npm run shopify:push   # create/update every pack and single as a Shopify product (see below)
 ```
 
 ## Deploying to Cloudflare
@@ -60,6 +61,35 @@ In the Cloudflare dashboard (**Workers & Pages → Create → Import a repositor
 The Worker's name in the dashboard must match `"name"` in `wrangler.jsonc` (currently `gempacktcg`). Once it's
 deployed, add your own domain under the Worker's **Settings → Domains & Routes**. Each push to the branch redeploys.
 
+## Shopify checkout
+
+Checkout can take real payments through Shopify. The site stays static: when the Shopify keys are set, the checkout
+page builds a Shopify cart and sends the buyer to Shopify's secure checkout, and the order shows up in Shopify admin.
+Without the keys, the demo checkout is used.
+
+Auction wins and Vault listings aren't Shopify products, so they can't be paid for this way yet. The checkout page
+asks the buyer to remove them.
+
+Setup:
+
+1. **Storefront token.** In Shopify admin, install the free **Headless** sales channel, create a storefront, and copy
+   its **public access token**.
+2. **Upload access.** In the Shopify **Dev Dashboard**, create an app with the scopes `write_products`,
+   `write_inventory`, `read_locations` and `write_publications`, release a version and install it on your store.
+   Copy `.env.example` to `.env` and fill in the store domain, storefront token, client ID and client secret.
+3. **Upload the products.** The site must be live at `SITE_URL` (Shopify downloads the images from it). Try a few first:
+
+   ```bash
+   npm run shopify:push -- --limit 3
+   npm run shopify:push
+   ```
+
+   Re-running is safe. New products get their price, stock and image. Existing products only get their title,
+   description, tags and price updated, so stock already sold in Shopify isn't reset. `--dry-run` shows what would
+   happen and `--only pk-001,sg-002` pushes specific products.
+4. **Cloudflare.** Add `VITE_SHOPIFY_STORE_DOMAIN` and `VITE_SHOPIFY_STOREFRONT_TOKEN` as **build** variables on the
+   Worker, then redeploy.
+
 ## Project structure
 
 ```
@@ -73,6 +103,7 @@ deployed, add your own domain under the Worker's **Settings → Domains & Routes
 │  ├─ pack-covers.mjs            # TCGplayer product ids for the official pack photos
 │  ├─ fetch-covers.mjs           # downloads those photos into public/pack-covers
 │  ├─ cutout-covers.mjs          # makes transparent versions of those photos
+│  ├─ shopify-push.mjs           # creates the catalog as Shopify products
 │  └─ sync-utils.mjs             # shared download helpers
 └─ src/
    ├─ App.jsx                    # routes
@@ -86,6 +117,7 @@ deployed, add your own domain under the Worker's **Settings → Domains & Routes
    │  ├─ auction.js              # auction rules: bid increments, fees, durations
    │  ├─ series.js               # Gempack Series drop status
    │  ├─ rarity.js               # rarity tiers ↔ gem colors
+   │  ├─ shopify.js              # Shopify cart + hosted checkout (Storefront API)
    │  └─ format.js, useNow.js
    ├─ context/                   # CartContext, AuctionContext, SeriesContext
    ├─ components/                # Navbar, Footer, Logo, CardArt, ProductCard, badges, filters…

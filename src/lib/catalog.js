@@ -20,6 +20,9 @@ const listed = new Map()
 export const registerListing = (product) => listed.set(product.id, product)
 export const unregisterListing = (id) => listed.delete(id)
 
+// True for the fixed catalog (packs and singles), the products that exist in Shopify
+export const isCatalogProduct = (id) => byId.has(id)
+
 export const getProduct = (id) => byId.get(id) ?? listed.get(id)
 
 // Everything the shop sells: the catalog plus the visitor's own listings

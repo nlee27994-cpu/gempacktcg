@@ -3,6 +3,8 @@ import { Link, Navigate, useNavigate } from 'react-router-dom'
 import OrderSummary from '../components/OrderSummary'
 import { useCart } from '../context/CartContext'
 import { formatPrice } from '../lib/format'
+import { isCatalogProduct } from '../lib/catalog'
+import { shopifyEnabled, createShopifyCheckout } from '../lib/shopify'
 
 const FIELDS = [
   ['name', 'Full name', 'text', 'name', 'sm:col-span-2'],
@@ -13,6 +15,84 @@ const FIELDS = [
 ]
 
 export default function Checkout() {
+  return shopifyEnabled ? <ShopifyCheckout /> : <DemoCheckout />
+}
+
+// Real checkout: builds a Shopify cart and hands the buyer to Shopify's hosted checkout page,
+// where they enter shipping and payment. Shopify records the order.
+function ShopifyCheckout() {
+  const cart = useCart()
+  const [status, setStatus] = useState('idle') // idle | working | error
+  const [error, setError] = useState('')
+
+  if (cart.items.length === 0) return <Navigate to="/cart" replace />
+
+  // Auction wins and Vault listings are not Shopify products, so they can't be paid for here.
+  const unsupported = cart.items.filter((i) => !isCatalogProduct(i.id))
+
+  const go = async () => {
+    setStatus('working')
+    setError('')
+    try {
+      const url = await createShopifyCheckout(cart.items)
+      window.location.assign(url)
+    } catch (err) {
+      setError(err.message || 'Could not start checkout. Please try again.')
+      setStatus('error')
+    }
+  }
+
+  return (
+    <div className="container-page py-10">
+      <Link to="/cart" className="text-sm text-slate-400 hover:text-white">← Back to cart</Link>
+      <h1 className="mt-2 text-3xl font-bold">Checkout</h1>
+
+      <div className="mt-8 grid gap-8 lg:grid-cols-[1fr_340px]">
+        <div className="panel h-fit space-y-4 p-6">
+          <h2 className="font-semibold">Secure checkout with Shopify</h2>
+          <p className="text-sm text-slate-300">
+            You'll enter your shipping address and payment on Shopify's secure checkout page. Shipping and tax are
+            worked out there, so your final total may differ from the estimate.
+          </p>
+          {unsupported.length > 0 && (
+            <div className="rounded-lg bg-rose-500/10 p-3 text-sm text-rose-300">
+              <p className="font-semibold">These items can't be paid for online yet:</p>
+              <ul className="mt-1 list-disc pl-5">
+                {unsupported.map((i) => (
+                  <li key={i.id}>{i.name}</li>
+                ))}
+              </ul>
+              <p className="mt-1">Remove them from your cart to continue.</p>
+            </div>
+          )}
+          {error && <p className="rounded-lg bg-rose-500/10 p-3 text-sm text-rose-300">{error}</p>}
+        </div>
+
+        <OrderSummary {...cart}>
+          <ul className="mt-4 max-h-48 space-y-1 overflow-y-auto border-t border-navy-600 pt-3 text-xs text-slate-400">
+            {cart.items.map((i) => (
+              <li key={i.id} className="flex justify-between gap-2">
+                <span className="truncate">{i.qty}× {i.name}</span>
+                <span>{formatPrice(i.price * i.qty)}</span>
+              </li>
+            ))}
+          </ul>
+          <button
+            type="button"
+            onClick={go}
+            className="btn-primary mt-4 w-full py-3"
+            disabled={status === 'working' || unsupported.length > 0}
+          >
+            {status === 'working' ? 'Opening secure checkout…' : 'Continue to secure checkout'}
+          </button>
+        </OrderSummary>
+      </div>
+    </div>
+  )
+}
+
+// Demo checkout: no payment, the order is only recorded in the browser.
+function DemoCheckout() {
   const cart = useCart()
   const navigate = useNavigate()
   const [form, setForm] = useState({ name: '', email: '', address: '', city: '', zip: '', card: '4242 4242 4242 4242' })
