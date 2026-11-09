@@ -11,7 +11,8 @@
     "sync:pokemon": "node scripts/sync-pokemon.mjs && node scripts/fetch-images.mjs && node scripts/generate-data.mjs",
     "fetch-images": "node scripts/fetch-images.mjs && node scripts/generate-data.mjs",
     "fetch-covers": "node scripts/fetch-covers.mjs && node scripts/cutout-covers.mjs && node scripts/generate-data.mjs",
-    "cutout-covers": "node scripts/cutout-covers.mjs && node scripts/generate-data.mjs"
+    "cutout-covers": "node scripts/cutout-covers.mjs && node scripts/generate-data.mjs",
+    "shopify:push": "node scripts/shopify-push.mjs"
   },
   "dependencies": {
     "react": "^18.3.1",

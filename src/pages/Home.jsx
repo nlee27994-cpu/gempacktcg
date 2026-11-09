@@ -5,7 +5,7 @@ import RarityBadge from '../components/RarityBadge'
 import ProductCard from '../components/ProductCard'
 import AuctionCard from '../components/AuctionCard'
 import { isEnded, useAuctions } from '../context/AuctionContext'
-import { events, featuredDrops, seriesPacks, packs, singles } from '../lib/catalog'
+import { events, featuredDrops, seriesPacks, shopProducts } from '../lib/catalog'
 import { formatDate, formatPrice, formatTime } from '../lib/format'
 import useNow from '../lib/useNow'
 
@@ -20,6 +20,7 @@ function countdown(ms) {
 }
 
 function Hero() {
+  const forSale = shopProducts()
   const [gold, amethyst, emerald] = ['Gold', 'Amethyst', 'Emerald'].map((t) =>
     seriesPacks.find((p) => p.gemTier === t && p.game === 'Pokémon'),
   )
@@ -44,8 +45,8 @@ function Hero() {
         </div>
         <dl className="mt-10 grid max-w-md grid-cols-3 gap-4 text-center">
           {[
-            [packs.length, 'sealed packs'],
-            [singles.length, 'singles'],
+            [forSale.filter((p) => p.type === 'pack').length, 'sealed packs'],
+            [forSale.filter((p) => p.type === 'single').length, 'singles'],
             ['3', 'ways to buy'],
           ].map(([n, label]) => (
             <div key={label} className="panel px-2 py-3">

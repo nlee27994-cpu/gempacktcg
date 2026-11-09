@@ -10,7 +10,7 @@ import { useCart } from '../context/CartContext'
 import { useSeries } from '../context/SeriesContext'
 import { useLedger } from '../context/LedgerContext'
 import { YOU, isEnded, useAuctions } from '../context/AuctionContext'
-import { getProduct, relatedProducts } from '../lib/catalog'
+import { getProduct, isForSale, relatedProducts } from '../lib/catalog'
 import { formatPrice } from '../lib/format'
 import { oddsFor } from '../lib/packOpening'
 import { RARITY_STYLES } from '../lib/rarity'
@@ -84,12 +84,13 @@ export default function Product() {
 
 function ProductDetail({ id }) {
   const product = getProduct(id)
-  const { add, items } = useCart()
+  const { add, items, busy } = useCart()
   const { openedFor } = useSeries()
   const { auctions } = useAuctions()
   const { stockFor } = useLedger()
   const [qty, setQty] = useState(1)
   const [added, setAdded] = useState(false)
+  const [addError, setAddError] = useState(null)
 
   if (!product) return <NotFound />
 
@@ -97,11 +98,18 @@ function ProductDetail({ id }) {
   const inCart = items.find((i) => i.id === product.id)?.qty ?? 0
   // Series drops sell down as packs are opened
   const series = product.seriesId && getSeries(product.seriesId)
-  const stock = series ? series.packs.length - openedFor(series.id).length : stockFor(product.id)
+  // With Shopify connected, only products published to the store can be bought
+  const seriesLeft = series ? series.packs.length - openedFor(series.id).length : Infinity
+  const stock = !isForSale(product) ? 0 : Math.min(seriesLeft, series && !product.shopify ? seriesLeft : stockFor(product.id))
   const maxQty = stock - inCart
 
-  const handleAdd = () => {
-    add(product.id, qty)
+  const handleAdd = async () => {
+    setAddError(null)
+    const result = await add(product.id, qty)
+    if (result?.ok === false) {
+      setAddError(result.error)
+      return
+    }
     setAdded(true)
     setQty(1)
     setTimeout(() => setAdded(false), 1800)
@@ -131,7 +139,7 @@ function ProductDetail({ id }) {
           <h1 className="mt-3 text-3xl font-bold sm:text-4xl">{product.name}</h1>
           <p className="mt-1 text-slate-400">
             {product.set}
-            {!isPack && ` · #${product.number}`} · {product.condition}
+            {!isPack && product.number && ` · #${product.number}`} · {product.condition}
           </p>
 
           <div className="mt-6 flex items-end gap-4">
@@ -157,8 +165,8 @@ function ProductDetail({ id }) {
               <span className="w-8 text-center font-semibold tabular-nums" aria-live="polite">{qty}</span>
               <button className="px-3 py-2.5 text-lg disabled:opacity-40" onClick={() => setQty((q) => q + 1)} disabled={qty >= maxQty} aria-label="Increase quantity">+</button>
             </div>
-            <button className="btn-primary flex-1 py-3 sm:flex-none sm:px-8" onClick={handleAdd} disabled={maxQty <= 0}>
-              {added ? '✓ Added to cart' : stock <= 0 ? 'Sold out' : maxQty <= 0 ? 'All in your cart' : 'Add to cart'}
+            <button className="btn-primary flex-1 py-3 sm:flex-none sm:px-8" onClick={handleAdd} disabled={maxQty <= 0 || busy}>
+              {busy && !added ? 'Adding…' : added ? '✓ Added to cart' : stock <= 0 ? 'Sold out' : maxQty <= 0 ? 'All in your cart' : 'Add to cart'}
             </button>
             {isPack && stock > 0 && (
               <Link to={`/open/${product.id}`} className="btn-gold flex-1 py-3 sm:flex-none">
@@ -171,6 +179,7 @@ function ProductDetail({ id }) {
             {series ? `${stock} of ${series.packs.length} packs left in this drop` : `${stock} in stock`}
             {inCart > 0 && ` · ${inCart} in your cart`}
           </p>
+          {addError && <p className="mt-2 text-sm text-rose-400">{addError}</p>}
 
           <dl className="panel mt-6 divide-y divide-navy-700 text-sm">
             {[
@@ -184,7 +193,7 @@ function ProductDetail({ id }) {
                   ]
                 : [
                     ['Condition', product.condition],
-                    ['Card number', `#${product.number}`],
+                    ...(product.number ? [['Card number', `#${product.number}`]] : []),
                     ...(product.officialRarity ? [['Official rarity', product.officialRarity]] : []),
                   ]),
             ].map(([k, v]) => (

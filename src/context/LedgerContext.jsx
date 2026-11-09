@@ -10,6 +10,7 @@ const MAX_ENTRIES = 2000
 
 export const TX_TYPES = {
   order: 'Order',
+  'shopify-checkout': 'Sent to Shopify checkout',
   'pack-rip': 'Pack rip (demo)',
   'drop-open': 'Drop pack opened',
   bid: 'Bid',
@@ -75,8 +76,12 @@ export function LedgerProvider({ children }) {
       entries: state.entries,
       record,
       sold,
-      // Live stock: starting stock minus units sold
-      stockFor: (id) => Math.max(0, (getProduct(id)?.stock ?? 0) - (sold.get(id) ?? 0)),
+      // Live stock: Shopify's count when connected, otherwise starting stock minus demo units sold
+      stockFor: (id) => {
+        const product = getProduct(id)
+        if (product?.shopify) return product.stock
+        return Math.max(0, (product?.stock ?? 0) - (sold.get(id) ?? 0))
+      },
       clear: () => setState((s) => ({ seq: s.seq, entries: [] })),
     }
   }, [state])
