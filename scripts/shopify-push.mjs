@@ -32,6 +32,13 @@ function loadEnvFile(path) {
 }
 loadEnvFile(join(root, '.env'))
 
+// Falls back to the public store domain committed in .env.production
+function readPublicDomain() {
+  const path = join(root, '.env.production')
+  if (!existsSync(path)) return null
+  return readFileSync(path, 'utf8').match(/^\s*VITE_SHOPIFY_DOMAIN\s*=\s*(\S+)/m)?.[1] ?? null
+}
+
 const args = process.argv.slice(2)
 const flag = (name) => args.includes(`--${name}`)
 const option = (name) => {
@@ -44,7 +51,7 @@ const DRY_RUN = flag('dry-run')
 const LIMIT = option('limit') ? Number(option('limit')) : Infinity
 const ONLY = option('only')?.split(',').map((s) => s.trim()).filter(Boolean)
 
-const STORE = (process.env.SHOPIFY_STORE_DOMAIN || process.env.VITE_SHOPIFY_STORE_DOMAIN || '')
+const STORE = (process.env.SHOPIFY_STORE_DOMAIN || process.env.VITE_SHOPIFY_DOMAIN || readPublicDomain() || '')
   .trim()
   .replace(/^https?:\/\//, '')
   .replace(/\/+$/, '')

@@ -8,7 +8,7 @@ Built as a high school business project by **Mason Do, Nicholas Lee and Rachel L
 Nothing is hidden: every pack shows its **pull odds**, Gempack's own Series drops publish **every card inside them**,
 and every price says where it came from. You get the thrill of the pull and know exactly what you're chasing.
 
-This is a demo. All products are mock data, nothing is stored on a server, and checkout takes no real payment unless Shopify is connected (see [Shopify checkout](#shopify-checkout)).
+This is a demo. All products are mock data, nothing is stored on a server, and checkout takes no real payment unless Shopify is connected (see [Shopify](#shopify)).
 
 ## Features
 
@@ -20,7 +20,7 @@ This is a demo. All products are mock data, nothing is stored on a server, and c
 | **Rip a pack** (`/open/:id`) | Pack-tearing animation and tap-to-flip card reveal weighted by rarity. Pulled cards go to your Vault |
 | **Auction House** (`/auctions`) | Live auctions for single cards from Gempack (Official) and verified collectors. Bid, Buy Now, track your bids and wins, or get verified and list your own card |
 | **Auction** (`/auctions/:id`) | Countdown, minimum raise, quick bids, Buy Now, bid history, and pay-to-claim when you win |
-| **Cart / Checkout** | Cart (saved in the browser), then Shopify's secure checkout when connected, or a fake checkout form and order confirmation |
+| **Cart / Checkout** | With Shopify connected, a Shopify cart and Shopify's secure checkout. Otherwise a cart saved in the browser, a fake checkout form and order confirmation |
 | **About** (`/about`) | Mission, team, strategy, and how the odds and checklists work |
 | **Vault** (`/vault`) | Every card you've pulled from a pack. Open one to list it on auction, list it in Singles at your own price, or ship it to yourself |
 | **Dev Console** (`/admin`) | Staff view: every transaction with a unique number and full data, live inventory, Series drops, auctions, exports and demo resets |
@@ -61,22 +61,33 @@ In the Cloudflare dashboard (**Workers & Pages → Create → Import a repositor
 The Worker's name in the dashboard must match `"name"` in `wrangler.jsonc` (currently `gempacktcg`). Once it's
 deployed, add your own domain under the Worker's **Settings → Domains & Routes**. Each push to the branch redeploys.
 
-## Shopify checkout
+## Shopify
 
-Checkout can take real payments through Shopify. The site stays static: when the Shopify keys are set, the checkout
-page builds a Shopify cart and sends the buyer to Shopify's secure checkout, and the order shows up in Shopify admin.
-Without the keys, the demo checkout is used.
+The site stays static, but with Shopify connected the store runs on Shopify through the Storefront API:
 
-Auction wins and Vault listings aren't Shopify products, so they can't be paid for this way yet. The checkout page
-asks the buyer to remove them.
+- **What's for sale** comes from Shopify. On load, the site fetches every product published to the **Headless** sales
+  channel and uses Shopify's title, price and stock. A product that isn't published to that channel isn't for sale on
+  the site. `src/data/` still holds each product's game details (pull odds, Series checklists, card numbers), matched to
+  Shopify by handle (`gempack-pk-001` is `pk-001`). Products you add in Shopify admin by hand show up as simple singles.
+- **The cart lives in Shopify** (`cartCreate`, `cartLinesAdd`, `cartLinesUpdate`, `cartLinesRemove`). Checkout sends the
+  buyer to the cart's `checkoutUrl`, where they pay, and the order shows up in Shopify admin. After a purchase the cart
+  empties itself.
+- **Auction wins and Vault listings** aren't Shopify products. They stay in a small local cart and use the demo
+  checkout, on their own.
+
+The store domain and public Storefront token are set in `.env.production`, which is committed: the public token is meant
+to be shipped to browsers. Never commit the Admin API token or app client secret. Without a token (for example with
+`npm run dev`), the site uses the demo catalog and demo checkout.
 
 Setup:
 
 1. **Storefront token.** In Shopify admin, install the free **Headless** sales channel, create a storefront, and copy
-   its **public access token**.
+   its **public access token** into `VITE_SHOPIFY_STOREFRONT_TOKEN` in `.env.production` (or set it as a Cloudflare
+   build variable). To show exact stock, give the storefront the `unauthenticated_read_product_inventory` permission;
+   without it, the site only knows whether a product is in stock and caps quantities at 10.
 2. **Upload access.** In the Shopify **Dev Dashboard**, create an app with the scopes `write_products`,
    `write_inventory`, `read_locations` and `write_publications`, release a version and install it on your store.
-   Copy `.env.example` to `.env` and fill in the store domain, storefront token, client ID and client secret.
+   Copy `.env.example` to `.env` and fill in the client ID and client secret.
 3. **Upload the products.** The site must be live at `SITE_URL` (Shopify downloads the images from it). Try a few first:
 
    ```bash
@@ -84,11 +95,11 @@ Setup:
    npm run shopify:push
    ```
 
-   Re-running is safe. New products get their price, stock and image. Existing products only get their title,
-   description, tags and price updated, so stock already sold in Shopify isn't reset. `--dry-run` shows what would
-   happen and `--only pk-001,sg-002` pushes specific products.
-4. **Cloudflare.** Add `VITE_SHOPIFY_STORE_DOMAIN` and `VITE_SHOPIFY_STOREFRONT_TOKEN` as **build** variables on the
-   Worker, then redeploy.
+   The script publishes each product to the Headless and Online Store channels. Re-running is safe: new products get
+   their price, stock and image; existing products only get their title, description, tags and price updated, so stock
+   already sold in Shopify isn't reset. `--dry-run` shows what would happen and `--only pk-001,sg-002` pushes specific
+   products. Products you create in Shopify admin by hand must be published to the Headless channel yourself.
+4. **Deploy.** Push to the branch Cloudflare builds; the build picks up `.env.production`.
 
 ## Project structure
 
@@ -117,7 +128,7 @@ Setup:
    │  ├─ auction.js              # auction rules: bid increments, fees, durations
    │  ├─ series.js               # Gempack Series drop status
    │  ├─ rarity.js               # rarity tiers ↔ gem colors
-   │  ├─ shopify.js              # Shopify cart + hosted checkout (Storefront API)
+   │  ├─ shopify.js              # Storefront API: products, cart, checkout
    │  └─ format.js, useNow.js
    ├─ context/                   # CartContext, AuctionContext, SeriesContext
    ├─ components/                # Navbar, Footer, Logo, CardArt, ProductCard, badges, filters…

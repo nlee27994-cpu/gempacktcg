@@ -1,11 +1,18 @@
 import { formatPrice } from '../lib/format'
 
 export default function OrderSummary({ subtotal, shipping, tax, total, children }) {
-  const rows = [
-    ['Subtotal', formatPrice(subtotal)],
-    ['Shipping', shipping === 0 ? 'Free' : formatPrice(shipping)],
-    ['Est. tax', formatPrice(tax)],
-  ]
+  // shipping and tax are null when Shopify works them out at checkout
+  const atCheckout = shipping == null
+  const rows = atCheckout
+    ? [
+        ['Subtotal', formatPrice(subtotal)],
+        ['Shipping & tax', 'At checkout'],
+      ]
+    : [
+        ['Subtotal', formatPrice(subtotal)],
+        ['Shipping', shipping === 0 ? 'Free' : formatPrice(shipping)],
+        ['Est. tax', formatPrice(tax)],
+      ]
   return (
     <div className="panel h-fit p-5">
       <h2 className="font-semibold">Order summary</h2>
@@ -17,7 +24,7 @@ export default function OrderSummary({ subtotal, shipping, tax, total, children 
           </div>
         ))}
         <div className="flex justify-between border-t border-navy-600 pt-3 text-base font-semibold">
-          <dt>Total</dt>
+          <dt>{atCheckout ? 'Total so far' : 'Total'}</dt>
           <dd className="font-display text-xl">{formatPrice(total)}</dd>
         </div>
       </dl>

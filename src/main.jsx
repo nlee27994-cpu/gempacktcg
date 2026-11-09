@@ -7,9 +7,14 @@ import { LedgerProvider } from './context/LedgerContext'
 import { AuctionProvider } from './context/AuctionContext'
 import { SeriesProvider } from './context/SeriesContext'
 import { VaultProvider } from './context/VaultContext'
+import { loadCatalog } from './lib/catalog'
 import './index.css'
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+const root = document.getElementById('root')
+root.innerHTML = '<p style="padding:6rem 1rem;text-align:center;color:#94a3b8">Loading the shop…</p>'
+
+// With Shopify connected, what's for sale comes from the store, so load it before the first render
+loadCatalog().finally(() => ReactDOM.createRoot(root).render(
   <React.StrictMode>
     <BrowserRouter>
       <LedgerProvider>
@@ -25,4 +30,4 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       </LedgerProvider>
     </BrowserRouter>
   </React.StrictMode>,
-)
+))

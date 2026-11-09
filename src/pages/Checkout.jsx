@@ -3,8 +3,6 @@ import { Link, Navigate, useNavigate } from 'react-router-dom'
 import OrderSummary from '../components/OrderSummary'
 import { useCart } from '../context/CartContext'
 import { formatPrice } from '../lib/format'
-import { isCatalogProduct } from '../lib/catalog'
-import { shopifyEnabled, createShopifyCheckout } from '../lib/shopify'
 
 const FIELDS = [
   ['name', 'Full name', 'text', 'name', 'sm:col-span-2'],
@@ -15,31 +13,24 @@ const FIELDS = [
 ]
 
 export default function Checkout() {
-  return shopifyEnabled ? <ShopifyCheckout /> : <DemoCheckout />
+  const { shopifyItems, loaded } = useCart()
+  if (!loaded) return <p className="container-page py-24 text-center text-slate-400">Loading your cart…</p>
+  // Anything in the Shopify cart is paid for on Shopify. Auction wins and Vault listings on their own
+  // aren't Shopify products, so they use the demo checkout.
+  return shopifyItems.length > 0 ? <ShopifyCheckout /> : <DemoCheckout />
 }
 
-// Real checkout: builds a Shopify cart and hands the buyer to Shopify's hosted checkout page,
+// Real checkout: the cart already lives in Shopify, so we send the buyer to its checkoutUrl,
 // where they enter shipping and payment. Shopify records the order.
 function ShopifyCheckout() {
   const cart = useCart()
-  const [status, setStatus] = useState('idle') // idle | working | error
-  const [error, setError] = useState('')
+  const [leaving, setLeaving] = useState(false)
+  const unsupported = cart.localItems
+  const ready = cart.checkoutUrl && !cart.busy && unsupported.length === 0
 
-  if (cart.items.length === 0) return <Navigate to="/cart" replace />
-
-  // Auction wins and Vault listings are not Shopify products, so they can't be paid for here.
-  const unsupported = cart.items.filter((i) => !isCatalogProduct(i.id))
-
-  const go = async () => {
-    setStatus('working')
-    setError('')
-    try {
-      const url = await createShopifyCheckout(cart.items)
-      window.location.assign(url)
-    } catch (err) {
-      setError(err.message || 'Could not start checkout. Please try again.')
-      setStatus('error')
-    }
+  const go = () => {
+    setLeaving(true)
+    cart.goToShopifyCheckout()
   }
 
   return (
@@ -52,20 +43,20 @@ function ShopifyCheckout() {
           <h2 className="font-semibold">Secure checkout with Shopify</h2>
           <p className="text-sm text-slate-300">
             You'll enter your shipping address and payment on Shopify's secure checkout page. Shipping and tax are
-            worked out there, so your final total may differ from the estimate.
+            worked out there.
           </p>
           {unsupported.length > 0 && (
             <div className="rounded-lg bg-rose-500/10 p-3 text-sm text-rose-300">
-              <p className="font-semibold">These items can't be paid for online yet:</p>
+              <p className="font-semibold">These items can't be paid for with the rest of your cart:</p>
               <ul className="mt-1 list-disc pl-5">
                 {unsupported.map((i) => (
                   <li key={i.id}>{i.name}</li>
                 ))}
               </ul>
-              <p className="mt-1">Remove them from your cart to continue.</p>
+              <p className="mt-1">Remove them from your cart to continue. You can add them back and check them out on their own afterwards.</p>
             </div>
           )}
-          {error && <p className="rounded-lg bg-rose-500/10 p-3 text-sm text-rose-300">{error}</p>}
+          {cart.notice && <p className="rounded-lg bg-amber-400/10 p-3 text-sm text-amber-200">{cart.notice}</p>}
         </div>
 
         <OrderSummary {...cart}>
@@ -77,13 +68,8 @@ function ShopifyCheckout() {
               </li>
             ))}
           </ul>
-          <button
-            type="button"
-            onClick={go}
-            className="btn-primary mt-4 w-full py-3"
-            disabled={status === 'working' || unsupported.length > 0}
-          >
-            {status === 'working' ? 'Opening secure checkout…' : 'Continue to secure checkout'}
+          <button type="button" onClick={go} className="btn-primary mt-4 w-full py-3" disabled={!ready || leaving}>
+            {leaving ? 'Opening secure checkout…' : 'Continue to secure checkout'}
           </button>
         </OrderSummary>
       </div>
