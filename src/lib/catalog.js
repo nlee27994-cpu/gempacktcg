@@ -67,7 +67,8 @@ export async function loadCatalog() {
   for (const p of allProducts) p.stock = 0
   try {
     for (const sp of await fetchShopifyProducts()) {
-      const local = byId.get(idFromHandle(sp.handle))
+      // Handles made by shopify:push are "gempack-sg-001"; products named by hand may use just "sg-001"
+      const local = byId.get(idFromHandle(sp.handle)) ?? byId.get(sp.handle)
       const product = local ?? shopifyOnlyProduct(sp)
       if (local) {
         // The price note (where the price came from) only applies while Shopify's price matches it

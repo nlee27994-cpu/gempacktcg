@@ -68,7 +68,7 @@ The site stays static, but with Shopify connected the store runs on Shopify thro
 - **What's for sale** comes from Shopify. On load, the site fetches every product published to the **Headless** sales
   channel and uses Shopify's title, price and stock. A product that isn't published to that channel isn't for sale on
   the site. `src/data/` still holds each product's game details (pull odds, Series checklists, card numbers), matched to
-  Shopify by handle (`gempack-pk-001` is `pk-001`). Products you add in Shopify admin by hand show up as simple singles.
+  Shopify by handle: `gempack-pk-001` (what `npm run shopify:push` creates) or just `pk-001`. Products you add in Shopify admin by hand show up as simple singles.
 - **The cart lives in Shopify** (`cartCreate`, `cartLinesAdd`, `cartLinesUpdate`, `cartLinesRemove`). Checkout sends the
   buyer to the cart's `checkoutUrl`, where they pay, and the order shows up in Shopify admin. After a purchase the cart
   empties itself.
